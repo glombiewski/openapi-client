@@ -1,0 +1,31 @@
+# OpenAPI Generator Ignore
+
+# Used by openapi-generator https://github.com/openapitools/openapi-generator
+
+# Use this file to prevent files from being overwritten by the generator.
+
+# The patterns follow closely to .gitignore or .dockerignore.
+
+# Ignore overriding ignore file itself
+
+/.openapi-generator-ignore
+
+# Generator
+
+/.generation/
+
+# Git stuff
+
+/.gitignore
+/.github/
+
+# Unnecessary files
+
+/docs/
+/git_push.sh
+
+# Other CIs
+
+/.gitlab-ci.yml
+/.travis.yml
+/tox.ini

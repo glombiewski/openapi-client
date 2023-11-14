@@ -8,6 +8,7 @@ geoengine_openapi_client/api/ogcwcs_api.py
 geoengine_openapi_client/api/ogcwfs_api.py
 geoengine_openapi_client/api/ogcwms_api.py
 geoengine_openapi_client/api/permissions_api.py
+geoengine_openapi_client/api/plots_api.py
 geoengine_openapi_client/api/projects_api.py
 geoengine_openapi_client/api/session_api.py
 geoengine_openapi_client/api/spatial_references_api.py
@@ -382,6 +383,7 @@ test/test_plot_query_rectangle.py
 test/test_plot_result_descriptor.py
 test/test_plot_result_descriptor_with_type.py
 test/test_plot_update.py
+test/test_plots_api.py
 test/test_point_symbology.py
 test/test_point_symbology_with_type.py
 test/test_polygon_symbology.py

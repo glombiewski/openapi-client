@@ -125,6 +125,7 @@ Class | Method | HTTP request | Description
 *OGCWMSApi* | [**wms_map_handler**](docs/OGCWMSApi.md#wms_map_handler) | **GET** /wms/{workflow}?request&#x3D;GetMap | Get WMS Map
 *PermissionsApi* | [**add_permission_handler**](docs/PermissionsApi.md#add_permission_handler) | **PUT** /permissions | Adds a new permission.
 *PermissionsApi* | [**remove_permission_handler**](docs/PermissionsApi.md#remove_permission_handler) | **DELETE** /permissions | Removes an existing permission.
+*PlotsApi* | [**get_plot_handler**](docs/PlotsApi.md#get_plot_handler) | **GET** /plot/{id} | Generates a plot.
 *ProjectsApi* | [**create_project_handler**](docs/ProjectsApi.md#create_project_handler) | **POST** /project | Create a new project for the user.
 *ProjectsApi* | [**delete_project_handler**](docs/ProjectsApi.md#delete_project_handler) | **DELETE** /project/{project} | Deletes a project.
 *ProjectsApi* | [**list_projects_handler**](docs/ProjectsApi.md#list_projects_handler) | **GET** /projects | List all projects accessible to the user that match the selected criteria.

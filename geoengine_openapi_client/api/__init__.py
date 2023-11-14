@@ -8,6 +8,7 @@ from geoengine_openapi_client.api.ogcwcs_api import OGCWCSApi
 from geoengine_openapi_client.api.ogcwfs_api import OGCWFSApi
 from geoengine_openapi_client.api.ogcwms_api import OGCWMSApi
 from geoengine_openapi_client.api.permissions_api import PermissionsApi
+from geoengine_openapi_client.api.plots_api import PlotsApi
 from geoengine_openapi_client.api.projects_api import ProjectsApi
 from geoengine_openapi_client.api.session_api import SessionApi
 from geoengine_openapi_client.api.spatial_references_api import SpatialReferencesApi

@@ -1,4 +1,4 @@
-# geoengine-python-sys
+# geoengine-openapi-client - Code Generation
 
 Auto-generated Python Client API for Geo Engine
 

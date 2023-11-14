@@ -51,20 +51,23 @@ if not DEV_RUN:
         ],
     )
 
-    for _ in range(10):
+    for _ in range(60):
+        print("Requesting `openapi.json`….", file=sys.stderr)
         try:
             with request.urlopen(
-                    "http://localhost:8080/api/api-docs/openapi.json",
-                    timeout=10,
-                ) as w, \
-                open(CWD / "input/openapi.json", "wb") as f:
+                "http://localhost:8080/api/api-docs/openapi.json",
+                 timeout=10,
+            ) as w:
                 api_json = w.read()
+
+            with open(CWD / "input/openapi.json", "wb") as f:
                 f.write(api_json)
 
             print("Stored `openapi.json`.", file=sys.stderr)
+            break
         except URLError as e:
-            # try again
-            time.sleep(1) # 1 second
+            pass # try again
+        time.sleep(1) # 1 second
 
     print("Stopping Geo Engine backend.", file=sys.stderr)
     ge_process.kill()

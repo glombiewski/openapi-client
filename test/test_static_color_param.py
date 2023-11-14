@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.static_color_param import StaticColorParam  # noqa: E501
+from geoengine_openapi_client.models.static_color_param import StaticColorParam  # noqa: E501
 
 class TestStaticColorParam(unittest.TestCase):
     """StaticColorParam unit test stubs"""

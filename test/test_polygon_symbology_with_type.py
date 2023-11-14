@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.polygon_symbology_with_type import PolygonSymbologyWithType  # noqa: E501
+from geoengine_openapi_client.models.polygon_symbology_with_type import PolygonSymbologyWithType  # noqa: E501
 
 class TestPolygonSymbologyWithType(unittest.TestCase):
     """PolygonSymbologyWithType unit test stubs"""
@@ -39,13 +39,13 @@ class TestPolygonSymbologyWithType(unittest.TestCase):
             return PolygonSymbologyWithType(
                 auto_simplified = True,
                 fill_color = None,
-                stroke = geoengine_sys.models.stroke_param.StrokeParam(
+                stroke = geoengine_openapi_client.models.stroke_param.StrokeParam(
                     color = null, 
                     width = null, ),
-                text = geoengine_sys.models.text_symbology.TextSymbology(
+                text = geoengine_openapi_client.models.text_symbology.TextSymbology(
                     attribute = '', 
                     fill_color = null, 
-                    stroke = geoengine_sys.models.stroke_param.StrokeParam(
+                    stroke = geoengine_openapi_client.models.stroke_param.StrokeParam(
                         color = null, 
                         width = null, ), ),
                 type = 'polygon'
@@ -54,7 +54,7 @@ class TestPolygonSymbologyWithType(unittest.TestCase):
             return PolygonSymbologyWithType(
                 auto_simplified = True,
                 fill_color = None,
-                stroke = geoengine_sys.models.stroke_param.StrokeParam(
+                stroke = geoengine_openapi_client.models.stroke_param.StrokeParam(
                     color = null, 
                     width = null, ),
                 type = 'polygon',

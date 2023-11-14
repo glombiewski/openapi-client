@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.raster_dataset_from_workflow_result import RasterDatasetFromWorkflowResult  # noqa: E501
+from geoengine_openapi_client.models.raster_dataset_from_workflow_result import RasterDatasetFromWorkflowResult  # noqa: E501
 
 class TestRasterDatasetFromWorkflowResult(unittest.TestCase):
     """RasterDatasetFromWorkflowResult unit test stubs"""

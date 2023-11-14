@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.project_resource import ProjectResource  # noqa: E501
+from geoengine_openapi_client.models.project_resource import ProjectResource  # noqa: E501
 
 class TestProjectResource(unittest.TestCase):
     """ProjectResource unit test stubs"""

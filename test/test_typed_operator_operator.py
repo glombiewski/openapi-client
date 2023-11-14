@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.typed_operator_operator import TypedOperatorOperator  # noqa: E501
+from geoengine_openapi_client.models.typed_operator_operator import TypedOperatorOperator  # noqa: E501
 
 class TestTypedOperatorOperator(unittest.TestCase):
     """TypedOperatorOperator unit test stubs"""
@@ -37,8 +37,8 @@ class TestTypedOperatorOperator(unittest.TestCase):
         model = TypedOperatorOperator()  # noqa: E501
         if include_optional:
             return TypedOperatorOperator(
-                params = geoengine_sys.models.params.params(),
-                sources = geoengine_sys.models.sources.sources(),
+                params = geoengine_openapi_client.models.params.params(),
+                sources = geoengine_openapi_client.models.sources.sources(),
                 type = ''
             )
         else:

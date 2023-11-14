@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.palette_colorizer import PaletteColorizer  # noqa: E501
+from geoengine_openapi_client.models.palette_colorizer import PaletteColorizer  # noqa: E501
 
 class TestPaletteColorizer(unittest.TestCase):
     """PaletteColorizer unit test stubs"""

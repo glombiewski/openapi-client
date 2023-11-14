@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.dataset import Dataset  # noqa: E501
+from geoengine_openapi_client.models.dataset import Dataset  # noqa: E501
 
 class TestDataset(unittest.TestCase):
     """Dataset unit test stubs"""
@@ -42,7 +42,7 @@ class TestDataset(unittest.TestCase):
                 id = '',
                 name = '',
                 provenance = [
-                    geoengine_sys.models.provenance.Provenance(
+                    geoengine_openapi_client.models.provenance.Provenance(
                         citation = '', 
                         license = '', 
                         uri = '', )

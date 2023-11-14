@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.csv_header import CsvHeader  # noqa: E501
+from geoengine_openapi_client.models.csv_header import CsvHeader  # noqa: E501
 
 class TestCsvHeader(unittest.TestCase):
     """CsvHeader unit test stubs"""

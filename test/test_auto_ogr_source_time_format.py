@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.auto_ogr_source_time_format import AutoOgrSourceTimeFormat  # noqa: E501
+from geoengine_openapi_client.models.auto_ogr_source_time_format import AutoOgrSourceTimeFormat  # noqa: E501
 
 class TestAutoOgrSourceTimeFormat(unittest.TestCase):
     """AutoOgrSourceTimeFormat unit test stubs"""

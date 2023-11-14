@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.layer_collection_resource import LayerCollectionResource  # noqa: E501
+from geoengine_openapi_client.models.layer_collection_resource import LayerCollectionResource  # noqa: E501
 
 class TestLayerCollectionResource(unittest.TestCase):
     """LayerCollectionResource unit test stubs"""

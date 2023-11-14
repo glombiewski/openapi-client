@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.typed_geometry_one_of2 import TypedGeometryOneOf2  # noqa: E501
+from geoengine_openapi_client.models.typed_geometry_one_of2 import TypedGeometryOneOf2  # noqa: E501
 
 class TestTypedGeometryOneOf2(unittest.TestCase):
     """TypedGeometryOneOf2 unit test stubs"""
@@ -37,10 +37,10 @@ class TestTypedGeometryOneOf2(unittest.TestCase):
         model = TypedGeometryOneOf2()  # noqa: E501
         if include_optional:
             return TypedGeometryOneOf2(
-                multi_line_string = geoengine_sys.models.multi_line_string.MultiLineString(
+                multi_line_string = geoengine_openapi_client.models.multi_line_string.MultiLineString(
                     coordinates = [
                         [
-                            geoengine_sys.models.coordinate2_d.Coordinate2D(
+                            geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                                 x = 1.337, 
                                 y = 1.337, )
                             ]
@@ -48,10 +48,10 @@ class TestTypedGeometryOneOf2(unittest.TestCase):
             )
         else:
             return TypedGeometryOneOf2(
-                multi_line_string = geoengine_sys.models.multi_line_string.MultiLineString(
+                multi_line_string = geoengine_openapi_client.models.multi_line_string.MultiLineString(
                     coordinates = [
                         [
-                            geoengine_sys.models.coordinate2_d.Coordinate2D(
+                            geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                                 x = 1.337, 
                                 y = 1.337, )
                             ]

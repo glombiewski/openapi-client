@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.derived_number_with_type import DerivedNumberWithType  # noqa: E501
+from geoengine_openapi_client.models.derived_number_with_type import DerivedNumberWithType  # noqa: E501
 
 class TestDerivedNumberWithType(unittest.TestCase):
     """DerivedNumberWithType unit test stubs"""

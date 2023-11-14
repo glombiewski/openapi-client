@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.raster_result_descriptor import RasterResultDescriptor  # noqa: E501
+from geoengine_openapi_client.models.raster_result_descriptor import RasterResultDescriptor  # noqa: E501
 
 class TestRasterResultDescriptor(unittest.TestCase):
     """RasterResultDescriptor unit test stubs"""
@@ -37,20 +37,20 @@ class TestRasterResultDescriptor(unittest.TestCase):
         model = RasterResultDescriptor()  # noqa: E501
         if include_optional:
             return RasterResultDescriptor(
-                bbox = geoengine_sys.models.spatial_partition2_d.SpatialPartition2D(
-                    lower_right_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                bbox = geoengine_openapi_client.models.spatial_partition2_d.SpatialPartition2D(
+                    lower_right_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, ), 
-                    upper_left_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                    upper_left_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, ), ),
                 data_type = 'U8',
                 measurement = None,
-                resolution = geoengine_sys.models.spatial_resolution.SpatialResolution(
+                resolution = geoengine_openapi_client.models.spatial_resolution.SpatialResolution(
                     x = 1.337, 
                     y = 1.337, ),
                 spatial_reference = '',
-                time = geoengine_sys.models.time_interval.TimeInterval(
+                time = geoengine_openapi_client.models.time_interval.TimeInterval(
                     end = 56, 
                     start = 56, )
             )

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.provider_layer_id import ProviderLayerId  # noqa: E501
+from geoengine_openapi_client.models.provider_layer_id import ProviderLayerId  # noqa: E501
 
 class TestProviderLayerId(unittest.TestCase):
     """ProviderLayerId unit test stubs"""

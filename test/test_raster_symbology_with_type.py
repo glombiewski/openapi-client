@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.raster_symbology_with_type import RasterSymbologyWithType  # noqa: E501
+from geoengine_openapi_client.models.raster_symbology_with_type import RasterSymbologyWithType  # noqa: E501
 
 class TestRasterSymbologyWithType(unittest.TestCase):
     """RasterSymbologyWithType unit test stubs"""

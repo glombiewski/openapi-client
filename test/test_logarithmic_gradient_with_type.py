@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.logarithmic_gradient_with_type import LogarithmicGradientWithType  # noqa: E501
+from geoengine_openapi_client.models.logarithmic_gradient_with_type import LogarithmicGradientWithType  # noqa: E501
 
 class TestLogarithmicGradientWithType(unittest.TestCase):
     """LogarithmicGradientWithType unit test stubs"""
@@ -47,7 +47,7 @@ class TestLogarithmicGradientWithType(unittest.TestCase):
                     56
                     ],
                 breakpoints = [
-                    geoengine_sys.models.breakpoint.Breakpoint(
+                    geoengine_openapi_client.models.breakpoint.Breakpoint(
                         color = [
                             56
                             ], 
@@ -70,7 +70,7 @@ class TestLogarithmicGradientWithType(unittest.TestCase):
                     56
                     ],
                 breakpoints = [
-                    geoengine_sys.models.breakpoint.Breakpoint(
+                    geoengine_openapi_client.models.breakpoint.Breakpoint(
                         color = [
                             56
                             ], 

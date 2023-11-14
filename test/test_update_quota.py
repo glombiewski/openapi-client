@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.update_quota import UpdateQuota  # noqa: E501
+from geoengine_openapi_client.models.update_quota import UpdateQuota  # noqa: E501
 
 class TestUpdateQuota(unittest.TestCase):
     """UpdateQuota unit test stubs"""

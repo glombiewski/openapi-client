@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.volume import Volume  # noqa: E501
+from geoengine_openapi_client.models.volume import Volume  # noqa: E501
 
 class TestVolume(unittest.TestCase):
     """Volume unit test stubs"""

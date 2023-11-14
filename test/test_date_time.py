@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.date_time import DateTime  # noqa: E501
+from geoengine_openapi_client.models.date_time import DateTime  # noqa: E501
 
 class TestDateTime(unittest.TestCase):
     """DateTime unit test stubs"""

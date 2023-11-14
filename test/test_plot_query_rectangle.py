@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.plot_query_rectangle import PlotQueryRectangle  # noqa: E501
+from geoengine_openapi_client.models.plot_query_rectangle import PlotQueryRectangle  # noqa: E501
 
 class TestPlotQueryRectangle(unittest.TestCase):
     """PlotQueryRectangle unit test stubs"""
@@ -37,33 +37,33 @@ class TestPlotQueryRectangle(unittest.TestCase):
         model = PlotQueryRectangle()  # noqa: E501
         if include_optional:
             return PlotQueryRectangle(
-                spatial_bounds = geoengine_sys.models.bounding_box2_d.BoundingBox2D(
-                    lower_left_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                spatial_bounds = geoengine_openapi_client.models.bounding_box2_d.BoundingBox2D(
+                    lower_left_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, ), 
-                    upper_right_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                    upper_right_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, ), ),
-                spatial_resolution = geoengine_sys.models.spatial_resolution.SpatialResolution(
+                spatial_resolution = geoengine_openapi_client.models.spatial_resolution.SpatialResolution(
                     x = 1.337, 
                     y = 1.337, ),
-                time_interval = geoengine_sys.models.time_interval.TimeInterval(
+                time_interval = geoengine_openapi_client.models.time_interval.TimeInterval(
                     end = 56, 
                     start = 56, )
             )
         else:
             return PlotQueryRectangle(
-                spatial_bounds = geoengine_sys.models.bounding_box2_d.BoundingBox2D(
-                    lower_left_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                spatial_bounds = geoengine_openapi_client.models.bounding_box2_d.BoundingBox2D(
+                    lower_left_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, ), 
-                    upper_right_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                    upper_right_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, ), ),
-                spatial_resolution = geoengine_sys.models.spatial_resolution.SpatialResolution(
+                spatial_resolution = geoengine_openapi_client.models.spatial_resolution.SpatialResolution(
                     x = 1.337, 
                     y = 1.337, ),
-                time_interval = geoengine_sys.models.time_interval.TimeInterval(
+                time_interval = geoengine_openapi_client.models.time_interval.TimeInterval(
                     end = 56, 
                     start = 56, ),
         )

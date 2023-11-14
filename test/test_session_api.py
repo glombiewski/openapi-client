@@ -15,7 +15,7 @@
 
 import unittest
 
-from geoengine_sys.api.session_api import SessionApi  # noqa: E501
+from geoengine_openapi_client.api.session_api import SessionApi  # noqa: E501
 
 
 class TestSessionApi(unittest.TestCase):

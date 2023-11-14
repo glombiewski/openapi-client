@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.upload_files_response import UploadFilesResponse  # noqa: E501
+from geoengine_openapi_client.models.upload_files_response import UploadFilesResponse  # noqa: E501
 
 class TestUploadFilesResponse(unittest.TestCase):
     """UploadFilesResponse unit test stubs"""

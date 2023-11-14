@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.create_dataset import CreateDataset  # noqa: E501
+from geoengine_openapi_client.models.create_dataset import CreateDataset  # noqa: E501
 
 class TestCreateDataset(unittest.TestCase):
     """CreateDataset unit test stubs"""
@@ -38,14 +38,14 @@ class TestCreateDataset(unittest.TestCase):
         if include_optional:
             return CreateDataset(
                 data_path = None,
-                definition = geoengine_sys.models.dataset_definition.DatasetDefinition(
+                definition = geoengine_openapi_client.models.dataset_definition.DatasetDefinition(
                     meta_data = null, 
-                    properties = geoengine_sys.models.add_dataset.AddDataset(
+                    properties = geoengine_openapi_client.models.add_dataset.AddDataset(
                         description = '', 
                         display_name = '', 
                         name = null, 
                         provenance = [
-                            geoengine_sys.models.provenance.Provenance(
+                            geoengine_openapi_client.models.provenance.Provenance(
                                 citation = '', 
                                 license = '', 
                                 uri = '', )
@@ -56,14 +56,14 @@ class TestCreateDataset(unittest.TestCase):
         else:
             return CreateDataset(
                 data_path = None,
-                definition = geoengine_sys.models.dataset_definition.DatasetDefinition(
+                definition = geoengine_openapi_client.models.dataset_definition.DatasetDefinition(
                     meta_data = null, 
-                    properties = geoengine_sys.models.add_dataset.AddDataset(
+                    properties = geoengine_openapi_client.models.add_dataset.AddDataset(
                         description = '', 
                         display_name = '', 
                         name = null, 
                         provenance = [
-                            geoengine_sys.models.provenance.Provenance(
+                            geoengine_openapi_client.models.provenance.Provenance(
                                 citation = '', 
                                 license = '', 
                                 uri = '', )

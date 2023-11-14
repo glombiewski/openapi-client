@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.auto_create_dataset import AutoCreateDataset  # noqa: E501
+from geoengine_openapi_client.models.auto_create_dataset import AutoCreateDataset  # noqa: E501
 
 class TestAutoCreateDataset(unittest.TestCase):
     """AutoCreateDataset unit test stubs"""

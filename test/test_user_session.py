@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.user_session import UserSession  # noqa: E501
+from geoengine_openapi_client.models.user_session import UserSession  # noqa: E501
 
 class TestUserSession(unittest.TestCase):
     """UserSession unit test stubs"""
@@ -43,21 +43,21 @@ class TestUserSession(unittest.TestCase):
                 roles = [
                     ''
                     ],
-                user = geoengine_sys.models.user_info.UserInfo(
+                user = geoengine_openapi_client.models.user_info.UserInfo(
                     email = '', 
                     id = '', 
                     real_name = '', ),
                 valid_until = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                view = geoengine_sys.models.st_rectangle.STRectangle(
-                    bounding_box = geoengine_sys.models.bounding_box2_d.BoundingBox2D(
-                        lower_left_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                view = geoengine_openapi_client.models.st_rectangle.STRectangle(
+                    bounding_box = geoengine_openapi_client.models.bounding_box2_d.BoundingBox2D(
+                        lower_left_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                             x = 1.337, 
                             y = 1.337, ), 
-                        upper_right_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                        upper_right_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                             x = 1.337, 
                             y = 1.337, ), ), 
                     spatial_reference = '', 
-                    time_interval = geoengine_sys.models.time_interval.TimeInterval(
+                    time_interval = geoengine_openapi_client.models.time_interval.TimeInterval(
                         end = 56, 
                         start = 56, ), )
             )
@@ -68,7 +68,7 @@ class TestUserSession(unittest.TestCase):
                 roles = [
                     ''
                     ],
-                user = geoengine_sys.models.user_info.UserInfo(
+                user = geoengine_openapi_client.models.user_info.UserInfo(
                     email = '', 
                     id = '', 
                     real_name = '', ),

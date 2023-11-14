@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.time_interval import TimeInterval  # noqa: E501
+from geoengine_openapi_client.models.time_interval import TimeInterval  # noqa: E501
 
 class TestTimeInterval(unittest.TestCase):
     """TimeInterval unit test stubs"""

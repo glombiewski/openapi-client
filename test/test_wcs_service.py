@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.wcs_service import WcsService  # noqa: E501
+from geoengine_openapi_client.models.wcs_service import WcsService  # noqa: E501
 
 class TestWcsService(unittest.TestCase):
     """WcsService unit test stubs"""

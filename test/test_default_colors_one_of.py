@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.default_colors_one_of import DefaultColorsOneOf  # noqa: E501
+from geoengine_openapi_client.models.default_colors_one_of import DefaultColorsOneOf  # noqa: E501
 
 class TestDefaultColorsOneOf(unittest.TestCase):
     """DefaultColorsOneOf unit test stubs"""

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.feature_data_type import FeatureDataType  # noqa: E501
+from geoengine_openapi_client.models.feature_data_type import FeatureDataType  # noqa: E501
 
 class TestFeatureDataType(unittest.TestCase):
     """FeatureDataType unit test stubs"""

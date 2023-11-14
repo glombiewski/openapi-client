@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.task_list_options import TaskListOptions  # noqa: E501
+from geoengine_openapi_client.models.task_list_options import TaskListOptions  # noqa: E501
 
 class TestTaskListOptions(unittest.TestCase):
     """TaskListOptions unit test stubs"""

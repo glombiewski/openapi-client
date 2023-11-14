@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.multi_polygon import MultiPolygon  # noqa: E501
+from geoengine_openapi_client.models.multi_polygon import MultiPolygon  # noqa: E501
 
 class TestMultiPolygon(unittest.TestCase):
     """MultiPolygon unit test stubs"""
@@ -40,7 +40,7 @@ class TestMultiPolygon(unittest.TestCase):
                 polygons = [
                     [
                         [
-                            geoengine_sys.models.coordinate2_d.Coordinate2D(
+                            geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                                 x = 1.337, 
                                 y = 1.337, )
                             ]
@@ -52,7 +52,7 @@ class TestMultiPolygon(unittest.TestCase):
                 polygons = [
                     [
                         [
-                            geoengine_sys.models.coordinate2_d.Coordinate2D(
+                            geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                                 x = 1.337, 
                                 y = 1.337, )
                             ]

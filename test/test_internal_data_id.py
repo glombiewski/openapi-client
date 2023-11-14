@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.internal_data_id import InternalDataId  # noqa: E501
+from geoengine_openapi_client.models.internal_data_id import InternalDataId  # noqa: E501
 
 class TestInternalDataId(unittest.TestCase):
     """InternalDataId unit test stubs"""

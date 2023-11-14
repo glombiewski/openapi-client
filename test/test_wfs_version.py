@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.wfs_version import WfsVersion  # noqa: E501
+from geoengine_openapi_client.models.wfs_version import WfsVersion  # noqa: E501
 
 class TestWfsVersion(unittest.TestCase):
     """WfsVersion unit test stubs"""

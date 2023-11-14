@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.add_collection200_response import AddCollection200Response  # noqa: E501
+from geoengine_openapi_client.models.add_collection200_response import AddCollection200Response  # noqa: E501
 
 class TestAddCollection200Response(unittest.TestCase):
     """AddCollection200Response unit test stubs"""

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.unix_time_stamp_ogr_source_time_format import UnixTimeStampOgrSourceTimeFormat  # noqa: E501
+from geoengine_openapi_client.models.unix_time_stamp_ogr_source_time_format import UnixTimeStampOgrSourceTimeFormat  # noqa: E501
 
 class TestUnixTimeStampOgrSourceTimeFormat(unittest.TestCase):
     """UnixTimeStampOgrSourceTimeFormat unit test stubs"""

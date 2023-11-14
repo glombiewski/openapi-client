@@ -15,7 +15,7 @@
 
 import unittest
 
-from geoengine_sys.api.workflows_api import WorkflowsApi  # noqa: E501
+from geoengine_openapi_client.api.workflows_api import WorkflowsApi  # noqa: E501
 
 
 class TestWorkflowsApi(unittest.TestCase):

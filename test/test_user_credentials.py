@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.user_credentials import UserCredentials  # noqa: E501
+from geoengine_openapi_client.models.user_credentials import UserCredentials  # noqa: E501
 
 class TestUserCredentials(unittest.TestCase):
     """UserCredentials unit test stubs"""

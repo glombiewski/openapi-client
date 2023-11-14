@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.get_feature_request import GetFeatureRequest  # noqa: E501
+from geoengine_openapi_client.models.get_feature_request import GetFeatureRequest  # noqa: E501
 
 class TestGetFeatureRequest(unittest.TestCase):
     """GetFeatureRequest unit test stubs"""

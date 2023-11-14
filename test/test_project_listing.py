@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.project_listing import ProjectListing  # noqa: E501
+from geoengine_openapi_client.models.project_listing import ProjectListing  # noqa: E501
 
 class TestProjectListing(unittest.TestCase):
     """ProjectListing unit test stubs"""

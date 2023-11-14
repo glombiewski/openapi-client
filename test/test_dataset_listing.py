@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.dataset_listing import DatasetListing  # noqa: E501
+from geoengine_openapi_client.models.dataset_listing import DatasetListing  # noqa: E501
 
 class TestDatasetListing(unittest.TestCase):
     """DatasetListing unit test stubs"""

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.time_step import TimeStep  # noqa: E501
+from geoengine_openapi_client.models.time_step import TimeStep  # noqa: E501
 
 class TestTimeStep(unittest.TestCase):
     """TimeStep unit test stubs"""

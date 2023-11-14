@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.user_registration import UserRegistration  # noqa: E501
+from geoengine_openapi_client.models.user_registration import UserRegistration  # noqa: E501
 
 class TestUserRegistration(unittest.TestCase):
     """UserRegistration unit test stubs"""

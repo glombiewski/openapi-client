@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.wms_version import WmsVersion  # noqa: E501
+from geoengine_openapi_client.models.wms_version import WmsVersion  # noqa: E501
 
 class TestWmsVersion(unittest.TestCase):
     """WmsVersion unit test stubs"""

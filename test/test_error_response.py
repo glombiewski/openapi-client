@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.error_response import ErrorResponse  # noqa: E501
+from geoengine_openapi_client.models.error_response import ErrorResponse  # noqa: E501
 
 class TestErrorResponse(unittest.TestCase):
     """ErrorResponse unit test stubs"""

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.task_abort_options import TaskAbortOptions  # noqa: E501
+from geoengine_openapi_client.models.task_abort_options import TaskAbortOptions  # noqa: E501
 
 class TestTaskAbortOptions(unittest.TestCase):
     """TaskAbortOptions unit test stubs"""

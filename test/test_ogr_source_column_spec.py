@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.ogr_source_column_spec import OgrSourceColumnSpec  # noqa: E501
+from geoengine_openapi_client.models.ogr_source_column_spec import OgrSourceColumnSpec  # noqa: E501
 
 class TestOgrSourceColumnSpec(unittest.TestCase):
     """OgrSourceColumnSpec unit test stubs"""

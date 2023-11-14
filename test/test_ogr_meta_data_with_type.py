@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.ogr_meta_data_with_type import OgrMetaDataWithType  # noqa: E501
+from geoengine_openapi_client.models.ogr_meta_data_with_type import OgrMetaDataWithType  # noqa: E501
 
 class TestOgrMetaDataWithType(unittest.TestCase):
     """OgrMetaDataWithType unit test stubs"""
@@ -37,7 +37,7 @@ class TestOgrMetaDataWithType(unittest.TestCase):
         model = OgrMetaDataWithType()  # noqa: E501
         if include_optional:
             return OgrMetaDataWithType(
-                loading_info = geoengine_sys.models.ogr_source_dataset.OgrSourceDataset(
+                loading_info = geoengine_openapi_client.models.ogr_source_dataset.OgrSourceDataset(
                     attribute_query = '', 
                     cache_ttl = 0, 
                     columns = null, 
@@ -50,10 +50,10 @@ class TestOgrMetaDataWithType(unittest.TestCase):
                     on_error = 'ignore', 
                     sql_query = '', 
                     time = null, ),
-                result_descriptor = geoengine_sys.models.vector_result_descriptor.VectorResultDescriptor(
+                result_descriptor = geoengine_openapi_client.models.vector_result_descriptor.VectorResultDescriptor(
                     bbox = null, 
                     columns = {
-                        'key' : geoengine_sys.models.vector_column_info.VectorColumnInfo(
+                        'key' : geoengine_openapi_client.models.vector_column_info.VectorColumnInfo(
                             data_type = 'category', 
                             measurement = null, )
                         }, 
@@ -64,7 +64,7 @@ class TestOgrMetaDataWithType(unittest.TestCase):
             )
         else:
             return OgrMetaDataWithType(
-                loading_info = geoengine_sys.models.ogr_source_dataset.OgrSourceDataset(
+                loading_info = geoengine_openapi_client.models.ogr_source_dataset.OgrSourceDataset(
                     attribute_query = '', 
                     cache_ttl = 0, 
                     columns = null, 
@@ -77,10 +77,10 @@ class TestOgrMetaDataWithType(unittest.TestCase):
                     on_error = 'ignore', 
                     sql_query = '', 
                     time = null, ),
-                result_descriptor = geoengine_sys.models.vector_result_descriptor.VectorResultDescriptor(
+                result_descriptor = geoengine_openapi_client.models.vector_result_descriptor.VectorResultDescriptor(
                     bbox = null, 
                     columns = {
-                        'key' : geoengine_sys.models.vector_column_info.VectorColumnInfo(
+                        'key' : geoengine_openapi_client.models.vector_column_info.VectorColumnInfo(
                             data_type = 'category', 
                             measurement = null, )
                         }, 

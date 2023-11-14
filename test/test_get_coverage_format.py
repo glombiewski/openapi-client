@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.get_coverage_format import GetCoverageFormat  # noqa: E501
+from geoengine_openapi_client.models.get_coverage_format import GetCoverageFormat  # noqa: E501
 
 class TestGetCoverageFormat(unittest.TestCase):
     """GetCoverageFormat unit test stubs"""

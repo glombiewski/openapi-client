@@ -15,7 +15,7 @@
 
 import unittest
 
-from geoengine_sys.api.datasets_api import DatasetsApi  # noqa: E501
+from geoengine_openapi_client.api.datasets_api import DatasetsApi  # noqa: E501
 
 
 class TestDatasetsApi(unittest.TestCase):

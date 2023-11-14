@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.role_description import RoleDescription  # noqa: E501
+from geoengine_openapi_client.models.role_description import RoleDescription  # noqa: E501
 
 class TestRoleDescription(unittest.TestCase):
     """RoleDescription unit test stubs"""
@@ -38,14 +38,14 @@ class TestRoleDescription(unittest.TestCase):
         if include_optional:
             return RoleDescription(
                 individual = True,
-                role = geoengine_sys.models.role.Role(
+                role = geoengine_openapi_client.models.role.Role(
                     id = '', 
                     name = '', )
             )
         else:
             return RoleDescription(
                 individual = True,
-                role = geoengine_sys.models.role.Role(
+                role = geoengine_openapi_client.models.role.Role(
                     id = '', 
                     name = '', ),
         )

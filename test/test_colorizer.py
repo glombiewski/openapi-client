@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.colorizer import Colorizer  # noqa: E501
+from geoengine_openapi_client.models.colorizer import Colorizer  # noqa: E501
 
 class TestColorizer(unittest.TestCase):
     """Colorizer unit test stubs"""
@@ -47,7 +47,7 @@ class TestColorizer(unittest.TestCase):
                     56
                     ],
                 breakpoints = [
-                    geoengine_sys.models.breakpoint.Breakpoint(
+                    geoengine_openapi_client.models.breakpoint.Breakpoint(
                         color = [
                             56
                             ], 
@@ -75,7 +75,7 @@ class TestColorizer(unittest.TestCase):
                     56
                     ],
                 breakpoints = [
-                    geoengine_sys.models.breakpoint.Breakpoint(
+                    geoengine_openapi_client.models.breakpoint.Breakpoint(
                         color = [
                             56
                             ], 

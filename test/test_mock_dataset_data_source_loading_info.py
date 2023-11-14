@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.mock_dataset_data_source_loading_info import MockDatasetDataSourceLoadingInfo  # noqa: E501
+from geoengine_openapi_client.models.mock_dataset_data_source_loading_info import MockDatasetDataSourceLoadingInfo  # noqa: E501
 
 class TestMockDatasetDataSourceLoadingInfo(unittest.TestCase):
     """MockDatasetDataSourceLoadingInfo unit test stubs"""
@@ -38,7 +38,7 @@ class TestMockDatasetDataSourceLoadingInfo(unittest.TestCase):
         if include_optional:
             return MockDatasetDataSourceLoadingInfo(
                 points = [
-                    geoengine_sys.models.coordinate2_d.Coordinate2D(
+                    geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, )
                     ]
@@ -46,7 +46,7 @@ class TestMockDatasetDataSourceLoadingInfo(unittest.TestCase):
         else:
             return MockDatasetDataSourceLoadingInfo(
                 points = [
-                    geoengine_sys.models.coordinate2_d.Coordinate2D(
+                    geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, )
                     ],

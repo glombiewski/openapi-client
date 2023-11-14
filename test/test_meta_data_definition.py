@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.meta_data_definition import MetaDataDefinition  # noqa: E501
+from geoengine_openapi_client.models.meta_data_definition import MetaDataDefinition  # noqa: E501
 
 class TestMetaDataDefinition(unittest.TestCase):
     """MetaDataDefinition unit test stubs"""
@@ -37,7 +37,7 @@ class TestMetaDataDefinition(unittest.TestCase):
         model = MetaDataDefinition()  # noqa: E501
         if include_optional:
             return MetaDataDefinition(
-                loading_info = geoengine_sys.models.ogr_source_dataset.OgrSourceDataset(
+                loading_info = geoengine_openapi_client.models.ogr_source_dataset.OgrSourceDataset(
                     attribute_query = '', 
                     cache_ttl = 0, 
                     columns = null, 
@@ -50,7 +50,7 @@ class TestMetaDataDefinition(unittest.TestCase):
                     on_error = 'ignore', 
                     sql_query = '', 
                     time = null, ),
-                result_descriptor = geoengine_sys.models.raster_result_descriptor.RasterResultDescriptor(
+                result_descriptor = geoengine_openapi_client.models.raster_result_descriptor.RasterResultDescriptor(
                     bbox = null, 
                     data_type = 'U8', 
                     measurement = null, 
@@ -59,28 +59,28 @@ class TestMetaDataDefinition(unittest.TestCase):
                     time = null, ),
                 type = 'MockMetaData',
                 cache_ttl = 0,
-                data_time = geoengine_sys.models.time_interval.TimeInterval(
+                data_time = geoengine_openapi_client.models.time_interval.TimeInterval(
                     end = 56, 
                     start = 56, ),
                 params = [
-                    geoengine_sys.models.gdal_loading_info_temporal_slice.GdalLoadingInfoTemporalSlice(
+                    geoengine_openapi_client.models.gdal_loading_info_temporal_slice.GdalLoadingInfoTemporalSlice(
                         cache_ttl = 0, 
-                        time = geoengine_sys.models.time_interval.TimeInterval(
+                        time = geoengine_openapi_client.models.time_interval.TimeInterval(
                             end = 56, 
                             start = 56, ), )
                     ],
-                step = geoengine_sys.models.time_step.TimeStep(
+                step = geoengine_openapi_client.models.time_step.TimeStep(
                     granularity = 'millis', 
                     step = 0, ),
                 time_placeholders = {
-                    'key' : geoengine_sys.models.gdal_source_time_placeholder.GdalSourceTimePlaceholder(
-                        format = geoengine_sys.models.date_time_parse_format.DateTimeParseFormat(
+                    'key' : geoengine_openapi_client.models.gdal_source_time_placeholder.GdalSourceTimePlaceholder(
+                        format = geoengine_openapi_client.models.date_time_parse_format.DateTimeParseFormat(
                             fmt = '', 
                             has_time = True, 
                             has_tz = True, ), 
                         reference = 'start', )
                     },
-                time = geoengine_sys.models.time_interval.TimeInterval(
+                time = geoengine_openapi_client.models.time_interval.TimeInterval(
                     end = 56, 
                     start = 56, ),
                 band_offset = 0,
@@ -89,7 +89,7 @@ class TestMetaDataDefinition(unittest.TestCase):
             )
         else:
             return MetaDataDefinition(
-                loading_info = geoengine_sys.models.ogr_source_dataset.OgrSourceDataset(
+                loading_info = geoengine_openapi_client.models.ogr_source_dataset.OgrSourceDataset(
                     attribute_query = '', 
                     cache_ttl = 0, 
                     columns = null, 
@@ -102,7 +102,7 @@ class TestMetaDataDefinition(unittest.TestCase):
                     on_error = 'ignore', 
                     sql_query = '', 
                     time = null, ),
-                result_descriptor = geoengine_sys.models.raster_result_descriptor.RasterResultDescriptor(
+                result_descriptor = geoengine_openapi_client.models.raster_result_descriptor.RasterResultDescriptor(
                     bbox = null, 
                     data_type = 'U8', 
                     measurement = null, 
@@ -110,22 +110,22 @@ class TestMetaDataDefinition(unittest.TestCase):
                     spatial_reference = '', 
                     time = null, ),
                 type = 'MockMetaData',
-                data_time = geoengine_sys.models.time_interval.TimeInterval(
+                data_time = geoengine_openapi_client.models.time_interval.TimeInterval(
                     end = 56, 
                     start = 56, ),
                 params = [
-                    geoengine_sys.models.gdal_loading_info_temporal_slice.GdalLoadingInfoTemporalSlice(
+                    geoengine_openapi_client.models.gdal_loading_info_temporal_slice.GdalLoadingInfoTemporalSlice(
                         cache_ttl = 0, 
-                        time = geoengine_sys.models.time_interval.TimeInterval(
+                        time = geoengine_openapi_client.models.time_interval.TimeInterval(
                             end = 56, 
                             start = 56, ), )
                     ],
-                step = geoengine_sys.models.time_step.TimeStep(
+                step = geoengine_openapi_client.models.time_step.TimeStep(
                     granularity = 'millis', 
                     step = 0, ),
                 time_placeholders = {
-                    'key' : geoengine_sys.models.gdal_source_time_placeholder.GdalSourceTimePlaceholder(
-                        format = geoengine_sys.models.date_time_parse_format.DateTimeParseFormat(
+                    'key' : geoengine_openapi_client.models.gdal_source_time_placeholder.GdalSourceTimePlaceholder(
+                        format = geoengine_openapi_client.models.date_time_parse_format.DateTimeParseFormat(
                             fmt = '', 
                             has_time = True, 
                             has_tz = True, ), 

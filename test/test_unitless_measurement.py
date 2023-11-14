@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.unitless_measurement import UnitlessMeasurement  # noqa: E501
+from geoengine_openapi_client.models.unitless_measurement import UnitlessMeasurement  # noqa: E501
 
 class TestUnitlessMeasurement(unittest.TestCase):
     """UnitlessMeasurement unit test stubs"""

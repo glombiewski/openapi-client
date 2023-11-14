@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.task_response import TaskResponse  # noqa: E501
+from geoengine_openapi_client.models.task_response import TaskResponse  # noqa: E501
 
 class TestTaskResponse(unittest.TestCase):
     """TaskResponse unit test stubs"""

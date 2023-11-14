@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.gdal_metadata_mapping import GdalMetadataMapping  # noqa: E501
+from geoengine_openapi_client.models.gdal_metadata_mapping import GdalMetadataMapping  # noqa: E501
 
 class TestGdalMetadataMapping(unittest.TestCase):
     """GdalMetadataMapping unit test stubs"""
@@ -37,20 +37,20 @@ class TestGdalMetadataMapping(unittest.TestCase):
         model = GdalMetadataMapping()  # noqa: E501
         if include_optional:
             return GdalMetadataMapping(
-                source_key = geoengine_sys.models.raster_properties_key.RasterPropertiesKey(
+                source_key = geoengine_openapi_client.models.raster_properties_key.RasterPropertiesKey(
                     domain = '', 
                     key = '', ),
-                target_key = geoengine_sys.models.raster_properties_key.RasterPropertiesKey(
+                target_key = geoengine_openapi_client.models.raster_properties_key.RasterPropertiesKey(
                     domain = '', 
                     key = '', ),
                 target_type = 'Number'
             )
         else:
             return GdalMetadataMapping(
-                source_key = geoengine_sys.models.raster_properties_key.RasterPropertiesKey(
+                source_key = geoengine_openapi_client.models.raster_properties_key.RasterPropertiesKey(
                     domain = '', 
                     key = '', ),
-                target_key = geoengine_sys.models.raster_properties_key.RasterPropertiesKey(
+                target_key = geoengine_openapi_client.models.raster_properties_key.RasterPropertiesKey(
                     domain = '', 
                     key = '', ),
                 target_type = 'Number',

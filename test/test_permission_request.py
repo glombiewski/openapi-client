@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.permission_request import PermissionRequest  # noqa: E501
+from geoengine_openapi_client.models.permission_request import PermissionRequest  # noqa: E501
 
 class TestPermissionRequest(unittest.TestCase):
     """PermissionRequest unit test stubs"""

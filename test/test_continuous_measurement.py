@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.continuous_measurement import ContinuousMeasurement  # noqa: E501
+from geoengine_openapi_client.models.continuous_measurement import ContinuousMeasurement  # noqa: E501
 
 class TestContinuousMeasurement(unittest.TestCase):
     """ContinuousMeasurement unit test stubs"""

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.collection_item import CollectionItem  # noqa: E501
+from geoengine_openapi_client.models.collection_item import CollectionItem  # noqa: E501
 
 class TestCollectionItem(unittest.TestCase):
     """CollectionItem unit test stubs"""
@@ -38,7 +38,7 @@ class TestCollectionItem(unittest.TestCase):
         if include_optional:
             return CollectionItem(
                 description = '',
-                id = geoengine_sys.models.provider_layer_id.ProviderLayerId(
+                id = geoengine_openapi_client.models.provider_layer_id.ProviderLayerId(
                     layer_id = '', 
                     provider_id = '', ),
                 name = '',
@@ -52,7 +52,7 @@ class TestCollectionItem(unittest.TestCase):
         else:
             return CollectionItem(
                 description = '',
-                id = geoengine_sys.models.provider_layer_id.ProviderLayerId(
+                id = geoengine_openapi_client.models.provider_layer_id.ProviderLayerId(
                     layer_id = '', 
                     provider_id = '', ),
                 name = '',

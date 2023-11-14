@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.gdal_dataset_geo_transform import GdalDatasetGeoTransform  # noqa: E501
+from geoengine_openapi_client.models.gdal_dataset_geo_transform import GdalDatasetGeoTransform  # noqa: E501
 
 class TestGdalDatasetGeoTransform(unittest.TestCase):
     """GdalDatasetGeoTransform unit test stubs"""
@@ -37,7 +37,7 @@ class TestGdalDatasetGeoTransform(unittest.TestCase):
         model = GdalDatasetGeoTransform()  # noqa: E501
         if include_optional:
             return GdalDatasetGeoTransform(
-                origin_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                origin_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                     x = 1.337, 
                     y = 1.337, ),
                 x_pixel_size = 1.337,
@@ -45,7 +45,7 @@ class TestGdalDatasetGeoTransform(unittest.TestCase):
             )
         else:
             return GdalDatasetGeoTransform(
-                origin_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                origin_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                     x = 1.337, 
                     y = 1.337, ),
                 x_pixel_size = 1.337,

@@ -15,7 +15,7 @@
 
 import unittest
 
-from geoengine_sys.api.permissions_api import PermissionsApi  # noqa: E501
+from geoengine_openapi_client.api.permissions_api import PermissionsApi  # noqa: E501
 
 
 class TestPermissionsApi(unittest.TestCase):

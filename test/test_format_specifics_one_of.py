@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.format_specifics_one_of import FormatSpecificsOneOf  # noqa: E501
+from geoengine_openapi_client.models.format_specifics_one_of import FormatSpecificsOneOf  # noqa: E501
 
 class TestFormatSpecificsOneOf(unittest.TestCase):
     """FormatSpecificsOneOf unit test stubs"""
@@ -37,12 +37,12 @@ class TestFormatSpecificsOneOf(unittest.TestCase):
         model = FormatSpecificsOneOf()  # noqa: E501
         if include_optional:
             return FormatSpecificsOneOf(
-                csv = geoengine_sys.models.format_specifics_one_of_csv.FormatSpecifics_oneOf_csv(
+                csv = geoengine_openapi_client.models.format_specifics_one_of_csv.FormatSpecifics_oneOf_csv(
                     header = 'yes', )
             )
         else:
             return FormatSpecificsOneOf(
-                csv = geoengine_sys.models.format_specifics_one_of_csv.FormatSpecifics_oneOf_csv(
+                csv = geoengine_openapi_client.models.format_specifics_one_of_csv.FormatSpecifics_oneOf_csv(
                     header = 'yes', ),
         )
         """

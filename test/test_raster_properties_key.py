@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.raster_properties_key import RasterPropertiesKey  # noqa: E501
+from geoengine_openapi_client.models.raster_properties_key import RasterPropertiesKey  # noqa: E501
 
 class TestRasterPropertiesKey(unittest.TestCase):
     """RasterPropertiesKey unit test stubs"""

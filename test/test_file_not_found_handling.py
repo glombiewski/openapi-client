@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.file_not_found_handling import FileNotFoundHandling  # noqa: E501
+from geoengine_openapi_client.models.file_not_found_handling import FileNotFoundHandling  # noqa: E501
 
 class TestFileNotFoundHandling(unittest.TestCase):
     """FileNotFoundHandling unit test stubs"""

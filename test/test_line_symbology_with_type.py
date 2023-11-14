@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.line_symbology_with_type import LineSymbologyWithType  # noqa: E501
+from geoengine_openapi_client.models.line_symbology_with_type import LineSymbologyWithType  # noqa: E501
 
 class TestLineSymbologyWithType(unittest.TestCase):
     """LineSymbologyWithType unit test stubs"""
@@ -38,13 +38,13 @@ class TestLineSymbologyWithType(unittest.TestCase):
         if include_optional:
             return LineSymbologyWithType(
                 auto_simplified = True,
-                stroke = geoengine_sys.models.stroke_param.StrokeParam(
+                stroke = geoengine_openapi_client.models.stroke_param.StrokeParam(
                     color = null, 
                     width = null, ),
-                text = geoengine_sys.models.text_symbology.TextSymbology(
+                text = geoengine_openapi_client.models.text_symbology.TextSymbology(
                     attribute = '', 
                     fill_color = null, 
-                    stroke = geoengine_sys.models.stroke_param.StrokeParam(
+                    stroke = geoengine_openapi_client.models.stroke_param.StrokeParam(
                         color = null, 
                         width = null, ), ),
                 type = 'line'
@@ -52,7 +52,7 @@ class TestLineSymbologyWithType(unittest.TestCase):
         else:
             return LineSymbologyWithType(
                 auto_simplified = True,
-                stroke = geoengine_sys.models.stroke_param.StrokeParam(
+                stroke = geoengine_openapi_client.models.stroke_param.StrokeParam(
                     color = null, 
                     width = null, ),
                 type = 'line',

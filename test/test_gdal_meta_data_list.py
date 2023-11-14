@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.gdal_meta_data_list import GdalMetaDataList  # noqa: E501
+from geoengine_openapi_client.models.gdal_meta_data_list import GdalMetaDataList  # noqa: E501
 
 class TestGdalMetaDataList(unittest.TestCase):
     """GdalMetaDataList unit test stubs"""
@@ -38,14 +38,14 @@ class TestGdalMetaDataList(unittest.TestCase):
         if include_optional:
             return GdalMetaDataList(
                 params = [
-                    geoengine_sys.models.gdal_loading_info_temporal_slice.GdalLoadingInfoTemporalSlice(
+                    geoengine_openapi_client.models.gdal_loading_info_temporal_slice.GdalLoadingInfoTemporalSlice(
                         cache_ttl = 0, 
                         params = null, 
-                        time = geoengine_sys.models.time_interval.TimeInterval(
+                        time = geoengine_openapi_client.models.time_interval.TimeInterval(
                             end = 56, 
                             start = 56, ), )
                     ],
-                result_descriptor = geoengine_sys.models.raster_result_descriptor.RasterResultDescriptor(
+                result_descriptor = geoengine_openapi_client.models.raster_result_descriptor.RasterResultDescriptor(
                     bbox = null, 
                     data_type = 'U8', 
                     measurement = null, 
@@ -56,14 +56,14 @@ class TestGdalMetaDataList(unittest.TestCase):
         else:
             return GdalMetaDataList(
                 params = [
-                    geoengine_sys.models.gdal_loading_info_temporal_slice.GdalLoadingInfoTemporalSlice(
+                    geoengine_openapi_client.models.gdal_loading_info_temporal_slice.GdalLoadingInfoTemporalSlice(
                         cache_ttl = 0, 
                         params = null, 
-                        time = geoengine_sys.models.time_interval.TimeInterval(
+                        time = geoengine_openapi_client.models.time_interval.TimeInterval(
                             end = 56, 
                             start = 56, ), )
                     ],
-                result_descriptor = geoengine_sys.models.raster_result_descriptor.RasterResultDescriptor(
+                result_descriptor = geoengine_openapi_client.models.raster_result_descriptor.RasterResultDescriptor(
                     bbox = null, 
                     data_type = 'U8', 
                     measurement = null, 

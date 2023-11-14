@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.plot_update import PlotUpdate  # noqa: E501
+from geoengine_openapi_client.models.plot_update import PlotUpdate  # noqa: E501
 
 class TestPlotUpdate(unittest.TestCase):
     """PlotUpdate unit test stubs"""

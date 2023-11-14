@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.coordinate2_d import Coordinate2D  # noqa: E501
+from geoengine_openapi_client.models.coordinate2_d import Coordinate2D  # noqa: E501
 
 class TestCoordinate2D(unittest.TestCase):
     """Coordinate2D unit test stubs"""

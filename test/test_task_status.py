@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.task_status import TaskStatus  # noqa: E501
+from geoengine_openapi_client.models.task_status import TaskStatus  # noqa: E501
 
 class TestTaskStatus(unittest.TestCase):
     """TaskStatus unit test stubs"""

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.project_layer import ProjectLayer  # noqa: E501
+from geoengine_openapi_client.models.project_layer import ProjectLayer  # noqa: E501
 
 class TestProjectLayer(unittest.TestCase):
     """ProjectLayer unit test stubs"""
@@ -39,7 +39,7 @@ class TestProjectLayer(unittest.TestCase):
             return ProjectLayer(
                 name = '',
                 symbology = None,
-                visibility = geoengine_sys.models.layer_visibility.LayerVisibility(
+                visibility = geoengine_openapi_client.models.layer_visibility.LayerVisibility(
                     data = True, 
                     legend = True, ),
                 workflow = ''
@@ -48,7 +48,7 @@ class TestProjectLayer(unittest.TestCase):
             return ProjectLayer(
                 name = '',
                 symbology = None,
-                visibility = geoengine_sys.models.layer_visibility.LayerVisibility(
+                visibility = geoengine_openapi_client.models.layer_visibility.LayerVisibility(
                     data = True, 
                     legend = True, ),
                 workflow = '',

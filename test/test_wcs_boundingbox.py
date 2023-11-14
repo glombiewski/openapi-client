@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.wcs_boundingbox import WcsBoundingbox  # noqa: E501
+from geoengine_openapi_client.models.wcs_boundingbox import WcsBoundingbox  # noqa: E501
 
 class TestWcsBoundingbox(unittest.TestCase):
     """WcsBoundingbox unit test stubs"""

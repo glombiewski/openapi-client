@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.external_data_id_with_type import ExternalDataIdWithType  # noqa: E501
+from geoengine_openapi_client.models.external_data_id_with_type import ExternalDataIdWithType  # noqa: E501
 
 class TestExternalDataIdWithType(unittest.TestCase):
     """ExternalDataIdWithType unit test stubs"""

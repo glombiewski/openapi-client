@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.spatial_reference_specification import SpatialReferenceSpecification  # noqa: E501
+from geoengine_openapi_client.models.spatial_reference_specification import SpatialReferenceSpecification  # noqa: E501
 
 class TestSpatialReferenceSpecification(unittest.TestCase):
     """SpatialReferenceSpecification unit test stubs"""
@@ -41,11 +41,11 @@ class TestSpatialReferenceSpecification(unittest.TestCase):
                     ''
                     ],
                 axis_order = 'northEast',
-                extent = geoengine_sys.models.bounding_box2_d.BoundingBox2D(
-                    lower_left_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                extent = geoengine_openapi_client.models.bounding_box2_d.BoundingBox2D(
+                    lower_left_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, ), 
-                    upper_right_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                    upper_right_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, ), ),
                 name = '',
@@ -54,11 +54,11 @@ class TestSpatialReferenceSpecification(unittest.TestCase):
             )
         else:
             return SpatialReferenceSpecification(
-                extent = geoengine_sys.models.bounding_box2_d.BoundingBox2D(
-                    lower_left_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                extent = geoengine_openapi_client.models.bounding_box2_d.BoundingBox2D(
+                    lower_left_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, ), 
-                    upper_right_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                    upper_right_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, ), ),
                 name = '',

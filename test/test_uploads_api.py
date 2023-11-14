@@ -15,7 +15,7 @@
 
 import unittest
 
-from geoengine_sys.api.uploads_api import UploadsApi  # noqa: E501
+from geoengine_openapi_client.api.uploads_api import UploadsApi  # noqa: E501
 
 
 class TestUploadsApi(unittest.TestCase):

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.get_map_format import GetMapFormat  # noqa: E501
+from geoengine_openapi_client.models.get_map_format import GetMapFormat  # noqa: E501
 
 class TestGetMapFormat(unittest.TestCase):
     """GetMapFormat unit test stubs"""

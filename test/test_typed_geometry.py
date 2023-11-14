@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.typed_geometry import TypedGeometry  # noqa: E501
+from geoengine_openapi_client.models.typed_geometry import TypedGeometry  # noqa: E501
 
 class TestTypedGeometry(unittest.TestCase):
     """TypedGeometry unit test stubs"""
@@ -38,25 +38,25 @@ class TestTypedGeometry(unittest.TestCase):
         if include_optional:
             return TypedGeometry(
                 data = None,
-                multi_point = geoengine_sys.models.multi_point.MultiPoint(
+                multi_point = geoengine_openapi_client.models.multi_point.MultiPoint(
                     coordinates = [
-                        geoengine_sys.models.coordinate2_d.Coordinate2D(
+                        geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                             x = 1.337, 
                             y = 1.337, )
                         ], ),
-                multi_line_string = geoengine_sys.models.multi_line_string.MultiLineString(
+                multi_line_string = geoengine_openapi_client.models.multi_line_string.MultiLineString(
                     coordinates = [
                         [
-                            geoengine_sys.models.coordinate2_d.Coordinate2D(
+                            geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                                 x = 1.337, 
                                 y = 1.337, )
                             ]
                         ], ),
-                multi_polygon = geoengine_sys.models.multi_polygon.MultiPolygon(
+                multi_polygon = geoengine_openapi_client.models.multi_polygon.MultiPolygon(
                     polygons = [
                         [
                             [
-                                geoengine_sys.models.coordinate2_d.Coordinate2D(
+                                geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                                     x = 1.337, 
                                     y = 1.337, )
                                 ]
@@ -66,25 +66,25 @@ class TestTypedGeometry(unittest.TestCase):
         else:
             return TypedGeometry(
                 data = None,
-                multi_point = geoengine_sys.models.multi_point.MultiPoint(
+                multi_point = geoengine_openapi_client.models.multi_point.MultiPoint(
                     coordinates = [
-                        geoengine_sys.models.coordinate2_d.Coordinate2D(
+                        geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                             x = 1.337, 
                             y = 1.337, )
                         ], ),
-                multi_line_string = geoengine_sys.models.multi_line_string.MultiLineString(
+                multi_line_string = geoengine_openapi_client.models.multi_line_string.MultiLineString(
                     coordinates = [
                         [
-                            geoengine_sys.models.coordinate2_d.Coordinate2D(
+                            geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                                 x = 1.337, 
                                 y = 1.337, )
                             ]
                         ], ),
-                multi_polygon = geoengine_sys.models.multi_polygon.MultiPolygon(
+                multi_polygon = geoengine_openapi_client.models.multi_polygon.MultiPolygon(
                     polygons = [
                         [
                             [
-                                geoengine_sys.models.coordinate2_d.Coordinate2D(
+                                geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                                     x = 1.337, 
                                     y = 1.337, )
                                 ]

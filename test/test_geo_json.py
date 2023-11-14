@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.geo_json import GeoJson  # noqa: E501
+from geoengine_openapi_client.models.geo_json import GeoJson  # noqa: E501
 
 class TestGeoJson(unittest.TestCase):
     """GeoJson unit test stubs"""

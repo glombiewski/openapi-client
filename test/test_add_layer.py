@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.add_layer import AddLayer  # noqa: E501
+from geoengine_openapi_client.models.add_layer import AddLayer  # noqa: E501
 
 class TestAddLayer(unittest.TestCase):
     """AddLayer unit test stubs"""

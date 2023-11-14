@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.resource import Resource  # noqa: E501
+from geoengine_openapi_client.models.resource import Resource  # noqa: E501
 
 class TestResource(unittest.TestCase):
     """Resource unit test stubs"""

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.static_number_param import StaticNumberParam  # noqa: E501
+from geoengine_openapi_client.models.static_number_param import StaticNumberParam  # noqa: E501
 
 class TestStaticNumberParam(unittest.TestCase):
     """StaticNumberParam unit test stubs"""

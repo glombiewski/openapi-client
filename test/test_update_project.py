@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.update_project import UpdateProject  # noqa: E501
+from geoengine_openapi_client.models.update_project import UpdateProject  # noqa: E501
 
 class TestUpdateProject(unittest.TestCase):
     """UpdateProject unit test stubs"""
@@ -37,16 +37,16 @@ class TestUpdateProject(unittest.TestCase):
         model = UpdateProject()  # noqa: E501
         if include_optional:
             return UpdateProject(
-                bounds = geoengine_sys.models.st_rectangle.STRectangle(
-                    bounding_box = geoengine_sys.models.bounding_box2_d.BoundingBox2D(
-                        lower_left_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                bounds = geoengine_openapi_client.models.st_rectangle.STRectangle(
+                    bounding_box = geoengine_openapi_client.models.bounding_box2_d.BoundingBox2D(
+                        lower_left_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                             x = 1.337, 
                             y = 1.337, ), 
-                        upper_right_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                        upper_right_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                             x = 1.337, 
                             y = 1.337, ), ), 
                     spatial_reference = '', 
-                    time_interval = geoengine_sys.models.time_interval.TimeInterval(
+                    time_interval = geoengine_openapi_client.models.time_interval.TimeInterval(
                         end = 56, 
                         start = 56, ), ),
                 description = '',
@@ -58,7 +58,7 @@ class TestUpdateProject(unittest.TestCase):
                 plots = [
                     null
                     ],
-                time_step = geoengine_sys.models.time_step.TimeStep(
+                time_step = geoengine_openapi_client.models.time_step.TimeStep(
                     granularity = 'millis', 
                     step = 0, )
             )

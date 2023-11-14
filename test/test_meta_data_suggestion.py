@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.meta_data_suggestion import MetaDataSuggestion  # noqa: E501
+from geoengine_openapi_client.models.meta_data_suggestion import MetaDataSuggestion  # noqa: E501
 
 class TestMetaDataSuggestion(unittest.TestCase):
     """MetaDataSuggestion unit test stubs"""

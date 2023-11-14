@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.layer_update import LayerUpdate  # noqa: E501
+from geoengine_openapi_client.models.layer_update import LayerUpdate  # noqa: E501
 
 class TestLayerUpdate(unittest.TestCase):
     """LayerUpdate unit test stubs"""
@@ -39,7 +39,7 @@ class TestLayerUpdate(unittest.TestCase):
             return LayerUpdate(
                 name = '',
                 symbology = None,
-                visibility = geoengine_sys.models.layer_visibility.LayerVisibility(
+                visibility = geoengine_openapi_client.models.layer_visibility.LayerVisibility(
                     data = True, 
                     legend = True, ),
                 workflow = ''
@@ -48,7 +48,7 @@ class TestLayerUpdate(unittest.TestCase):
             return LayerUpdate(
                 name = '',
                 symbology = None,
-                visibility = geoengine_sys.models.layer_visibility.LayerVisibility(
+                visibility = geoengine_openapi_client.models.layer_visibility.LayerVisibility(
                     data = True, 
                     legend = True, ),
                 workflow = '',

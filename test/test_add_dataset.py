@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.add_dataset import AddDataset  # noqa: E501
+from geoengine_openapi_client.models.add_dataset import AddDataset  # noqa: E501
 
 class TestAddDataset(unittest.TestCase):
     """AddDataset unit test stubs"""
@@ -41,7 +41,7 @@ class TestAddDataset(unittest.TestCase):
                 display_name = '',
                 name = '',
                 provenance = [
-                    geoengine_sys.models.provenance.Provenance(
+                    geoengine_openapi_client.models.provenance.Provenance(
                         citation = '', 
                         license = '', 
                         uri = '', )

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.classification_measurement_with_type import ClassificationMeasurementWithType  # noqa: E501
+from geoengine_openapi_client.models.classification_measurement_with_type import ClassificationMeasurementWithType  # noqa: E501
 
 class TestClassificationMeasurementWithType(unittest.TestCase):
     """ClassificationMeasurementWithType unit test stubs"""

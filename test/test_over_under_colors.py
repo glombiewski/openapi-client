@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.over_under_colors import OverUnderColors  # noqa: E501
+from geoengine_openapi_client.models.over_under_colors import OverUnderColors  # noqa: E501
 
 class TestOverUnderColors(unittest.TestCase):
     """OverUnderColors unit test stubs"""

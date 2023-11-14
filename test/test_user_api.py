@@ -15,7 +15,7 @@
 
 import unittest
 
-from geoengine_sys.api.user_api import UserApi  # noqa: E501
+from geoengine_openapi_client.api.user_api import UserApi  # noqa: E501
 
 
 class TestUserApi(unittest.TestCase):

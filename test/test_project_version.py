@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.project_version import ProjectVersion  # noqa: E501
+from geoengine_openapi_client.models.project_version import ProjectVersion  # noqa: E501
 
 class TestProjectVersion(unittest.TestCase):
     """ProjectVersion unit test stubs"""

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.wrapped_plot_output import WrappedPlotOutput  # noqa: E501
+from geoengine_openapi_client.models.wrapped_plot_output import WrappedPlotOutput  # noqa: E501
 
 class TestWrappedPlotOutput(unittest.TestCase):
     """WrappedPlotOutput unit test stubs"""

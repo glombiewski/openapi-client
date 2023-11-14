@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.vector_column_info import VectorColumnInfo  # noqa: E501
+from geoengine_openapi_client.models.vector_column_info import VectorColumnInfo  # noqa: E501
 
 class TestVectorColumnInfo(unittest.TestCase):
     """VectorColumnInfo unit test stubs"""

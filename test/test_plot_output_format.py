@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.plot_output_format import PlotOutputFormat  # noqa: E501
+from geoengine_openapi_client.models.plot_output_format import PlotOutputFormat  # noqa: E501
 
 class TestPlotOutputFormat(unittest.TestCase):
     """PlotOutputFormat unit test stubs"""

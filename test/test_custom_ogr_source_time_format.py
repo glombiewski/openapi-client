@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.custom_ogr_source_time_format import CustomOgrSourceTimeFormat  # noqa: E501
+from geoengine_openapi_client.models.custom_ogr_source_time_format import CustomOgrSourceTimeFormat  # noqa: E501
 
 class TestCustomOgrSourceTimeFormat(unittest.TestCase):
     """CustomOgrSourceTimeFormat unit test stubs"""
@@ -37,7 +37,7 @@ class TestCustomOgrSourceTimeFormat(unittest.TestCase):
         model = CustomOgrSourceTimeFormat()  # noqa: E501
         if include_optional:
             return CustomOgrSourceTimeFormat(
-                custom_format = geoengine_sys.models.date_time_parse_format.DateTimeParseFormat(
+                custom_format = geoengine_openapi_client.models.date_time_parse_format.DateTimeParseFormat(
                     fmt = '', 
                     has_time = True, 
                     has_tz = True, ),
@@ -45,7 +45,7 @@ class TestCustomOgrSourceTimeFormat(unittest.TestCase):
             )
         else:
             return CustomOgrSourceTimeFormat(
-                custom_format = geoengine_sys.models.date_time_parse_format.DateTimeParseFormat(
+                custom_format = geoengine_openapi_client.models.date_time_parse_format.DateTimeParseFormat(
                     fmt = '', 
                     has_time = True, 
                     has_tz = True, ),

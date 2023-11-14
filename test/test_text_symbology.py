@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.text_symbology import TextSymbology  # noqa: E501
+from geoengine_openapi_client.models.text_symbology import TextSymbology  # noqa: E501
 
 class TestTextSymbology(unittest.TestCase):
     """TextSymbology unit test stubs"""
@@ -39,7 +39,7 @@ class TestTextSymbology(unittest.TestCase):
             return TextSymbology(
                 attribute = '',
                 fill_color = None,
-                stroke = geoengine_sys.models.stroke_param.StrokeParam(
+                stroke = geoengine_openapi_client.models.stroke_param.StrokeParam(
                     color = null, 
                     width = null, )
             )
@@ -47,7 +47,7 @@ class TestTextSymbology(unittest.TestCase):
             return TextSymbology(
                 attribute = '',
                 fill_color = None,
-                stroke = geoengine_sys.models.stroke_param.StrokeParam(
+                stroke = geoengine_openapi_client.models.stroke_param.StrokeParam(
                     color = null, 
                     width = null, ),
         )

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.derived_color import DerivedColor  # noqa: E501
+from geoengine_openapi_client.models.derived_color import DerivedColor  # noqa: E501
 
 class TestDerivedColor(unittest.TestCase):
     """DerivedColor unit test stubs"""

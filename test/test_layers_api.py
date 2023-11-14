@@ -15,7 +15,7 @@
 
 import unittest
 
-from geoengine_sys.api.layers_api import LayersApi  # noqa: E501
+from geoengine_openapi_client.api.layers_api import LayersApi  # noqa: E501
 
 
 class TestLayersApi(unittest.TestCase):

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.dataset_definition import DatasetDefinition  # noqa: E501
+from geoengine_openapi_client.models.dataset_definition import DatasetDefinition  # noqa: E501
 
 class TestDatasetDefinition(unittest.TestCase):
     """DatasetDefinition unit test stubs"""
@@ -38,12 +38,12 @@ class TestDatasetDefinition(unittest.TestCase):
         if include_optional:
             return DatasetDefinition(
                 meta_data = None,
-                properties = geoengine_sys.models.add_dataset.AddDataset(
+                properties = geoengine_openapi_client.models.add_dataset.AddDataset(
                     description = '', 
                     display_name = '', 
                     name = null, 
                     provenance = [
-                        geoengine_sys.models.provenance.Provenance(
+                        geoengine_openapi_client.models.provenance.Provenance(
                             citation = '', 
                             license = '', 
                             uri = '', )
@@ -54,12 +54,12 @@ class TestDatasetDefinition(unittest.TestCase):
         else:
             return DatasetDefinition(
                 meta_data = None,
-                properties = geoengine_sys.models.add_dataset.AddDataset(
+                properties = geoengine_openapi_client.models.add_dataset.AddDataset(
                     description = '', 
                     display_name = '', 
                     name = null, 
                     provenance = [
-                        geoengine_sys.models.provenance.Provenance(
+                        geoengine_openapi_client.models.provenance.Provenance(
                             citation = '', 
                             license = '', 
                             uri = '', )

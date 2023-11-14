@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.server_info import ServerInfo  # noqa: E501
+from geoengine_openapi_client.models.server_info import ServerInfo  # noqa: E501
 
 class TestServerInfo(unittest.TestCase):
     """ServerInfo unit test stubs"""

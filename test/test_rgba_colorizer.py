@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.rgba_colorizer import RgbaColorizer  # noqa: E501
+from geoengine_openapi_client.models.rgba_colorizer import RgbaColorizer  # noqa: E501
 
 class TestRgbaColorizer(unittest.TestCase):
     """RgbaColorizer unit test stubs"""

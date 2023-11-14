@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.aborted_task_status import AbortedTaskStatus  # noqa: E501
+from geoengine_openapi_client.models.aborted_task_status import AbortedTaskStatus  # noqa: E501
 
 class TestAbortedTaskStatus(unittest.TestCase):
     """AbortedTaskStatus unit test stubs"""

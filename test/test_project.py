@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.project import Project  # noqa: E501
+from geoengine_openapi_client.models.project import Project  # noqa: E501
 
 class TestProject(unittest.TestCase):
     """Project unit test stubs"""
@@ -37,77 +37,77 @@ class TestProject(unittest.TestCase):
         model = Project()  # noqa: E501
         if include_optional:
             return Project(
-                bounds = geoengine_sys.models.st_rectangle.STRectangle(
-                    bounding_box = geoengine_sys.models.bounding_box2_d.BoundingBox2D(
-                        lower_left_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                bounds = geoengine_openapi_client.models.st_rectangle.STRectangle(
+                    bounding_box = geoengine_openapi_client.models.bounding_box2_d.BoundingBox2D(
+                        lower_left_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                             x = 1.337, 
                             y = 1.337, ), 
-                        upper_right_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                        upper_right_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                             x = 1.337, 
                             y = 1.337, ), ), 
                     spatial_reference = '', 
-                    time_interval = geoengine_sys.models.time_interval.TimeInterval(
+                    time_interval = geoengine_openapi_client.models.time_interval.TimeInterval(
                         end = 56, 
                         start = 56, ), ),
                 description = '',
                 id = '',
                 layers = [
-                    geoengine_sys.models.project_layer.ProjectLayer(
+                    geoengine_openapi_client.models.project_layer.ProjectLayer(
                         name = '', 
                         symbology = null, 
-                        visibility = geoengine_sys.models.layer_visibility.LayerVisibility(
+                        visibility = geoengine_openapi_client.models.layer_visibility.LayerVisibility(
                             data = True, 
                             legend = True, ), 
                         workflow = '', )
                     ],
                 name = '',
                 plots = [
-                    geoengine_sys.models.plot.Plot(
+                    geoengine_openapi_client.models.plot.Plot(
                         name = '', 
                         workflow = '', )
                     ],
-                time_step = geoengine_sys.models.time_step.TimeStep(
+                time_step = geoengine_openapi_client.models.time_step.TimeStep(
                     granularity = 'millis', 
                     step = 0, ),
-                version = geoengine_sys.models.project_version.ProjectVersion(
+                version = geoengine_openapi_client.models.project_version.ProjectVersion(
                     changed = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     id = '', )
             )
         else:
             return Project(
-                bounds = geoengine_sys.models.st_rectangle.STRectangle(
-                    bounding_box = geoengine_sys.models.bounding_box2_d.BoundingBox2D(
-                        lower_left_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                bounds = geoengine_openapi_client.models.st_rectangle.STRectangle(
+                    bounding_box = geoengine_openapi_client.models.bounding_box2_d.BoundingBox2D(
+                        lower_left_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                             x = 1.337, 
                             y = 1.337, ), 
-                        upper_right_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                        upper_right_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                             x = 1.337, 
                             y = 1.337, ), ), 
                     spatial_reference = '', 
-                    time_interval = geoengine_sys.models.time_interval.TimeInterval(
+                    time_interval = geoengine_openapi_client.models.time_interval.TimeInterval(
                         end = 56, 
                         start = 56, ), ),
                 description = '',
                 id = '',
                 layers = [
-                    geoengine_sys.models.project_layer.ProjectLayer(
+                    geoengine_openapi_client.models.project_layer.ProjectLayer(
                         name = '', 
                         symbology = null, 
-                        visibility = geoengine_sys.models.layer_visibility.LayerVisibility(
+                        visibility = geoengine_openapi_client.models.layer_visibility.LayerVisibility(
                             data = True, 
                             legend = True, ), 
                         workflow = '', )
                     ],
                 name = '',
                 plots = [
-                    geoengine_sys.models.plot.Plot(
+                    geoengine_openapi_client.models.plot.Plot(
                         name = '', 
                         workflow = '', )
                     ],
-                time_step = geoengine_sys.models.time_step.TimeStep(
+                time_step = geoengine_openapi_client.models.time_step.TimeStep(
                     granularity = 'millis', 
                     step = 0, ),
-                version = geoengine_sys.models.project_version.ProjectVersion(
+                version = geoengine_openapi_client.models.project_version.ProjectVersion(
                     changed = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     id = '', ),
         )

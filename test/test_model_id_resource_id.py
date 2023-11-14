@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.model_id_resource_id import ModelIdResourceId  # noqa: E501
+from geoengine_openapi_client.models.model_id_resource_id import ModelIdResourceId  # noqa: E501
 
 class TestModelIdResourceId(unittest.TestCase):
     """ModelIdResourceId unit test stubs"""

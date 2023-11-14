@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.mock_meta_data_with_type import MockMetaDataWithType  # noqa: E501
+from geoengine_openapi_client.models.mock_meta_data_with_type import MockMetaDataWithType  # noqa: E501
 
 class TestMockMetaDataWithType(unittest.TestCase):
     """MockMetaDataWithType unit test stubs"""
@@ -37,16 +37,16 @@ class TestMockMetaDataWithType(unittest.TestCase):
         model = MockMetaDataWithType()  # noqa: E501
         if include_optional:
             return MockMetaDataWithType(
-                loading_info = geoengine_sys.models.mock_dataset_data_source_loading_info.MockDatasetDataSourceLoadingInfo(
+                loading_info = geoengine_openapi_client.models.mock_dataset_data_source_loading_info.MockDatasetDataSourceLoadingInfo(
                     points = [
-                        geoengine_sys.models.coordinate2_d.Coordinate2D(
+                        geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                             x = 1.337, 
                             y = 1.337, )
                         ], ),
-                result_descriptor = geoengine_sys.models.vector_result_descriptor.VectorResultDescriptor(
+                result_descriptor = geoengine_openapi_client.models.vector_result_descriptor.VectorResultDescriptor(
                     bbox = null, 
                     columns = {
-                        'key' : geoengine_sys.models.vector_column_info.VectorColumnInfo(
+                        'key' : geoengine_openapi_client.models.vector_column_info.VectorColumnInfo(
                             data_type = 'category', 
                             measurement = null, )
                         }, 
@@ -57,16 +57,16 @@ class TestMockMetaDataWithType(unittest.TestCase):
             )
         else:
             return MockMetaDataWithType(
-                loading_info = geoengine_sys.models.mock_dataset_data_source_loading_info.MockDatasetDataSourceLoadingInfo(
+                loading_info = geoengine_openapi_client.models.mock_dataset_data_source_loading_info.MockDatasetDataSourceLoadingInfo(
                     points = [
-                        geoengine_sys.models.coordinate2_d.Coordinate2D(
+                        geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                             x = 1.337, 
                             y = 1.337, )
                         ], ),
-                result_descriptor = geoengine_sys.models.vector_result_descriptor.VectorResultDescriptor(
+                result_descriptor = geoengine_openapi_client.models.vector_result_descriptor.VectorResultDescriptor(
                     bbox = null, 
                     columns = {
-                        'key' : geoengine_sys.models.vector_column_info.VectorColumnInfo(
+                        'key' : geoengine_openapi_client.models.vector_column_info.VectorColumnInfo(
                             data_type = 'category', 
                             measurement = null, )
                         }, 

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.layer import Layer  # noqa: E501
+from geoengine_openapi_client.models.layer import Layer  # noqa: E501
 
 class TestLayer(unittest.TestCase):
     """Layer unit test stubs"""
@@ -38,7 +38,7 @@ class TestLayer(unittest.TestCase):
         if include_optional:
             return Layer(
                 description = '',
-                id = geoengine_sys.models.provider_layer_id.ProviderLayerId(
+                id = geoengine_openapi_client.models.provider_layer_id.ProviderLayerId(
                     layer_id = '', 
                     provider_id = '', ),
                 metadata = {
@@ -56,7 +56,7 @@ class TestLayer(unittest.TestCase):
         else:
             return Layer(
                 description = '',
-                id = geoengine_sys.models.provider_layer_id.ProviderLayerId(
+                id = geoengine_openapi_client.models.provider_layer_id.ProviderLayerId(
                     layer_id = '', 
                     provider_id = '', ),
                 name = '',

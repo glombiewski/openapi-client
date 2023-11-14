@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.data_id import DataId  # noqa: E501
+from geoengine_openapi_client.models.data_id import DataId  # noqa: E501
 
 class TestDataId(unittest.TestCase):
     """DataId unit test stubs"""

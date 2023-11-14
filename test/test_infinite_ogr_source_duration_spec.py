@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.infinite_ogr_source_duration_spec import InfiniteOgrSourceDurationSpec  # noqa: E501
+from geoengine_openapi_client.models.infinite_ogr_source_duration_spec import InfiniteOgrSourceDurationSpec  # noqa: E501
 
 class TestInfiniteOgrSourceDurationSpec(unittest.TestCase):
     """InfiniteOgrSourceDurationSpec unit test stubs"""

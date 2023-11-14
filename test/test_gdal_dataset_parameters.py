@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.gdal_dataset_parameters import GdalDatasetParameters  # noqa: E501
+from geoengine_openapi_client.models.gdal_dataset_parameters import GdalDatasetParameters  # noqa: E501
 
 class TestGdalDatasetParameters(unittest.TestCase):
     """GdalDatasetParameters unit test stubs"""
@@ -48,8 +48,8 @@ class TestGdalDatasetParameters(unittest.TestCase):
                 gdal_open_options = [
                     ''
                     ],
-                geo_transform = geoengine_sys.models.gdal_dataset_geo_transform.GdalDatasetGeoTransform(
-                    origin_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                geo_transform = geoengine_openapi_client.models.gdal_dataset_geo_transform.GdalDatasetGeoTransform(
+                    origin_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, ), 
                     x_pixel_size = 1.337, 
@@ -57,11 +57,11 @@ class TestGdalDatasetParameters(unittest.TestCase):
                 height = 0,
                 no_data_value = 1.337,
                 properties_mapping = [
-                    geoengine_sys.models.gdal_metadata_mapping.GdalMetadataMapping(
-                        source_key = geoengine_sys.models.raster_properties_key.RasterPropertiesKey(
+                    geoengine_openapi_client.models.gdal_metadata_mapping.GdalMetadataMapping(
+                        source_key = geoengine_openapi_client.models.raster_properties_key.RasterPropertiesKey(
                             domain = '', 
                             key = '', ), 
-                        target_key = geoengine_sys.models.raster_properties_key.RasterPropertiesKey(
+                        target_key = geoengine_openapi_client.models.raster_properties_key.RasterPropertiesKey(
                             domain = '', 
                             key = '', ), 
                         target_type = 'Number', )
@@ -73,8 +73,8 @@ class TestGdalDatasetParameters(unittest.TestCase):
             return GdalDatasetParameters(
                 file_not_found_handling = 'NoData',
                 file_path = '',
-                geo_transform = geoengine_sys.models.gdal_dataset_geo_transform.GdalDatasetGeoTransform(
-                    origin_coordinate = geoengine_sys.models.coordinate2_d.Coordinate2D(
+                geo_transform = geoengine_openapi_client.models.gdal_dataset_geo_transform.GdalDatasetGeoTransform(
+                    origin_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, ), 
                     x_pixel_size = 1.337, 

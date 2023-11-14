@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.get_map_exception_format import GetMapExceptionFormat  # noqa: E501
+from geoengine_openapi_client.models.get_map_exception_format import GetMapExceptionFormat  # noqa: E501
 
 class TestGetMapExceptionFormat(unittest.TestCase):
     """GetMapExceptionFormat unit test stubs"""

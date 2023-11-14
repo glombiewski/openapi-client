@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.create_dataset_handler200_response import CreateDatasetHandler200Response  # noqa: E501
+from geoengine_openapi_client.models.create_dataset_handler200_response import CreateDatasetHandler200Response  # noqa: E501
 
 class TestCreateDatasetHandler200Response(unittest.TestCase):
     """CreateDatasetHandler200Response unit test stubs"""

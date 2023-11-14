@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.ogr_source_dataset_time_type import OgrSourceDatasetTimeType  # noqa: E501
+from geoengine_openapi_client.models.ogr_source_dataset_time_type import OgrSourceDatasetTimeType  # noqa: E501
 
 class TestOgrSourceDatasetTimeType(unittest.TestCase):
     """OgrSourceDatasetTimeType unit test stubs"""

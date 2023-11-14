@@ -15,7 +15,7 @@
 
 import unittest
 
-from geoengine_sys.api.ogcwcs_api import OGCWCSApi  # noqa: E501
+from geoengine_openapi_client.api.ogcwcs_api import OGCWCSApi  # noqa: E501
 
 
 class TestOGCWCSApi(unittest.TestCase):

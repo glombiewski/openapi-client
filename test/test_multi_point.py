@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.multi_point import MultiPoint  # noqa: E501
+from geoengine_openapi_client.models.multi_point import MultiPoint  # noqa: E501
 
 class TestMultiPoint(unittest.TestCase):
     """MultiPoint unit test stubs"""
@@ -38,7 +38,7 @@ class TestMultiPoint(unittest.TestCase):
         if include_optional:
             return MultiPoint(
                 coordinates = [
-                    geoengine_sys.models.coordinate2_d.Coordinate2D(
+                    geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, )
                     ]
@@ -46,7 +46,7 @@ class TestMultiPoint(unittest.TestCase):
         else:
             return MultiPoint(
                 coordinates = [
-                    geoengine_sys.models.coordinate2_d.Coordinate2D(
+                    geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
                         y = 1.337, )
                     ],

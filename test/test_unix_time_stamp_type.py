@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.unix_time_stamp_type import UnixTimeStampType  # noqa: E501
+from geoengine_openapi_client.models.unix_time_stamp_type import UnixTimeStampType  # noqa: E501
 
 class TestUnixTimeStampType(unittest.TestCase):
     """UnixTimeStampType unit test stubs"""

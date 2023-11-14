@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.add_role import AddRole  # noqa: E501
+from geoengine_openapi_client.models.add_role import AddRole  # noqa: E501
 
 class TestAddRole(unittest.TestCase):
     """AddRole unit test stubs"""

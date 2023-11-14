@@ -15,7 +15,7 @@
 
 import unittest
 
-from geoengine_sys.api.spatial_references_api import SpatialReferencesApi  # noqa: E501
+from geoengine_openapi_client.api.spatial_references_api import SpatialReferencesApi  # noqa: E501
 
 
 class TestSpatialReferencesApi(unittest.TestCase):

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.ogr_source_dataset import OgrSourceDataset  # noqa: E501
+from geoengine_openapi_client.models.ogr_source_dataset import OgrSourceDataset  # noqa: E501
 
 class TestOgrSourceDataset(unittest.TestCase):
     """OgrSourceDataset unit test stubs"""
@@ -39,7 +39,7 @@ class TestOgrSourceDataset(unittest.TestCase):
             return OgrSourceDataset(
                 attribute_query = '',
                 cache_ttl = 0,
-                columns = geoengine_sys.models.ogr_source_column_spec.OgrSourceColumnSpec(
+                columns = geoengine_openapi_client.models.ogr_source_column_spec.OgrSourceColumnSpec(
                     bool = [
                         ''
                         ], 

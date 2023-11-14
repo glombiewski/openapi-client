@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.provenance_entry import ProvenanceEntry  # noqa: E501
+from geoengine_openapi_client.models.provenance_entry import ProvenanceEntry  # noqa: E501
 
 class TestProvenanceEntry(unittest.TestCase):
     """ProvenanceEntry unit test stubs"""
@@ -40,7 +40,7 @@ class TestProvenanceEntry(unittest.TestCase):
                 data = [
                     null
                     ],
-                provenance = geoengine_sys.models.provenance.Provenance(
+                provenance = geoengine_openapi_client.models.provenance.Provenance(
                     citation = '', 
                     license = '', 
                     uri = '', )
@@ -50,7 +50,7 @@ class TestProvenanceEntry(unittest.TestCase):
                 data = [
                     null
                     ],
-                provenance = geoengine_sys.models.provenance.Provenance(
+                provenance = geoengine_openapi_client.models.provenance.Provenance(
                     citation = '', 
                     license = '', 
                     uri = '', ),

@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.breakpoint import Breakpoint  # noqa: E501
+from geoengine_openapi_client.models.breakpoint import Breakpoint  # noqa: E501
 
 class TestBreakpoint(unittest.TestCase):
     """Breakpoint unit test stubs"""

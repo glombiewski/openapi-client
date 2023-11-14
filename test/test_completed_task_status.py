@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.completed_task_status import CompletedTaskStatus  # noqa: E501
+from geoengine_openapi_client.models.completed_task_status import CompletedTaskStatus  # noqa: E501
 
 class TestCompletedTaskStatus(unittest.TestCase):
     """CompletedTaskStatus unit test stubs"""

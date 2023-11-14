@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.typed_geometry_one_of import TypedGeometryOneOf  # noqa: E501
+from geoengine_openapi_client.models.typed_geometry_one_of import TypedGeometryOneOf  # noqa: E501
 
 class TestTypedGeometryOneOf(unittest.TestCase):
     """TypedGeometryOneOf unit test stubs"""

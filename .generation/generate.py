@@ -4,23 +4,31 @@
 Generator for the OpenAPI client.
 '''
 
-import os
-import subprocess
+from pathlib import Path
 from urllib import request
 from urllib.error import URLError
+import configparser
+import os
+import shutil
+import subprocess
 import sys
 import time
-
-# Python package name
-PACKAGE_NAME = 'geoengine_sys'
-PACKAGE_VERSION = os.environ.get('PACKAGE_VERSION', '0.0.1')
-PACKAGE_URL = 'https://github.com/geo-engine/geoengine-python-sys'
 
 # Set `DEV_RUN=1` to run the generator in development mode.
 DEV_RUN: bool = int(os.environ.get('DEV_RUN', 0)) == 1
 
+# Read configuration from `config.ini`.
+config = configparser.ConfigParser()
+CWD = Path('.generation/')
+config.read(CWD / 'config.ini')
+
+# Python package name
+PACKAGE_NAME: str = config['package']['name']
+PACKAGE_VERSION: str = config['package']['version']
+PACKAGE_URL: str = config['package']['url']
+
 # Specify backend version
-GE_BACKEND_TAG: str = os.environ.get('GE_BACKEND_TAG', 'pro-nightly-2023-11-01')
+GE_BACKEND_TAG: str = config['input']['backendTag']
 
 if DEV_RUN:
     print("Running in development mode.", file=sys.stderr)
@@ -45,8 +53,11 @@ if not DEV_RUN:
 
     for _ in range(10):
         try:
-            with request.urlopen("http://localhost:8080/api/api-docs/openapi.json", timeout=10) as w, \
-                open(".generation/input/openapi.json", "wb") as f:
+            with request.urlopen(
+                    "http://localhost:8080/api/api-docs/openapi.json",
+                    timeout=10,
+                ) as w, \
+                open(CWD / "input/openapi.json", "wb") as f:
                 api_json = w.read()
                 f.write(api_json)
 
@@ -64,24 +75,26 @@ if not DEV_RUN:
         [
             "podman", "build",
                 "-t", "openapi-generator-cli:patched",
-                ".generation/",
+                CWD,
         ],
         check=True,
     )
 
-# Run the generator.
+# Remove the test directory, since it will not be overwritten by the generator.
+shutil.rmtree("test")
 
+# Run the generator.
 subprocess.run(
     [
         "podman", "run",
             "--network=host",
             "--rm", # remove the container after running
             "-v", f"{os.getcwd()}:/local",
-            "--env-file=.generation/override.env",
+            f"--env-file={CWD / 'override.env'}",
             # "docker.io/openapitools/openapi-generator-cli:v7.0.1",
             "openapi-generator-cli:patched",
                 "generate",
-                    "-i", "/local/.generation/input/openapi.json",
+                    "-i", f"{'/local' / CWD / 'input/openapi.json'}",
                     "-g", "python",
                     "--additional-properties=" + ",".join([
                         "useOneOfDiscriminatorLookup=true",

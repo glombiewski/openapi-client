@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.data_path_one_of import DataPathOneOf  # noqa: E501
+from geoengine_openapi_client.models.data_path_one_of import DataPathOneOf  # noqa: E501
 
 class TestDataPathOneOf(unittest.TestCase):
     """DataPathOneOf unit test stubs"""

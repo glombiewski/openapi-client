@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.user_info import UserInfo  # noqa: E501
+from geoengine_openapi_client.models.user_info import UserInfo  # noqa: E501
 
 class TestUserInfo(unittest.TestCase):
     """UserInfo unit test stubs"""

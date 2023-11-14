@@ -16,7 +16,7 @@
 import unittest
 import datetime
 
-from geoengine_sys.models.layer_listing import LayerListing  # noqa: E501
+from geoengine_openapi_client.models.layer_listing import LayerListing  # noqa: E501
 
 class TestLayerListing(unittest.TestCase):
     """LayerListing unit test stubs"""
@@ -38,7 +38,7 @@ class TestLayerListing(unittest.TestCase):
         if include_optional:
             return LayerListing(
                 description = '',
-                id = geoengine_sys.models.provider_layer_id.ProviderLayerId(
+                id = geoengine_openapi_client.models.provider_layer_id.ProviderLayerId(
                     layer_id = '', 
                     provider_id = '', ),
                 name = '',
@@ -51,7 +51,7 @@ class TestLayerListing(unittest.TestCase):
         else:
             return LayerListing(
                 description = '',
-                id = geoengine_sys.models.provider_layer_id.ProviderLayerId(
+                id = geoengine_openapi_client.models.provider_layer_id.ProviderLayerId(
                     layer_id = '', 
                     provider_id = '', ),
                 name = '',

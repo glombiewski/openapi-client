@@ -37,6 +37,11 @@ class TestRasterResultDescriptorWithType(unittest.TestCase):
         model = RasterResultDescriptorWithType()  # noqa: E501
         if include_optional:
             return RasterResultDescriptorWithType(
+                bands = [
+                    geoengine_openapi_client.models.raster_band_descriptor.RasterBandDescriptor(
+                        measurement = null, 
+                        name = '', )
+                    ],
                 bbox = geoengine_openapi_client.models.spatial_partition2_d.SpatialPartition2D(
                     lower_right_coordinate = geoengine_openapi_client.models.coordinate2_d.Coordinate2D(
                         x = 1.337, 
@@ -45,7 +50,6 @@ class TestRasterResultDescriptorWithType(unittest.TestCase):
                         x = 1.337, 
                         y = 1.337, ), ),
                 data_type = 'U8',
-                measurement = None,
                 resolution = geoengine_openapi_client.models.spatial_resolution.SpatialResolution(
                     x = 1.337, 
                     y = 1.337, ),
@@ -57,8 +61,12 @@ class TestRasterResultDescriptorWithType(unittest.TestCase):
             )
         else:
             return RasterResultDescriptorWithType(
+                bands = [
+                    geoengine_openapi_client.models.raster_band_descriptor.RasterBandDescriptor(
+                        measurement = null, 
+                        name = '', )
+                    ],
                 data_type = 'U8',
-                measurement = None,
                 spatial_reference = '',
                 type = 'raster',
         )

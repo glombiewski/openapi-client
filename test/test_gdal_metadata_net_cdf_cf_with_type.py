@@ -73,9 +73,13 @@ class TestGdalMetadataNetCdfCfWithType(unittest.TestCase):
                     rasterband_channel = 0, 
                     width = 0, ),
                 result_descriptor = geoengine_openapi_client.models.raster_result_descriptor.RasterResultDescriptor(
+                    bands = [
+                        geoengine_openapi_client.models.raster_band_descriptor.RasterBandDescriptor(
+                            measurement = null, 
+                            name = '', )
+                        ], 
                     bbox = null, 
                     data_type = 'U8', 
-                    measurement = null, 
                     resolution = null, 
                     spatial_reference = '', 
                     time = null, ),
@@ -122,9 +126,13 @@ class TestGdalMetadataNetCdfCfWithType(unittest.TestCase):
                     rasterband_channel = 0, 
                     width = 0, ),
                 result_descriptor = geoengine_openapi_client.models.raster_result_descriptor.RasterResultDescriptor(
+                    bands = [
+                        geoengine_openapi_client.models.raster_band_descriptor.RasterBandDescriptor(
+                            measurement = null, 
+                            name = '', )
+                        ], 
                     bbox = null, 
                     data_type = 'U8', 
-                    measurement = null, 
                     resolution = null, 
                     spatial_reference = '', 
                     time = null, ),

@@ -49,8 +49,12 @@ class TestTypedResultDescriptor(unittest.TestCase):
                     end = 56, 
                     start = 56, ),
                 type = 'plot',
+                bands = [
+                    geoengine_openapi_client.models.raster_band_descriptor.RasterBandDescriptor(
+                        measurement = null, 
+                        name = '', )
+                    ],
                 data_type = 'Data',
-                measurement = None,
                 resolution = geoengine_openapi_client.models.spatial_resolution.SpatialResolution(
                     x = 1.337, 
                     y = 1.337, ),
@@ -64,8 +68,12 @@ class TestTypedResultDescriptor(unittest.TestCase):
             return TypedResultDescriptor(
                 spatial_reference = '',
                 type = 'plot',
+                bands = [
+                    geoengine_openapi_client.models.raster_band_descriptor.RasterBandDescriptor(
+                        measurement = null, 
+                        name = '', )
+                    ],
                 data_type = 'Data',
-                measurement = None,
                 columns = {
                     'key' : geoengine_openapi_client.models.vector_column_info.VectorColumnInfo(
                         data_type = 'category', 

@@ -19,9 +19,9 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
-from geoengine_openapi_client.models.measurement import Measurement
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
+from geoengine_openapi_client.models.raster_band_descriptor import RasterBandDescriptor
 from geoengine_openapi_client.models.raster_data_type import RasterDataType
 from geoengine_openapi_client.models.spatial_partition2_d import SpatialPartition2D
 from geoengine_openapi_client.models.spatial_resolution import SpatialResolution
@@ -31,13 +31,13 @@ class RasterResultDescriptor(BaseModel):
     """
     A `ResultDescriptor` for raster queries  # noqa: E501
     """
+    bands: conlist(RasterBandDescriptor) = Field(...)
     bbox: Optional[SpatialPartition2D] = None
     data_type: RasterDataType = Field(..., alias="dataType")
-    measurement: Measurement = Field(...)
     resolution: Optional[SpatialResolution] = None
     spatial_reference: StrictStr = Field(..., alias="spatialReference")
     time: Optional[TimeInterval] = None
-    __properties = ["bbox", "dataType", "measurement", "resolution", "spatialReference", "time"]
+    __properties = ["bands", "bbox", "dataType", "resolution", "spatialReference", "time"]
 
     class Config:
         """Pydantic configuration"""
@@ -63,12 +63,16 @@ class RasterResultDescriptor(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of each item in bands (list)
+        _items = []
+        if self.bands:
+            for _item in self.bands:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['bands'] = _items
         # override the default output from pydantic by calling `to_dict()` of bbox
         if self.bbox:
             _dict['bbox'] = self.bbox.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of measurement
-        if self.measurement:
-            _dict['measurement'] = self.measurement.to_dict()
         # override the default output from pydantic by calling `to_dict()` of resolution
         if self.resolution:
             _dict['resolution'] = self.resolution.to_dict()
@@ -102,9 +106,9 @@ class RasterResultDescriptor(BaseModel):
             return RasterResultDescriptor.parse_obj(obj)
 
         _obj = RasterResultDescriptor.parse_obj({
+            "bands": [RasterBandDescriptor.from_dict(_item) for _item in obj.get("bands")] if obj.get("bands") is not None else None,
             "bbox": SpatialPartition2D.from_dict(obj.get("bbox")) if obj.get("bbox") is not None else None,
             "data_type": obj.get("dataType"),
-            "measurement": Measurement.from_dict(obj.get("measurement")) if obj.get("measurement") is not None else None,
             "resolution": SpatialResolution.from_dict(obj.get("resolution")) if obj.get("resolution") is not None else None,
             "spatial_reference": obj.get("spatialReference"),
             "time": TimeInterval.from_dict(obj.get("time")) if obj.get("time") is not None else None

@@ -1,5 +1,4 @@
 # Temp files
 .mypy_cache
 .pytest_cache
-
-
+test/__pycache__

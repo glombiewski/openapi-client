@@ -84,7 +84,8 @@ if not DEV_RUN:
     )
 
 # Remove the test directory, since it will not be overwritten by the generator.
-shutil.rmtree("test")
+if os.path.isdir("test"):
+    shutil.rmtree("test")
 
 # Run the generator.
 subprocess.run(

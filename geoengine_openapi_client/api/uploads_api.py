@@ -24,10 +24,6 @@ from pydantic import Field, StrictBytes, StrictStr, conlist
 
 from typing import Union
 
-# Note: added support to upload data from RAM
-from typing import Tuple
-
-
 from geoengine_openapi_client.models.add_collection200_response import AddCollection200Response
 from geoengine_openapi_client.models.upload_files_response import UploadFilesResponse
 
@@ -340,8 +336,7 @@ class UploadsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    # Note: added support to upload data from RAM
-    def upload_handler(self, files : conlist(Union[StrictBytes, StrictStr, Tuple[str, Union[StrictBytes, StrictStr]]]), **kwargs) -> AddCollection200Response:  # noqa: E501
+    def upload_handler(self, files : conlist(Union[StrictBytes, StrictStr]), **kwargs) -> AddCollection200Response:  # noqa: E501
         """Uploads files.  # noqa: E501
 
         Uploads files.  # noqa: E501
@@ -371,8 +366,7 @@ class UploadsApi:
         return self.upload_handler_with_http_info(files, **kwargs)  # noqa: E501
 
     @validate_arguments
-    # Note: added support to upload data from RAM
-    def upload_handler_with_http_info(self, files : conlist(Union[StrictBytes, StrictStr, Tuple[str, Union[StrictBytes, StrictStr]]]), **kwargs) -> ApiResponse:  # noqa: E501
+    def upload_handler_with_http_info(self, files : conlist(Union[StrictBytes, StrictStr]), **kwargs) -> ApiResponse:  # noqa: E501
         """Uploads files.  # noqa: E501
 
         Uploads files.  # noqa: E501

@@ -37,7 +37,7 @@ setup(
     description="Geo Engine Pro API",
     author="Geo Engine Developers",
     author_email="dev@geoengine.de",
-    url="https://github.com/geo-engine/geoengine-python-sys",
+    url="https://github.com/geo-engine/geoengine-python-openapi-client",
     keywords=["OpenAPI", "OpenAPI-Generator", "Geo Engine Pro API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),

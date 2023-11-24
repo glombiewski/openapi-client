@@ -69,21 +69,6 @@ def api_client_py(file_contents: List[str]) -> Generator[str, None, None]:
             resource_path = resource_path.partition("?")[0]
             '''), 2 * INDENT) + '\n' + line
 
-        elif dedented_line.startswith('''with open(n, 'rb') as f:'''):
-            line = indent(dedent('''\
-            # Note: added support to upload data from RAM
-            if isinstance(n, tuple):
-                filename = n[0]
-                filedata = n[1]
-
-                mimetype = (mimetypes.guess_type(filename)[0] or
-                'application/octet-stream')
-                params.append(
-                    tuple([k, tuple([filename, filedata, mimetype])]))
-
-                continue
-            '''), 5 * INDENT) + '\n' + line
-
         yield line
 
 def exceptions_py(file_contents: List[str]) -> Generator[str, None, None]:
@@ -97,32 +82,6 @@ def exceptions_py(file_contents: List[str]) -> Generator[str, None, None]:
             return f'{parsed_body["error"]}: {parsed_body["message"]}'
             
             '''), 2 * INDENT)
-
-        yield line
-
-def uploads_api_py(file_contents: List[str]) -> Generator[str, None, None]:
-    '''Modify the uploads_api.py file.'''
-    for line in file_contents:
-        dedented_line = dedent(line)
-
-        if line.startswith('from typing import'):
-            line = line + '\n' + dedent('''\
-            # Note: added support to upload data from RAM
-            from typing import Tuple
-            
-            ''')
-
-        elif dedented_line.startswith('def upload_handler(self,'):
-            line = indent(dedent('''\
-            # Note: added support to upload data from RAM
-            def upload_handler(self, files : conlist(Union[StrictBytes, StrictStr, Tuple[str, Union[StrictBytes, StrictStr]]]), **kwargs) -> AddCollection200Response:  # noqa: E501
-            '''), INDENT)
-
-        elif dedented_line.startswith('def upload_handler_with_http_info(self,'):
-            line = indent(dedent('''\
-            # Note: added support to upload data from RAM
-            def upload_handler_with_http_info(self, files : conlist(Union[StrictBytes, StrictStr, Tuple[str, Union[StrictBytes, StrictStr]]]), **kwargs) -> ApiResponse:  # noqa: E501
-            '''), INDENT)
 
         yield line
 
@@ -210,8 +169,6 @@ if input_file.name == 'api_client.py':
     modify_file(input_file, api_client_py)
 elif input_file.name == 'exceptions.py':
     modify_file(input_file, exceptions_py)
-elif input_file.name == 'uploads_api.py':
-    modify_file(input_file, uploads_api_py)
 elif input_file.name == 'linear_gradient_with_type.py':
     modify_file(input_file, linear_gradient_with_type_py)
 elif input_file.name == 'logarithmic_gradient_with_type.py':

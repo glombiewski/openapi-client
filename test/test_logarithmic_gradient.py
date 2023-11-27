@@ -37,15 +37,6 @@ class TestLogarithmicGradient(unittest.TestCase):
         model = LogarithmicGradient()  # noqa: E501
         if include_optional:
             return LogarithmicGradient(
-                default_color = [
-                    56
-                    ],
-                over_color = [
-                    56
-                    ],
-                under_color = [
-                    56
-                    ],
                 breakpoints = [
                     geoengine_openapi_client.models.breakpoint.Breakpoint(
                         color = [
@@ -54,20 +45,17 @@ class TestLogarithmicGradient(unittest.TestCase):
                         value = 1.337, )
                     ],
                 no_data_color = [
+                    56
+                    ],
+                over_color = [
+                    56
+                    ],
+                under_color = [
                     56
                     ]
             )
         else:
             return LogarithmicGradient(
-                default_color = [
-                    56
-                    ],
-                over_color = [
-                    56
-                    ],
-                under_color = [
-                    56
-                    ],
                 breakpoints = [
                     geoengine_openapi_client.models.breakpoint.Breakpoint(
                         color = [
@@ -76,6 +64,12 @@ class TestLogarithmicGradient(unittest.TestCase):
                         value = 1.337, )
                     ],
                 no_data_color = [
+                    56
+                    ],
+                over_color = [
+                    56
+                    ],
+                under_color = [
                     56
                     ],
         )

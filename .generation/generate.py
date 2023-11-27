@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib import request
 from urllib.error import URLError
 import configparser
+import json
 import os
 import shutil
 import subprocess
@@ -36,7 +37,11 @@ if DEV_RUN:
 # Generate the openapi.json file.
 #
 # Imitating manually fetching it, e.g.
-# `wget http://localhost:3030/api/api-docs/openapi.json -O .generation/input/openapi.json`
+#
+# ```bash
+# wget http://localhost:3030/api/api-docs/openapi.json -O - \
+#   | python -m json.tool --indent 2 > .generation/input/openapi.json
+# ```
 #
 if not DEV_RUN:
     print("Starting Geo Engine backend.", file=sys.stderr)
@@ -58,10 +63,10 @@ if not DEV_RUN:
                 "http://localhost:8080/api/api-docs/openapi.json",
                  timeout=10,
             ) as w:
-                api_json = w.read()
+                api_json = json.load(w)
 
             with open(CWD / "input/openapi.json", "wb") as f:
-                f.write(api_json)
+                json.dump(api_json, f, indent=2)
 
             print("Stored `openapi.json`.", file=sys.stderr)
             break

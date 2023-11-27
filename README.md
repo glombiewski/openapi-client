@@ -55,10 +55,10 @@ import geoengine_openapi_client
 from geoengine_openapi_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8080/api
+# Defining the host is optional and defaults to http://localhost:3030/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = geoengine_openapi_client.Configuration(
-    host = "http://0.0.0.0:8080/api"
+    host = "http://localhost:3030/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -90,7 +90,7 @@ with geoengine_openapi_client.ApiClient(configuration) as api_client:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://0.0.0.0:8080/api*
+All URIs are relative to *http://localhost:3030/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -201,8 +201,6 @@ Class | Method | HTTP request | Description
  - [DatasetResource](docs/DatasetResource.md)
  - [DateTime](docs/DateTime.md)
  - [DateTimeParseFormat](docs/DateTimeParseFormat.md)
- - [DefaultColors](docs/DefaultColors.md)
- - [DefaultColorsOneOf](docs/DefaultColorsOneOf.md)
  - [DerivedColor](docs/DerivedColor.md)
  - [DerivedColorWithType](docs/DerivedColorWithType.md)
  - [DerivedNumber](docs/DerivedNumber.md)
@@ -281,7 +279,6 @@ Class | Method | HTTP request | Description
  - [OgrSourceErrorSpec](docs/OgrSourceErrorSpec.md)
  - [OgrSourceTimeFormat](docs/OgrSourceTimeFormat.md)
  - [OrderBy](docs/OrderBy.md)
- - [OverUnderColors](docs/OverUnderColors.md)
  - [PaletteColorizer](docs/PaletteColorizer.md)
  - [Permission](docs/Permission.md)
  - [PermissionRequest](docs/PermissionRequest.md)

@@ -37,15 +37,6 @@ class TestLinearGradientWithType(unittest.TestCase):
         model = LinearGradientWithType()  # noqa: E501
         if include_optional:
             return LinearGradientWithType(
-                default_color = [
-                    56
-                    ],
-                over_color = [
-                    56
-                    ],
-                under_color = [
-                    56
-                    ],
                 breakpoints = [
                     geoengine_openapi_client.models.breakpoint.Breakpoint(
                         color = [
@@ -56,30 +47,33 @@ class TestLinearGradientWithType(unittest.TestCase):
                 no_data_color = [
                     56
                     ],
-                type = 'linearGradient'
-            )
-        else:
-            return LinearGradientWithType(
-                default_color = [
-                    56
-                    ],
                 over_color = [
-                    56
-                    ],
-                under_color = [
-                    56
-                    ],
-                breakpoints = [
-                    geoengine_openapi_client.models.breakpoint.Breakpoint(
-                        color = [
-                            56
-                            ], 
-                        value = 1.337, )
-                    ],
-                no_data_color = [
                     56
                     ],
                 type = 'linearGradient',
+                under_color = [
+                    56
+                    ]
+            )
+        else:
+            return LinearGradientWithType(
+                breakpoints = [
+                    geoengine_openapi_client.models.breakpoint.Breakpoint(
+                        color = [
+                            56
+                            ], 
+                        value = 1.337, )
+                    ],
+                no_data_color = [
+                    56
+                    ],
+                over_color = [
+                    56
+                    ],
+                type = 'linearGradient',
+                under_color = [
+                    56
+                    ],
         )
         """
 

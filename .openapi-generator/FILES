@@ -58,8 +58,6 @@ geoengine_openapi_client/models/dataset_listing.py
 geoengine_openapi_client/models/dataset_resource.py
 geoengine_openapi_client/models/date_time.py
 geoengine_openapi_client/models/date_time_parse_format.py
-geoengine_openapi_client/models/default_colors.py
-geoengine_openapi_client/models/default_colors_one_of.py
 geoengine_openapi_client/models/derived_color.py
 geoengine_openapi_client/models/derived_color_with_type.py
 geoengine_openapi_client/models/derived_number.py
@@ -138,7 +136,6 @@ geoengine_openapi_client/models/ogr_source_duration_spec.py
 geoengine_openapi_client/models/ogr_source_error_spec.py
 geoengine_openapi_client/models/ogr_source_time_format.py
 geoengine_openapi_client/models/order_by.py
-geoengine_openapi_client/models/over_under_colors.py
 geoengine_openapi_client/models/palette_colorizer.py
 geoengine_openapi_client/models/permission.py
 geoengine_openapi_client/models/permission_request.py
@@ -287,8 +284,6 @@ test/test_dataset_resource.py
 test/test_datasets_api.py
 test/test_date_time.py
 test/test_date_time_parse_format.py
-test/test_default_colors.py
-test/test_default_colors_one_of.py
 test/test_derived_color.py
 test/test_derived_color_with_type.py
 test/test_derived_number.py
@@ -372,7 +367,6 @@ test/test_ogr_source_duration_spec.py
 test/test_ogr_source_error_spec.py
 test/test_ogr_source_time_format.py
 test/test_order_by.py
-test/test_over_under_colors.py
 test/test_palette_colorizer.py
 test/test_permission.py
 test/test_permission_request.py

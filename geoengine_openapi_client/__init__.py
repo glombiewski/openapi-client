@@ -83,8 +83,6 @@ from geoengine_openapi_client.models.dataset_listing import DatasetListing
 from geoengine_openapi_client.models.dataset_resource import DatasetResource
 from geoengine_openapi_client.models.date_time import DateTime
 from geoengine_openapi_client.models.date_time_parse_format import DateTimeParseFormat
-from geoengine_openapi_client.models.default_colors import DefaultColors
-from geoengine_openapi_client.models.default_colors_one_of import DefaultColorsOneOf
 from geoengine_openapi_client.models.derived_color import DerivedColor
 from geoengine_openapi_client.models.derived_color_with_type import DerivedColorWithType
 from geoengine_openapi_client.models.derived_number import DerivedNumber
@@ -163,7 +161,6 @@ from geoengine_openapi_client.models.ogr_source_duration_spec import OgrSourceDu
 from geoengine_openapi_client.models.ogr_source_error_spec import OgrSourceErrorSpec
 from geoengine_openapi_client.models.ogr_source_time_format import OgrSourceTimeFormat
 from geoengine_openapi_client.models.order_by import OrderBy
-from geoengine_openapi_client.models.over_under_colors import OverUnderColors
 from geoengine_openapi_client.models.palette_colorizer import PaletteColorizer
 from geoengine_openapi_client.models.permission import Permission
 from geoengine_openapi_client.models.permission_request import PermissionRequest

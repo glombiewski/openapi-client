@@ -164,6 +164,7 @@ geoengine_openapi_client/models/provenance_output.py
 geoengine_openapi_client/models/provider_layer_collection_id.py
 geoengine_openapi_client/models/provider_layer_id.py
 geoengine_openapi_client/models/quota.py
+geoengine_openapi_client/models/raster_band_descriptor.py
 geoengine_openapi_client/models/raster_data_type.py
 geoengine_openapi_client/models/raster_dataset_from_workflow.py
 geoengine_openapi_client/models/raster_dataset_from_workflow_result.py
@@ -401,6 +402,7 @@ test/test_provenance_output.py
 test/test_provider_layer_collection_id.py
 test/test_provider_layer_id.py
 test/test_quota.py
+test/test_raster_band_descriptor.py
 test/test_raster_data_type.py
 test/test_raster_dataset_from_workflow.py
 test/test_raster_dataset_from_workflow_result.py

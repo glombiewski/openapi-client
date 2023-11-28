@@ -51,9 +51,13 @@ class TestMetaDataDefinition(unittest.TestCase):
                     sql_query = '', 
                     time = null, ),
                 result_descriptor = geoengine_openapi_client.models.raster_result_descriptor.RasterResultDescriptor(
+                    bands = [
+                        geoengine_openapi_client.models.raster_band_descriptor.RasterBandDescriptor(
+                            measurement = null, 
+                            name = '', )
+                        ], 
                     bbox = null, 
                     data_type = 'U8', 
-                    measurement = null, 
                     resolution = null, 
                     spatial_reference = '', 
                     time = null, ),
@@ -103,9 +107,13 @@ class TestMetaDataDefinition(unittest.TestCase):
                     sql_query = '', 
                     time = null, ),
                 result_descriptor = geoengine_openapi_client.models.raster_result_descriptor.RasterResultDescriptor(
+                    bands = [
+                        geoengine_openapi_client.models.raster_band_descriptor.RasterBandDescriptor(
+                            measurement = null, 
+                            name = '', )
+                        ], 
                     bbox = null, 
                     data_type = 'U8', 
-                    measurement = null, 
                     resolution = null, 
                     spatial_reference = '', 
                     time = null, ),

@@ -1,0 +1,45 @@
+# Update the generation and create a new PR
+
+name: Generate and PR
+
+on:
+  # schedule manually
+  workflow_dispatch:
+    inputs:
+      # On workflow dispatch, `branch` is selected by default
+      # You can access it in `github.ref_name`
+
+      backend_tag:
+        description: "Tag name for the container"
+        required: true
+        default: "pro-nightly-2023-11-14"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgis/postgis
+        env:
+          POSTGRES_USER: geoengine
+          POSTGRES_PASSWORD: geoengine
+          POSTGRES_DB: geoengine
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Update config.ini
+        run: .generation/update_config.py --backendTag ${{ github.event.inputs.backend_tag }}
+
+      - name: Generate Code
+        run: .generation/generate.py
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "Code for backend tag ${{ github.event.inputs.backend_tag }}"
+          commit-message: "Code for backend tag ${{ github.event.inputs.backend_tag }}"

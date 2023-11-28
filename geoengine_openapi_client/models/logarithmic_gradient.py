@@ -27,12 +27,11 @@ class LogarithmicGradient(BaseModel):
     """
     LogarithmicGradient
     """
-    default_color: conlist(StrictInt, max_items=4, min_items=4) = Field(..., alias="defaultColor")
-    over_color: conlist(StrictInt, max_items=4, min_items=4) = Field(..., alias="overColor")
-    under_color: conlist(StrictInt, max_items=4, min_items=4) = Field(..., alias="underColor")
     breakpoints: conlist(Breakpoint) = Field(...)
     no_data_color: conlist(StrictInt, max_items=4, min_items=4) = Field(..., alias="noDataColor")
-    __properties = ["defaultColor", "overColor", "underColor", "breakpoints", "noDataColor"]
+    over_color: conlist(StrictInt, max_items=4, min_items=4) = Field(..., alias="overColor")
+    under_color: conlist(StrictInt, max_items=4, min_items=4) = Field(..., alias="underColor")
+    __properties = ["breakpoints", "noDataColor", "overColor", "underColor"]
 
     class Config:
         """Pydantic configuration"""
@@ -77,11 +76,10 @@ class LogarithmicGradient(BaseModel):
             return LogarithmicGradient.parse_obj(obj)
 
         _obj = LogarithmicGradient.parse_obj({
-            "default_color": obj.get("defaultColor"),
-            "over_color": obj.get("overColor"),
-            "under_color": obj.get("underColor"),
             "breakpoints": [Breakpoint.from_dict(_item) for _item in obj.get("breakpoints")] if obj.get("breakpoints") is not None else None,
-            "no_data_color": obj.get("noDataColor")
+            "no_data_color": obj.get("noDataColor"),
+            "over_color": obj.get("overColor"),
+            "under_color": obj.get("underColor")
         })
         return _obj
 

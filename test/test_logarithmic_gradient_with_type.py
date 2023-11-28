@@ -37,15 +37,6 @@ class TestLogarithmicGradientWithType(unittest.TestCase):
         model = LogarithmicGradientWithType()  # noqa: E501
         if include_optional:
             return LogarithmicGradientWithType(
-                default_color = [
-                    56
-                    ],
-                over_color = [
-                    56
-                    ],
-                under_color = [
-                    56
-                    ],
                 breakpoints = [
                     geoengine_openapi_client.models.breakpoint.Breakpoint(
                         color = [
@@ -56,30 +47,33 @@ class TestLogarithmicGradientWithType(unittest.TestCase):
                 no_data_color = [
                     56
                     ],
-                type = 'logarithmicGradient'
-            )
-        else:
-            return LogarithmicGradientWithType(
-                default_color = [
-                    56
-                    ],
                 over_color = [
-                    56
-                    ],
-                under_color = [
-                    56
-                    ],
-                breakpoints = [
-                    geoengine_openapi_client.models.breakpoint.Breakpoint(
-                        color = [
-                            56
-                            ], 
-                        value = 1.337, )
-                    ],
-                no_data_color = [
                     56
                     ],
                 type = 'logarithmicGradient',
+                under_color = [
+                    56
+                    ]
+            )
+        else:
+            return LogarithmicGradientWithType(
+                breakpoints = [
+                    geoengine_openapi_client.models.breakpoint.Breakpoint(
+                        color = [
+                            56
+                            ], 
+                        value = 1.337, )
+                    ],
+                no_data_color = [
+                    56
+                    ],
+                over_color = [
+                    56
+                    ],
+                type = 'logarithmicGradient',
+                under_color = [
+                    56
+                    ],
         )
         """
 

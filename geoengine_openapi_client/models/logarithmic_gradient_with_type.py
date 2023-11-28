@@ -27,13 +27,12 @@ class LogarithmicGradientWithType(BaseModel):
     """
     LogarithmicGradientWithType
     """
-    # Note: need to remove default_color
-    over_color: conlist(StrictInt, max_items=4, min_items=4) = Field(..., alias="overColor")
-    under_color: conlist(StrictInt, max_items=4, min_items=4) = Field(..., alias="underColor")
     breakpoints: conlist(Breakpoint) = Field(...)
     no_data_color: conlist(StrictInt, max_items=4, min_items=4) = Field(..., alias="noDataColor")
+    over_color: conlist(StrictInt, max_items=4, min_items=4) = Field(..., alias="overColor")
     type: StrictStr = Field(...)
-    __properties = ["defaultColor", "overColor", "underColor", "breakpoints", "noDataColor", "type"]
+    under_color: conlist(StrictInt, max_items=4, min_items=4) = Field(..., alias="underColor")
+    __properties = ["breakpoints", "noDataColor", "overColor", "type", "underColor"]
 
     @validator('type')
     def type_validate_enum(cls, value):
@@ -85,12 +84,11 @@ class LogarithmicGradientWithType(BaseModel):
             return LogarithmicGradientWithType.parse_obj(obj)
 
         _obj = LogarithmicGradientWithType.parse_obj({
-            "default_color": obj.get("defaultColor"),
-            "over_color": obj.get("overColor"),
-            "under_color": obj.get("underColor"),
             "breakpoints": [Breakpoint.from_dict(_item) for _item in obj.get("breakpoints")] if obj.get("breakpoints") is not None else None,
             "no_data_color": obj.get("noDataColor"),
-            "type": obj.get("type")
+            "over_color": obj.get("overColor"),
+            "type": obj.get("type"),
+            "under_color": obj.get("underColor")
         })
         return _obj
 

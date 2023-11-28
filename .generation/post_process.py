@@ -85,26 +85,6 @@ def exceptions_py(file_contents: List[str]) -> Generator[str, None, None]:
 
         yield line
 
-def linear_gradient_with_type_py(file_contents: List[str]) -> Generator[str, None, None]:
-    '''Modify the linear_gradient_with_type.py file.'''
-    for line in file_contents:
-        if dedent(line).startswith('default_color: conlist'):
-            line = indent(dedent('''\
-            # Note: need to remove default_color
-            '''), INDENT)
-
-        yield line
-
-def logarithmic_gradient_with_type_py(file_contents: List[str]) -> Generator[str, None, None]:
-    '''Modify the logarithmic_gradient_with_type.py file.'''
-    for line in file_contents:
-        if dedent(line).startswith('default_color: conlist'):
-            line = indent(dedent('''\
-            # Note: need to remove default_color
-            '''), INDENT)
-
-        yield line
-
 def palette_colorizer_py(file_contents: List[str]) -> Generator[str, None, None]:
     '''Modify the palette_colorizer.py file.'''
     for line in file_contents:
@@ -169,10 +149,6 @@ if input_file.name == 'api_client.py':
     modify_file(input_file, api_client_py)
 elif input_file.name == 'exceptions.py':
     modify_file(input_file, exceptions_py)
-elif input_file.name == 'linear_gradient_with_type.py':
-    modify_file(input_file, linear_gradient_with_type_py)
-elif input_file.name == 'logarithmic_gradient_with_type.py':
-    modify_file(input_file, logarithmic_gradient_with_type_py)
 elif input_file.name == 'palette_colorizer.py':
     modify_file(input_file, palette_colorizer_py)
 elif input_file.name == 'raster_dataset_from_workflow.py':

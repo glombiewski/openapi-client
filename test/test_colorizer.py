@@ -37,15 +37,6 @@ class TestColorizer(unittest.TestCase):
         model = Colorizer()  # noqa: E501
         if include_optional:
             return Colorizer(
-                default_color = [
-                    56
-                    ],
-                over_color = [
-                    56
-                    ],
-                under_color = [
-                    56
-                    ],
                 breakpoints = [
                     geoengine_openapi_client.models.breakpoint.Breakpoint(
                         color = [
@@ -56,40 +47,49 @@ class TestColorizer(unittest.TestCase):
                 no_data_color = [
                     56
                     ],
-                type = 'linearGradient',
-                colors = {
-                    'key' : [
-                        56
-                        ]
-                    }
-            )
-        else:
-            return Colorizer(
-                default_color = [
-                    56
-                    ],
                 over_color = [
                     56
                     ],
+                type = 'linearGradient',
                 under_color = [
                     56
                     ],
-                breakpoints = [
-                    geoengine_openapi_client.models.breakpoint.Breakpoint(
-                        color = [
-                            56
-                            ], 
-                        value = 1.337, )
-                    ],
-                no_data_color = [
-                    56
-                    ],
-                type = 'linearGradient',
                 colors = {
                     'key' : [
                         56
                         ]
                     },
+                default_color = [
+                    56
+                    ]
+            )
+        else:
+            return Colorizer(
+                breakpoints = [
+                    geoengine_openapi_client.models.breakpoint.Breakpoint(
+                        color = [
+                            56
+                            ], 
+                        value = 1.337, )
+                    ],
+                no_data_color = [
+                    56
+                    ],
+                over_color = [
+                    56
+                    ],
+                type = 'linearGradient',
+                under_color = [
+                    56
+                    ],
+                colors = {
+                    'key' : [
+                        56
+                        ]
+                    },
+                default_color = [
+                    56
+                    ],
         )
         """
 

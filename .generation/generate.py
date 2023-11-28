@@ -56,7 +56,7 @@ if not DEV_RUN:
         ],
     )
 
-    for _ in range(60):
+    for _ in range(90):
         print("Requesting `openapi.json`….", file=sys.stderr)
         try:
             with request.urlopen(
@@ -65,7 +65,7 @@ if not DEV_RUN:
             ) as w:
                 api_json = json.load(w)
 
-            with open(CWD / "input/openapi.json", "wb") as f:
+            with open(CWD / "input/openapi.json", "w", encoding='utf-8') as f:
                 json.dump(api_json, f, indent=2)
 
             print("Stored `openapi.json`.", file=sys.stderr)

@@ -15,13 +15,15 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3030/api"
+      "url": "http://0.0.0.0:8080/api"
     }
   ],
   "paths": {
     "/anonymous": {
       "post": {
-        "tags": ["Session"],
+        "tags": [
+          "Session"
+        ],
         "summary": "Creates session for anonymous user. The session's id serves as a Bearer token for requests.",
         "description": "Creates session for anonymous user. The session's id serves as a Bearer token for requests.",
         "operationId": "anonymous_handler",
@@ -57,7 +59,9 @@
     },
     "/available": {
       "get": {
-        "tags": ["General"],
+        "tags": [
+          "General"
+        ],
         "summary": "Server availablity check.",
         "description": "Server availablity check.",
         "operationId": "available_handler",
@@ -70,7 +74,9 @@
     },
     "/dataset": {
       "post": {
-        "tags": ["Datasets"],
+        "tags": [
+          "Datasets"
+        ],
         "summary": "Creates a new dataset referencing files. Users can reference previously uploaded files. Admins can reference files from a volume.",
         "description": "Creates a new dataset referencing files. Users can reference previously uploaded files. Admins can reference files from a volume.",
         "operationId": "create_dataset_handler",
@@ -133,7 +139,9 @@
                         "loadingInfo": {
                           "columns": {
                             "float": [],
-                            "int": ["a"],
+                            "int": [
+                              "a"
+                            ],
                             "text": [],
                             "x": "",
                             "y": null
@@ -276,7 +284,9 @@
     },
     "/dataset/auto": {
       "post": {
-        "tags": ["Datasets"],
+        "tags": [
+          "Datasets"
+        ],
         "summary": "Creates a new dataset using previously uploaded files.",
         "description": "Creates a new dataset using previously uploaded files.\nThe format of the files will be automatically detected when possible.",
         "operationId": "auto_create_dataset_handler",
@@ -367,7 +377,9 @@
     },
     "/dataset/suggest": {
       "get": {
-        "tags": ["Datasets"],
+        "tags": [
+          "Datasets"
+        ],
         "summary": "Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.",
         "description": "Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.\nTries to automatically detect the main file and layer name if not specified.",
         "operationId": "suggest_meta_data_handler",
@@ -512,7 +524,9 @@
     },
     "/dataset/volumes": {
       "get": {
-        "tags": ["Datasets"],
+        "tags": [
+          "Datasets"
+        ],
         "summary": "Lists available volumes.",
         "description": "Lists available volumes.",
         "operationId": "list_volumes_handler",
@@ -549,7 +563,9 @@
     },
     "/dataset/{dataset}": {
       "get": {
-        "tags": ["Datasets"],
+        "tags": [
+          "Datasets"
+        ],
         "summary": "Retrieves details about a dataset using the internal name.",
         "description": "Retrieves details about a dataset using the internal name.",
         "operationId": "get_dataset_handler",
@@ -619,7 +635,9 @@
         ]
       },
       "delete": {
-        "tags": ["Datasets"],
+        "tags": [
+          "Datasets"
+        ],
         "summary": "Delete a dataset",
         "description": "Delete a dataset",
         "operationId": "delete_dataset_handler",
@@ -675,7 +693,9 @@
     },
     "/datasetFromWorkflow/{id}": {
       "post": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Create a task for creating a new dataset from the result of the workflow given by its `id` and the dataset parameters in the request body.",
         "description": "Create a task for creating a new dataset from the result of the workflow given by its `id` and the dataset parameters in the request body.\nReturns the id of the created task",
         "operationId": "dataset_from_workflow_handler",
@@ -724,7 +744,9 @@
     },
     "/datasets": {
       "get": {
-        "tags": ["Datasets"],
+        "tags": [
+          "Datasets"
+        ],
         "summary": "Lists available datasets.",
         "description": "Lists available datasets.",
         "operationId": "list_datasets_handler",
@@ -819,7 +841,9 @@
     },
     "/info": {
       "get": {
-        "tags": ["General"],
+        "tags": [
+          "General"
+        ],
         "summary": "Shows information about the server software version.",
         "description": "Shows information about the server software version.",
         "operationId": "server_info_handler",
@@ -845,7 +869,9 @@
     },
     "/layerDb/collections/{collection}": {
       "delete": {
-        "tags": ["Layers"],
+        "tags": [
+          "Layers"
+        ],
         "summary": "Remove a collection",
         "description": "Remove a collection",
         "operationId": "remove_collection",
@@ -874,7 +900,9 @@
     },
     "/layerDb/collections/{collection}/collections": {
       "post": {
-        "tags": ["Layers"],
+        "tags": [
+          "Layers"
+        ],
         "summary": "Add a new collection to an existing collection",
         "description": "Add a new collection to an existing collection",
         "operationId": "add_collection",
@@ -914,7 +942,9 @@
     },
     "/layerDb/collections/{collection}/layers": {
       "post": {
-        "tags": ["Layers"],
+        "tags": [
+          "Layers"
+        ],
         "summary": "Add a new layer to a collection",
         "description": "Add a new layer to a collection",
         "operationId": "add_layer",
@@ -954,7 +984,9 @@
     },
     "/layerDb/collections/{collection}/layers/{layer}": {
       "post": {
-        "tags": ["Layers"],
+        "tags": [
+          "Layers"
+        ],
         "summary": "Add an existing layer to a collection",
         "description": "Add an existing layer to a collection",
         "operationId": "add_existing_layer_to_collection",
@@ -990,7 +1022,9 @@
         ]
       },
       "delete": {
-        "tags": ["Layers"],
+        "tags": [
+          "Layers"
+        ],
         "summary": "Remove a layer from a collection",
         "description": "Remove a layer from a collection",
         "operationId": "remove_layer_from_collection",
@@ -1028,7 +1062,9 @@
     },
     "/layerDb/collections/{parent}/collections/{collection}": {
       "post": {
-        "tags": ["Layers"],
+        "tags": [
+          "Layers"
+        ],
         "summary": "Add an existing collection to a collection",
         "description": "Add an existing collection to a collection",
         "operationId": "add_existing_collection_to_collection",
@@ -1065,7 +1101,9 @@
         ]
       },
       "delete": {
-        "tags": ["Layers"],
+        "tags": [
+          "Layers"
+        ],
         "summary": "Delete a collection from a collection",
         "description": "Delete a collection from a collection",
         "operationId": "remove_collection_from_collection",
@@ -1104,7 +1142,9 @@
     },
     "/layers/collections": {
       "get": {
-        "tags": ["Layers"],
+        "tags": [
+          "Layers"
+        ],
         "summary": "List all layer collections",
         "description": "List all layer collections",
         "operationId": "list_root_collections_handler",
@@ -1183,7 +1223,9 @@
     },
     "/layers/collections/{provider}/{collection}": {
       "get": {
-        "tags": ["Layers"],
+        "tags": [
+          "Layers"
+        ],
         "summary": "List the contents of the collection of the given provider",
         "description": "List the contents of the collection of the given provider",
         "operationId": "list_collection_handler",
@@ -1280,7 +1322,9 @@
     },
     "/layers/{provider}/{layer}": {
       "get": {
-        "tags": ["Layers"],
+        "tags": [
+          "Layers"
+        ],
         "summary": "Retrieves the layer of the given provider",
         "description": "Retrieves the layer of the given provider",
         "operationId": "layer_handler",
@@ -1324,26 +1368,121 @@
                   "symbology": {
                     "colorizer": {
                       "colors": {
-                        "0": [134, 201, 227, 255],
-                        "1": [30, 129, 62, 255],
-                        "10": [223, 192, 125, 255],
-                        "11": [66, 128, 189, 255],
-                        "12": [225, 222, 127, 255],
-                        "13": [253, 2, 0, 255],
-                        "14": [162, 159, 66, 255],
-                        "15": [255, 255, 255, 255],
-                        "16": [192, 192, 192, 255],
-                        "2": [59, 194, 212, 255],
-                        "3": [157, 194, 63, 255],
-                        "4": [159, 225, 127, 255],
-                        "5": [125, 194, 127, 255],
-                        "6": [195, 127, 126, 255],
-                        "7": [188, 221, 190, 255],
-                        "8": [224, 223, 133, 255],
-                        "9": [226, 221, 7, 255]
+                        "0": [
+                          134,
+                          201,
+                          227,
+                          255
+                        ],
+                        "1": [
+                          30,
+                          129,
+                          62,
+                          255
+                        ],
+                        "10": [
+                          223,
+                          192,
+                          125,
+                          255
+                        ],
+                        "11": [
+                          66,
+                          128,
+                          189,
+                          255
+                        ],
+                        "12": [
+                          225,
+                          222,
+                          127,
+                          255
+                        ],
+                        "13": [
+                          253,
+                          2,
+                          0,
+                          255
+                        ],
+                        "14": [
+                          162,
+                          159,
+                          66,
+                          255
+                        ],
+                        "15": [
+                          255,
+                          255,
+                          255,
+                          255
+                        ],
+                        "16": [
+                          192,
+                          192,
+                          192,
+                          255
+                        ],
+                        "2": [
+                          59,
+                          194,
+                          212,
+                          255
+                        ],
+                        "3": [
+                          157,
+                          194,
+                          63,
+                          255
+                        ],
+                        "4": [
+                          159,
+                          225,
+                          127,
+                          255
+                        ],
+                        "5": [
+                          125,
+                          194,
+                          127,
+                          255
+                        ],
+                        "6": [
+                          195,
+                          127,
+                          126,
+                          255
+                        ],
+                        "7": [
+                          188,
+                          221,
+                          190,
+                          255
+                        ],
+                        "8": [
+                          224,
+                          223,
+                          133,
+                          255
+                        ],
+                        "9": [
+                          226,
+                          221,
+                          7,
+                          255
+                        ]
                       },
-                      "defaultColor": [0, 0, 0, 0],
-                      "noDataColor": [0, 0, 0, 0],
+                      "defaultColor": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "noDataColor": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
                       "type": "palette"
                     },
                     "opacity": 1,
@@ -1375,7 +1514,9 @@
     },
     "/layers/{provider}/{layer}/dataset": {
       "post": {
-        "tags": ["Layers"],
+        "tags": [
+          "Layers"
+        ],
         "summary": "Persist a raster layer from a provider as a dataset.",
         "description": "Persist a raster layer from a provider as a dataset.",
         "operationId": "layer_to_dataset",
@@ -1423,7 +1564,9 @@
     },
     "/layers/{provider}/{layer}/workflowId": {
       "post": {
-        "tags": ["Layers"],
+        "tags": [
+          "Layers"
+        ],
         "summary": "Registers a layer from a provider as a workflow and returns the workflow id",
         "description": "Registers a layer from a provider as a workflow and returns the workflow id",
         "operationId": "layer_to_workflow_id_handler",
@@ -1461,7 +1604,9 @@
     },
     "/login": {
       "post": {
-        "tags": ["Session"],
+        "tags": [
+          "Session"
+        ],
         "summary": "Creates a session by providing user credentials. The session's id serves as a Bearer token for requests.",
         "description": "Creates a session by providing user credentials. The session's id serves as a Bearer token for requests.",
         "operationId": "login_handler",
@@ -1507,7 +1652,9 @@
     },
     "/logout": {
       "post": {
-        "tags": ["Session"],
+        "tags": [
+          "Session"
+        ],
         "summary": "Ends a session.",
         "description": "Ends a session.",
         "operationId": "logout_handler",
@@ -1525,7 +1672,9 @@
     },
     "/permissions": {
       "put": {
-        "tags": ["Permissions"],
+        "tags": [
+          "Permissions"
+        ],
         "summary": "Adds a new permission.",
         "description": "Adds a new permission.",
         "operationId": "add_permission_handler",
@@ -1559,7 +1708,9 @@
         ]
       },
       "delete": {
-        "tags": ["Permissions"],
+        "tags": [
+          "Permissions"
+        ],
         "summary": "Removes an existing permission.",
         "description": "Removes an existing permission.",
         "operationId": "remove_permission_handler",
@@ -1595,7 +1746,9 @@
     },
     "/plot/{id}": {
       "get": {
-        "tags": ["Plots"],
+        "tags": [
+          "Plots"
+        ],
         "summary": "Generates a plot.",
         "description": "Generates a plot.\n\n# Example\n\n1. Upload the file `plain_data.csv` with the following content:\n\n```csv\na\n1\n2\n```\n2. Create a dataset from it using the \"Plain Data\" example at `/dataset`.\n3. Create a statistics workflow using the \"Statistics Plot\" example at `/workflow`.\n4. Generate the plot with this handler.",
         "operationId": "get_plot_handler",
@@ -1683,7 +1836,9 @@
     },
     "/project": {
       "post": {
-        "tags": ["Projects"],
+        "tags": [
+          "Projects"
+        ],
         "summary": "Create a new project for the user.",
         "description": "Create a new project for the user.",
         "operationId": "create_project_handler",
@@ -1711,7 +1866,9 @@
     },
     "/project/{project}": {
       "get": {
-        "tags": ["Projects"],
+        "tags": [
+          "Projects"
+        ],
         "summary": "Retrieves details about the latest version of a project.",
         "description": "Retrieves details about the latest version of a project.",
         "operationId": "load_project_latest_handler",
@@ -1778,7 +1935,9 @@
         ]
       },
       "delete": {
-        "tags": ["Projects"],
+        "tags": [
+          "Projects"
+        ],
         "summary": "Deletes a project.",
         "description": "Deletes a project.",
         "operationId": "delete_project_handler",
@@ -1805,7 +1964,9 @@
         ]
       },
       "patch": {
-        "tags": ["Projects"],
+        "tags": [
+          "Projects"
+        ],
         "summary": "Updates a project.",
         "description": "Updates a project.\nThis will create a new version.",
         "operationId": "update_project_handler",
@@ -1844,7 +2005,9 @@
     },
     "/project/{project}/versions": {
       "get": {
-        "tags": ["Projects"],
+        "tags": [
+          "Projects"
+        ],
         "summary": "Lists all available versions of a project.",
         "description": "Lists all available versions of a project.",
         "operationId": "project_versions_handler",
@@ -1895,7 +2058,9 @@
     },
     "/project/{project}/{version}": {
       "get": {
-        "tags": ["Projects"],
+        "tags": [
+          "Projects"
+        ],
         "summary": "Retrieves details about the given version of a project.",
         "description": "Retrieves details about the given version of a project.",
         "operationId": "load_project_version_handler",
@@ -1973,7 +2138,9 @@
     },
     "/projects": {
       "get": {
-        "tags": ["Projects"],
+        "tags": [
+          "Projects"
+        ],
         "summary": "List all projects accessible to the user that match the selected criteria.",
         "description": "List all projects accessible to the user that match the selected criteria.",
         "operationId": "list_projects_handler",
@@ -2044,7 +2211,9 @@
     },
     "/quota": {
       "get": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Retrieves the available and used quota of the current user.",
         "description": "Retrieves the available and used quota of the current user.",
         "operationId": "quota_handler",
@@ -2073,7 +2242,9 @@
     },
     "/quotas/{user}": {
       "get": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Retrieves the available and used quota of a specific user.",
         "description": "Retrieves the available and used quota of a specific user.",
         "operationId": "get_user_quota_handler",
@@ -2111,7 +2282,9 @@
         ]
       },
       "post": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Update the available quota of a specific user.",
         "description": "Update the available quota of a specific user.",
         "operationId": "update_user_quota_handler",
@@ -2150,7 +2323,9 @@
     },
     "/roles": {
       "put": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Add a new role. Requires admin privilige.",
         "description": "Add a new role. Requires admin privilige.",
         "operationId": "add_role_handler",
@@ -2188,7 +2363,9 @@
     },
     "/roles/{role}": {
       "delete": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Remove a role. Requires admin privilige.",
         "description": "Remove a role. Requires admin privilige.",
         "operationId": "remove_role_handler",
@@ -2217,7 +2394,9 @@
     },
     "/session": {
       "get": {
-        "tags": ["Session"],
+        "tags": [
+          "Session"
+        ],
         "summary": "Retrieves details about the current session.",
         "description": "Retrieves details about the current session.",
         "operationId": "session_handler",
@@ -2258,7 +2437,9 @@
     },
     "/spatialReferenceSpecification/{srsString}": {
       "get": {
-        "tags": ["Spatial References"],
+        "tags": [
+          "Spatial References"
+        ],
         "operationId": "get_spatial_reference_specification_handler",
         "parameters": [
           {
@@ -2280,7 +2461,10 @@
                   "$ref": "#/components/schemas/SpatialReferenceSpecification"
                 },
                 "example": {
-                  "axisLabels": ["Geodetic longitude", "Geodetic latitude"],
+                  "axisLabels": [
+                    "Geodetic longitude",
+                    "Geodetic latitude"
+                  ],
                   "axisOrder": "northEast",
                   "extent": {
                     "lowerLeftCoordinate": {
@@ -2309,7 +2493,9 @@
     },
     "/tasks/list": {
       "get": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Retrieve the status of all tasks.",
         "description": "Retrieve the status of all tasks.",
         "operationId": "list_handler",
@@ -2385,7 +2571,9 @@
     },
     "/tasks/{id}": {
       "delete": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Abort a running task.",
         "description": "Abort a running task.\n\n# Parameters\n\n* `force` - If true, the task will be aborted without clean-up.\nYou can abort a task that is already in the process of aborting.",
         "operationId": "abort_handler",
@@ -2422,7 +2610,9 @@
     },
     "/tasks/{id}/status": {
       "get": {
-        "tags": ["Tasks"],
+        "tags": [
+          "Tasks"
+        ],
         "summary": "Retrieve the status of a task.",
         "description": "Retrieve the status of a task.",
         "operationId": "status_handler",
@@ -2467,7 +2657,9 @@
     },
     "/upload": {
       "post": {
-        "tags": ["Uploads"],
+        "tags": [
+          "Uploads"
+        ],
         "summary": "Uploads files.",
         "description": "Uploads files.",
         "operationId": "upload_handler",
@@ -2476,7 +2668,9 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "required": ["files[]"],
+                "required": [
+                  "files[]"
+                ],
                 "properties": {
                   "files[]": {
                     "type": "array",
@@ -2505,7 +2699,9 @@
     },
     "/uploads/{upload_id}/files": {
       "get": {
-        "tags": ["Uploads"],
+        "tags": [
+          "Uploads"
+        ],
         "summary": "List the files of on upload.",
         "description": "List the files of on upload.",
         "operationId": "list_upload_files_handler",
@@ -2529,7 +2725,10 @@
                   "$ref": "#/components/schemas/UploadFilesResponse"
                 },
                 "example": {
-                  "files": ["file1", "file2"]
+                  "files": [
+                    "file1",
+                    "file2"
+                  ]
                 }
               }
             }
@@ -2544,7 +2743,9 @@
     },
     "/uploads/{upload_id}/files/{file_name}/layers": {
       "get": {
-        "tags": ["Uploads"],
+        "tags": [
+          "Uploads"
+        ],
         "summary": "List the layers of on uploaded file.",
         "description": "List the layers of on uploaded file.",
         "operationId": "list_upload_file_layers_handler",
@@ -2577,7 +2778,10 @@
                   "$ref": "#/components/schemas/UploadFilesResponse"
                 },
                 "example": {
-                  "layers": ["layer1", "layer2"]
+                  "layers": [
+                    "layer1",
+                    "layer2"
+                  ]
                 }
               }
             }
@@ -2592,7 +2796,9 @@
     },
     "/user": {
       "post": {
-        "tags": ["Session"],
+        "tags": [
+          "Session"
+        ],
         "summary": "Registers a user.",
         "description": "Registers a user.",
         "operationId": "register_user_handler",
@@ -2625,7 +2831,9 @@
     },
     "/user/roles/descriptions": {
       "get": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Query roles for the current user.",
         "description": "Query roles for the current user.",
         "operationId": "get_role_descriptions",
@@ -2669,7 +2877,9 @@
     },
     "/users/{user}/roles/{role}": {
       "post": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Assign a role to a user. Requires admin privilige.",
         "description": "Assign a role to a user. Requires admin privilige.",
         "operationId": "assign_role_handler",
@@ -2705,7 +2915,9 @@
         ]
       },
       "delete": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Revoke a role from a user. Requires admin privilige.",
         "description": "Revoke a role from a user. Requires admin privilige.",
         "operationId": "revoke_role_handler",
@@ -2743,7 +2955,9 @@
     },
     "/wcs/{workflow}?request=DescribeCoverage": {
       "get": {
-        "tags": ["OGC WCS"],
+        "tags": [
+          "OGC WCS"
+        ],
         "summary": "Get WCS Coverage Description",
         "description": "Get WCS Coverage Description",
         "operationId": "wcs_describe_coverage_handler",
@@ -2812,7 +3026,9 @@
     },
     "/wcs/{workflow}?request=GetCapabilities": {
       "get": {
-        "tags": ["OGC WCS"],
+        "tags": [
+          "OGC WCS"
+        ],
         "summary": "Get WCS Capabilities",
         "description": "Get WCS Capabilities",
         "operationId": "wcs_capabilities_handler",
@@ -2877,7 +3093,9 @@
     },
     "/wcs/{workflow}?request=GetCoverage": {
       "get": {
-        "tags": ["OGC WCS"],
+        "tags": [
+          "OGC WCS"
+        ],
         "summary": "Get WCS Coverage",
         "description": "Get WCS Coverage",
         "operationId": "wcs_get_coverage_handler",
@@ -3021,7 +3239,9 @@
     },
     "/wfs/{workflow}?request=GetCapabilities": {
       "get": {
-        "tags": ["OGC WFS"],
+        "tags": [
+          "OGC WFS"
+        ],
         "summary": "Get WFS Capabilities",
         "description": "Get WFS Capabilities",
         "operationId": "wfs_capabilities_handler",
@@ -3086,7 +3306,9 @@
     },
     "/wfs/{workflow}?request=GetFeature": {
       "get": {
-        "tags": ["OGC WFS"],
+        "tags": [
+          "OGC WFS"
+        ],
         "summary": "Get WCS Features",
         "description": "Get WCS Features",
         "operationId": "wfs_feature_handler",
@@ -3249,7 +3471,10 @@
                   "features": [
                     {
                       "geometry": {
-                        "coordinates": [0.0, 0.1],
+                        "coordinates": [
+                          0.0,
+                          0.1
+                        ],
                         "type": "Point"
                       },
                       "properties": {
@@ -3264,7 +3489,10 @@
                     },
                     {
                       "geometry": {
-                        "coordinates": [1.0, 1.1],
+                        "coordinates": [
+                          1.0,
+                          1.1
+                        ],
                         "type": "Point"
                       },
                       "properties": {
@@ -3279,7 +3507,10 @@
                     },
                     {
                       "geometry": {
-                        "coordinates": [2.0, 3.1],
+                        "coordinates": [
+                          2.0,
+                          3.1
+                        ],
                         "type": "Point"
                       },
                       "properties": {
@@ -3294,7 +3525,10 @@
                     },
                     {
                       "geometry": {
-                        "coordinates": [3.0, 3.1],
+                        "coordinates": [
+                          3.0,
+                          3.1
+                        ],
                         "type": "Point"
                       },
                       "properties": {
@@ -3309,7 +3543,10 @@
                     },
                     {
                       "geometry": {
-                        "coordinates": [4.0, 4.1],
+                        "coordinates": [
+                          4.0,
+                          4.1
+                        ],
                         "type": "Point"
                       },
                       "properties": {
@@ -3338,7 +3575,9 @@
     },
     "/wms/{workflow}?request=GetCapabilities": {
       "get": {
-        "tags": ["OGC WMS"],
+        "tags": [
+          "OGC WMS"
+        ],
         "summary": "Get WMS Capabilities",
         "description": "Get WMS Capabilities",
         "operationId": "wms_capabilities_handler",
@@ -3416,7 +3655,9 @@
     },
     "/wms/{workflow}?request=GetLegendGraphic": {
       "get": {
-        "tags": ["OGC WMS"],
+        "tags": [
+          "OGC WMS"
+        ],
         "summary": "Get WMS Legend Graphic",
         "description": "Get WMS Legend Graphic",
         "operationId": "wms_legend_graphic_handler",
@@ -3478,7 +3719,9 @@
     },
     "/wms/{workflow}?request=GetMap": {
       "get": {
-        "tags": ["OGC WMS"],
+        "tags": [
+          "OGC WMS"
+        ],
         "summary": "Get WMS Map",
         "description": "Get WMS Map",
         "operationId": "wms_map_handler",
@@ -3665,7 +3908,9 @@
     },
     "/workflow": {
       "post": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Registers a new Workflow.",
         "description": "Registers a new Workflow.",
         "operationId": "register_workflow_handler",
@@ -3734,7 +3979,9 @@
     },
     "/workflow/{id}": {
       "get": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Retrieves an existing Workflow.",
         "description": "Retrieves an existing Workflow.",
         "operationId": "load_workflow_handler",
@@ -3788,7 +4035,9 @@
     },
     "/workflow/{id}/allMetadata/zip": {
       "get": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Gets a ZIP archive of the worklow, its provenance and the output metadata.",
         "description": "Gets a ZIP archive of the worklow, its provenance and the output metadata.",
         "operationId": "get_workflow_all_metadata_zip_handler",
@@ -3817,7 +4066,9 @@
     },
     "/workflow/{id}/metadata": {
       "get": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Gets the metadata of a workflow",
         "description": "Gets the metadata of a workflow",
         "operationId": "get_workflow_metadata_handler",
@@ -3859,7 +4110,9 @@
     },
     "/workflow/{id}/provenance": {
       "get": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Gets the provenance of all datasets used in a workflow.",
         "description": "Gets the provenance of all datasets used in a workflow.",
         "operationId": "get_workflow_provenance_handler",
@@ -3922,7 +4175,9 @@
     },
     "/workflow/{id}/rasterStream": {
       "get": {
-        "tags": ["Workflows"],
+        "tags": [
+          "Workflows"
+        ],
         "summary": "Query a workflow raster result as a stream of tiles via a websocket connection.",
         "description": "Query a workflow raster result as a stream of tiles via a websocket connection.",
         "operationId": "raster_stream_websocket",
@@ -3986,18 +4241,27 @@
     "schemas": {
       "AbortedTaskStatus": {
         "type": "object",
-        "required": ["status", "cleanUp"],
+        "required": [
+          "status",
+          "cleanUp"
+        ],
         "properties": {
           "cleanUp": {},
           "status": {
             "type": "string",
-            "enum": ["aborted"]
+            "enum": [
+              "aborted"
+            ]
           }
         }
       },
       "AddDataset": {
         "type": "object",
-        "required": ["displayName", "description", "sourceOperator"],
+        "required": [
+          "displayName",
+          "description",
+          "sourceOperator"
+        ],
         "properties": {
           "description": {
             "type": "string"
@@ -4035,7 +4299,11 @@
       },
       "AddLayer": {
         "type": "object",
-        "required": ["name", "description", "workflow"],
+        "required": [
+          "name",
+          "description",
+          "workflow"
+        ],
         "properties": {
           "description": {
             "type": "string",
@@ -4074,7 +4342,10 @@
       },
       "AddLayerCollection": {
         "type": "object",
-        "required": ["name", "description"],
+        "required": [
+          "name",
+          "description"
+        ],
         "properties": {
           "description": {
             "type": "string",
@@ -4094,7 +4365,9 @@
       },
       "AddRole": {
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -4103,7 +4376,12 @@
       },
       "AutoCreateDataset": {
         "type": "object",
-        "required": ["upload", "datasetName", "datasetDescription", "mainFile"],
+        "required": [
+          "upload",
+          "datasetName",
+          "datasetDescription",
+          "mainFile"
+        ],
         "properties": {
           "datasetDescription": {
             "type": "string"
@@ -4131,11 +4409,15 @@
       },
       "AutoOgrSourceTimeFormat": {
         "type": "object",
-        "required": ["format"],
+        "required": [
+          "format"
+        ],
         "properties": {
           "format": {
             "type": "string",
-            "enum": ["auto"]
+            "enum": [
+              "auto"
+            ]
           }
         }
       },
@@ -4149,12 +4431,18 @@
       },
       "AxisOrder": {
         "type": "string",
-        "enum": ["northEast", "eastNorth"]
+        "enum": [
+          "northEast",
+          "eastNorth"
+        ]
       },
       "BoundingBox2D": {
         "type": "object",
         "description": "A bounding box that includes all border points.\nNote: may degenerate to a point!",
-        "required": ["lowerLeftCoordinate", "upperRightCoordinate"],
+        "required": [
+          "lowerLeftCoordinate",
+          "upperRightCoordinate"
+        ],
         "properties": {
           "lowerLeftCoordinate": {
             "$ref": "#/components/schemas/Coordinate2D"
@@ -4182,7 +4470,10 @@
       },
       "ClassificationMeasurement": {
         "type": "object",
-        "required": ["measurement", "classes"],
+        "required": [
+          "measurement",
+          "classes"
+        ],
         "properties": {
           "classes": {
             "type": "object",
@@ -4197,7 +4488,11 @@
       },
       "ClassificationMeasurementWithType": {
         "type": "object",
-        "required": ["measurement", "classes", "type"],
+        "required": [
+          "measurement",
+          "classes",
+          "type"
+        ],
         "properties": {
           "classes": {
             "type": "object",
@@ -4210,7 +4505,9 @@
           },
           "type": {
             "type": "string",
-            "enum": ["classification"]
+            "enum": [
+              "classification"
+            ]
           }
         }
       },
@@ -4233,7 +4530,9 @@
       },
       "CollectionType": {
         "type": "string",
-        "enum": ["FeatureCollection"]
+        "enum": [
+          "FeatureCollection"
+        ]
       },
       "ColorParam": {
         "oneOf": [
@@ -4279,7 +4578,12 @@
       },
       "CompletedTaskStatus": {
         "type": "object",
-        "required": ["status", "taskType", "timeTotal", "timeStarted"],
+        "required": [
+          "status",
+          "taskType",
+          "timeTotal",
+          "timeStarted"
+        ],
         "properties": {
           "description": {
             "type": "string"
@@ -4287,7 +4591,9 @@
           "info": {},
           "status": {
             "type": "string",
-            "enum": ["completed"]
+            "enum": [
+              "completed"
+            ]
           },
           "taskType": {
             "type": "string"
@@ -4302,7 +4608,9 @@
       },
       "ContinuousMeasurement": {
         "type": "object",
-        "required": ["measurement"],
+        "required": [
+          "measurement"
+        ],
         "properties": {
           "measurement": {
             "type": "string"
@@ -4315,14 +4623,19 @@
       },
       "ContinuousMeasurementWithType": {
         "type": "object",
-        "required": ["measurement", "type"],
+        "required": [
+          "measurement",
+          "type"
+        ],
         "properties": {
           "measurement": {
             "type": "string"
           },
           "type": {
             "type": "string",
-            "enum": ["continuous"]
+            "enum": [
+              "continuous"
+            ]
           },
           "unit": {
             "type": "string",
@@ -4332,7 +4645,10 @@
       },
       "Coordinate2D": {
         "type": "object",
-        "required": ["x", "y"],
+        "required": [
+          "x",
+          "y"
+        ],
         "properties": {
           "x": {
             "type": "number",
@@ -4346,7 +4662,10 @@
       },
       "CreateDataset": {
         "type": "object",
-        "required": ["dataPath", "definition"],
+        "required": [
+          "dataPath",
+          "definition"
+        ],
         "properties": {
           "dataPath": {
             "$ref": "#/components/schemas/DataPath"
@@ -4358,7 +4677,11 @@
       },
       "CreateProject": {
         "type": "object",
-        "required": ["name", "description", "bounds"],
+        "required": [
+          "name",
+          "description",
+          "bounds"
+        ],
         "properties": {
           "bounds": {
             "$ref": "#/components/schemas/STRectangle"
@@ -4406,18 +4729,27 @@
       },
       "CsvHeader": {
         "type": "string",
-        "enum": ["yes", "no", "auto"]
+        "enum": [
+          "yes",
+          "no",
+          "auto"
+        ]
       },
       "CustomOgrSourceTimeFormat": {
         "type": "object",
-        "required": ["customFormat", "format"],
+        "required": [
+          "customFormat",
+          "format"
+        ],
         "properties": {
           "customFormat": {
             "$ref": "#/components/schemas/DateTimeParseFormat"
           },
           "format": {
             "type": "string",
-            "enum": ["custom"]
+            "enum": [
+              "custom"
+            ]
           }
         }
       },
@@ -4442,7 +4774,9 @@
         "oneOf": [
           {
             "type": "object",
-            "required": ["volume"],
+            "required": [
+              "volume"
+            ],
             "properties": {
               "volume": {
                 "$ref": "#/components/schemas/VolumeName"
@@ -4451,7 +4785,9 @@
           },
           {
             "type": "object",
-            "required": ["upload"],
+            "required": [
+              "upload"
+            ],
             "properties": {
               "upload": {
                 "$ref": "#/components/schemas/UploadId"
@@ -4512,7 +4848,10 @@
       },
       "DatasetDefinition": {
         "type": "object",
-        "required": ["properties", "metaData"],
+        "required": [
+          "properties",
+          "metaData"
+        ],
         "properties": {
           "metaData": {
             "$ref": "#/components/schemas/MetaDataDefinition"
@@ -4528,14 +4867,19 @@
       },
       "DatasetIdResourceId": {
         "type": "object",
-        "required": ["type", "id"],
+        "required": [
+          "type",
+          "id"
+        ],
         "properties": {
           "id": {
             "$ref": "#/components/schemas/DatasetId"
           },
           "type": {
             "type": "string",
-            "enum": ["DatasetId"]
+            "enum": [
+              "DatasetId"
+            ]
           }
         }
       },
@@ -4590,21 +4934,28 @@
       },
       "DatasetResource": {
         "type": "object",
-        "required": ["type", "id"],
+        "required": [
+          "type",
+          "id"
+        ],
         "properties": {
           "id": {
             "$ref": "#/components/schemas/DatasetName"
           },
           "type": {
             "type": "string",
-            "enum": ["dataset"]
+            "enum": [
+              "dataset"
+            ]
           }
         }
       },
       "DateTime": {
         "type": "object",
         "description": "An object that composes the date and a timestamp with time zone.",
-        "required": ["datetime"],
+        "required": [
+          "datetime"
+        ],
         "properties": {
           "datetime": {
             "type": "string",
@@ -4614,7 +4965,11 @@
       },
       "DateTimeParseFormat": {
         "type": "object",
-        "required": ["fmt", "has_tz", "has_time"],
+        "required": [
+          "fmt",
+          "has_tz",
+          "has_time"
+        ],
         "properties": {
           "fmt": {
             "type": "string"
@@ -4629,7 +4984,10 @@
       },
       "DerivedColor": {
         "type": "object",
-        "required": ["attribute", "colorizer"],
+        "required": [
+          "attribute",
+          "colorizer"
+        ],
         "properties": {
           "attribute": {
             "type": "string"
@@ -4641,7 +4999,11 @@
       },
       "DerivedColorWithType": {
         "type": "object",
-        "required": ["attribute", "colorizer", "type"],
+        "required": [
+          "attribute",
+          "colorizer",
+          "type"
+        ],
         "properties": {
           "attribute": {
             "type": "string"
@@ -4651,13 +5013,19 @@
           },
           "type": {
             "type": "string",
-            "enum": ["derived"]
+            "enum": [
+              "derived"
+            ]
           }
         }
       },
       "DerivedNumber": {
         "type": "object",
-        "required": ["attribute", "factor", "defaultValue"],
+        "required": [
+          "attribute",
+          "factor",
+          "defaultValue"
+        ],
         "properties": {
           "attribute": {
             "type": "string"
@@ -4674,7 +5042,12 @@
       },
       "DerivedNumberWithType": {
         "type": "object",
-        "required": ["attribute", "factor", "defaultValue", "type"],
+        "required": [
+          "attribute",
+          "factor",
+          "defaultValue",
+          "type"
+        ],
         "properties": {
           "attribute": {
             "type": "string"
@@ -4689,17 +5062,24 @@
           },
           "type": {
             "type": "string",
-            "enum": ["derived"]
+            "enum": [
+              "derived"
+            ]
           }
         }
       },
       "DescribeCoverageRequest": {
         "type": "string",
-        "enum": ["DescribeCoverage"]
+        "enum": [
+          "DescribeCoverage"
+        ]
       },
       "ErrorResponse": {
         "type": "object",
-        "required": ["error", "message"],
+        "required": [
+          "error",
+          "message"
+        ],
         "properties": {
           "error": {
             "type": "string"
@@ -4711,7 +5091,10 @@
       },
       "ExternalDataId": {
         "type": "object",
-        "required": ["providerId", "layerId"],
+        "required": [
+          "providerId",
+          "layerId"
+        ],
         "properties": {
           "layerId": {
             "$ref": "#/components/schemas/LayerId"
@@ -4723,7 +5106,11 @@
       },
       "ExternalDataIdWithType": {
         "type": "object",
-        "required": ["providerId", "layerId", "type"],
+        "required": [
+          "providerId",
+          "layerId",
+          "type"
+        ],
         "properties": {
           "layerId": {
             "$ref": "#/components/schemas/LayerId"
@@ -4733,39 +5120,61 @@
           },
           "type": {
             "type": "string",
-            "enum": ["external"]
+            "enum": [
+              "external"
+            ]
           }
         }
       },
       "FailedTaskStatus": {
         "type": "object",
-        "required": ["status", "error", "cleanUp"],
+        "required": [
+          "status",
+          "error",
+          "cleanUp"
+        ],
         "properties": {
           "cleanUp": {},
           "error": {},
           "status": {
             "type": "string",
-            "enum": ["failed"]
+            "enum": [
+              "failed"
+            ]
           }
         }
       },
       "FeatureDataType": {
         "type": "string",
-        "enum": ["category", "int", "float", "text", "bool", "dateTime"]
+        "enum": [
+          "category",
+          "int",
+          "float",
+          "text",
+          "bool",
+          "dateTime"
+        ]
       },
       "FileNotFoundHandling": {
         "type": "string",
-        "enum": ["NoData", "Error"]
+        "enum": [
+          "NoData",
+          "Error"
+        ]
       },
       "FormatSpecifics": {
         "oneOf": [
           {
             "type": "object",
-            "required": ["csv"],
+            "required": [
+              "csv"
+            ],
             "properties": {
               "csv": {
                 "type": "object",
-                "required": ["header"],
+                "required": [
+                  "header"
+                ],
                 "properties": {
                   "header": {
                     "$ref": "#/components/schemas/CsvHeader"
@@ -4786,7 +5195,11 @@
       },
       "GdalDatasetGeoTransform": {
         "type": "object",
-        "required": ["originCoordinate", "xPixelSize", "yPixelSize"],
+        "required": [
+          "originCoordinate",
+          "xPixelSize",
+          "yPixelSize"
+        ],
         "properties": {
           "originCoordinate": {
             "$ref": "#/components/schemas/Coordinate2D"
@@ -4868,7 +5281,9 @@
       "GdalLoadingInfoTemporalSlice": {
         "type": "object",
         "description": "one temporal slice of the dataset that requires reading from exactly one Gdal dataset",
-        "required": ["time"],
+        "required": [
+          "time"
+        ],
         "properties": {
           "cacheTtl": {
             "$ref": "#/components/schemas/CacheTtlSeconds"
@@ -4888,7 +5303,10 @@
       },
       "GdalMetaDataList": {
         "type": "object",
-        "required": ["resultDescriptor", "params"],
+        "required": [
+          "resultDescriptor",
+          "params"
+        ],
         "properties": {
           "params": {
             "type": "array",
@@ -4903,7 +5321,11 @@
       },
       "GdalMetaDataListWithType": {
         "type": "object",
-        "required": ["resultDescriptor", "params", "type"],
+        "required": [
+          "resultDescriptor",
+          "params",
+          "type"
+        ],
         "properties": {
           "params": {
             "type": "array",
@@ -4916,7 +5338,9 @@
           },
           "type": {
             "type": "string",
-            "enum": ["GdalMetaDataList"]
+            "enum": [
+              "GdalMetaDataList"
+            ]
           }
         }
       },
@@ -4987,13 +5411,18 @@
           },
           "type": {
             "type": "string",
-            "enum": ["GdalMetaDataRegular"]
+            "enum": [
+              "GdalMetaDataRegular"
+            ]
           }
         }
       },
       "GdalMetaDataStatic": {
         "type": "object",
-        "required": ["params", "resultDescriptor"],
+        "required": [
+          "params",
+          "resultDescriptor"
+        ],
         "properties": {
           "cacheTtl": {
             "$ref": "#/components/schemas/CacheTtlSeconds"
@@ -5016,7 +5445,11 @@
       },
       "GdalMetaDataStaticWithType": {
         "type": "object",
-        "required": ["params", "resultDescriptor", "type"],
+        "required": [
+          "params",
+          "resultDescriptor",
+          "type"
+        ],
         "properties": {
           "cacheTtl": {
             "$ref": "#/components/schemas/CacheTtlSeconds"
@@ -5037,13 +5470,19 @@
           },
           "type": {
             "type": "string",
-            "enum": ["GdalStatic"]
+            "enum": [
+              "GdalStatic"
+            ]
           }
         }
       },
       "GdalMetadataMapping": {
         "type": "object",
-        "required": ["source_key", "target_key", "target_type"],
+        "required": [
+          "source_key",
+          "target_key",
+          "target_type"
+        ],
         "properties": {
           "source_key": {
             "$ref": "#/components/schemas/RasterPropertiesKey"
@@ -5131,13 +5570,18 @@
           },
           "type": {
             "type": "string",
-            "enum": ["GdalMetadataNetCdfCf"]
+            "enum": [
+              "GdalMetadataNetCdfCf"
+            ]
           }
         }
       },
       "GdalSourceTimePlaceholder": {
         "type": "object",
-        "required": ["format", "reference"],
+        "required": [
+          "format",
+          "reference"
+        ],
         "properties": {
           "format": {
             "$ref": "#/components/schemas/DateTimeParseFormat"
@@ -5149,7 +5593,10 @@
       },
       "GeoJson": {
         "type": "object",
-        "required": ["type", "features"],
+        "required": [
+          "type",
+          "features"
+        ],
         "properties": {
           "features": {
             "type": "array",
@@ -5162,66 +5609,99 @@
       },
       "GetCapabilitiesFormat": {
         "type": "string",
-        "enum": ["text/xml"]
+        "enum": [
+          "text/xml"
+        ]
       },
       "GetCapabilitiesRequest": {
         "type": "string",
-        "enum": ["GetCapabilities"]
+        "enum": [
+          "GetCapabilities"
+        ]
       },
       "GetCoverageFormat": {
         "type": "string",
-        "enum": ["image/tiff"]
+        "enum": [
+          "image/tiff"
+        ]
       },
       "GetCoverageRequest": {
         "type": "string",
-        "enum": ["GetCoverage"]
+        "enum": [
+          "GetCoverage"
+        ]
       },
       "GetFeatureRequest": {
         "type": "string",
-        "enum": ["GetFeature"]
+        "enum": [
+          "GetFeature"
+        ]
       },
       "GetLegendGraphicRequest": {
         "type": "string",
-        "enum": ["GetLegendGraphic"]
+        "enum": [
+          "GetLegendGraphic"
+        ]
       },
       "GetMapExceptionFormat": {
         "type": "string",
-        "enum": ["XML", "JSON"]
+        "enum": [
+          "XML",
+          "JSON"
+        ]
       },
       "GetMapFormat": {
         "type": "string",
-        "enum": ["image/png"]
+        "enum": [
+          "image/png"
+        ]
       },
       "GetMapRequest": {
         "type": "string",
-        "enum": ["GetMap"]
+        "enum": [
+          "GetMap"
+        ]
       },
       "InfiniteOgrSourceDurationSpec": {
         "type": "object",
-        "required": ["type"],
+        "required": [
+          "type"
+        ],
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["infinite"]
+            "enum": [
+              "infinite"
+            ]
           }
         }
       },
       "InternalDataId": {
         "type": "object",
-        "required": ["datasetId", "type"],
+        "required": [
+          "datasetId",
+          "type"
+        ],
         "properties": {
           "datasetId": {
             "$ref": "#/components/schemas/DatasetId"
           },
           "type": {
             "type": "string",
-            "enum": ["internal"]
+            "enum": [
+              "internal"
+            ]
           }
         }
       },
       "Layer": {
         "type": "object",
-        "required": ["id", "name", "description", "workflow"],
+        "required": [
+          "id",
+          "name",
+          "description",
+          "workflow"
+        ],
         "properties": {
           "description": {
             "type": "string"
@@ -5261,7 +5741,13 @@
       },
       "LayerCollection": {
         "type": "object",
-        "required": ["id", "name", "description", "items", "properties"],
+        "required": [
+          "id",
+          "name",
+          "description",
+          "items",
+          "properties"
+        ],
         "properties": {
           "description": {
             "type": "string"
@@ -5296,7 +5782,11 @@
       },
       "LayerCollectionListing": {
         "type": "object",
-        "required": ["id", "name", "description"],
+        "required": [
+          "id",
+          "name",
+          "description"
+        ],
         "properties": {
           "description": {
             "type": "string"
@@ -5317,7 +5807,12 @@
       },
       "LayerCollectionListingWithType": {
         "type": "object",
-        "required": ["id", "name", "description", "type"],
+        "required": [
+          "id",
+          "name",
+          "description",
+          "type"
+        ],
         "properties": {
           "description": {
             "type": "string"
@@ -5336,33 +5831,45 @@
           },
           "type": {
             "type": "string",
-            "enum": ["collection"]
+            "enum": [
+              "collection"
+            ]
           }
         }
       },
       "LayerCollectionResource": {
         "type": "object",
-        "required": ["type", "id"],
+        "required": [
+          "type",
+          "id"
+        ],
         "properties": {
           "id": {
             "$ref": "#/components/schemas/LayerCollectionId"
           },
           "type": {
             "type": "string",
-            "enum": ["layerCollection"]
+            "enum": [
+              "layerCollection"
+            ]
           }
         }
       },
       "LayerCollectionResourceId": {
         "type": "object",
-        "required": ["type", "id"],
+        "required": [
+          "type",
+          "id"
+        ],
         "properties": {
           "id": {
             "$ref": "#/components/schemas/LayerCollectionId"
           },
           "type": {
             "type": "string",
-            "enum": ["LayerCollection"]
+            "enum": [
+              "LayerCollection"
+            ]
           }
         }
       },
@@ -5371,7 +5878,11 @@
       },
       "LayerListing": {
         "type": "object",
-        "required": ["id", "name", "description"],
+        "required": [
+          "id",
+          "name",
+          "description"
+        ],
         "properties": {
           "description": {
             "type": "string"
@@ -5393,7 +5904,12 @@
       },
       "LayerListingWithType": {
         "type": "object",
-        "required": ["id", "name", "description", "type"],
+        "required": [
+          "id",
+          "name",
+          "description",
+          "type"
+        ],
         "properties": {
           "description": {
             "type": "string"
@@ -5413,33 +5929,45 @@
           },
           "type": {
             "type": "string",
-            "enum": ["layer"]
+            "enum": [
+              "layer"
+            ]
           }
         }
       },
       "LayerResource": {
         "type": "object",
-        "required": ["type", "id"],
+        "required": [
+          "type",
+          "id"
+        ],
         "properties": {
           "id": {
             "$ref": "#/components/schemas/LayerId"
           },
           "type": {
             "type": "string",
-            "enum": ["layer"]
+            "enum": [
+              "layer"
+            ]
           }
         }
       },
       "LayerResourceId": {
         "type": "object",
-        "required": ["type", "id"],
+        "required": [
+          "type",
+          "id"
+        ],
         "properties": {
           "id": {
             "$ref": "#/components/schemas/LayerId"
           },
           "type": {
             "type": "string",
-            "enum": ["Layer"]
+            "enum": [
+              "Layer"
+            ]
           }
         }
       },
@@ -5447,11 +5975,15 @@
         "oneOf": [
           {
             "type": "string",
-            "enum": ["none"]
+            "enum": [
+              "none"
+            ]
           },
           {
             "type": "string",
-            "enum": ["delete"]
+            "enum": [
+              "delete"
+            ]
           },
           {
             "$ref": "#/components/schemas/ProjectLayer"
@@ -5460,7 +5992,10 @@
       },
       "LayerVisibility": {
         "type": "object",
-        "required": ["data", "legend"],
+        "required": [
+          "data",
+          "legend"
+        ],
         "properties": {
           "data": {
             "type": "boolean"
@@ -5472,7 +6007,10 @@
       },
       "LineSymbology": {
         "type": "object",
-        "required": ["stroke", "autoSimplified"],
+        "required": [
+          "stroke",
+          "autoSimplified"
+        ],
         "properties": {
           "autoSimplified": {
             "type": "boolean"
@@ -5492,7 +6030,11 @@
       },
       "LineSymbologyWithType": {
         "type": "object",
-        "required": ["stroke", "autoSimplified", "type"],
+        "required": [
+          "stroke",
+          "autoSimplified",
+          "type"
+        ],
         "properties": {
           "autoSimplified": {
             "type": "boolean"
@@ -5510,13 +6052,20 @@
           },
           "type": {
             "type": "string",
-            "enum": ["line"]
+            "enum": [
+              "line"
+            ]
           }
         }
       },
       "LinearGradient": {
         "type": "object",
-        "required": ["breakpoints", "noDataColor", "overColor", "underColor"],
+        "required": [
+          "breakpoints",
+          "noDataColor",
+          "overColor",
+          "underColor"
+        ],
         "properties": {
           "breakpoints": {
             "type": "array",
@@ -5559,7 +6108,9 @@
           },
           "type": {
             "type": "string",
-            "enum": ["linearGradient"]
+            "enum": [
+              "linearGradient"
+            ]
           },
           "underColor": {
             "$ref": "#/components/schemas/RgbaColor"
@@ -5568,7 +6119,12 @@
       },
       "LogarithmicGradient": {
         "type": "object",
-        "required": ["breakpoints", "noDataColor", "overColor", "underColor"],
+        "required": [
+          "breakpoints",
+          "noDataColor",
+          "overColor",
+          "underColor"
+        ],
         "properties": {
           "breakpoints": {
             "type": "array",
@@ -5611,7 +6167,9 @@
           },
           "type": {
             "type": "string",
-            "enum": ["logarithmicGradient"]
+            "enum": [
+              "logarithmicGradient"
+            ]
           },
           "underColor": {
             "$ref": "#/components/schemas/RgbaColor"
@@ -5674,7 +6232,11 @@
       },
       "MetaDataSuggestion": {
         "type": "object",
-        "required": ["mainFile", "layerName", "metaData"],
+        "required": [
+          "mainFile",
+          "layerName",
+          "metaData"
+        ],
         "properties": {
           "layerName": {
             "type": "string"
@@ -5693,7 +6255,9 @@
       },
       "MockDatasetDataSourceLoadingInfo": {
         "type": "object",
-        "required": ["points"],
+        "required": [
+          "points"
+        ],
         "properties": {
           "points": {
             "type": "array",
@@ -5705,7 +6269,10 @@
       },
       "MockMetaData": {
         "type": "object",
-        "required": ["loadingInfo", "resultDescriptor"],
+        "required": [
+          "loadingInfo",
+          "resultDescriptor"
+        ],
         "properties": {
           "loadingInfo": {
             "$ref": "#/components/schemas/MockDatasetDataSourceLoadingInfo"
@@ -5717,7 +6284,11 @@
       },
       "MockMetaDataWithType": {
         "type": "object",
-        "required": ["loadingInfo", "resultDescriptor", "type"],
+        "required": [
+          "loadingInfo",
+          "resultDescriptor",
+          "type"
+        ],
         "properties": {
           "loadingInfo": {
             "$ref": "#/components/schemas/MockDatasetDataSourceLoadingInfo"
@@ -5727,26 +6298,35 @@
           },
           "type": {
             "type": "string",
-            "enum": ["MockMetaData"]
+            "enum": [
+              "MockMetaData"
+            ]
           }
         }
       },
       "ModelIdResourceId": {
         "type": "object",
-        "required": ["type", "id"],
+        "required": [
+          "type",
+          "id"
+        ],
         "properties": {
           "id": {
             "$ref": "#/components/schemas/MlModelId"
           },
           "type": {
             "type": "string",
-            "enum": ["ModelId"]
+            "enum": [
+              "ModelId"
+            ]
           }
         }
       },
       "MultiLineString": {
         "type": "object",
-        "required": ["coordinates"],
+        "required": [
+          "coordinates"
+        ],
         "properties": {
           "coordinates": {
             "type": "array",
@@ -5761,7 +6341,9 @@
       },
       "MultiPoint": {
         "type": "object",
-        "required": ["coordinates"],
+        "required": [
+          "coordinates"
+        ],
         "properties": {
           "coordinates": {
             "type": "array",
@@ -5773,7 +6355,9 @@
       },
       "MultiPolygon": {
         "type": "object",
-        "required": ["polygons"],
+        "required": [
+          "polygons"
+        ],
         "properties": {
           "polygons": {
             "type": "array",
@@ -5798,11 +6382,15 @@
       },
       "NoneOgrSourceDatasetTimeType": {
         "type": "object",
-        "required": ["type"],
+        "required": [
+          "type"
+        ],
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["none"]
+            "enum": [
+              "none"
+            ]
           }
         }
       },
@@ -5828,7 +6416,10 @@
       },
       "OgrMetaData": {
         "type": "object",
-        "required": ["loadingInfo", "resultDescriptor"],
+        "required": [
+          "loadingInfo",
+          "resultDescriptor"
+        ],
         "properties": {
           "loadingInfo": {
             "$ref": "#/components/schemas/OgrSourceDataset"
@@ -5840,7 +6431,11 @@
       },
       "OgrMetaDataWithType": {
         "type": "object",
-        "required": ["loadingInfo", "resultDescriptor", "type"],
+        "required": [
+          "loadingInfo",
+          "resultDescriptor",
+          "type"
+        ],
         "properties": {
           "loadingInfo": {
             "$ref": "#/components/schemas/OgrSourceDataset"
@@ -5850,13 +6445,17 @@
           },
           "type": {
             "type": "string",
-            "enum": ["OgrMetaData"]
+            "enum": [
+              "OgrMetaData"
+            ]
           }
         }
       },
       "OgrSourceColumnSpec": {
         "type": "object",
-        "required": ["x"],
+        "required": [
+          "x"
+        ],
         "properties": {
           "bool": {
             "type": "array",
@@ -5914,7 +6513,11 @@
       },
       "OgrSourceDataset": {
         "type": "object",
-        "required": ["fileName", "layerName", "onError"],
+        "required": [
+          "fileName",
+          "layerName",
+          "onError"
+        ],
         "properties": {
           "attributeQuery": {
             "type": "string",
@@ -6019,7 +6622,10 @@
       },
       "OgrSourceErrorSpec": {
         "type": "string",
-        "enum": ["ignore", "abort"]
+        "enum": [
+          "ignore",
+          "abort"
+        ]
       },
       "OgrSourceTimeFormat": {
         "oneOf": [
@@ -6044,7 +6650,10 @@
       },
       "OrderBy": {
         "type": "string",
-        "enum": ["NameAsc", "NameDesc"]
+        "enum": [
+          "NameAsc",
+          "NameDesc"
+        ]
       },
       "Palette": {
         "type": "object",
@@ -6055,7 +6664,12 @@
       },
       "PaletteColorizer": {
         "type": "object",
-        "required": ["colors", "noDataColor", "defaultColor", "type"],
+        "required": [
+          "colors",
+          "noDataColor",
+          "defaultColor",
+          "type"
+        ],
         "properties": {
           "colors": {
             "$ref": "#/components/schemas/Palette"
@@ -6068,18 +6682,27 @@
           },
           "type": {
             "type": "string",
-            "enum": ["palette"]
+            "enum": [
+              "palette"
+            ]
           }
         }
       },
       "Permission": {
         "type": "string",
-        "enum": ["Read", "Owner"]
+        "enum": [
+          "Read",
+          "Owner"
+        ]
       },
       "PermissionRequest": {
         "type": "object",
         "description": "Request for adding a new permission to the given role on the given resource",
-        "required": ["resource", "roleId", "permission"],
+        "required": [
+          "resource",
+          "roleId",
+          "permission"
+        ],
         "properties": {
           "permission": {
             "$ref": "#/components/schemas/Permission"
@@ -6094,7 +6717,10 @@
       },
       "Plot": {
         "type": "object",
-        "required": ["workflow", "name"],
+        "required": [
+          "workflow",
+          "name"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -6106,12 +6732,20 @@
       },
       "PlotOutputFormat": {
         "type": "string",
-        "enum": ["JsonPlain", "JsonVega", "ImagePng"]
+        "enum": [
+          "JsonPlain",
+          "JsonVega",
+          "ImagePng"
+        ]
       },
       "PlotQueryRectangle": {
         "type": "object",
         "description": "A spatio-temporal rectangle with a specified resolution",
-        "required": ["spatialBounds", "timeInterval", "spatialResolution"],
+        "required": [
+          "spatialBounds",
+          "timeInterval",
+          "spatialResolution"
+        ],
         "properties": {
           "spatialBounds": {
             "$ref": "#/components/schemas/BoundingBox2D"
@@ -6127,7 +6761,9 @@
       "PlotResultDescriptor": {
         "type": "object",
         "description": "A `ResultDescriptor` for plot queries",
-        "required": ["spatialReference"],
+        "required": [
+          "spatialReference"
+        ],
         "properties": {
           "bbox": {
             "allOf": [
@@ -6153,7 +6789,10 @@
       "PlotResultDescriptorWithType": {
         "type": "object",
         "description": "A `ResultDescriptor` for plot queries",
-        "required": ["spatialReference", "type"],
+        "required": [
+          "spatialReference",
+          "type"
+        ],
         "properties": {
           "bbox": {
             "allOf": [
@@ -6176,7 +6815,9 @@
           },
           "type": {
             "type": "string",
-            "enum": ["plot"]
+            "enum": [
+              "plot"
+            ]
           }
         }
       },
@@ -6184,11 +6825,15 @@
         "oneOf": [
           {
             "type": "string",
-            "enum": ["none"]
+            "enum": [
+              "none"
+            ]
           },
           {
             "type": "string",
-            "enum": ["delete"]
+            "enum": [
+              "delete"
+            ]
           },
           {
             "$ref": "#/components/schemas/Plot"
@@ -6197,7 +6842,11 @@
       },
       "PointSymbology": {
         "type": "object",
-        "required": ["radius", "fillColor", "stroke"],
+        "required": [
+          "radius",
+          "fillColor",
+          "stroke"
+        ],
         "properties": {
           "fillColor": {
             "$ref": "#/components/schemas/ColorParam"
@@ -6220,7 +6869,12 @@
       },
       "PointSymbologyWithType": {
         "type": "object",
-        "required": ["radius", "fillColor", "stroke", "type"],
+        "required": [
+          "radius",
+          "fillColor",
+          "stroke",
+          "type"
+        ],
         "properties": {
           "fillColor": {
             "$ref": "#/components/schemas/ColorParam"
@@ -6241,13 +6895,19 @@
           },
           "type": {
             "type": "string",
-            "enum": ["point"]
+            "enum": [
+              "point"
+            ]
           }
         }
       },
       "PolygonSymbology": {
         "type": "object",
-        "required": ["fillColor", "stroke", "autoSimplified"],
+        "required": [
+          "fillColor",
+          "stroke",
+          "autoSimplified"
+        ],
         "properties": {
           "autoSimplified": {
             "type": "boolean"
@@ -6270,7 +6930,12 @@
       },
       "PolygonSymbologyWithType": {
         "type": "object",
-        "required": ["fillColor", "stroke", "autoSimplified", "type"],
+        "required": [
+          "fillColor",
+          "stroke",
+          "autoSimplified",
+          "type"
+        ],
         "properties": {
           "autoSimplified": {
             "type": "boolean"
@@ -6291,7 +6956,9 @@
           },
           "type": {
             "type": "string",
-            "enum": ["polygon"]
+            "enum": [
+              "polygon"
+            ]
           }
         }
       },
@@ -6346,7 +7013,12 @@
       },
       "ProjectLayer": {
         "type": "object",
-        "required": ["workflow", "name", "visibility", "symbology"],
+        "required": [
+          "workflow",
+          "name",
+          "visibility",
+          "symbology"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -6402,33 +7074,46 @@
       },
       "ProjectResource": {
         "type": "object",
-        "required": ["type", "id"],
+        "required": [
+          "type",
+          "id"
+        ],
         "properties": {
           "id": {
             "$ref": "#/components/schemas/ProjectId"
           },
           "type": {
             "type": "string",
-            "enum": ["project"]
+            "enum": [
+              "project"
+            ]
           }
         }
       },
       "ProjectResourceId": {
         "type": "object",
-        "required": ["type", "id"],
+        "required": [
+          "type",
+          "id"
+        ],
         "properties": {
           "id": {
             "$ref": "#/components/schemas/ProjectId"
           },
           "type": {
             "type": "string",
-            "enum": ["Project"]
+            "enum": [
+              "Project"
+            ]
           }
         }
       },
       "ProjectVersion": {
         "type": "object",
-        "required": ["id", "changed"],
+        "required": [
+          "id",
+          "changed"
+        ],
         "properties": {
           "changed": {
             "type": "string",
@@ -6453,7 +7138,11 @@
       },
       "Provenance": {
         "type": "object",
-        "required": ["citation", "license", "uri"],
+        "required": [
+          "citation",
+          "license",
+          "uri"
+        ],
         "properties": {
           "citation": {
             "type": "string"
@@ -6468,7 +7157,10 @@
       },
       "ProvenanceEntry": {
         "type": "object",
-        "required": ["provenance", "data"],
+        "required": [
+          "provenance",
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "array",
@@ -6483,7 +7175,9 @@
       },
       "ProvenanceOutput": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "$ref": "#/components/schemas/DataId"
@@ -6499,7 +7193,10 @@
       },
       "ProviderLayerCollectionId": {
         "type": "object",
-        "required": ["providerId", "collectionId"],
+        "required": [
+          "providerId",
+          "collectionId"
+        ],
         "properties": {
           "collectionId": {
             "$ref": "#/components/schemas/LayerCollectionId"
@@ -6511,7 +7208,10 @@
       },
       "ProviderLayerId": {
         "type": "object",
-        "required": ["providerId", "layerId"],
+        "required": [
+          "providerId",
+          "layerId"
+        ],
         "properties": {
           "layerId": {
             "$ref": "#/components/schemas/LayerId"
@@ -6523,7 +7223,10 @@
       },
       "Quota": {
         "type": "object",
-        "required": ["available", "used"],
+        "required": [
+          "available",
+          "used"
+        ],
         "properties": {
           "available": {
             "type": "integer",
@@ -6534,6 +7237,27 @@
             "format": "int64",
             "minimum": 0
           }
+        }
+      },
+      "RasterBandDescriptor": {
+        "type": "object",
+        "required": [
+          "name",
+          "measurement"
+        ],
+        "properties": {
+          "measurement": {
+            "$ref": "#/components/schemas/Measurement"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "RasterBandDescriptors": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RasterBandDescriptor"
         }
       },
       "RasterDataType": {
@@ -6554,7 +7278,10 @@
       "RasterDatasetFromWorkflow": {
         "type": "object",
         "description": "parameter for the dataset from workflow handler (body)",
-        "required": ["displayName", "query"],
+        "required": [
+          "displayName",
+          "query"
+        ],
         "properties": {
           "asCog": {
             "type": "boolean",
@@ -6608,7 +7335,10 @@
       "RasterDatasetFromWorkflowResult": {
         "type": "object",
         "description": "response of the dataset from workflow handler",
-        "required": ["dataset", "upload"],
+        "required": [
+          "dataset",
+          "upload"
+        ],
         "properties": {
           "dataset": {
             "$ref": "#/components/schemas/DatasetName"
@@ -6620,11 +7350,16 @@
       },
       "RasterPropertiesEntryType": {
         "type": "string",
-        "enum": ["Number", "String"]
+        "enum": [
+          "Number",
+          "String"
+        ]
       },
       "RasterPropertiesKey": {
         "type": "object",
-        "required": ["key"],
+        "required": [
+          "key"
+        ],
         "properties": {
           "domain": {
             "type": "string",
@@ -6638,7 +7373,11 @@
       "RasterQueryRectangle": {
         "type": "object",
         "description": "A spatio-temporal rectangle with a specified resolution",
-        "required": ["spatialBounds", "timeInterval", "spatialResolution"],
+        "required": [
+          "spatialBounds",
+          "timeInterval",
+          "spatialResolution"
+        ],
         "properties": {
           "spatialBounds": {
             "$ref": "#/components/schemas/SpatialPartition2D"
@@ -6654,8 +7393,15 @@
       "RasterResultDescriptor": {
         "type": "object",
         "description": "A `ResultDescriptor` for raster queries",
-        "required": ["dataType", "spatialReference", "measurement"],
+        "required": [
+          "dataType",
+          "spatialReference",
+          "bands"
+        ],
         "properties": {
+          "bands": {
+            "$ref": "#/components/schemas/RasterBandDescriptors"
+          },
           "bbox": {
             "allOf": [
               {
@@ -6666,9 +7412,6 @@
           },
           "dataType": {
             "$ref": "#/components/schemas/RasterDataType"
-          },
-          "measurement": {
-            "$ref": "#/components/schemas/Measurement"
           },
           "resolution": {
             "allOf": [
@@ -6694,8 +7437,16 @@
       "RasterResultDescriptorWithType": {
         "type": "object",
         "description": "A `ResultDescriptor` for raster queries",
-        "required": ["dataType", "spatialReference", "measurement", "type"],
+        "required": [
+          "dataType",
+          "spatialReference",
+          "bands",
+          "type"
+        ],
         "properties": {
+          "bands": {
+            "$ref": "#/components/schemas/RasterBandDescriptors"
+          },
           "bbox": {
             "allOf": [
               {
@@ -6706,9 +7457,6 @@
           },
           "dataType": {
             "$ref": "#/components/schemas/RasterDataType"
-          },
-          "measurement": {
-            "$ref": "#/components/schemas/Measurement"
           },
           "resolution": {
             "allOf": [
@@ -6731,18 +7479,25 @@
           },
           "type": {
             "type": "string",
-            "enum": ["raster"]
+            "enum": [
+              "raster"
+            ]
           }
         }
       },
       "RasterStreamWebsocketResultType": {
         "type": "string",
         "description": "The stream result type for `raster_stream_websocket`.",
-        "enum": ["arrow"]
+        "enum": [
+          "arrow"
+        ]
       },
       "RasterSymbology": {
         "type": "object",
-        "required": ["opacity", "colorizer"],
+        "required": [
+          "opacity",
+          "colorizer"
+        ],
         "properties": {
           "colorizer": {
             "$ref": "#/components/schemas/Colorizer"
@@ -6755,7 +7510,11 @@
       },
       "RasterSymbologyWithType": {
         "type": "object",
-        "required": ["opacity", "colorizer", "type"],
+        "required": [
+          "opacity",
+          "colorizer",
+          "type"
+        ],
         "properties": {
           "colorizer": {
             "$ref": "#/components/schemas/Colorizer"
@@ -6766,7 +7525,9 @@
           },
           "type": {
             "type": "string",
-            "enum": ["raster"]
+            "enum": [
+              "raster"
+            ]
           }
         }
       },
@@ -6834,17 +7595,24 @@
       },
       "RgbaColorizer": {
         "type": "object",
-        "required": ["type"],
+        "required": [
+          "type"
+        ],
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["rgba"]
+            "enum": [
+              "rgba"
+            ]
           }
         }
       },
       "Role": {
         "type": "object",
-        "required": ["id", "name"],
+        "required": [
+          "id",
+          "name"
+        ],
         "properties": {
           "id": {
             "$ref": "#/components/schemas/RoleId"
@@ -6856,7 +7624,10 @@
       },
       "RoleDescription": {
         "type": "object",
-        "required": ["role", "individual"],
+        "required": [
+          "role",
+          "individual"
+        ],
         "properties": {
           "individual": {
             "type": "boolean"
@@ -6892,7 +7663,9 @@
           },
           "status": {
             "type": "string",
-            "enum": ["running"]
+            "enum": [
+              "running"
+            ]
           },
           "taskType": {
             "type": "string"
@@ -6904,7 +7677,11 @@
       },
       "STRectangle": {
         "type": "object",
-        "required": ["spatialReference", "boundingBox", "timeInterval"],
+        "required": [
+          "spatialReference",
+          "boundingBox",
+          "timeInterval"
+        ],
         "properties": {
           "boundingBox": {
             "$ref": "#/components/schemas/BoundingBox2D"
@@ -6919,7 +7696,12 @@
       },
       "ServerInfo": {
         "type": "object",
-        "required": ["buildDate", "commitHash", "version", "features"],
+        "required": [
+          "buildDate",
+          "commitHash",
+          "version",
+          "features"
+        ],
         "properties": {
           "buildDate": {
             "type": "string"
@@ -6942,7 +7724,10 @@
       "SpatialPartition2D": {
         "type": "object",
         "description": "A partition of space that include the upper left but excludes the lower right coordinate",
-        "required": ["upperLeftCoordinate", "lowerRightCoordinate"],
+        "required": [
+          "upperLeftCoordinate",
+          "lowerRightCoordinate"
+        ],
         "properties": {
           "lowerRightCoordinate": {
             "$ref": "#/components/schemas/Coordinate2D"
@@ -6955,12 +7740,22 @@
       "SpatialReferenceAuthority": {
         "type": "string",
         "description": "A spatial reference authority that is part of a spatial reference definition",
-        "enum": ["EPSG", "SR-ORG", "IAU2000", "ESRI"]
+        "enum": [
+          "EPSG",
+          "SR-ORG",
+          "IAU2000",
+          "ESRI"
+        ]
       },
       "SpatialReferenceSpecification": {
         "type": "object",
         "description": "The specification of a spatial reference, where extent and axis labels are given\nin natural order (x, y) = (east, north)",
-        "required": ["name", "spatialReference", "projString", "extent"],
+        "required": [
+          "name",
+          "spatialReference",
+          "projString",
+          "extent"
+        ],
         "properties": {
           "axisLabels": {
             "allOf": [
@@ -6995,7 +7790,10 @@
       "SpatialResolution": {
         "type": "object",
         "description": "The spatial resolution in SRS units",
-        "required": ["x", "y"],
+        "required": [
+          "x",
+          "y"
+        ],
         "properties": {
           "x": {
             "type": "number",
@@ -7009,7 +7807,12 @@
       },
       "StartDurationOgrSourceDatasetTimeType": {
         "type": "object",
-        "required": ["startField", "startFormat", "durationField", "type"],
+        "required": [
+          "startField",
+          "startFormat",
+          "durationField",
+          "type"
+        ],
         "properties": {
           "durationField": {
             "type": "string"
@@ -7022,7 +7825,9 @@
           },
           "type": {
             "type": "string",
-            "enum": ["startDuration"]
+            "enum": [
+              "startDuration"
+            ]
           }
         }
       },
@@ -7050,13 +7855,20 @@
           },
           "type": {
             "type": "string",
-            "enum": ["startEnd"]
+            "enum": [
+              "startEnd"
+            ]
           }
         }
       },
       "StartOgrSourceDatasetTimeType": {
         "type": "object",
-        "required": ["startField", "startFormat", "duration", "type"],
+        "required": [
+          "startField",
+          "startFormat",
+          "duration",
+          "type"
+        ],
         "properties": {
           "duration": {
             "$ref": "#/components/schemas/OgrSourceDurationSpec"
@@ -7069,30 +7881,42 @@
           },
           "type": {
             "type": "string",
-            "enum": ["start"]
+            "enum": [
+              "start"
+            ]
           }
         }
       },
       "StaticColorParam": {
         "type": "object",
-        "required": ["color", "type"],
+        "required": [
+          "color",
+          "type"
+        ],
         "properties": {
           "color": {
             "$ref": "#/components/schemas/RgbaColor"
           },
           "type": {
             "type": "string",
-            "enum": ["static"]
+            "enum": [
+              "static"
+            ]
           }
         }
       },
       "StaticNumberParam": {
         "type": "object",
-        "required": ["value", "type"],
+        "required": [
+          "value",
+          "type"
+        ],
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["static"]
+            "enum": [
+              "static"
+            ]
           },
           "value": {
             "type": "integer",
@@ -7102,7 +7926,10 @@
       },
       "StrokeParam": {
         "type": "object",
-        "required": ["width", "color"],
+        "required": [
+          "width",
+          "color"
+        ],
         "properties": {
           "color": {
             "$ref": "#/components/schemas/ColorParam"
@@ -7147,7 +7974,12 @@
       },
       "TaskFilter": {
         "type": "string",
-        "enum": ["running", "aborted", "failed", "completed"]
+        "enum": [
+          "running",
+          "aborted",
+          "failed",
+          "completed"
+        ]
       },
       "TaskId": {
         "type": "string",
@@ -7179,7 +8011,9 @@
       "TaskResponse": {
         "type": "object",
         "description": "Create a task somewhere and respond with a task id to query the task status.",
-        "required": ["taskId"],
+        "required": [
+          "taskId"
+        ],
         "properties": {
           "taskId": {
             "$ref": "#/components/schemas/TaskId"
@@ -7218,7 +8052,9 @@
           },
           {
             "type": "object",
-            "required": ["taskId"],
+            "required": [
+              "taskId"
+            ],
             "properties": {
               "taskId": {
                 "$ref": "#/components/schemas/TaskId"
@@ -7229,7 +8065,11 @@
       },
       "TextSymbology": {
         "type": "object",
-        "required": ["attribute", "fillColor", "stroke"],
+        "required": [
+          "attribute",
+          "fillColor",
+          "stroke"
+        ],
         "properties": {
           "attribute": {
             "type": "string"
@@ -7262,7 +8102,10 @@
       "TimeInterval": {
         "type": "object",
         "description": "Stores time intervals in ms in close-open semantic [start, end)",
-        "required": ["start", "end"],
+        "required": [
+          "start",
+          "end"
+        ],
         "properties": {
           "end": {
             "$ref": "#/components/schemas/TimeInstance"
@@ -7274,11 +8117,17 @@
       },
       "TimeReference": {
         "type": "string",
-        "enum": ["start", "end"]
+        "enum": [
+          "start",
+          "end"
+        ]
       },
       "TimeStep": {
         "type": "object",
-        "required": ["granularity", "step"],
+        "required": [
+          "granularity",
+          "step"
+        ],
         "properties": {
           "granularity": {
             "$ref": "#/components/schemas/TimeGranularity"
@@ -7292,7 +8141,11 @@
       },
       "TimeStepWithType": {
         "type": "object",
-        "required": ["granularity", "step", "type"],
+        "required": [
+          "granularity",
+          "step",
+          "type"
+        ],
         "properties": {
           "granularity": {
             "$ref": "#/components/schemas/TimeGranularity"
@@ -7304,7 +8157,9 @@
           },
           "type": {
             "type": "string",
-            "enum": ["value"]
+            "enum": [
+              "value"
+            ]
           }
         }
       },
@@ -7315,7 +8170,9 @@
         "oneOf": [
           {
             "type": "object",
-            "required": ["Data"],
+            "required": [
+              "Data"
+            ],
             "properties": {
               "Data": {
                 "$ref": "#/components/schemas/NoGeometry"
@@ -7324,7 +8181,9 @@
           },
           {
             "type": "object",
-            "required": ["MultiPoint"],
+            "required": [
+              "MultiPoint"
+            ],
             "properties": {
               "MultiPoint": {
                 "$ref": "#/components/schemas/MultiPoint"
@@ -7333,7 +8192,9 @@
           },
           {
             "type": "object",
-            "required": ["MultiLineString"],
+            "required": [
+              "MultiLineString"
+            ],
             "properties": {
               "MultiLineString": {
                 "$ref": "#/components/schemas/MultiLineString"
@@ -7342,7 +8203,9 @@
           },
           {
             "type": "object",
-            "required": ["MultiPolygon"],
+            "required": [
+              "MultiPolygon"
+            ],
             "properties": {
               "MultiPolygon": {
                 "$ref": "#/components/schemas/MultiPolygon"
@@ -7354,11 +8217,16 @@
       "TypedOperator": {
         "type": "object",
         "description": "An enum to differentiate between `Operator` variants",
-        "required": ["type", "operator"],
+        "required": [
+          "type",
+          "operator"
+        ],
         "properties": {
           "operator": {
             "type": "object",
-            "required": ["type"],
+            "required": [
+              "type"
+            ],
             "properties": {
               "params": {
                 "type": "object"
@@ -7373,7 +8241,11 @@
           },
           "type": {
             "type": "string",
-            "enum": ["Vector", "Raster", "Plot"]
+            "enum": [
+              "Vector",
+              "Raster",
+              "Plot"
+            ]
           }
         },
         "example": {
@@ -7415,21 +8287,30 @@
       },
       "UnitlessMeasurement": {
         "type": "object",
-        "required": ["type"],
+        "required": [
+          "type"
+        ],
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["unitless"]
+            "enum": [
+              "unitless"
+            ]
           }
         }
       },
       "UnixTimeStampOgrSourceTimeFormat": {
         "type": "object",
-        "required": ["timestampType", "format"],
+        "required": [
+          "timestampType",
+          "format"
+        ],
         "properties": {
           "format": {
             "type": "string",
-            "enum": ["unixTimeStamp"]
+            "enum": [
+              "unixTimeStamp"
+            ]
           },
           "timestampType": {
             "$ref": "#/components/schemas/UnixTimeStampType"
@@ -7438,11 +8319,16 @@
       },
       "UnixTimeStampType": {
         "type": "string",
-        "enum": ["epochSeconds", "epochMilliseconds"]
+        "enum": [
+          "epochSeconds",
+          "epochMilliseconds"
+        ]
       },
       "UpdateProject": {
         "type": "object",
-        "required": ["id"],
+        "required": [
+          "id"
+        ],
         "properties": {
           "bounds": {
             "allOf": [
@@ -7510,7 +8396,9 @@
       },
       "UpdateQuota": {
         "type": "object",
-        "required": ["available"],
+        "required": [
+          "available"
+        ],
         "properties": {
           "available": {
             "type": "integer",
@@ -7520,7 +8408,9 @@
       },
       "UploadFileLayersResponse": {
         "type": "object",
-        "required": ["layers"],
+        "required": [
+          "layers"
+        ],
         "properties": {
           "layers": {
             "type": "array",
@@ -7532,7 +8422,9 @@
       },
       "UploadFilesResponse": {
         "type": "object",
-        "required": ["files"],
+        "required": [
+          "files"
+        ],
         "properties": {
           "files": {
             "type": "array",
@@ -7548,7 +8440,10 @@
       },
       "UserCredentials": {
         "type": "object",
-        "required": ["email", "password"],
+        "required": [
+          "email",
+          "password"
+        ],
         "properties": {
           "email": {
             "type": "string"
@@ -7568,7 +8463,9 @@
       },
       "UserInfo": {
         "type": "object",
-        "required": ["id"],
+        "required": [
+          "id"
+        ],
         "properties": {
           "email": {
             "type": "string",
@@ -7585,7 +8482,11 @@
       },
       "UserRegistration": {
         "type": "object",
-        "required": ["email", "password", "realName"],
+        "required": [
+          "email",
+          "password",
+          "realName"
+        ],
         "properties": {
           "email": {
             "type": "string"
@@ -7605,7 +8506,13 @@
       },
       "UserSession": {
         "type": "object",
-        "required": ["id", "user", "created", "validUntil", "roles"],
+        "required": [
+          "id",
+          "user",
+          "created",
+          "validUntil",
+          "roles"
+        ],
         "properties": {
           "created": {
             "type": "string",
@@ -7647,7 +8554,10 @@
       },
       "VectorColumnInfo": {
         "type": "object",
-        "required": ["dataType", "measurement"],
+        "required": [
+          "dataType",
+          "measurement"
+        ],
         "properties": {
           "dataType": {
             "$ref": "#/components/schemas/FeatureDataType"
@@ -7660,12 +8570,21 @@
       "VectorDataType": {
         "type": "string",
         "description": "An enum that contains all possible vector data types",
-        "enum": ["Data", "MultiPoint", "MultiLineString", "MultiPolygon"]
+        "enum": [
+          "Data",
+          "MultiPoint",
+          "MultiLineString",
+          "MultiPolygon"
+        ]
       },
       "VectorQueryRectangle": {
         "type": "object",
         "description": "A spatio-temporal rectangle with a specified resolution",
-        "required": ["spatialBounds", "timeInterval", "spatialResolution"],
+        "required": [
+          "spatialBounds",
+          "timeInterval",
+          "spatialResolution"
+        ],
         "properties": {
           "spatialBounds": {
             "$ref": "#/components/schemas/BoundingBox2D"
@@ -7680,7 +8599,11 @@
       },
       "VectorResultDescriptor": {
         "type": "object",
-        "required": ["dataType", "spatialReference", "columns"],
+        "required": [
+          "dataType",
+          "spatialReference",
+          "columns"
+        ],
         "properties": {
           "bbox": {
             "allOf": [
@@ -7714,7 +8637,12 @@
       },
       "VectorResultDescriptorWithType": {
         "type": "object",
-        "required": ["dataType", "spatialReference", "columns", "type"],
+        "required": [
+          "dataType",
+          "spatialReference",
+          "columns",
+          "type"
+        ],
         "properties": {
           "bbox": {
             "allOf": [
@@ -7746,13 +8674,18 @@
           },
           "type": {
             "type": "string",
-            "enum": ["vector"]
+            "enum": [
+              "vector"
+            ]
           }
         }
       },
       "Volume": {
         "type": "object",
-        "required": ["name", "path"],
+        "required": [
+          "name",
+          "path"
+        ],
         "properties": {
           "name": {
             "$ref": "#/components/schemas/VolumeName"
@@ -7767,7 +8700,9 @@
       },
       "WcsBoundingbox": {
         "type": "object",
-        "required": ["bbox"],
+        "required": [
+          "bbox"
+        ],
         "properties": {
           "bbox": {
             "type": "array",
@@ -7784,30 +8719,43 @@
       },
       "WcsService": {
         "type": "string",
-        "enum": ["WCS"]
+        "enum": [
+          "WCS"
+        ]
       },
       "WcsVersion": {
         "type": "string",
-        "enum": ["1.1.0", "1.1.1"]
+        "enum": [
+          "1.1.0",
+          "1.1.1"
+        ]
       },
       "WfsResolution": {
         "type": "string"
       },
       "WfsService": {
         "type": "string",
-        "enum": ["WFS"]
+        "enum": [
+          "WFS"
+        ]
       },
       "WfsVersion": {
         "type": "string",
-        "enum": ["2.0.0"]
+        "enum": [
+          "2.0.0"
+        ]
       },
       "WmsService": {
         "type": "string",
-        "enum": ["WMS"]
+        "enum": [
+          "WMS"
+        ]
       },
       "WmsVersion": {
         "type": "string",
-        "enum": ["1.3.0"]
+        "enum": [
+          "1.3.0"
+        ]
       },
       "Workflow": {
         "allOf": [
@@ -7825,7 +8773,11 @@
       },
       "WrappedPlotOutput": {
         "type": "object",
-        "required": ["outputFormat", "plotType", "data"],
+        "required": [
+          "outputFormat",
+          "plotType",
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object"
@@ -7840,11 +8792,15 @@
       },
       "ZeroOgrSourceDurationSpec": {
         "type": "object",
-        "required": ["type"],
+        "required": [
+          "type"
+        ],
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["zero"]
+            "enum": [
+              "zero"
+            ]
           }
         }
       }
@@ -7880,7 +8836,9 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": ["datasetName"],
+              "required": [
+                "datasetName"
+              ],
               "properties": {
                 "datasetName": {
                   "$ref": "#/components/schemas/DatasetName"
@@ -7899,7 +8857,9 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": ["id"],
+              "required": [
+                "id"
+              ],
               "properties": {
                 "id": {
                   "type": "string",

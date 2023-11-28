@@ -30,3 +30,13 @@ DEV_RUN=1 .generation/generate.py
 ```
 
 This will skip the running of the container and instead use the local files.
+
+## Update config.ini
+
+To update the config.ini file, run:
+
+```bash
+.generation/update_config.py --backendTag pro-nightly-2023-11-28
+```
+
+This will set a new backend tag and increment the version number.

@@ -69,7 +69,7 @@ class Configuration:
                  ) -> None:
         """Constructor
         """
-        self._base_path = "http://localhost:3030/api" if host is None else host
+        self._base_path = "http://0.0.0.0:8080/api" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -378,7 +378,7 @@ class Configuration:
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 0.7.0\n"\
-               "SDK Package Version: 0.0.1".\
+               "SDK Package Version: 0.0.2".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
@@ -388,7 +388,7 @@ class Configuration:
         """
         return [
             {
-                'url': "http://localhost:3030/api",
+                'url': "http://0.0.0.0:8080/api",
                 'description': "No description provided",
             }
         ]

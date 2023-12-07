@@ -140,12 +140,11 @@ def build_container():
     )
 
 
-def clean_test_dirs():
+def clean_test_dirs(*, language: Literal['python', 'typescript']):
     '''Remove the test directory, since it will not be overwritten by the generator.'''
-    for lang in ['python', 'typescript']:
-        test_path = Path(lang) / 'test'
-        if os.path.isdir(test_path):
-            shutil.rmtree(test_path)
+    test_path = Path(language) / 'test'
+    if os.path.isdir(test_path):
+        shutil.rmtree(test_path)
 
 
 def generate_python_code(*, package_name: str, package_version: str, package_url: str):
@@ -215,7 +214,7 @@ def main():
     if args.build_container:
         build_container()
 
-    clean_test_dirs()
+    clean_test_dirs(language=args.language)
 
     if args.language == 'python':
         generate_python_code(

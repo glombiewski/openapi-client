@@ -22,11 +22,11 @@
 
 # Unnecessary files
 
-/docs/
-/git_push.sh
+/python/docs/
+/python/git_push.sh
 
 # Other CIs
 
-/.gitlab-ci.yml
-/.travis.yml
-/tox.ini
+/python/.gitlab-ci.yml
+/python/.travis.yml
+/python/tox.ini

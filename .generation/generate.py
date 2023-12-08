@@ -71,6 +71,7 @@ class ConfigArgs():
     def parse_config() -> ConfigArgs:
         '''Parse config.ini arguments.'''
         parsed = configparser.ConfigParser()
+        parsed.optionxform = str  # do not convert keys to lowercase
         parsed.read(CWD / 'config.ini')
 
         return ConfigArgs(

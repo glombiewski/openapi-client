@@ -10,6 +10,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from urllib import request
 from urllib.error import URLError
+from urllib.parse import urlsplit
 import configparser
 import json
 import os
@@ -176,8 +177,14 @@ def generate_python_code(*, package_name: str, package_version: str, package_url
     )
 
 
-def generate_typescript_code(*, package_name: str, package_version: str, package_url: str):
+def generate_typescript_code(*, npm_name: str, npm_version: str, repository_url: str):
     '''Run the generator.'''
+
+    parsed_url = urlsplit(repository_url)
+    (url_path, _url_ext) = os.path.splitext(parsed_url.path)
+    (url_path, git_user_id) = os.path.split(url_path)
+    (url_path, git_repo_id) = os.path.split(url_path)
+
     subprocess.run(
         [
             "podman", "run",
@@ -191,12 +198,13 @@ def generate_typescript_code(*, package_name: str, package_version: str, package
             "-i", f"{'/local' / CWD / 'input/openapi.json'}",
             "-g", "typescript-fetch",
             "--additional-properties=" + ",".join([
-                "useOneOfDiscriminatorLookup=true",
-                # "generateSourceCodeOnly=true",
-                f"packageName={package_name}",
-                f"packageVersion={package_version}",
-                f"packageUrl={package_url}",
+                "supportsES6=true",
+                f"npmName={npm_name}",
+                f"npmVersion={npm_version}",
             ]),
+            "--git-host", parsed_url.netloc,
+            "--git-user-id", git_user_id,
+            "--git-repo-id", git_repo_id,
             "--enable-post-process-file",
             "-o", "/local/typescript/",
         ],
@@ -225,9 +233,9 @@ def main():
         )
     elif args.language == 'typescript':
         generate_typescript_code(
-            package_name=config.typescript_package_name,
-            package_version=config.typescript_package_version,
-            package_url=config.github_url,
+            npm_name=config.typescript_package_name,
+            npm_version=config.typescript_package_version,
+            repository_url=config.github_url,
         )
     else:
         raise RuntimeError(f'Unknown language {args.language}.')

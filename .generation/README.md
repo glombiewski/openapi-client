@@ -26,10 +26,11 @@ From the root of the repository run:
 To run the generation in dev mode, run:
 
 ```bash
-DEV_RUN=1 .generation/generate.py
+.generation/generate.py --no-spec-fetch --no-container-build
 ```
 
 This will skip the running of the container and instead use the local files.
+It will also stop building the customized generator container.
 
 ## Update config.ini
 

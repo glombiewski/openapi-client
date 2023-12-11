@@ -20,19 +20,19 @@ import {
     PlotToJSON,
 } from './Plot';
 import {
-    string,
-    instanceOfstring,
-    stringFromJSON,
-    stringFromJSONTyped,
-    stringToJSON,
-} from './string';
+    ProjectUpdateToken,
+    instanceOfProjectUpdateToken,
+    ProjectUpdateTokenFromJSON,
+    ProjectUpdateTokenFromJSONTyped,
+    ProjectUpdateTokenToJSON,
+} from './ProjectUpdateToken';
 
 /**
  * @type PlotUpdate
  * 
  * @export
  */
-export type PlotUpdate = Plot | string;
+export type PlotUpdate = Plot | ProjectUpdateToken;
 
 export function PlotUpdateFromJSON(json: any): PlotUpdate {
     return PlotUpdateFromJSONTyped(json, false);
@@ -42,7 +42,13 @@ export function PlotUpdateFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     if ((json === undefined) || (json === null)) {
         return json;
     }
-    return { ...PlotFromJSONTyped(json, true), ...stringFromJSONTyped(json, true) };
+    if (json === ProjectUpdateToken.None) {
+        return ProjectUpdateToken.None;
+    } else if (json === ProjectUpdateToken.Delete) {
+        return ProjectUpdateToken.Delete;
+    } else {
+        return { ...PlotFromJSONTyped(json, true) };
+    }
 }
 
 export function PlotUpdateToJSON(value?: PlotUpdate | null): any {
@@ -53,11 +59,11 @@ export function PlotUpdateToJSON(value?: PlotUpdate | null): any {
         return null;
     }
 
-    if (instanceOfPlot(value)) {
+    if (typeof value === 'object' && instanceOfPlot(value)) {
         return PlotToJSON(value as Plot);
     }
-    if (instanceOfstring(value)) {
-        return stringToJSON(value as string);
+    if (instanceOfProjectUpdateToken(value)) {
+        return ProjectUpdateTokenToJSON(value as ProjectUpdateToken);
     }
 
     return {};

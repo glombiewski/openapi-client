@@ -15,11 +15,17 @@
 
 import * as runtime from '../runtime';
 import type {
+  AuthCodeRequestURL,
+  AuthCodeResponse,
   UserCredentials,
   UserRegistration,
   UserSession,
 } from '../models/index';
 import {
+    AuthCodeRequestURLFromJSON,
+    AuthCodeRequestURLToJSON,
+    AuthCodeResponseFromJSON,
+    AuthCodeResponseToJSON,
     UserCredentialsFromJSON,
     UserCredentialsToJSON,
     UserRegistrationFromJSON,
@@ -30,6 +36,10 @@ import {
 
 export interface LoginHandlerRequest {
     userCredentials: UserCredentials;
+}
+
+export interface OidcLoginRequest {
+    authCodeResponse: AuthCodeResponse;
 }
 
 export interface RegisterUserHandlerRequest {
@@ -137,6 +147,69 @@ export class SessionApi extends runtime.BaseAPI {
      */
     async logoutHandler(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.logoutHandlerRaw(initOverrides);
+    }
+
+    /**
+     * Initializes the Open Id Connect login procedure by requesting a parametrized url to the configured Id Provider.  # Errors  This call fails if Open ID Connect is disabled, misconfigured or the Id Provider is unreachable. 
+     * Initializes the Open Id Connect login procedure by requesting a parametrized url to the configured Id Provider.
+     */
+    async oidcInitRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AuthCodeRequestURL>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/oidcInit`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AuthCodeRequestURLFromJSON(jsonValue));
+    }
+
+    /**
+     * Initializes the Open Id Connect login procedure by requesting a parametrized url to the configured Id Provider.  # Errors  This call fails if Open ID Connect is disabled, misconfigured or the Id Provider is unreachable. 
+     * Initializes the Open Id Connect login procedure by requesting a parametrized url to the configured Id Provider.
+     */
+    async oidcInit(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AuthCodeRequestURL> {
+        const response = await this.oidcInitRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates a session for a user via a login with Open Id Connect. This call must be preceded by a call to oidcInit and match the parameters of that call.  # Errors  This call fails if the [`AuthCodeResponse`] is invalid, if a previous oidcLogin call with the same state was already successfully or unsuccessfully resolved, if the Open Id Connect configuration is invalid, or if the Id Provider is unreachable. 
+     * Creates a session for a user via a login with Open Id Connect.
+     */
+    async oidcLoginRaw(requestParameters: OidcLoginRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserSession>> {
+        if (requestParameters.authCodeResponse === null || requestParameters.authCodeResponse === undefined) {
+            throw new runtime.RequiredError('authCodeResponse','Required parameter requestParameters.authCodeResponse was null or undefined when calling oidcLogin.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/oidcLogin`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AuthCodeResponseToJSON(requestParameters.authCodeResponse),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserSessionFromJSON(jsonValue));
+    }
+
+    /**
+     * Creates a session for a user via a login with Open Id Connect. This call must be preceded by a call to oidcInit and match the parameters of that call.  # Errors  This call fails if the [`AuthCodeResponse`] is invalid, if a previous oidcLogin call with the same state was already successfully or unsuccessfully resolved, if the Open Id Connect configuration is invalid, or if the Id Provider is unreachable. 
+     * Creates a session for a user via a login with Open Id Connect.
+     */
+    async oidcLogin(requestParameters: OidcLoginRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserSession> {
+        const response = await this.oidcLoginRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**

@@ -36,7 +36,9 @@ jobs:
         run: .generation/update_config.py --backendTag ${{ github.event.inputs.backend_tag }}
 
       - name: Generate Code
-        run: .generation/generate.py
+        run: |
+          .generation/generate.py python
+          .generation/generate.py typescript
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5

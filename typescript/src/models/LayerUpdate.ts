@@ -20,19 +20,19 @@ import {
     ProjectLayerToJSON,
 } from './ProjectLayer';
 import {
-    string,
-    instanceOfstring,
-    stringFromJSON,
-    stringFromJSONTyped,
-    stringToJSON,
-} from './string';
+    ProjectUpdateToken,
+    instanceOfProjectUpdateToken,
+    ProjectUpdateTokenFromJSON,
+    ProjectUpdateTokenFromJSONTyped,
+    ProjectUpdateTokenToJSON,
+} from './ProjectUpdateToken';
 
 /**
  * @type LayerUpdate
  * 
  * @export
  */
-export type LayerUpdate = ProjectLayer | string;
+export type LayerUpdate = ProjectLayer | ProjectUpdateToken;
 
 export function LayerUpdateFromJSON(json: any): LayerUpdate {
     return LayerUpdateFromJSONTyped(json, false);
@@ -42,7 +42,13 @@ export function LayerUpdateFromJSONTyped(json: any, ignoreDiscriminator: boolean
     if ((json === undefined) || (json === null)) {
         return json;
     }
-    return { ...ProjectLayerFromJSONTyped(json, true), ...stringFromJSONTyped(json, true) };
+    if (json === ProjectUpdateToken.None) {
+        return ProjectUpdateToken.None;
+    } else if (json === ProjectUpdateToken.Delete) {
+        return ProjectUpdateToken.Delete;
+    } else {
+        return { ...ProjectLayerFromJSONTyped(json, true) };
+    }
 }
 
 export function LayerUpdateToJSON(value?: LayerUpdate | null): any {
@@ -53,11 +59,11 @@ export function LayerUpdateToJSON(value?: LayerUpdate | null): any {
         return null;
     }
 
-    if (instanceOfProjectLayer(value)) {
+    if (typeof value === 'object' && instanceOfProjectLayer(value)) {
         return ProjectLayerToJSON(value as ProjectLayer);
     }
-    if (instanceOfstring(value)) {
-        return stringToJSON(value as string);
+    if (instanceOfProjectUpdateToken(value)) {
+        return ProjectUpdateTokenToJSON(value as ProjectUpdateToken);
     }
 
     return {};

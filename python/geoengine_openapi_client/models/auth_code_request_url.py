@@ -19,17 +19,15 @@ import re  # noqa: F401
 import json
 
 
-from typing import Union
-from pydantic import BaseModel, Field, StrictFloat, StrictInt
-from geoengine_openapi_client.models.raster_colorizer import RasterColorizer
 
-class RasterSymbology(BaseModel):
+from pydantic import BaseModel, Field, StrictStr
+
+class AuthCodeRequestURL(BaseModel):
     """
-    RasterSymbology
+    AuthCodeRequestURL
     """
-    opacity: Union[StrictFloat, StrictInt] = Field(...)
-    raster_colorizer: RasterColorizer = Field(..., alias="rasterColorizer")
-    __properties = ["opacity", "rasterColorizer"]
+    url: StrictStr = Field(...)
+    __properties = ["url"]
 
     class Config:
         """Pydantic configuration"""
@@ -45,8 +43,8 @@ class RasterSymbology(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RasterSymbology:
-        """Create an instance of RasterSymbology from a JSON string"""
+    def from_json(cls, json_str: str) -> AuthCodeRequestURL:
+        """Create an instance of AuthCodeRequestURL from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -55,23 +53,19 @@ class RasterSymbology(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of raster_colorizer
-        if self.raster_colorizer:
-            _dict['rasterColorizer'] = self.raster_colorizer.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RasterSymbology:
-        """Create an instance of RasterSymbology from a dict"""
+    def from_dict(cls, obj: dict) -> AuthCodeRequestURL:
+        """Create an instance of AuthCodeRequestURL from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RasterSymbology.parse_obj(obj)
+            return AuthCodeRequestURL.parse_obj(obj)
 
-        _obj = RasterSymbology.parse_obj({
-            "opacity": obj.get("opacity"),
-            "raster_colorizer": RasterColorizer.from_dict(obj.get("rasterColorizer")) if obj.get("rasterColorizer") is not None else None
+        _obj = AuthCodeRequestURL.parse_obj({
+            "url": obj.get("url")
         })
         return _obj
 

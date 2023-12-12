@@ -16,10 +16,10 @@
 import unittest
 import datetime
 
-from geoengine_openapi_client.models.raster_symbology import RasterSymbology  # noqa: E501
+from geoengine_openapi_client.models.auth_code_request_url import AuthCodeRequestURL  # noqa: E501
 
-class TestRasterSymbology(unittest.TestCase):
-    """RasterSymbology unit test stubs"""
+class TestAuthCodeRequestURL(unittest.TestCase):
+    """AuthCodeRequestURL unit test stubs"""
 
     def setUp(self):
         pass
@@ -27,28 +27,26 @@ class TestRasterSymbology(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RasterSymbology:
-        """Test RasterSymbology
+    def make_instance(self, include_optional) -> AuthCodeRequestURL:
+        """Test AuthCodeRequestURL
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `RasterSymbology`
+        # uncomment below to create an instance of `AuthCodeRequestURL`
         """
-        model = RasterSymbology()  # noqa: E501
+        model = AuthCodeRequestURL()  # noqa: E501
         if include_optional:
-            return RasterSymbology(
-                opacity = 1.337,
-                raster_colorizer = None
+            return AuthCodeRequestURL(
+                url = ''
             )
         else:
-            return RasterSymbology(
-                opacity = 1.337,
-                raster_colorizer = None,
+            return AuthCodeRequestURL(
+                url = '',
         )
         """
 
-    def testRasterSymbology(self):
-        """Test RasterSymbology"""
+    def testAuthCodeRequestURL(self):
+        """Test AuthCodeRequestURL"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

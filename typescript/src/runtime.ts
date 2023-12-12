@@ -13,7 +13,7 @@
  */
 
 
-export const BASE_PATH = "http://0.0.0.0:8080/api".replace(/\/+$/, "");
+export const BASE_PATH = "http://localhost:3030/api".replace(/\/+$/, "");
 
 export interface ConfigurationParameters {
     basePath?: string; // override base path
@@ -84,7 +84,11 @@ export class Configuration {
     }
 }
 
-export const DefaultConfig = new Configuration();
+export const DefaultConfig = new Configuration({
+    headers: {
+        'User-Agent': 'geoengine/openapi-client/typescript/0.0.2'
+    }
+});
 
 /**
  * This is the base class for all generated API classes.

@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "http://0.0.0.0:8080/api"
+      "url": "http://localhost:3030/api"
     }
   ],
   "paths": {
@@ -1668,6 +1668,75 @@
             "session_token": []
           }
         ]
+      }
+    },
+    "/oidcInit": {
+      "post": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "Initializes the Open Id Connect login procedure by requesting a parametrized url to the configured Id Provider.",
+        "description": "Initializes the Open Id Connect login procedure by requesting a parametrized url to the configured Id Provider.\n\n# Errors\n\nThis call fails if Open ID Connect is disabled, misconfigured or the Id Provider is unreachable.\n",
+        "operationId": "oidc_init",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthCodeRequestURL"
+                },
+                "example": {
+                  "url": "http://someissuer.com/authorize?client_id=someclient&redirect_uri=someuri&response_type=code&scope=somescope&state=somestate&nonce=somenonce&codechallenge=somechallenge&code_challenge_method=S256"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/oidcLogin": {
+      "post": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "Creates a session for a user via a login with Open Id Connect.",
+        "description": "Creates a session for a user via a login with Open Id Connect.\nThis call must be preceded by a call to oidcInit and match the parameters of that call.\n\n# Errors\n\nThis call fails if the [`AuthCodeResponse`] is invalid,\nif a previous oidcLogin call with the same state was already successfully or unsuccessfully resolved,\nif the Open Id Connect configuration is invalid,\nor if the Id Provider is unreachable.\n",
+        "operationId": "oidc_login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthCodeResponse"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSession"
+                },
+                "example": {
+                  "created": "2021-04-26T13:47:10.579724800Z",
+                  "id": "208fa24e-7a92-4f57-a3fe-d1177d9f18ad",
+                  "project": null,
+                  "user": {
+                    "email": "foo@bar.de",
+                    "id": "5b4466d2-8bab-4ed8-a182-722af3c80958",
+                    "realName": "Foo Bar"
+                  },
+                  "validUntil": "2021-04-26T14:47:10.579775400Z",
+                  "view": null
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/permissions": {
@@ -4374,6 +4443,37 @@
           }
         }
       },
+      "AuthCodeRequestURL": {
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "AuthCodeResponse": {
+        "type": "object",
+        "required": [
+          "sessionState",
+          "code",
+          "state"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "sessionState": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          }
+        }
+      },
       "AutoCreateDataset": {
         "type": "object",
         "required": [
@@ -5974,16 +6074,7 @@
       "LayerUpdate": {
         "oneOf": [
           {
-            "type": "string",
-            "enum": [
-              "none"
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "delete"
-            ]
+            "$ref": "#/components/schemas/ProjectUpdateToken"
           },
           {
             "$ref": "#/components/schemas/ProjectLayer"
@@ -6824,16 +6915,7 @@
       "PlotUpdate": {
         "oneOf": [
           {
-            "type": "string",
-            "enum": [
-              "none"
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "delete"
-            ]
+            "$ref": "#/components/schemas/ProjectUpdateToken"
           },
           {
             "$ref": "#/components/schemas/Plot"
@@ -7108,6 +7190,13 @@
           }
         }
       },
+      "ProjectUpdateToken": {
+        "type": "string",
+        "enum": [
+          "none",
+          "delete"
+        ]
+      },
       "ProjectVersion": {
         "type": "object",
         "required": [
@@ -7258,6 +7347,19 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/RasterBandDescriptor"
+        }
+      },
+      "RasterColorizer": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SingleBandRasterColorizer"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "singleBand": "#/components/schemas/SingleBandRasterColorizer"
+          }
         }
       },
       "RasterDataType": {
@@ -7496,15 +7598,15 @@
         "type": "object",
         "required": [
           "opacity",
-          "colorizer"
+          "rasterColorizer"
         ],
         "properties": {
-          "colorizer": {
-            "$ref": "#/components/schemas/Colorizer"
-          },
           "opacity": {
             "type": "number",
             "format": "double"
+          },
+          "rasterColorizer": {
+            "$ref": "#/components/schemas/RasterColorizer"
           }
         }
       },
@@ -7512,16 +7614,16 @@
         "type": "object",
         "required": [
           "opacity",
-          "colorizer",
+          "rasterColorizer",
           "type"
         ],
         "properties": {
-          "colorizer": {
-            "$ref": "#/components/schemas/Colorizer"
-          },
           "opacity": {
             "type": "number",
             "format": "double"
+          },
+          "rasterColorizer": {
+            "$ref": "#/components/schemas/RasterColorizer"
           },
           "type": {
             "type": "string",
@@ -7720,6 +7822,30 @@
       "SessionId": {
         "type": "string",
         "format": "uuid"
+      },
+      "SingleBandRasterColorizer": {
+        "type": "object",
+        "required": [
+          "band",
+          "bandColorizer",
+          "type"
+        ],
+        "properties": {
+          "band": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "bandColorizer": {
+            "$ref": "#/components/schemas/Colorizer"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "singleBand"
+            ]
+          }
+        }
       },
       "SpatialPartition2D": {
         "type": "object",
@@ -8806,6 +8932,25 @@
       }
     },
     "responses": {
+      "AuthCodeRequestURL": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "url"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            }
+          }
+        }
+      },
       "BadRequestQueryResponse": {
         "description": "Bad request",
         "content": {

@@ -37,14 +37,14 @@ class TestRasterSymbologyWithType(unittest.TestCase):
         model = RasterSymbologyWithType()  # noqa: E501
         if include_optional:
             return RasterSymbologyWithType(
-                colorizer = None,
                 opacity = 1.337,
+                raster_colorizer = None,
                 type = 'raster'
             )
         else:
             return RasterSymbologyWithType(
-                colorizer = None,
                 opacity = 1.337,
+                raster_colorizer = None,
                 type = 'raster',
         )
         """

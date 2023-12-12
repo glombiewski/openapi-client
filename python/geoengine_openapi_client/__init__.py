@@ -52,6 +52,8 @@ from geoengine_openapi_client.models.add_dataset import AddDataset
 from geoengine_openapi_client.models.add_layer import AddLayer
 from geoengine_openapi_client.models.add_layer_collection import AddLayerCollection
 from geoengine_openapi_client.models.add_role import AddRole
+from geoengine_openapi_client.models.auth_code_request_url import AuthCodeRequestURL
+from geoengine_openapi_client.models.auth_code_response import AuthCodeResponse
 from geoengine_openapi_client.models.auto_create_dataset import AutoCreateDataset
 from geoengine_openapi_client.models.auto_ogr_source_time_format import AutoOgrSourceTimeFormat
 from geoengine_openapi_client.models.axis_order import AxisOrder
@@ -179,6 +181,7 @@ from geoengine_openapi_client.models.project_layer import ProjectLayer
 from geoengine_openapi_client.models.project_listing import ProjectListing
 from geoengine_openapi_client.models.project_resource import ProjectResource
 from geoengine_openapi_client.models.project_resource_id import ProjectResourceId
+from geoengine_openapi_client.models.project_update_token import ProjectUpdateToken
 from geoengine_openapi_client.models.project_version import ProjectVersion
 from geoengine_openapi_client.models.provenance import Provenance
 from geoengine_openapi_client.models.provenance_entry import ProvenanceEntry
@@ -187,6 +190,7 @@ from geoengine_openapi_client.models.provider_layer_collection_id import Provide
 from geoengine_openapi_client.models.provider_layer_id import ProviderLayerId
 from geoengine_openapi_client.models.quota import Quota
 from geoengine_openapi_client.models.raster_band_descriptor import RasterBandDescriptor
+from geoengine_openapi_client.models.raster_colorizer import RasterColorizer
 from geoengine_openapi_client.models.raster_data_type import RasterDataType
 from geoengine_openapi_client.models.raster_dataset_from_workflow import RasterDatasetFromWorkflow
 from geoengine_openapi_client.models.raster_dataset_from_workflow_result import RasterDatasetFromWorkflowResult
@@ -206,6 +210,7 @@ from geoengine_openapi_client.models.role_description import RoleDescription
 from geoengine_openapi_client.models.running_task_status import RunningTaskStatus
 from geoengine_openapi_client.models.st_rectangle import STRectangle
 from geoengine_openapi_client.models.server_info import ServerInfo
+from geoengine_openapi_client.models.single_band_raster_colorizer import SingleBandRasterColorizer
 from geoengine_openapi_client.models.spatial_partition2_d import SpatialPartition2D
 from geoengine_openapi_client.models.spatial_reference_authority import SpatialReferenceAuthority
 from geoengine_openapi_client.models.spatial_reference_specification import SpatialReferenceSpecification

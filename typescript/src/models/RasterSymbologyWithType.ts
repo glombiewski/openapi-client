@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { Colorizer } from './Colorizer';
+import type { RasterColorizer } from './RasterColorizer';
 import {
-    ColorizerFromJSON,
-    ColorizerFromJSONTyped,
-    ColorizerToJSON,
-} from './Colorizer';
+    RasterColorizerFromJSON,
+    RasterColorizerFromJSONTyped,
+    RasterColorizerToJSON,
+} from './RasterColorizer';
 
 /**
  * 
@@ -28,16 +28,16 @@ import {
 export interface RasterSymbologyWithType {
     /**
      * 
-     * @type {Colorizer}
-     * @memberof RasterSymbologyWithType
-     */
-    colorizer: Colorizer;
-    /**
-     * 
      * @type {number}
      * @memberof RasterSymbologyWithType
      */
     opacity: number;
+    /**
+     * 
+     * @type {RasterColorizer}
+     * @memberof RasterSymbologyWithType
+     */
+    rasterColorizer: RasterColorizer;
     /**
      * 
      * @type {string}
@@ -61,8 +61,8 @@ export type RasterSymbologyWithTypeTypeEnum = typeof RasterSymbologyWithTypeType
  */
 export function instanceOfRasterSymbologyWithType(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "colorizer" in value;
     isInstance = isInstance && "opacity" in value;
+    isInstance = isInstance && "rasterColorizer" in value;
     isInstance = isInstance && "type" in value;
 
     return isInstance;
@@ -78,8 +78,8 @@ export function RasterSymbologyWithTypeFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'colorizer': ColorizerFromJSON(json['colorizer']),
         'opacity': json['opacity'],
+        'rasterColorizer': RasterColorizerFromJSON(json['rasterColorizer']),
         'type': json['type'],
     };
 }
@@ -93,8 +93,8 @@ export function RasterSymbologyWithTypeToJSON(value?: RasterSymbologyWithType | 
     }
     return {
         
-        'colorizer': ColorizerToJSON(value.colorizer),
         'opacity': value.opacity,
+        'rasterColorizer': RasterColorizerToJSON(value.rasterColorizer),
         'type': value.type,
     };
 }

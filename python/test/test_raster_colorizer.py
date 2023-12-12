@@ -16,10 +16,10 @@
 import unittest
 import datetime
 
-from geoengine_openapi_client.models.raster_symbology import RasterSymbology  # noqa: E501
+from geoengine_openapi_client.models.raster_colorizer import RasterColorizer  # noqa: E501
 
-class TestRasterSymbology(unittest.TestCase):
-    """RasterSymbology unit test stubs"""
+class TestRasterColorizer(unittest.TestCase):
+    """RasterColorizer unit test stubs"""
 
     def setUp(self):
         pass
@@ -27,28 +27,30 @@ class TestRasterSymbology(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RasterSymbology:
-        """Test RasterSymbology
+    def make_instance(self, include_optional) -> RasterColorizer:
+        """Test RasterColorizer
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `RasterSymbology`
+        # uncomment below to create an instance of `RasterColorizer`
         """
-        model = RasterSymbology()  # noqa: E501
+        model = RasterColorizer()  # noqa: E501
         if include_optional:
-            return RasterSymbology(
-                opacity = 1.337,
-                raster_colorizer = None
+            return RasterColorizer(
+                band = 0,
+                band_colorizer = None,
+                type = 'singleBand'
             )
         else:
-            return RasterSymbology(
-                opacity = 1.337,
-                raster_colorizer = None,
+            return RasterColorizer(
+                band = 0,
+                band_colorizer = None,
+                type = 'singleBand',
         )
         """
 
-    def testRasterSymbology(self):
-        """Test RasterSymbology"""
+    def testRasterColorizer(self):
+        """Test RasterColorizer"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

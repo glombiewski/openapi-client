@@ -37,8 +37,8 @@ class TestSymbology(unittest.TestCase):
         model = Symbology()  # noqa: E501
         if include_optional:
             return Symbology(
-                colorizer = None,
                 opacity = 1.337,
+                raster_colorizer = None,
                 type = 'raster',
                 fill_color = None,
                 radius = None,
@@ -55,8 +55,8 @@ class TestSymbology(unittest.TestCase):
             )
         else:
             return Symbology(
-                colorizer = None,
                 opacity = 1.337,
+                raster_colorizer = None,
                 type = 'raster',
                 fill_color = None,
                 radius = None,

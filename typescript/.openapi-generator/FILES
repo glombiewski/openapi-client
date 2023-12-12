@@ -25,6 +25,8 @@ src/models/AddDataset.ts
 src/models/AddLayer.ts
 src/models/AddLayerCollection.ts
 src/models/AddRole.ts
+src/models/AuthCodeRequestURL.ts
+src/models/AuthCodeResponse.ts
 src/models/AutoCreateDataset.ts
 src/models/AutoOgrSourceTimeFormat.ts
 src/models/AxisOrder.ts
@@ -152,6 +154,7 @@ src/models/ProjectLayer.ts
 src/models/ProjectListing.ts
 src/models/ProjectResource.ts
 src/models/ProjectResourceId.ts
+src/models/ProjectUpdateToken.ts
 src/models/ProjectVersion.ts
 src/models/Provenance.ts
 src/models/ProvenanceEntry.ts
@@ -160,6 +163,7 @@ src/models/ProviderLayerCollectionId.ts
 src/models/ProviderLayerId.ts
 src/models/Quota.ts
 src/models/RasterBandDescriptor.ts
+src/models/RasterColorizer.ts
 src/models/RasterDataType.ts
 src/models/RasterDatasetFromWorkflow.ts
 src/models/RasterDatasetFromWorkflowResult.ts
@@ -179,6 +183,7 @@ src/models/RoleDescription.ts
 src/models/RunningTaskStatus.ts
 src/models/STRectangle.ts
 src/models/ServerInfo.ts
+src/models/SingleBandRasterColorizer.ts
 src/models/SpatialPartition2D.ts
 src/models/SpatialReferenceAuthority.ts
 src/models/SpatialReferenceSpecification.ts

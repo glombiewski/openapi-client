@@ -18,7 +18,7 @@ Auto-generated Python Client API for Geo Engine
 From the root of the repository run:
 
 ```bash
-.generation/generate.py
+.generation/generate.py python
 ```
 
 ## Dev-Mode
@@ -26,7 +26,7 @@ From the root of the repository run:
 To run the generation in dev mode, run:
 
 ```bash
-.generation/generate.py --no-spec-fetch --no-container-build
+.generation/generate.py --no-spec-fetch --no-container-build python
 ```
 
 This will skip the running of the container and instead use the local files.

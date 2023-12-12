@@ -19,24 +19,24 @@ import re  # noqa: F401
 import json
 
 
-from typing import Union
-from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, validator
-from geoengine_openapi_client.models.raster_colorizer import RasterColorizer
 
-class RasterSymbologyWithType(BaseModel):
+from pydantic import BaseModel, Field, StrictStr, conint, validator
+from geoengine_openapi_client.models.colorizer import Colorizer
+
+class SingleBandRasterColorizer(BaseModel):
     """
-    RasterSymbologyWithType
+    SingleBandRasterColorizer
     """
-    opacity: Union[StrictFloat, StrictInt] = Field(...)
-    raster_colorizer: RasterColorizer = Field(..., alias="rasterColorizer")
+    band: conint(strict=True, ge=0) = Field(...)
+    band_colorizer: Colorizer = Field(..., alias="bandColorizer")
     type: StrictStr = Field(...)
-    __properties = ["opacity", "rasterColorizer", "type"]
+    __properties = ["band", "bandColorizer", "type"]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('raster'):
-            raise ValueError("must be one of enum values ('raster')")
+        if value not in ('singleBand'):
+            raise ValueError("must be one of enum values ('singleBand')")
         return value
 
     class Config:
@@ -53,8 +53,8 @@ class RasterSymbologyWithType(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RasterSymbologyWithType:
-        """Create an instance of RasterSymbologyWithType from a JSON string"""
+    def from_json(cls, json_str: str) -> SingleBandRasterColorizer:
+        """Create an instance of SingleBandRasterColorizer from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -63,23 +63,23 @@ class RasterSymbologyWithType(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of raster_colorizer
-        if self.raster_colorizer:
-            _dict['rasterColorizer'] = self.raster_colorizer.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of band_colorizer
+        if self.band_colorizer:
+            _dict['bandColorizer'] = self.band_colorizer.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RasterSymbologyWithType:
-        """Create an instance of RasterSymbologyWithType from a dict"""
+    def from_dict(cls, obj: dict) -> SingleBandRasterColorizer:
+        """Create an instance of SingleBandRasterColorizer from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RasterSymbologyWithType.parse_obj(obj)
+            return SingleBandRasterColorizer.parse_obj(obj)
 
-        _obj = RasterSymbologyWithType.parse_obj({
-            "opacity": obj.get("opacity"),
-            "raster_colorizer": RasterColorizer.from_dict(obj.get("rasterColorizer")) if obj.get("rasterColorizer") is not None else None,
+        _obj = SingleBandRasterColorizer.parse_obj({
+            "band": obj.get("band"),
+            "band_colorizer": Colorizer.from_dict(obj.get("bandColorizer")) if obj.get("bandColorizer") is not None else None,
             "type": obj.get("type")
         })
         return _obj

@@ -25,7 +25,9 @@ import {
  * @export
  * @interface TaskStatusWithId
  */
-export interface TaskStatusWithId extends TaskStatus {
+export type TaskStatusWithId = { taskId: string } & TaskStatus;
+
+export interface _TaskStatusWithId /* extends TaskStatus */ {
     /**
      * 
      * @type {string}

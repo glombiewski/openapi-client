@@ -24,9 +24,6 @@ import tempfile
 
 from urllib.parse import quote
 
-# Set default User-Agent.
-from pkg_resources import get_distribution
-
 from geoengine_openapi_client.configuration import Configuration
 from geoengine_openapi_client.api_response import ApiResponse
 import geoengine_openapi_client.models
@@ -79,12 +76,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        # Note: customized the default value
-        try:
-            ge_version = get_distribution("geoengine").version
-        except:
-            ge_version = "?.?.?"
-        self.user_agent = f'geoengine-python/{ge_version}'
+        self.user_agent = 'geoengine/openapi-client/python/0.0.2'
         self.client_side_validation = configuration.client_side_validation
 
     def __enter__(self):

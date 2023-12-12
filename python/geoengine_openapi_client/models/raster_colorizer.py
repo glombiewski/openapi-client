@@ -21,29 +21,29 @@ import re  # noqa: F401
 
 from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
-from geoengine_openapi_client.models.project_layer import ProjectLayer
-from geoengine_openapi_client.models.project_update_token import ProjectUpdateToken
+from geoengine_openapi_client.models.single_band_raster_colorizer import SingleBandRasterColorizer
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-LAYERUPDATE_ONE_OF_SCHEMAS = ["ProjectLayer", "ProjectUpdateToken"]
+RASTERCOLORIZER_ONE_OF_SCHEMAS = ["SingleBandRasterColorizer"]
 
-class LayerUpdate(BaseModel):
+class RasterColorizer(BaseModel):
     """
-    LayerUpdate
+    RasterColorizer
     """
-    # data type: ProjectUpdateToken
-    oneof_schema_1_validator: Optional[ProjectUpdateToken] = None
-    # data type: ProjectLayer
-    oneof_schema_2_validator: Optional[ProjectLayer] = None
+    # data type: SingleBandRasterColorizer
+    oneof_schema_1_validator: Optional[SingleBandRasterColorizer] = None
     if TYPE_CHECKING:
-        actual_instance: Union[ProjectLayer, ProjectUpdateToken]
+        actual_instance: Union[SingleBandRasterColorizer]
     else:
         actual_instance: Any
-    one_of_schemas: List[str] = Field(LAYERUPDATE_ONE_OF_SCHEMAS, const=True)
+    one_of_schemas: List[str] = Field(RASTERCOLORIZER_ONE_OF_SCHEMAS, const=True)
 
     class Config:
         validate_assignment = True
+
+    discriminator_value_class_map = {
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -57,58 +57,62 @@ class LayerUpdate(BaseModel):
 
     @validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
-        instance = LayerUpdate.construct()
+        instance = RasterColorizer.construct()
         error_messages = []
         match = 0
-        # validate data type: ProjectUpdateToken
-        if not isinstance(v, ProjectUpdateToken):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `ProjectUpdateToken`")
-        else:
-            match += 1
-        # validate data type: ProjectLayer
-        if not isinstance(v, ProjectLayer):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `ProjectLayer`")
+        # validate data type: SingleBandRasterColorizer
+        if not isinstance(v, SingleBandRasterColorizer):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SingleBandRasterColorizer`")
         else:
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in LayerUpdate with oneOf schemas: ProjectLayer, ProjectUpdateToken. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in RasterColorizer with oneOf schemas: SingleBandRasterColorizer. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in LayerUpdate with oneOf schemas: ProjectLayer, ProjectUpdateToken. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in RasterColorizer with oneOf schemas: SingleBandRasterColorizer. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> LayerUpdate:
+    def from_dict(cls, obj: dict) -> RasterColorizer:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> LayerUpdate:
+    def from_json(cls, json_str: str) -> RasterColorizer:
         """Returns the object represented by the json string"""
-        instance = LayerUpdate.construct()
+        instance = RasterColorizer.construct()
         error_messages = []
         match = 0
 
-        # deserialize data into ProjectUpdateToken
+        # use oneOf discriminator to lookup the data type
+        _data_type = json.loads(json_str).get("type")
+        if not _data_type:
+            raise ValueError("Failed to lookup data type from the field `type` in the input.")
+
+        # check if data type is `SingleBandRasterColorizer`
+        if _data_type == "SingleBandRasterColorizer":
+            instance.actual_instance = SingleBandRasterColorizer.from_json(json_str)
+            return instance
+
+        # check if data type is `SingleBandRasterColorizer`
+        if _data_type == "singleBand":
+            instance.actual_instance = SingleBandRasterColorizer.from_json(json_str)
+            return instance
+
+        # deserialize data into SingleBandRasterColorizer
         try:
-            instance.actual_instance = ProjectUpdateToken.from_json(json_str)
-            match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into ProjectLayer
-        try:
-            instance.actual_instance = ProjectLayer.from_json(json_str)
+            instance.actual_instance = SingleBandRasterColorizer.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into LayerUpdate with oneOf schemas: ProjectLayer, ProjectUpdateToken. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into RasterColorizer with oneOf schemas: SingleBandRasterColorizer. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into LayerUpdate with oneOf schemas: ProjectLayer, ProjectUpdateToken. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into RasterColorizer with oneOf schemas: SingleBandRasterColorizer. Details: " + ", ".join(error_messages))
         else:
             return instance
 

@@ -48,6 +48,20 @@ class TestSessionApi(unittest.TestCase):
         """
         pass
 
+    def test_oidc_init(self) -> None:
+        """Test case for oidc_init
+
+        Initializes the Open Id Connect login procedure by requesting a parametrized url to the configured Id Provider.  # noqa: E501
+        """
+        pass
+
+    def test_oidc_login(self) -> None:
+        """Test case for oidc_login
+
+        Creates a session for a user via a login with Open Id Connect.  # noqa: E501
+        """
+        pass
+
     def test_register_user_handler(self) -> None:
         """Test case for register_user_handler
 

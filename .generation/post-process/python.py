@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 from typing import Generator, List
 from textwrap import dedent, indent
-from util import pairwise, modify_file
+from util import pairwise, modify_file, version
 
 INDENT = '    '
 HALF_INDENT = '  '
@@ -19,21 +19,9 @@ def api_client_py(file_contents: List[str]) -> Generator[str, None, None]:
         dedented_line = dedent(line)
         dedented_prev_line = dedent(prev_line)
 
-        if line.startswith('from urllib.parse import quote'):
-            line += dedent('''\
-            
-            # Set default User-Agent.
-            from pkg_resources import get_distribution
-            ''')
-
-        elif dedented_line.startswith('self.user_agent = '):
-            line = indent(dedent('''\
-            # Note: customized the default value
-            try:
-                ge_version = get_distribution("geoengine").version
-            except:
-                ge_version = "?.?.?"
-            self.user_agent = f'geoengine-python/{ge_version}'
+        if dedented_line.startswith('self.user_agent = '):
+            line = indent(dedent(f'''\
+            self.user_agent = 'geoengine/openapi-client/python/{version('python')}'
             '''), 2 * INDENT)
 
         elif dedented_prev_line.startswith('response_data.data = response_data.data') \

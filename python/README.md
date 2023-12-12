@@ -55,10 +55,10 @@ import geoengine_openapi_client
 from geoengine_openapi_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8080/api
+# Defining the host is optional and defaults to http://localhost:3030/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = geoengine_openapi_client.Configuration(
-    host = "http://0.0.0.0:8080/api"
+    host = "http://localhost:3030/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -90,7 +90,7 @@ with geoengine_openapi_client.ApiClient(configuration) as api_client:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://0.0.0.0:8080/api*
+All URIs are relative to *http://localhost:3030/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -136,6 +136,8 @@ Class | Method | HTTP request | Description
 *SessionApi* | [**anonymous_handler**](docs/SessionApi.md#anonymous_handler) | **POST** /anonymous | Creates session for anonymous user. The session&#39;s id serves as a Bearer token for requests.
 *SessionApi* | [**login_handler**](docs/SessionApi.md#login_handler) | **POST** /login | Creates a session by providing user credentials. The session&#39;s id serves as a Bearer token for requests.
 *SessionApi* | [**logout_handler**](docs/SessionApi.md#logout_handler) | **POST** /logout | Ends a session.
+*SessionApi* | [**oidc_init**](docs/SessionApi.md#oidc_init) | **POST** /oidcInit | Initializes the Open Id Connect login procedure by requesting a parametrized url to the configured Id Provider.
+*SessionApi* | [**oidc_login**](docs/SessionApi.md#oidc_login) | **POST** /oidcLogin | Creates a session for a user via a login with Open Id Connect.
 *SessionApi* | [**register_user_handler**](docs/SessionApi.md#register_user_handler) | **POST** /user | Registers a user.
 *SessionApi* | [**session_handler**](docs/SessionApi.md#session_handler) | **GET** /session | Retrieves details about the current session.
 *SpatialReferencesApi* | [**get_spatial_reference_specification_handler**](docs/SpatialReferencesApi.md#get_spatial_reference_specification_handler) | **GET** /spatialReferenceSpecification/{srsString} | 
@@ -170,6 +172,8 @@ Class | Method | HTTP request | Description
  - [AddLayer](docs/AddLayer.md)
  - [AddLayerCollection](docs/AddLayerCollection.md)
  - [AddRole](docs/AddRole.md)
+ - [AuthCodeRequestURL](docs/AuthCodeRequestURL.md)
+ - [AuthCodeResponse](docs/AuthCodeResponse.md)
  - [AutoCreateDataset](docs/AutoCreateDataset.md)
  - [AutoOgrSourceTimeFormat](docs/AutoOgrSourceTimeFormat.md)
  - [AxisOrder](docs/AxisOrder.md)
@@ -297,6 +301,7 @@ Class | Method | HTTP request | Description
  - [ProjectListing](docs/ProjectListing.md)
  - [ProjectResource](docs/ProjectResource.md)
  - [ProjectResourceId](docs/ProjectResourceId.md)
+ - [ProjectUpdateToken](docs/ProjectUpdateToken.md)
  - [ProjectVersion](docs/ProjectVersion.md)
  - [Provenance](docs/Provenance.md)
  - [ProvenanceEntry](docs/ProvenanceEntry.md)
@@ -305,6 +310,7 @@ Class | Method | HTTP request | Description
  - [ProviderLayerId](docs/ProviderLayerId.md)
  - [Quota](docs/Quota.md)
  - [RasterBandDescriptor](docs/RasterBandDescriptor.md)
+ - [RasterColorizer](docs/RasterColorizer.md)
  - [RasterDataType](docs/RasterDataType.md)
  - [RasterDatasetFromWorkflow](docs/RasterDatasetFromWorkflow.md)
  - [RasterDatasetFromWorkflowResult](docs/RasterDatasetFromWorkflowResult.md)
@@ -324,6 +330,7 @@ Class | Method | HTTP request | Description
  - [RunningTaskStatus](docs/RunningTaskStatus.md)
  - [STRectangle](docs/STRectangle.md)
  - [ServerInfo](docs/ServerInfo.md)
+ - [SingleBandRasterColorizer](docs/SingleBandRasterColorizer.md)
  - [SpatialPartition2D](docs/SpatialPartition2D.md)
  - [SpatialReferenceAuthority](docs/SpatialReferenceAuthority.md)
  - [SpatialReferenceSpecification](docs/SpatialReferenceSpecification.md)

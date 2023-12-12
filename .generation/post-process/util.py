@@ -2,10 +2,13 @@
 Utility functions for post-processing
 '''
 
+import configparser
 from itertools import tee
 from pathlib import Path
 from typing import Callable, Generator, List
 
+CWD = Path('/local/.generation/')
+INI_FILE = CWD / 'config.ini'
 
 def pairwise(iterable):
     '''from `itertools` 3.10'''
@@ -25,3 +28,14 @@ def modify_file(input_path: Path,
     with open(input_path, 'w', encoding='utf-8') as f:
         for line in modify_fn(file_contents):
             f.write(line)
+
+def version(language: str) -> str:
+    '''Get the version number for a given language from the `config.ini`.'''
+
+    # Use `Literal['python', 'typescript']` in Python version >= 3.8
+    if language not in ['python', 'typescript']:
+        raise ValueError(f'Language {language} not supported.')
+
+    config = configparser.ConfigParser()
+    config.read(INI_FILE)
+    return config[language]['version']

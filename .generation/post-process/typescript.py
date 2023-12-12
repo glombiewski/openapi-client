@@ -8,9 +8,23 @@ import sys
 from pathlib import Path
 from typing import Generator, List
 from textwrap import dedent, indent
-from util import modify_file
+from util import modify_file, version
 
 INDENT = '    '
+
+def runtime_ts(file_contents: List[str]) -> Generator[str, None, None]:
+    '''Modify the runtime.ts file.'''
+    for line in file_contents:
+        if line.startswith('export const DefaultConfig ='):
+            line = dedent(f'''\
+            export const DefaultConfig = new Configuration({{
+                headers: {{
+                    'User-Agent': 'geoengine/openapi-client/typescript/{version("typescript")}'
+                }}
+            }});
+            ''')
+
+        yield line
 
 # fixes due to https://github.com/OpenAPITools/openapi-generator/issues/14831
 def project_update_token_ts(file_contents: List[str]) -> Generator[str, None, None]:
@@ -90,6 +104,8 @@ def task_status_with_id_ts(file_contents: List[str]) -> Generator[str, None, Non
 
 input_file = Path(sys.argv[1])
 
+if input_file.name == 'runtime.ts':
+    modify_file(input_file, runtime_ts)
 if input_file.name == 'ProjectUpdateToken.ts':
     modify_file(input_file, project_update_token_ts)
 elif input_file.name == 'PlotUpdate.ts':

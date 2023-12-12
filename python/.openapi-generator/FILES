@@ -27,6 +27,8 @@ geoengine_openapi_client/models/add_dataset.py
 geoengine_openapi_client/models/add_layer.py
 geoengine_openapi_client/models/add_layer_collection.py
 geoengine_openapi_client/models/add_role.py
+geoengine_openapi_client/models/auth_code_request_url.py
+geoengine_openapi_client/models/auth_code_response.py
 geoengine_openapi_client/models/auto_create_dataset.py
 geoengine_openapi_client/models/auto_ogr_source_time_format.py
 geoengine_openapi_client/models/axis_order.py
@@ -154,6 +156,7 @@ geoengine_openapi_client/models/project_layer.py
 geoengine_openapi_client/models/project_listing.py
 geoengine_openapi_client/models/project_resource.py
 geoengine_openapi_client/models/project_resource_id.py
+geoengine_openapi_client/models/project_update_token.py
 geoengine_openapi_client/models/project_version.py
 geoengine_openapi_client/models/provenance.py
 geoengine_openapi_client/models/provenance_entry.py
@@ -162,6 +165,7 @@ geoengine_openapi_client/models/provider_layer_collection_id.py
 geoengine_openapi_client/models/provider_layer_id.py
 geoengine_openapi_client/models/quota.py
 geoengine_openapi_client/models/raster_band_descriptor.py
+geoengine_openapi_client/models/raster_colorizer.py
 geoengine_openapi_client/models/raster_data_type.py
 geoengine_openapi_client/models/raster_dataset_from_workflow.py
 geoengine_openapi_client/models/raster_dataset_from_workflow_result.py
@@ -180,6 +184,7 @@ geoengine_openapi_client/models/role.py
 geoengine_openapi_client/models/role_description.py
 geoengine_openapi_client/models/running_task_status.py
 geoengine_openapi_client/models/server_info.py
+geoengine_openapi_client/models/single_band_raster_colorizer.py
 geoengine_openapi_client/models/spatial_partition2_d.py
 geoengine_openapi_client/models/spatial_reference_authority.py
 geoengine_openapi_client/models/spatial_reference_specification.py
@@ -253,6 +258,8 @@ test/test_add_dataset.py
 test/test_add_layer.py
 test/test_add_layer_collection.py
 test/test_add_role.py
+test/test_auth_code_request_url.py
+test/test_auth_code_response.py
 test/test_auto_create_dataset.py
 test/test_auto_ogr_source_time_format.py
 test/test_axis_order.py
@@ -388,6 +395,7 @@ test/test_project_layer.py
 test/test_project_listing.py
 test/test_project_resource.py
 test/test_project_resource_id.py
+test/test_project_update_token.py
 test/test_project_version.py
 test/test_projects_api.py
 test/test_provenance.py
@@ -397,6 +405,7 @@ test/test_provider_layer_collection_id.py
 test/test_provider_layer_id.py
 test/test_quota.py
 test/test_raster_band_descriptor.py
+test/test_raster_colorizer.py
 test/test_raster_data_type.py
 test/test_raster_dataset_from_workflow.py
 test/test_raster_dataset_from_workflow_result.py
@@ -416,6 +425,7 @@ test/test_role_description.py
 test/test_running_task_status.py
 test/test_server_info.py
 test/test_session_api.py
+test/test_single_band_raster_colorizer.py
 test/test_spatial_partition2_d.py
 test/test_spatial_reference_authority.py
 test/test_spatial_reference_specification.py

@@ -22,23 +22,22 @@ import re  # noqa: F401
 from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
 from geoengine_openapi_client.models.plot import Plot
+from geoengine_openapi_client.models.project_update_token import ProjectUpdateToken
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-PLOTUPDATE_ONE_OF_SCHEMAS = ["Plot", "str"]
+PLOTUPDATE_ONE_OF_SCHEMAS = ["Plot", "ProjectUpdateToken"]
 
 class PlotUpdate(BaseModel):
     """
     PlotUpdate
     """
-    # data type: str
-    oneof_schema_1_validator: Optional[StrictStr] = None
-    # data type: str
-    oneof_schema_2_validator: Optional[StrictStr] = None
+    # data type: ProjectUpdateToken
+    oneof_schema_1_validator: Optional[ProjectUpdateToken] = None
     # data type: Plot
-    oneof_schema_3_validator: Optional[Plot] = None
+    oneof_schema_2_validator: Optional[Plot] = None
     if TYPE_CHECKING:
-        actual_instance: Union[Plot, str]
+        actual_instance: Union[Plot, ProjectUpdateToken]
     else:
         actual_instance: Any
     one_of_schemas: List[str] = Field(PLOTUPDATE_ONE_OF_SCHEMAS, const=True)
@@ -61,18 +60,11 @@ class PlotUpdate(BaseModel):
         instance = PlotUpdate.construct()
         error_messages = []
         match = 0
-        # validate data type: str
-        try:
-            instance.oneof_schema_1_validator = v
+        # validate data type: ProjectUpdateToken
+        if not isinstance(v, ProjectUpdateToken):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ProjectUpdateToken`")
+        else:
             match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # validate data type: str
-        try:
-            instance.oneof_schema_2_validator = v
-            match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
         # validate data type: Plot
         if not isinstance(v, Plot):
             error_messages.append(f"Error! Input type `{type(v)}` is not `Plot`")
@@ -80,10 +72,10 @@ class PlotUpdate(BaseModel):
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in PlotUpdate with oneOf schemas: Plot, str. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in PlotUpdate with oneOf schemas: Plot, ProjectUpdateToken. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in PlotUpdate with oneOf schemas: Plot, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in PlotUpdate with oneOf schemas: Plot, ProjectUpdateToken. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -98,21 +90,9 @@ class PlotUpdate(BaseModel):
         error_messages = []
         match = 0
 
-        # deserialize data into str
+        # deserialize data into ProjectUpdateToken
         try:
-            # validation
-            instance.oneof_schema_1_validator = json.loads(json_str)
-            # assign value to actual_instance
-            instance.actual_instance = instance.oneof_schema_1_validator
-            match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into str
-        try:
-            # validation
-            instance.oneof_schema_2_validator = json.loads(json_str)
-            # assign value to actual_instance
-            instance.actual_instance = instance.oneof_schema_2_validator
+            instance.actual_instance = ProjectUpdateToken.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
@@ -125,10 +105,10 @@ class PlotUpdate(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into PlotUpdate with oneOf schemas: Plot, str. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into PlotUpdate with oneOf schemas: Plot, ProjectUpdateToken. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into PlotUpdate with oneOf schemas: Plot, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into PlotUpdate with oneOf schemas: Plot, ProjectUpdateToken. Details: " + ", ".join(error_messages))
         else:
             return instance
 

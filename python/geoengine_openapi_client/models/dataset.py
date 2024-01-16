@@ -37,7 +37,8 @@ class Dataset(BaseModel):
     result_descriptor: TypedResultDescriptor = Field(..., alias="resultDescriptor")
     source_operator: StrictStr = Field(..., alias="sourceOperator")
     symbology: Optional[Symbology] = None
-    __properties = ["description", "displayName", "id", "name", "provenance", "resultDescriptor", "sourceOperator", "symbology"]
+    tags: Optional[conlist(StrictStr)] = None
+    __properties = ["description", "displayName", "id", "name", "provenance", "resultDescriptor", "sourceOperator", "symbology", "tags"]
 
     class Config:
         """Pydantic configuration"""
@@ -86,6 +87,11 @@ class Dataset(BaseModel):
         if self.symbology is None and "symbology" in self.__fields_set__:
             _dict['symbology'] = None
 
+        # set to None if tags (nullable) is None
+        # and __fields_set__ contains the field
+        if self.tags is None and "tags" in self.__fields_set__:
+            _dict['tags'] = None
+
         return _dict
 
     @classmethod
@@ -105,7 +111,8 @@ class Dataset(BaseModel):
             "provenance": [Provenance.from_dict(_item) for _item in obj.get("provenance")] if obj.get("provenance") is not None else None,
             "result_descriptor": TypedResultDescriptor.from_dict(obj.get("resultDescriptor")) if obj.get("resultDescriptor") is not None else None,
             "source_operator": obj.get("sourceOperator"),
-            "symbology": Symbology.from_dict(obj.get("symbology")) if obj.get("symbology") is not None else None
+            "symbology": Symbology.from_dict(obj.get("symbology")) if obj.get("symbology") is not None else None,
+            "tags": obj.get("tags")
         })
         return _obj
 

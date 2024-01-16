@@ -68,6 +68,12 @@ export interface AddDataset {
      * @memberof AddDataset
      */
     symbology?: Symbology | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof AddDataset
+     */
+    tags?: Array<string> | null;
 }
 
 /**
@@ -98,6 +104,7 @@ export function AddDatasetFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'provenance': !exists(json, 'provenance') ? undefined : (json['provenance'] === null ? null : (json['provenance'] as Array<any>).map(ProvenanceFromJSON)),
         'sourceOperator': json['sourceOperator'],
         'symbology': !exists(json, 'symbology') ? undefined : SymbologyFromJSON(json['symbology']),
+        'tags': !exists(json, 'tags') ? undefined : json['tags'],
     };
 }
 
@@ -116,6 +123,7 @@ export function AddDatasetToJSON(value?: AddDataset | null): any {
         'provenance': value.provenance === undefined ? undefined : (value.provenance === null ? null : (value.provenance as Array<any>).map(ProvenanceToJSON)),
         'sourceOperator': value.sourceOperator,
         'symbology': SymbologyToJSON(value.symbology),
+        'tags': value.tags,
     };
 }
 

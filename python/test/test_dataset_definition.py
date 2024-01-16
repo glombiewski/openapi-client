@@ -49,7 +49,10 @@ class TestDatasetDefinition(unittest.TestCase):
                             uri = '', )
                         ], 
                     source_operator = '', 
-                    symbology = null, )
+                    symbology = null, 
+                    tags = [
+                        ''
+                        ], )
             )
         else:
             return DatasetDefinition(
@@ -65,7 +68,10 @@ class TestDatasetDefinition(unittest.TestCase):
                             uri = '', )
                         ], 
                     source_operator = '', 
-                    symbology = null, ),
+                    symbology = null, 
+                    tags = [
+                        ''
+                        ], ),
         )
         """
 

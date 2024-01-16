@@ -49,7 +49,10 @@ class TestDataset(unittest.TestCase):
                     ],
                 result_descriptor = None,
                 source_operator = '',
-                symbology = None
+                symbology = None,
+                tags = [
+                    ''
+                    ]
             )
         else:
             return Dataset(

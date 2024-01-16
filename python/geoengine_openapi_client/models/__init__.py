@@ -155,6 +155,7 @@ from geoengine_openapi_client.models.project_version import ProjectVersion
 from geoengine_openapi_client.models.provenance import Provenance
 from geoengine_openapi_client.models.provenance_entry import ProvenanceEntry
 from geoengine_openapi_client.models.provenance_output import ProvenanceOutput
+from geoengine_openapi_client.models.provider_capabilities import ProviderCapabilities
 from geoengine_openapi_client.models.provider_layer_collection_id import ProviderLayerCollectionId
 from geoengine_openapi_client.models.provider_layer_id import ProviderLayerId
 from geoengine_openapi_client.models.quota import Quota
@@ -178,6 +179,9 @@ from geoengine_openapi_client.models.role import Role
 from geoengine_openapi_client.models.role_description import RoleDescription
 from geoengine_openapi_client.models.running_task_status import RunningTaskStatus
 from geoengine_openapi_client.models.st_rectangle import STRectangle
+from geoengine_openapi_client.models.search_capabilities import SearchCapabilities
+from geoengine_openapi_client.models.search_type import SearchType
+from geoengine_openapi_client.models.search_types import SearchTypes
 from geoengine_openapi_client.models.server_info import ServerInfo
 from geoengine_openapi_client.models.single_band_raster_colorizer import SingleBandRasterColorizer
 from geoengine_openapi_client.models.spatial_partition2_d import SpatialPartition2D

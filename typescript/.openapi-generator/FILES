@@ -159,6 +159,7 @@ src/models/ProjectVersion.ts
 src/models/Provenance.ts
 src/models/ProvenanceEntry.ts
 src/models/ProvenanceOutput.ts
+src/models/ProviderCapabilities.ts
 src/models/ProviderLayerCollectionId.ts
 src/models/ProviderLayerId.ts
 src/models/Quota.ts
@@ -182,6 +183,9 @@ src/models/Role.ts
 src/models/RoleDescription.ts
 src/models/RunningTaskStatus.ts
 src/models/STRectangle.ts
+src/models/SearchCapabilities.ts
+src/models/SearchType.ts
+src/models/SearchTypes.ts
 src/models/ServerInfo.ts
 src/models/SingleBandRasterColorizer.ts
 src/models/SpatialPartition2D.ts

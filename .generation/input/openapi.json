@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3030/api"
+      "url": "http://0.0.0.0:8080/api"
     }
   ],
   "paths": {
@@ -791,6 +791,19 @@
               "minimum": 0
             },
             "example": 2
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
+            },
+            "example": "['tag1', 'tag2']"
           }
         ],
         "responses": {
@@ -1221,6 +1234,223 @@
         ]
       }
     },
+    "/layers/collections/search/autocomplete/{provider}/{collection}": {
+      "get": {
+        "tags": [
+          "Layers"
+        ],
+        "summary": "Autocompletes the search on the contents of the collection of the given provider",
+        "description": "Autocompletes the search on the contents of the collection of the given provider",
+        "operationId": "autocomplete_handler",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "Data provider id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/DataProviderId"
+            },
+            "example": "ce5e84db-cbf9-48a2-9a32-d4b7cc56ea74"
+          },
+          {
+            "name": "collection",
+            "in": "path",
+            "description": "Layer collection id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/LayerCollectionId"
+            },
+            "example": "05102bb3-a855-4a37-8a8a-30026a91fef1"
+          },
+          {
+            "name": "searchType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/SearchType"
+            },
+            "example": "fulltext"
+          },
+          {
+            "name": "searchString",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "test"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            },
+            "example": "20"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            },
+            "example": "0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "example": [
+                  "An empty collection",
+                  "Ports in Germany"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "session_token": []
+          }
+        ]
+      }
+    },
+    "/layers/collections/search/{provider}/{collection}": {
+      "get": {
+        "tags": [
+          "Layers"
+        ],
+        "summary": "Searches the contents of the collection of the given provider",
+        "description": "Searches the contents of the collection of the given provider",
+        "operationId": "search_handler",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "Data provider id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/DataProviderId"
+            },
+            "example": "ce5e84db-cbf9-48a2-9a32-d4b7cc56ea74"
+          },
+          {
+            "name": "collection",
+            "in": "path",
+            "description": "Layer collection id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/LayerCollectionId"
+            },
+            "example": "05102bb3-a855-4a37-8a8a-30026a91fef1"
+          },
+          {
+            "name": "searchType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/SearchType"
+            },
+            "example": "fulltext"
+          },
+          {
+            "name": "searchString",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "test"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            },
+            "example": "20"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            },
+            "example": "0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LayerCollection"
+                },
+                "example": {
+                  "description": "All available Geo Engine layers",
+                  "entryLabel": null,
+                  "id": {
+                    "collectionId": "05102bb3-a855-4a37-8a8a-30026a91fef1",
+                    "providerId": "ce5e84db-cbf9-48a2-9a32-d4b7cc56ea74"
+                  },
+                  "items": [
+                    {
+                      "description": "There is nothing here",
+                      "id": {
+                        "collectionId": "a29f77cc-51ce-466b-86ef-d0ab2170bc0a",
+                        "providerId": "ce5e84db-cbf9-48a2-9a32-d4b7cc56ea74"
+                      },
+                      "name": "An empty collection",
+                      "properties": [],
+                      "type": "collection"
+                    },
+                    {
+                      "description": "Natural Earth Ports point filtered with Germany polygon",
+                      "id": {
+                        "layerId": "b75db46e-2b9a-4a86-b33f-bc06a73cd711",
+                        "providerId": "ce5e84db-cbf9-48a2-9a32-d4b7cc56ea74"
+                      },
+                      "name": "Ports in Germany",
+                      "properties": [],
+                      "type": "layer"
+                    }
+                  ],
+                  "name": "Layers",
+                  "properties": []
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "session_token": []
+          }
+        ]
+      }
+    },
     "/layers/collections/{provider}/{collection}": {
       "get": {
         "tags": [
@@ -1308,6 +1538,53 @@
                   ],
                   "name": "Datasets",
                   "properties": []
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "session_token": []
+          }
+        ]
+      }
+    },
+    "/layers/{provider}/capabilities": {
+      "get": {
+        "tags": [
+          "Layers"
+        ],
+        "operationId": "provider_capabilities_handler",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "Data provider id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/DataProviderId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderCapabilities"
+                },
+                "example": {
+                  "listing": true,
+                  "search": {
+                    "autocomplete": true,
+                    "filters": [],
+                    "search_types": {
+                      "fulltext": true,
+                      "prefix": true
+                    }
+                  }
                 }
               }
             }
@@ -4363,6 +4640,13 @@
               }
             ],
             "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
           }
         }
       },
@@ -4496,6 +4780,13 @@
           "mainFile": {
             "type": "string"
           },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
           "upload": {
             "$ref": "#/components/schemas/UploadId"
           }
@@ -4504,6 +4795,9 @@
           "datasetDescription": "The Outline of Germany (auto detected format)",
           "datasetName": "Germany Border (auto)",
           "mainFile": "germany_polygon.gpkg",
+          "tags": [
+            "area"
+          ],
           "upload": "420b06de-0a7e-45cb-9c1c-ea901b46ab69"
         }
       },
@@ -4942,6 +5236,13 @@
                 "$ref": "#/components/schemas/Symbology"
               }
             ],
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           }
         }
@@ -7280,6 +7581,21 @@
           }
         }
       },
+      "ProviderCapabilities": {
+        "type": "object",
+        "required": [
+          "listing",
+          "search"
+        ],
+        "properties": {
+          "listing": {
+            "type": "boolean"
+          },
+          "search": {
+            "$ref": "#/components/schemas/SearchCapabilities"
+          }
+        }
+      },
       "ProviderLayerCollectionId": {
         "type": "object",
         "required": [
@@ -7793,6 +8109,50 @@
           },
           "timeInterval": {
             "$ref": "#/components/schemas/TimeInterval"
+          }
+        }
+      },
+      "SearchCapabilities": {
+        "type": "object",
+        "required": [
+          "searchTypes",
+          "autocomplete"
+        ],
+        "properties": {
+          "autocomplete": {
+            "type": "boolean"
+          },
+          "filters": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "searchTypes": {
+            "$ref": "#/components/schemas/SearchTypes"
+          }
+        }
+      },
+      "SearchType": {
+        "type": "string",
+        "enum": [
+          "fulltext",
+          "prefix"
+        ]
+      },
+      "SearchTypes": {
+        "type": "object",
+        "required": [
+          "fulltext",
+          "prefix"
+        ],
+        "properties": {
+          "fulltext": {
+            "type": "boolean"
+          },
+          "prefix": {
+            "type": "boolean"
           }
         }
       },

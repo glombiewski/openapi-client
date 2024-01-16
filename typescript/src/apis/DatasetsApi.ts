@@ -67,6 +67,7 @@ export interface ListDatasetsHandlerRequest {
     offset: number;
     limit: number;
     filter?: string | null;
+    tags?: Array<string> | null;
 }
 
 export interface SuggestMetaDataHandlerRequest {
@@ -278,6 +279,10 @@ export class DatasetsApi extends runtime.BaseAPI {
 
         if (requestParameters.limit !== undefined) {
             queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.tags) {
+            queryParameters['tags'] = requestParameters.tags;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

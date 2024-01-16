@@ -86,6 +86,12 @@ export interface Dataset {
      * @memberof Dataset
      */
     symbology?: Symbology | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof Dataset
+     */
+    tags?: Array<string> | null;
 }
 
 /**
@@ -121,6 +127,7 @@ export function DatasetFromJSONTyped(json: any, ignoreDiscriminator: boolean): D
         'resultDescriptor': TypedResultDescriptorFromJSON(json['resultDescriptor']),
         'sourceOperator': json['sourceOperator'],
         'symbology': !exists(json, 'symbology') ? undefined : SymbologyFromJSON(json['symbology']),
+        'tags': !exists(json, 'tags') ? undefined : json['tags'],
     };
 }
 
@@ -141,6 +148,7 @@ export function DatasetToJSON(value?: Dataset | null): any {
         'resultDescriptor': TypedResultDescriptorToJSON(value.resultDescriptor),
         'sourceOperator': value.sourceOperator,
         'symbology': SymbologyToJSON(value.symbology),
+        'tags': value.tags,
     };
 }
 

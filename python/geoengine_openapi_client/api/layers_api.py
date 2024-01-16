@@ -22,11 +22,15 @@ from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 from pydantic import Field, StrictStr, conint
 
+from typing import List
+
 from geoengine_openapi_client.models.add_collection200_response import AddCollection200Response
 from geoengine_openapi_client.models.add_layer import AddLayer
 from geoengine_openapi_client.models.add_layer_collection import AddLayerCollection
 from geoengine_openapi_client.models.layer import Layer
 from geoengine_openapi_client.models.layer_collection import LayerCollection
+from geoengine_openapi_client.models.provider_capabilities import ProviderCapabilities
+from geoengine_openapi_client.models.search_type import SearchType
 from geoengine_openapi_client.models.task_response import TaskResponse
 
 from geoengine_openapi_client.api_client import ApiClient
@@ -628,6 +632,186 @@ class LayersApi:
 
         return self.api_client.call_api(
             '/layerDb/collections/{collection}/layers', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def autocomplete_handler(self, provider : Annotated[StrictStr, Field(..., description="Data provider id")], collection : Annotated[StrictStr, Field(..., description="Layer collection id")], search_type : SearchType, search_string : StrictStr, limit : conint(strict=True, ge=0), offset : conint(strict=True, ge=0), **kwargs) -> List[str]:  # noqa: E501
+        """Autocompletes the search on the contents of the collection of the given provider  # noqa: E501
+
+        Autocompletes the search on the contents of the collection of the given provider  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.autocomplete_handler(provider, collection, search_type, search_string, limit, offset, async_req=True)
+        >>> result = thread.get()
+
+        :param provider: Data provider id (required)
+        :type provider: str
+        :param collection: Layer collection id (required)
+        :type collection: str
+        :param search_type: (required)
+        :type search_type: SearchType
+        :param search_string: (required)
+        :type search_string: str
+        :param limit: (required)
+        :type limit: int
+        :param offset: (required)
+        :type offset: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: List[str]
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the autocomplete_handler_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.autocomplete_handler_with_http_info(provider, collection, search_type, search_string, limit, offset, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def autocomplete_handler_with_http_info(self, provider : Annotated[StrictStr, Field(..., description="Data provider id")], collection : Annotated[StrictStr, Field(..., description="Layer collection id")], search_type : SearchType, search_string : StrictStr, limit : conint(strict=True, ge=0), offset : conint(strict=True, ge=0), **kwargs) -> ApiResponse:  # noqa: E501
+        """Autocompletes the search on the contents of the collection of the given provider  # noqa: E501
+
+        Autocompletes the search on the contents of the collection of the given provider  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.autocomplete_handler_with_http_info(provider, collection, search_type, search_string, limit, offset, async_req=True)
+        >>> result = thread.get()
+
+        :param provider: Data provider id (required)
+        :type provider: str
+        :param collection: Layer collection id (required)
+        :type collection: str
+        :param search_type: (required)
+        :type search_type: SearchType
+        :param search_string: (required)
+        :type search_string: str
+        :param limit: (required)
+        :type limit: int
+        :param offset: (required)
+        :type offset: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(List[str], status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'provider',
+            'collection',
+            'search_type',
+            'search_string',
+            'limit',
+            'offset'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method autocomplete_handler" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['provider']:
+            _path_params['provider'] = _params['provider']
+
+        if _params['collection']:
+            _path_params['collection'] = _params['collection']
+
+
+        # process the query parameters
+        _query_params = []
+        if _params.get('search_type') is not None:  # noqa: E501
+            _query_params.append(('searchType', _params['search_type'].value))
+
+        if _params.get('search_string') is not None:  # noqa: E501
+            _query_params.append(('searchString', _params['search_string']))
+
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        if _params.get('offset') is not None:  # noqa: E501
+            _query_params.append(('offset', _params['offset']))
+
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['session_token']  # noqa: E501
+
+        _response_types_map = {
+            '200': "List[str]",
+        }
+
+        return self.api_client.call_api(
+            '/layers/collections/search/autocomplete/{provider}/{collection}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1400,6 +1584,144 @@ class LayersApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
+    def provider_capabilities_handler(self, provider : Annotated[StrictStr, Field(..., description="Data provider id")], **kwargs) -> ProviderCapabilities:  # noqa: E501
+        """provider_capabilities_handler  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.provider_capabilities_handler(provider, async_req=True)
+        >>> result = thread.get()
+
+        :param provider: Data provider id (required)
+        :type provider: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ProviderCapabilities
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the provider_capabilities_handler_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.provider_capabilities_handler_with_http_info(provider, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def provider_capabilities_handler_with_http_info(self, provider : Annotated[StrictStr, Field(..., description="Data provider id")], **kwargs) -> ApiResponse:  # noqa: E501
+        """provider_capabilities_handler  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.provider_capabilities_handler_with_http_info(provider, async_req=True)
+        >>> result = thread.get()
+
+        :param provider: Data provider id (required)
+        :type provider: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ProviderCapabilities, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'provider'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method provider_capabilities_handler" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['provider']:
+            _path_params['provider'] = _params['provider']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['session_token']  # noqa: E501
+
+        _response_types_map = {
+            '200': "ProviderCapabilities",
+        }
+
+        return self.api_client.call_api(
+            '/layers/{provider}/capabilities', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
     def remove_collection(self, collection : Annotated[StrictStr, Field(..., description="Layer collection id")], **kwargs) -> None:  # noqa: E501
         """Remove a collection  # noqa: E501
 
@@ -1802,6 +2124,186 @@ class LayersApi:
 
         return self.api_client.call_api(
             '/layerDb/collections/{collection}/layers/{layer}', 'DELETE',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def search_handler(self, provider : Annotated[StrictStr, Field(..., description="Data provider id")], collection : Annotated[StrictStr, Field(..., description="Layer collection id")], search_type : SearchType, search_string : StrictStr, limit : conint(strict=True, ge=0), offset : conint(strict=True, ge=0), **kwargs) -> LayerCollection:  # noqa: E501
+        """Searches the contents of the collection of the given provider  # noqa: E501
+
+        Searches the contents of the collection of the given provider  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.search_handler(provider, collection, search_type, search_string, limit, offset, async_req=True)
+        >>> result = thread.get()
+
+        :param provider: Data provider id (required)
+        :type provider: str
+        :param collection: Layer collection id (required)
+        :type collection: str
+        :param search_type: (required)
+        :type search_type: SearchType
+        :param search_string: (required)
+        :type search_string: str
+        :param limit: (required)
+        :type limit: int
+        :param offset: (required)
+        :type offset: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: LayerCollection
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the search_handler_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.search_handler_with_http_info(provider, collection, search_type, search_string, limit, offset, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def search_handler_with_http_info(self, provider : Annotated[StrictStr, Field(..., description="Data provider id")], collection : Annotated[StrictStr, Field(..., description="Layer collection id")], search_type : SearchType, search_string : StrictStr, limit : conint(strict=True, ge=0), offset : conint(strict=True, ge=0), **kwargs) -> ApiResponse:  # noqa: E501
+        """Searches the contents of the collection of the given provider  # noqa: E501
+
+        Searches the contents of the collection of the given provider  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.search_handler_with_http_info(provider, collection, search_type, search_string, limit, offset, async_req=True)
+        >>> result = thread.get()
+
+        :param provider: Data provider id (required)
+        :type provider: str
+        :param collection: Layer collection id (required)
+        :type collection: str
+        :param search_type: (required)
+        :type search_type: SearchType
+        :param search_string: (required)
+        :type search_string: str
+        :param limit: (required)
+        :type limit: int
+        :param offset: (required)
+        :type offset: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(LayerCollection, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'provider',
+            'collection',
+            'search_type',
+            'search_string',
+            'limit',
+            'offset'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method search_handler" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['provider']:
+            _path_params['provider'] = _params['provider']
+
+        if _params['collection']:
+            _path_params['collection'] = _params['collection']
+
+
+        # process the query parameters
+        _query_params = []
+        if _params.get('search_type') is not None:  # noqa: E501
+            _query_params.append(('searchType', _params['search_type'].value))
+
+        if _params.get('search_string') is not None:  # noqa: E501
+            _query_params.append(('searchString', _params['search_string']))
+
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        if _params.get('offset') is not None:  # noqa: E501
+            _query_params.append(('offset', _params['offset']))
+
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['session_token']  # noqa: E501
+
+        _response_types_map = {
+            '200': "LayerCollection",
+        }
+
+        return self.api_client.call_api(
+            '/layers/collections/search/{provider}/{collection}', 'GET',
             _path_params,
             _query_params,
             _header_params,

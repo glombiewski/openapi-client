@@ -51,7 +51,10 @@ class TestCreateDataset(unittest.TestCase):
                                 uri = '', )
                             ], 
                         source_operator = '', 
-                        symbology = null, ), )
+                        symbology = null, 
+                        tags = [
+                            ''
+                            ], ), )
             )
         else:
             return CreateDataset(
@@ -69,7 +72,10 @@ class TestCreateDataset(unittest.TestCase):
                                 uri = '', )
                             ], 
                         source_operator = '', 
-                        symbology = null, ), ),
+                        symbology = null, 
+                        tags = [
+                            ''
+                            ], ), ),
         )
         """
 

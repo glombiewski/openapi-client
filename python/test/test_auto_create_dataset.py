@@ -41,6 +41,9 @@ class TestAutoCreateDataset(unittest.TestCase):
                 dataset_name = '',
                 layer_name = '',
                 main_file = '',
+                tags = [
+                    ''
+                    ],
                 upload = ''
             )
         else:

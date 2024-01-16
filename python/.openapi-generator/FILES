@@ -161,6 +161,7 @@ geoengine_openapi_client/models/project_version.py
 geoengine_openapi_client/models/provenance.py
 geoengine_openapi_client/models/provenance_entry.py
 geoengine_openapi_client/models/provenance_output.py
+geoengine_openapi_client/models/provider_capabilities.py
 geoengine_openapi_client/models/provider_layer_collection_id.py
 geoengine_openapi_client/models/provider_layer_id.py
 geoengine_openapi_client/models/quota.py
@@ -183,6 +184,9 @@ geoengine_openapi_client/models/rgba_colorizer.py
 geoengine_openapi_client/models/role.py
 geoengine_openapi_client/models/role_description.py
 geoengine_openapi_client/models/running_task_status.py
+geoengine_openapi_client/models/search_capabilities.py
+geoengine_openapi_client/models/search_type.py
+geoengine_openapi_client/models/search_types.py
 geoengine_openapi_client/models/server_info.py
 geoengine_openapi_client/models/single_band_raster_colorizer.py
 geoengine_openapi_client/models/spatial_partition2_d.py
@@ -401,6 +405,7 @@ test/test_projects_api.py
 test/test_provenance.py
 test/test_provenance_entry.py
 test/test_provenance_output.py
+test/test_provider_capabilities.py
 test/test_provider_layer_collection_id.py
 test/test_provider_layer_id.py
 test/test_quota.py
@@ -423,6 +428,9 @@ test/test_rgba_colorizer.py
 test/test_role.py
 test/test_role_description.py
 test/test_running_task_status.py
+test/test_search_capabilities.py
+test/test_search_type.py
+test/test_search_types.py
 test/test_server_info.py
 test/test_session_api.py
 test/test_single_band_raster_colorizer.py

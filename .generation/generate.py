@@ -154,7 +154,6 @@ def generate_python_code(*, package_name: str, package_version: str, package_url
     subprocess.run(
         [
             "podman", "run",
-            "--network=host",
             "--rm",  # remove the container after running
             "-v", f"{os.getcwd()}:/local",
             f"--env-file={CWD / 'override.env'}",
@@ -188,7 +187,6 @@ def generate_typescript_code(*, npm_name: str, npm_version: str, repository_url:
     subprocess.run(
         [
             "podman", "run",
-            "--network=host",
             "--rm",  # remove the container after running
             "-v", f"{os.getcwd()}:/local",
             f"--env-file={CWD / 'override.env'}",
@@ -237,6 +235,20 @@ def main():
             npm_version=config.typescript_package_version,
             repository_url=config.github_url,
         )
+
+        # Create dist files.
+        # This is necessary for using the package directly from the git repo for development.
+        subprocess.run(
+        [
+            "podman", "run",
+            "--rm",  # remove the container after running
+            "-v", f"{os.getcwd()}:/local",
+            "--workdir=/local/typescript", # set working directory
+            "docker.io/node:lts-alpine3.19",
+            "npm", "install",
+        ],
+        check=True,
+    )
     else:
         raise RuntimeError(f'Unknown language {args.language}.')
 

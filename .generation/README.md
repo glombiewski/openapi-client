@@ -23,6 +23,14 @@ From the root of the repository run:
 
 ## Dev-Mode
 
+To fetch the OpenAPI spec from the backend, run:
+
+```bash
+cargo run --features pro
+wget http://localhost:3030/api/api-docs/openapi.json -O - \
+    | python -m json.tool --indent 2 > .generation/input/openapi.json
+```
+
 To run the generation in dev mode, run:
 
 ```bash

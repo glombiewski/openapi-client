@@ -47,7 +47,10 @@ class TestAddDataset(unittest.TestCase):
                         uri = '', )
                     ],
                 source_operator = '',
-                symbology = None
+                symbology = None,
+                tags = [
+                    ''
+                    ]
             )
         else:
             return AddDataset(

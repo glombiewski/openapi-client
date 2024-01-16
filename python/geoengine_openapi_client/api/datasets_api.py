@@ -20,7 +20,7 @@ import warnings
 from pydantic import validate_arguments, ValidationError
 
 from typing_extensions import Annotated
-from pydantic import Field, StrictStr, conint
+from pydantic import Field, StrictStr, conint, conlist
 
 from typing import List, Optional
 
@@ -637,14 +637,14 @@ class DatasetsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_datasets_handler(self, order : OrderBy, offset : conint(strict=True, ge=0), limit : conint(strict=True, ge=0), filter : Optional[StrictStr] = None, **kwargs) -> List[DatasetListing]:  # noqa: E501
+    def list_datasets_handler(self, order : OrderBy, offset : conint(strict=True, ge=0), limit : conint(strict=True, ge=0), filter : Optional[StrictStr] = None, tags : Optional[conlist(StrictStr)] = None, **kwargs) -> List[DatasetListing]:  # noqa: E501
         """Lists available datasets.  # noqa: E501
 
         Lists available datasets.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_datasets_handler(order, offset, limit, filter, async_req=True)
+        >>> thread = api.list_datasets_handler(order, offset, limit, filter, tags, async_req=True)
         >>> result = thread.get()
 
         :param order: (required)
@@ -655,6 +655,8 @@ class DatasetsApi:
         :type limit: int
         :param filter:
         :type filter: str
+        :param tags:
+        :type tags: List[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -670,17 +672,17 @@ class DatasetsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_datasets_handler_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_datasets_handler_with_http_info(order, offset, limit, filter, **kwargs)  # noqa: E501
+        return self.list_datasets_handler_with_http_info(order, offset, limit, filter, tags, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_datasets_handler_with_http_info(self, order : OrderBy, offset : conint(strict=True, ge=0), limit : conint(strict=True, ge=0), filter : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_datasets_handler_with_http_info(self, order : OrderBy, offset : conint(strict=True, ge=0), limit : conint(strict=True, ge=0), filter : Optional[StrictStr] = None, tags : Optional[conlist(StrictStr)] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Lists available datasets.  # noqa: E501
 
         Lists available datasets.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_datasets_handler_with_http_info(order, offset, limit, filter, async_req=True)
+        >>> thread = api.list_datasets_handler_with_http_info(order, offset, limit, filter, tags, async_req=True)
         >>> result = thread.get()
 
         :param order: (required)
@@ -691,6 +693,8 @@ class DatasetsApi:
         :type limit: int
         :param filter:
         :type filter: str
+        :param tags:
+        :type tags: List[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -722,7 +726,8 @@ class DatasetsApi:
             'order',
             'offset',
             'limit',
-            'filter'
+            'filter',
+            'tags'
         ]
         _all_params.extend(
             [
@@ -764,6 +769,10 @@ class DatasetsApi:
 
         if _params.get('limit') is not None:  # noqa: E501
             _query_params.append(('limit', _params['limit']))
+
+        if _params.get('tags') is not None:  # noqa: E501
+            _query_params.append(('tags', _params['tags']))
+            _collection_formats['tags'] = 'multi'
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))

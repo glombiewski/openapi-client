@@ -19,8 +19,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 
 class AutoCreateDataset(BaseModel):
     """
@@ -30,8 +30,9 @@ class AutoCreateDataset(BaseModel):
     dataset_name: StrictStr = Field(..., alias="datasetName")
     layer_name: Optional[StrictStr] = Field(None, alias="layerName")
     main_file: StrictStr = Field(..., alias="mainFile")
+    tags: Optional[conlist(StrictStr)] = None
     upload: StrictStr = Field(...)
-    __properties = ["datasetDescription", "datasetName", "layerName", "mainFile", "upload"]
+    __properties = ["datasetDescription", "datasetName", "layerName", "mainFile", "tags", "upload"]
 
     class Config:
         """Pydantic configuration"""
@@ -62,6 +63,11 @@ class AutoCreateDataset(BaseModel):
         if self.layer_name is None and "layer_name" in self.__fields_set__:
             _dict['layerName'] = None
 
+        # set to None if tags (nullable) is None
+        # and __fields_set__ contains the field
+        if self.tags is None and "tags" in self.__fields_set__:
+            _dict['tags'] = None
+
         return _dict
 
     @classmethod
@@ -78,6 +84,7 @@ class AutoCreateDataset(BaseModel):
             "dataset_name": obj.get("datasetName"),
             "layer_name": obj.get("layerName"),
             "main_file": obj.get("mainFile"),
+            "tags": obj.get("tags"),
             "upload": obj.get("upload")
         })
         return _obj

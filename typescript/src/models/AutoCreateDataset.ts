@@ -45,6 +45,12 @@ export interface AutoCreateDataset {
     mainFile: string;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof AutoCreateDataset
+     */
+    tags?: Array<string> | null;
+    /**
+     * 
      * @type {string}
      * @memberof AutoCreateDataset
      */
@@ -78,6 +84,7 @@ export function AutoCreateDatasetFromJSONTyped(json: any, ignoreDiscriminator: b
         'datasetName': json['datasetName'],
         'layerName': !exists(json, 'layerName') ? undefined : json['layerName'],
         'mainFile': json['mainFile'],
+        'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'upload': json['upload'],
     };
 }
@@ -95,6 +102,7 @@ export function AutoCreateDatasetToJSON(value?: AutoCreateDataset | null): any {
         'datasetName': value.datasetName,
         'layerName': value.layerName,
         'mainFile': value.mainFile,
+        'tags': value.tags,
         'upload': value.upload,
     };
 }

@@ -55,6 +55,13 @@ class TestLayersApi(unittest.TestCase):
         """
         pass
 
+    def test_autocomplete_handler(self) -> None:
+        """Test case for autocomplete_handler
+
+        Autocompletes the search on the contents of the collection of the given provider  # noqa: E501
+        """
+        pass
+
     def test_layer_handler(self) -> None:
         """Test case for layer_handler
 
@@ -90,6 +97,12 @@ class TestLayersApi(unittest.TestCase):
         """
         pass
 
+    def test_provider_capabilities_handler(self) -> None:
+        """Test case for provider_capabilities_handler
+
+        """
+        pass
+
     def test_remove_collection(self) -> None:
         """Test case for remove_collection
 
@@ -108,6 +121,13 @@ class TestLayersApi(unittest.TestCase):
         """Test case for remove_layer_from_collection
 
         Remove a layer from a collection  # noqa: E501
+        """
+        pass
+
+    def test_search_handler(self) -> None:
+        """Test case for search_handler
+
+        Searches the contents of the collection of the given provider  # noqa: E501
         """
         pass
 

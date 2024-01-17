@@ -46,6 +46,8 @@ jobs:
           python3 -m build
       - name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: python/dist/ # does not use `run.working-directory`
 
   typescript:
     name: Publish TypeScript Package

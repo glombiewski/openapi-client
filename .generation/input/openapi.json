@@ -2140,7 +2140,17 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "List of permission",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PermissionListing"
+                  }
+                }
+              }
+            }
           }
         },
         "security": [

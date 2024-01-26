@@ -22,6 +22,9 @@ from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 from pydantic import Field, StrictStr, conint
 
+from typing import List
+
+from geoengine_openapi_client.models.permission_listing import PermissionListing
 from geoengine_openapi_client.models.permission_request import PermissionRequest
 
 from geoengine_openapi_client.api_client import ApiClient
@@ -186,7 +189,7 @@ class PermissionsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_resource_permissions_handler(self, resource_type : Annotated[StrictStr, Field(..., description="Resource Type")], resource_id : Annotated[StrictStr, Field(..., description="Resource Id")], limit : conint(strict=True, ge=0), offset : conint(strict=True, ge=0), **kwargs) -> None:  # noqa: E501
+    def get_resource_permissions_handler(self, resource_type : Annotated[StrictStr, Field(..., description="Resource Type")], resource_id : Annotated[StrictStr, Field(..., description="Resource Id")], limit : conint(strict=True, ge=0), offset : conint(strict=True, ge=0), **kwargs) -> List[PermissionListing]:  # noqa: E501
         """Adds a new permission.  # noqa: E501
 
         Adds a new permission.  # noqa: E501
@@ -213,7 +216,7 @@ class PermissionsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: List[PermissionListing]
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -262,7 +265,7 @@ class PermissionsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(List[PermissionListing], status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -321,10 +324,16 @@ class PermissionsApi:
         _files = {}
         # process the body parameter
         _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
         # authentication setting
         _auth_settings = ['session_token']  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            '200': "List[PermissionListing]",
+        }
 
         return self.api_client.call_api(
             '/permissions/resources/{resource_type}/{resource_id}', 'GET',

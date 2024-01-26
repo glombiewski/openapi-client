@@ -21,7 +21,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as runtime from '../runtime';
-import { PermissionRequestToJSON, } from '../models/index';
+import { PermissionListingFromJSON, PermissionRequestToJSON, } from '../models/index';
 /**
  *
  */
@@ -103,7 +103,7 @@ export class PermissionsApi extends runtime.BaseAPI {
                 headers: headerParameters,
                 query: queryParameters,
             }, initOverrides);
-            return new runtime.VoidApiResponse(response);
+            return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(PermissionListingFromJSON));
         });
     }
     /**
@@ -112,7 +112,8 @@ export class PermissionsApi extends runtime.BaseAPI {
      */
     getResourcePermissionsHandler(requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.getResourcePermissionsHandlerRaw(requestParameters, initOverrides);
+            const response = yield this.getResourcePermissionsHandlerRaw(requestParameters, initOverrides);
+            return yield response.value();
         });
     }
     /**

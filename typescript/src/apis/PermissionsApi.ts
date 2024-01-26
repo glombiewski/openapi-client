@@ -15,9 +15,12 @@
 
 import * as runtime from '../runtime';
 import type {
+  PermissionListing,
   PermissionRequest,
 } from '../models/index';
 import {
+    PermissionListingFromJSON,
+    PermissionListingToJSON,
     PermissionRequestFromJSON,
     PermissionRequestToJSON,
 } from '../models/index';
@@ -88,7 +91,7 @@ export class PermissionsApi extends runtime.BaseAPI {
      * Adds a new permission.
      * Adds a new permission.
      */
-    async getResourcePermissionsHandlerRaw(requestParameters: GetResourcePermissionsHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async getResourcePermissionsHandlerRaw(requestParameters: GetResourcePermissionsHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PermissionListing>>> {
         if (requestParameters.resourceType === null || requestParameters.resourceType === undefined) {
             throw new runtime.RequiredError('resourceType','Required parameter requestParameters.resourceType was null or undefined when calling getResourcePermissionsHandler.');
         }
@@ -132,15 +135,16 @@ export class PermissionsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(PermissionListingFromJSON));
     }
 
     /**
      * Adds a new permission.
      * Adds a new permission.
      */
-    async getResourcePermissionsHandler(requestParameters: GetResourcePermissionsHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.getResourcePermissionsHandlerRaw(requestParameters, initOverrides);
+    async getResourcePermissionsHandler(requestParameters: GetResourcePermissionsHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PermissionListing>> {
+        const response = await this.getResourcePermissionsHandlerRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**

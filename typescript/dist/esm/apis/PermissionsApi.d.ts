@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { PermissionRequest } from '../models/index';
+import type { PermissionListing, PermissionRequest } from '../models/index';
 export interface AddPermissionHandlerRequest {
     permissionRequest: PermissionRequest;
 }
@@ -41,12 +41,12 @@ export declare class PermissionsApi extends runtime.BaseAPI {
      * Adds a new permission.
      * Adds a new permission.
      */
-    getResourcePermissionsHandlerRaw(requestParameters: GetResourcePermissionsHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    getResourcePermissionsHandlerRaw(requestParameters: GetResourcePermissionsHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PermissionListing>>>;
     /**
      * Adds a new permission.
      * Adds a new permission.
      */
-    getResourcePermissionsHandler(requestParameters: GetResourcePermissionsHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    getResourcePermissionsHandler(requestParameters: GetResourcePermissionsHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PermissionListing>>;
     /**
      * Removes an existing permission.
      * Removes an existing permission.

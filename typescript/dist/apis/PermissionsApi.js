@@ -106,7 +106,7 @@ class PermissionsApi extends runtime.BaseAPI {
                 headers: headerParameters,
                 query: queryParameters,
             }, initOverrides);
-            return new runtime.VoidApiResponse(response);
+            return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.PermissionListingFromJSON));
         });
     }
     /**
@@ -115,7 +115,8 @@ class PermissionsApi extends runtime.BaseAPI {
      */
     getResourcePermissionsHandler(requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.getResourcePermissionsHandlerRaw(requestParameters, initOverrides);
+            const response = yield this.getResourcePermissionsHandlerRaw(requestParameters, initOverrides);
+            return yield response.value();
         });
     }
     /**

@@ -14,6 +14,12 @@ import type { PermissionRequest } from '../models/index';
 export interface AddPermissionHandlerRequest {
     permissionRequest: PermissionRequest;
 }
+export interface GetResourcePermissionsHandlerRequest {
+    resourceType: string;
+    resourceId: string;
+    limit: number;
+    offset: number;
+}
 export interface RemovePermissionHandlerRequest {
     permissionRequest: PermissionRequest;
 }
@@ -31,6 +37,16 @@ export declare class PermissionsApi extends runtime.BaseAPI {
      * Adds a new permission.
      */
     addPermissionHandler(requestParameters: AddPermissionHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * Adds a new permission.
+     * Adds a new permission.
+     */
+    getResourcePermissionsHandlerRaw(requestParameters: GetResourcePermissionsHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * Adds a new permission.
+     * Adds a new permission.
+     */
+    getResourcePermissionsHandler(requestParameters: GetResourcePermissionsHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
      * Removes an existing permission.
      * Removes an existing permission.

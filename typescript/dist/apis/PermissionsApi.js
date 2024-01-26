@@ -68,6 +68,57 @@ class PermissionsApi extends runtime.BaseAPI {
         });
     }
     /**
+     * Adds a new permission.
+     * Adds a new permission.
+     */
+    getResourcePermissionsHandlerRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters.resourceType === null || requestParameters.resourceType === undefined) {
+                throw new runtime.RequiredError('resourceType', 'Required parameter requestParameters.resourceType was null or undefined when calling getResourcePermissionsHandler.');
+            }
+            if (requestParameters.resourceId === null || requestParameters.resourceId === undefined) {
+                throw new runtime.RequiredError('resourceId', 'Required parameter requestParameters.resourceId was null or undefined when calling getResourcePermissionsHandler.');
+            }
+            if (requestParameters.limit === null || requestParameters.limit === undefined) {
+                throw new runtime.RequiredError('limit', 'Required parameter requestParameters.limit was null or undefined when calling getResourcePermissionsHandler.');
+            }
+            if (requestParameters.offset === null || requestParameters.offset === undefined) {
+                throw new runtime.RequiredError('offset', 'Required parameter requestParameters.offset was null or undefined when calling getResourcePermissionsHandler.');
+            }
+            const queryParameters = {};
+            if (requestParameters.limit !== undefined) {
+                queryParameters['limit'] = requestParameters.limit;
+            }
+            if (requestParameters.offset !== undefined) {
+                queryParameters['offset'] = requestParameters.offset;
+            }
+            const headerParameters = {};
+            if (this.configuration && this.configuration.accessToken) {
+                const token = this.configuration.accessToken;
+                const tokenString = yield token("session_token", []);
+                if (tokenString) {
+                    headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                }
+            }
+            const response = yield this.request({
+                path: `/permissions/resources/{resource_type}/{resource_id}`.replace(`{${"resource_type"}}`, encodeURIComponent(String(requestParameters.resourceType))).replace(`{${"resource_id"}}`, encodeURIComponent(String(requestParameters.resourceId))),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            }, initOverrides);
+            return new runtime.VoidApiResponse(response);
+        });
+    }
+    /**
+     * Adds a new permission.
+     * Adds a new permission.
+     */
+    getResourcePermissionsHandler(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.getResourcePermissionsHandlerRaw(requestParameters, initOverrides);
+        });
+    }
+    /**
      * Removes an existing permission.
      * Removes an existing permission.
      */

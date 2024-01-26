@@ -137,6 +137,8 @@ src/models/OgrSourceTimeFormat.ts
 src/models/OrderBy.ts
 src/models/PaletteColorizer.ts
 src/models/Permission.ts
+src/models/PermissionListOptions.ts
+src/models/PermissionListing.ts
 src/models/PermissionRequest.ts
 src/models/Plot.ts
 src/models/PlotOutputFormat.ts

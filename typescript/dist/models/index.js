@@ -135,6 +135,8 @@ __exportStar(require("./OgrSourceTimeFormat"), exports);
 __exportStar(require("./OrderBy"), exports);
 __exportStar(require("./PaletteColorizer"), exports);
 __exportStar(require("./Permission"), exports);
+__exportStar(require("./PermissionListOptions"), exports);
+__exportStar(require("./PermissionListing"), exports);
 __exportStar(require("./PermissionRequest"), exports);
 __exportStar(require("./Plot"), exports);
 __exportStar(require("./PlotOutputFormat"), exports);

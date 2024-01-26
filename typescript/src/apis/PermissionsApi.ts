@@ -26,6 +26,13 @@ export interface AddPermissionHandlerRequest {
     permissionRequest: PermissionRequest;
 }
 
+export interface GetResourcePermissionsHandlerRequest {
+    resourceType: string;
+    resourceId: string;
+    limit: number;
+    offset: number;
+}
+
 export interface RemovePermissionHandlerRequest {
     permissionRequest: PermissionRequest;
 }
@@ -75,6 +82,65 @@ export class PermissionsApi extends runtime.BaseAPI {
      */
     async addPermissionHandler(requestParameters: AddPermissionHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.addPermissionHandlerRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Adds a new permission.
+     * Adds a new permission.
+     */
+    async getResourcePermissionsHandlerRaw(requestParameters: GetResourcePermissionsHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.resourceType === null || requestParameters.resourceType === undefined) {
+            throw new runtime.RequiredError('resourceType','Required parameter requestParameters.resourceType was null or undefined when calling getResourcePermissionsHandler.');
+        }
+
+        if (requestParameters.resourceId === null || requestParameters.resourceId === undefined) {
+            throw new runtime.RequiredError('resourceId','Required parameter requestParameters.resourceId was null or undefined when calling getResourcePermissionsHandler.');
+        }
+
+        if (requestParameters.limit === null || requestParameters.limit === undefined) {
+            throw new runtime.RequiredError('limit','Required parameter requestParameters.limit was null or undefined when calling getResourcePermissionsHandler.');
+        }
+
+        if (requestParameters.offset === null || requestParameters.offset === undefined) {
+            throw new runtime.RequiredError('offset','Required parameter requestParameters.offset was null or undefined when calling getResourcePermissionsHandler.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.offset !== undefined) {
+            queryParameters['offset'] = requestParameters.offset;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("session_token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/permissions/resources/{resource_type}/{resource_id}`.replace(`{${"resource_type"}}`, encodeURIComponent(String(requestParameters.resourceType))).replace(`{${"resource_id"}}`, encodeURIComponent(String(requestParameters.resourceId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Adds a new permission.
+     * Adds a new permission.
+     */
+    async getResourcePermissionsHandler(requestParameters: GetResourcePermissionsHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.getResourcePermissionsHandlerRaw(requestParameters, initOverrides);
     }
 
     /**

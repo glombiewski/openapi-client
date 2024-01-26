@@ -23,7 +23,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TextApiResponse = exports.BlobApiResponse = exports.VoidApiResponse = exports.JSONApiResponse = exports.canConsumeForm = exports.mapValues = exports.querystring = exports.exists = exports.COLLECTION_FORMATS = exports.RequiredError = exports.FetchError = exports.ResponseError = exports.BaseAPI = exports.DefaultConfig = exports.Configuration = exports.BASE_PATH = void 0;
-exports.BASE_PATH = "http://0.0.0.0:8080/api".replace(/\/+$/, "");
+exports.BASE_PATH = "http://127.0.0.1:3030/api".replace(/\/+$/, "");
 class Configuration {
     constructor(configuration = {}) {
         this.configuration = configuration;

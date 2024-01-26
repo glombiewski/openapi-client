@@ -119,6 +119,8 @@ export * from './OgrSourceTimeFormat';
 export * from './OrderBy';
 export * from './PaletteColorizer';
 export * from './Permission';
+export * from './PermissionListOptions';
+export * from './PermissionListing';
 export * from './PermissionRequest';
 export * from './Plot';
 export * from './PlotOutputFormat';

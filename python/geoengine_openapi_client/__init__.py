@@ -165,6 +165,8 @@ from geoengine_openapi_client.models.ogr_source_time_format import OgrSourceTime
 from geoengine_openapi_client.models.order_by import OrderBy
 from geoengine_openapi_client.models.palette_colorizer import PaletteColorizer
 from geoengine_openapi_client.models.permission import Permission
+from geoengine_openapi_client.models.permission_list_options import PermissionListOptions
+from geoengine_openapi_client.models.permission_listing import PermissionListing
 from geoengine_openapi_client.models.permission_request import PermissionRequest
 from geoengine_openapi_client.models.plot import Plot
 from geoengine_openapi_client.models.plot_output_format import PlotOutputFormat

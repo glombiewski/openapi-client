@@ -140,6 +140,8 @@ geoengine_openapi_client/models/ogr_source_time_format.py
 geoengine_openapi_client/models/order_by.py
 geoengine_openapi_client/models/palette_colorizer.py
 geoengine_openapi_client/models/permission.py
+geoengine_openapi_client/models/permission_list_options.py
+geoengine_openapi_client/models/permission_listing.py
 geoengine_openapi_client/models/permission_request.py
 geoengine_openapi_client/models/plot.py
 geoengine_openapi_client/models/plot_output_format.py
@@ -381,6 +383,8 @@ test/test_ogr_source_time_format.py
 test/test_order_by.py
 test/test_palette_colorizer.py
 test/test_permission.py
+test/test_permission_list_options.py
+test/test_permission_listing.py
 test/test_permission_request.py
 test/test_permissions_api.py
 test/test_plot.py

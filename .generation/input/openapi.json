@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "http://0.0.0.0:8080/api"
+      "url": "http://127.0.0.1:3030/api"
     }
   ],
   "paths": {
@@ -2078,6 +2078,66 @@
           },
           "required": true
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "session_token": []
+          }
+        ]
+      }
+    },
+    "/permissions/resources/{resource_type}/{resource_id}": {
+      "get": {
+        "tags": [
+          "Permissions"
+        ],
+        "summary": "Adds a new permission.",
+        "description": "Adds a new permission.",
+        "operationId": "get_resource_permissions_handler",
+        "parameters": [
+          {
+            "name": "resource_type",
+            "in": "path",
+            "description": "Resource Type",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resource_id",
+            "in": "path",
+            "description": "Resource Id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -7086,6 +7146,44 @@
           "Read",
           "Owner"
         ]
+      },
+      "PermissionListOptions": {
+        "type": "object",
+        "required": [
+          "limit",
+          "offset"
+        ],
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
+      "PermissionListing": {
+        "type": "object",
+        "required": [
+          "resource_id",
+          "role",
+          "permission"
+        ],
+        "properties": {
+          "permission": {
+            "$ref": "#/components/schemas/Permission"
+          },
+          "resource_id": {
+            "$ref": "#/components/schemas/ResourceId"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Role"
+          }
+        }
       },
       "PermissionRequest": {
         "type": "object",

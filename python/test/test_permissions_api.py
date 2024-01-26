@@ -34,6 +34,13 @@ class TestPermissionsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_resource_permissions_handler(self) -> None:
+        """Test case for get_resource_permissions_handler
+
+        Adds a new permission.  # noqa: E501
+        """
+        pass
+
     def test_remove_permission_handler(self) -> None:
         """Test case for remove_permission_handler
 

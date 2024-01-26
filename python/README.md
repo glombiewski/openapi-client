@@ -55,10 +55,10 @@ import geoengine_openapi_client
 from geoengine_openapi_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8080/api
+# Defining the host is optional and defaults to http://127.0.0.1:3030/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = geoengine_openapi_client.Configuration(
-    host = "http://0.0.0.0:8080/api"
+    host = "http://127.0.0.1:3030/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -90,7 +90,7 @@ with geoengine_openapi_client.ApiClient(configuration) as api_client:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://0.0.0.0:8080/api*
+All URIs are relative to *http://127.0.0.1:3030/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -127,6 +127,7 @@ Class | Method | HTTP request | Description
 *OGCWMSApi* | [**wms_legend_graphic_handler**](docs/OGCWMSApi.md#wms_legend_graphic_handler) | **GET** /wms/{workflow}?request&#x3D;GetLegendGraphic | Get WMS Legend Graphic
 *OGCWMSApi* | [**wms_map_handler**](docs/OGCWMSApi.md#wms_map_handler) | **GET** /wms/{workflow}?request&#x3D;GetMap | Get WMS Map
 *PermissionsApi* | [**add_permission_handler**](docs/PermissionsApi.md#add_permission_handler) | **PUT** /permissions | Adds a new permission.
+*PermissionsApi* | [**get_resource_permissions_handler**](docs/PermissionsApi.md#get_resource_permissions_handler) | **GET** /permissions/resources/{resource_type}/{resource_id} | Adds a new permission.
 *PermissionsApi* | [**remove_permission_handler**](docs/PermissionsApi.md#remove_permission_handler) | **DELETE** /permissions | Removes an existing permission.
 *PlotsApi* | [**get_plot_handler**](docs/PlotsApi.md#get_plot_handler) | **GET** /plot/{id} | Generates a plot.
 *ProjectsApi* | [**create_project_handler**](docs/ProjectsApi.md#create_project_handler) | **POST** /project | Create a new project for the user.
@@ -288,6 +289,8 @@ Class | Method | HTTP request | Description
  - [OrderBy](docs/OrderBy.md)
  - [PaletteColorizer](docs/PaletteColorizer.md)
  - [Permission](docs/Permission.md)
+ - [PermissionListOptions](docs/PermissionListOptions.md)
+ - [PermissionListing](docs/PermissionListing.md)
  - [PermissionRequest](docs/PermissionRequest.md)
  - [Plot](docs/Plot.md)
  - [PlotOutputFormat](docs/PlotOutputFormat.md)

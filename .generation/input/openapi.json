@@ -691,6 +691,44 @@
         ]
       }
     },
+    "/dataset/{dataset}/loadingInfo": {
+      "get": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "Retrieves the loading information of a dataset",
+        "description": "Retrieves the loading information of a dataset",
+        "operationId": "get_loading_info_handler",
+        "parameters": [
+          {
+            "name": "dataset",
+            "in": "path",
+            "description": "Dataset Name",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/DatasetName"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetaDataDefinition"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "session_token": []
+          }
+        ]
+      }
+    },
     "/datasetFromWorkflow/{id}": {
       "post": {
         "tags": [

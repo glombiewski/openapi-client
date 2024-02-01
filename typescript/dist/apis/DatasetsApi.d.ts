@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AutoCreateDataset, CreateDataset, CreateDatasetHandler200Response, Dataset, DatasetListing, MetaDataSuggestion, OrderBy, Volume } from '../models/index';
+import type { AutoCreateDataset, CreateDataset, CreateDatasetHandler200Response, Dataset, DatasetListing, MetaDataDefinition, MetaDataSuggestion, OrderBy, Volume } from '../models/index';
 export interface AutoCreateDatasetHandlerRequest {
     autoCreateDataset: AutoCreateDataset;
 }
@@ -21,6 +21,9 @@ export interface DeleteDatasetHandlerRequest {
     dataset: string;
 }
 export interface GetDatasetHandlerRequest {
+    dataset: string;
+}
+export interface GetLoadingInfoHandlerRequest {
     dataset: string;
 }
 export interface ListDatasetsHandlerRequest {
@@ -79,6 +82,16 @@ export declare class DatasetsApi extends runtime.BaseAPI {
      * Retrieves details about a dataset using the internal name.
      */
     getDatasetHandler(requestParameters: GetDatasetHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Dataset>;
+    /**
+     * Retrieves the loading information of a dataset
+     * Retrieves the loading information of a dataset
+     */
+    getLoadingInfoHandlerRaw(requestParameters: GetLoadingInfoHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetaDataDefinition>>;
+    /**
+     * Retrieves the loading information of a dataset
+     * Retrieves the loading information of a dataset
+     */
+    getLoadingInfoHandler(requestParameters: GetLoadingInfoHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetaDataDefinition>;
     /**
      * Lists available datasets.
      * Lists available datasets.

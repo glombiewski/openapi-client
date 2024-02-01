@@ -55,6 +55,13 @@ class TestDatasetsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_loading_info_handler(self) -> None:
+        """Test case for get_loading_info_handler
+
+        Retrieves the loading information of a dataset  # noqa: E501
+        """
+        pass
+
     def test_list_datasets_handler(self) -> None:
         """Test case for list_datasets_handler
 

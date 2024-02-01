@@ -181,6 +181,43 @@ class DatasetsApi extends runtime.BaseAPI {
         });
     }
     /**
+     * Retrieves the loading information of a dataset
+     * Retrieves the loading information of a dataset
+     */
+    getLoadingInfoHandlerRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+                throw new runtime.RequiredError('dataset', 'Required parameter requestParameters.dataset was null or undefined when calling getLoadingInfoHandler.');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            if (this.configuration && this.configuration.accessToken) {
+                const token = this.configuration.accessToken;
+                const tokenString = yield token("session_token", []);
+                if (tokenString) {
+                    headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                }
+            }
+            const response = yield this.request({
+                path: `/dataset/{dataset}/loadingInfo`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetaDataDefinitionFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * Retrieves the loading information of a dataset
+     * Retrieves the loading information of a dataset
+     */
+    getLoadingInfoHandler(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.getLoadingInfoHandlerRaw(requestParameters, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
      * Lists available datasets.
      * Lists available datasets.
      */

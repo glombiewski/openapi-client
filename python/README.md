@@ -98,6 +98,7 @@ Class | Method | HTTP request | Description
 *DatasetsApi* | [**create_dataset_handler**](docs/DatasetsApi.md#create_dataset_handler) | **POST** /dataset | Creates a new dataset referencing files. Users can reference previously uploaded files. Admins can reference files from a volume.
 *DatasetsApi* | [**delete_dataset_handler**](docs/DatasetsApi.md#delete_dataset_handler) | **DELETE** /dataset/{dataset} | Delete a dataset
 *DatasetsApi* | [**get_dataset_handler**](docs/DatasetsApi.md#get_dataset_handler) | **GET** /dataset/{dataset} | Retrieves details about a dataset using the internal name.
+*DatasetsApi* | [**get_loading_info_handler**](docs/DatasetsApi.md#get_loading_info_handler) | **GET** /dataset/{dataset}/loadingInfo | Retrieves the loading information of a dataset
 *DatasetsApi* | [**list_datasets_handler**](docs/DatasetsApi.md#list_datasets_handler) | **GET** /datasets | Lists available datasets.
 *DatasetsApi* | [**list_volumes_handler**](docs/DatasetsApi.md#list_volumes_handler) | **GET** /dataset/volumes | Lists available volumes.
 *DatasetsApi* | [**suggest_meta_data_handler**](docs/DatasetsApi.md#suggest_meta_data_handler) | **GET** /dataset/suggest | Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.

@@ -11,7 +11,7 @@
       "name": "Apache 2.0 (pro features excluded)",
       "url": "https://github.com/geo-engine/geoengine/blob/main/LICENSE"
     },
-    "version": "0.7.0"
+    "version": "0.8.0"
   },
   "servers": [
     {
@@ -2133,8 +2133,8 @@
         "tags": [
           "Permissions"
         ],
-        "summary": "Adds a new permission.",
-        "description": "Adds a new permission.",
+        "summary": "Lists permission for a given resource.",
+        "description": "Lists permission for a given resource.",
         "operationId": "get_resource_permissions_handler",
         "parameters": [
           {
@@ -4670,6 +4670,14 @@
             }
           },
           {
+            "name": "attributes",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "resultType",
             "in": "query",
             "required": true,
@@ -4937,6 +4945,13 @@
           "northEast",
           "eastNorth"
         ]
+      },
+      "BandSelection": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0
+        }
       },
       "BoundingBox2D": {
         "type": "object",
@@ -7217,7 +7232,7 @@
       "PermissionListing": {
         "type": "object",
         "required": [
-          "resource_id",
+          "resourceId",
           "role",
           "permission"
         ],
@@ -7225,7 +7240,7 @@
           "permission": {
             "$ref": "#/components/schemas/Permission"
           },
-          "resource_id": {
+          "resourceId": {
             "$ref": "#/components/schemas/ResourceId"
           },
           "role": {

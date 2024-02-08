@@ -4971,6 +4971,10 @@
       },
       "Breakpoint": {
         "type": "object",
+        "required": [
+          "value",
+          "color"
+        ],
         "properties": {
           "color": {
             "$ref": "#/components/schemas/RgbaColor"

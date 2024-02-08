@@ -44,6 +44,10 @@ class TestBreakpoint(unittest.TestCase):
             )
         else:
             return Breakpoint(
+                color = [
+                    56
+                    ],
+                value = 1.337,
         )
         """
 

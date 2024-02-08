@@ -24,13 +24,13 @@ export interface Breakpoint {
      * @type {Array<number>}
      * @memberof Breakpoint
      */
-    color?: Array<number>;
+    color: Array<number>;
     /**
      * 
      * @type {number}
      * @memberof Breakpoint
      */
-    value?: number;
+    value: number;
 }
 
 /**
@@ -38,6 +38,8 @@ export interface Breakpoint {
  */
 export function instanceOfBreakpoint(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "color" in value;
+    isInstance = isInstance && "value" in value;
 
     return isInstance;
 }
@@ -52,8 +54,8 @@ export function BreakpointFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     return {
         
-        'color': !exists(json, 'color') ? undefined : json['color'],
-        'value': !exists(json, 'value') ? undefined : json['value'],
+        'color': json['color'],
+        'value': json['value'],
     };
 }
 

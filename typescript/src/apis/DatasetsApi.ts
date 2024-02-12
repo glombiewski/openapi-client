@@ -90,7 +90,6 @@ export class DatasetsApi extends runtime.BaseAPI {
 
     /**
      * Creates a new dataset using previously uploaded files. The format of the files will be automatically detected when possible.
-     * Creates a new dataset using previously uploaded files.
      */
     async autoCreateDatasetHandlerRaw(requestParameters: AutoCreateDatasetHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateDatasetHandler200Response>> {
         if (requestParameters.autoCreateDataset === null || requestParameters.autoCreateDataset === undefined) {

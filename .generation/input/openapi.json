@@ -3229,7 +3229,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UploadFilesResponse"
+                  "$ref": "#/components/schemas/UploadFileLayersResponse"
                 },
                 "example": {
                   "layers": [

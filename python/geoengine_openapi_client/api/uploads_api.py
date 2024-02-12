@@ -25,6 +25,7 @@ from pydantic import Field, StrictBytes, StrictStr, conlist
 from typing import Union
 
 from geoengine_openapi_client.models.add_collection200_response import AddCollection200Response
+from geoengine_openapi_client.models.upload_file_layers_response import UploadFileLayersResponse
 from geoengine_openapi_client.models.upload_files_response import UploadFilesResponse
 
 from geoengine_openapi_client.api_client import ApiClient
@@ -48,7 +49,7 @@ class UploadsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def list_upload_file_layers_handler(self, upload_id : Annotated[StrictStr, Field(..., description="Upload id")], file_name : Annotated[StrictStr, Field(..., description="File name")], **kwargs) -> UploadFilesResponse:  # noqa: E501
+    def list_upload_file_layers_handler(self, upload_id : Annotated[StrictStr, Field(..., description="Upload id")], file_name : Annotated[StrictStr, Field(..., description="File name")], **kwargs) -> UploadFileLayersResponse:  # noqa: E501
         """List the layers of on uploaded file.  # noqa: E501
 
         List the layers of on uploaded file.  # noqa: E501
@@ -71,7 +72,7 @@ class UploadsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: UploadFilesResponse
+        :rtype: UploadFileLayersResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -116,7 +117,7 @@ class UploadsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(UploadFilesResponse, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(UploadFileLayersResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -175,7 +176,7 @@ class UploadsApi:
         _auth_settings = ['session_token']  # noqa: E501
 
         _response_types_map = {
-            '200': "UploadFilesResponse",
+            '200': "UploadFileLayersResponse",
         }
 
         return self.api_client.call_api(

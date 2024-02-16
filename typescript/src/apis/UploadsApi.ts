@@ -16,14 +16,11 @@
 import * as runtime from '../runtime';
 import type {
   AddCollection200Response,
-  UploadFileLayersResponse,
   UploadFilesResponse,
 } from '../models/index';
 import {
     AddCollection200ResponseFromJSON,
     AddCollection200ResponseToJSON,
-    UploadFileLayersResponseFromJSON,
-    UploadFileLayersResponseToJSON,
     UploadFilesResponseFromJSON,
     UploadFilesResponseToJSON,
 } from '../models/index';
@@ -50,7 +47,7 @@ export class UploadsApi extends runtime.BaseAPI {
      * List the layers of on uploaded file.
      * List the layers of on uploaded file.
      */
-    async listUploadFileLayersHandlerRaw(requestParameters: ListUploadFileLayersHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UploadFileLayersResponse>> {
+    async listUploadFileLayersHandlerRaw(requestParameters: ListUploadFileLayersHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UploadFilesResponse>> {
         if (requestParameters.uploadId === null || requestParameters.uploadId === undefined) {
             throw new runtime.RequiredError('uploadId','Required parameter requestParameters.uploadId was null or undefined when calling listUploadFileLayersHandler.');
         }
@@ -78,14 +75,14 @@ export class UploadsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UploadFileLayersResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UploadFilesResponseFromJSON(jsonValue));
     }
 
     /**
      * List the layers of on uploaded file.
      * List the layers of on uploaded file.
      */
-    async listUploadFileLayersHandler(requestParameters: ListUploadFileLayersHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UploadFileLayersResponse> {
+    async listUploadFileLayersHandler(requestParameters: ListUploadFileLayersHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UploadFilesResponse> {
         const response = await this.listUploadFileLayersHandlerRaw(requestParameters, initOverrides);
         return await response.value();
     }

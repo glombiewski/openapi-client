@@ -729,6 +729,61 @@
         ]
       }
     },
+    "/dataset/{dataset}/symbology": {
+      "post": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "Updates the dataset's symbology",
+        "description": "Updates the dataset's symbology",
+        "operationId": "update_dataset_symbology_handler",
+        "parameters": [
+          {
+            "name": "dataset",
+            "in": "path",
+            "description": "Dataset Name",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/DatasetName"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Symbology"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedUserResponse"
+          }
+        },
+        "security": [
+          {
+            "session_token": []
+          }
+        ]
+      }
+    },
     "/datasetFromWorkflow/{id}": {
       "post": {
         "tags": [
@@ -3229,7 +3284,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UploadFileLayersResponse"
+                  "$ref": "#/components/schemas/UploadFilesResponse"
                 },
                 "example": {
                   "layers": [

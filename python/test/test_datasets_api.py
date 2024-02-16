@@ -83,6 +83,13 @@ class TestDatasetsApi(unittest.TestCase):
         """
         pass
 
+    def test_update_dataset_symbology_handler(self) -> None:
+        """Test case for update_dataset_symbology_handler
+
+        Updates the dataset's symbology  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

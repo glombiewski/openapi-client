@@ -13,9 +13,9 @@ import * as runtime from '../runtime';
 import type { GeoJson, GetCapabilitiesRequest, GetFeatureRequest, WfsService, WfsVersion } from '../models/index';
 export interface WfsCapabilitiesHandlerRequest {
     workflow: string;
+    version: WfsVersion | null;
     service: WfsService;
     request: GetCapabilitiesRequest;
-    version?: WfsVersion | null;
 }
 export interface WfsFeatureHandlerRequest {
     workflow: string;

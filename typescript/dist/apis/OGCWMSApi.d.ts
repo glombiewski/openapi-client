@@ -13,10 +13,10 @@ import * as runtime from '../runtime';
 import type { GetCapabilitiesFormat, GetCapabilitiesRequest, GetLegendGraphicRequest, GetMapExceptionFormat, GetMapFormat, GetMapRequest, WmsService, WmsVersion } from '../models/index';
 export interface WmsCapabilitiesHandlerRequest {
     workflow: string;
+    version: WmsVersion | null;
     service: WmsService;
     request: GetCapabilitiesRequest;
-    version?: WmsVersion | null;
-    format?: GetCapabilitiesFormat | null;
+    format: GetCapabilitiesFormat | null;
 }
 export interface WmsLegendGraphicHandlerRequest {
     workflow: string;

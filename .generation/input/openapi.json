@@ -3284,7 +3284,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UploadFilesResponse"
+                  "$ref": "#/components/schemas/UploadFileLayersResponse"
                 },
                 "example": {
                   "layers": [
@@ -3766,8 +3766,8 @@
           },
           {
             "name": "version",
-            "in": "query",
-            "required": false,
+            "in": "path",
+            "required": true,
             "schema": {
               "allOf": [
                 {
@@ -3779,7 +3779,7 @@
           },
           {
             "name": "service",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/WfsService"
@@ -3787,7 +3787,7 @@
           },
           {
             "name": "request",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/GetCapabilitiesRequest"
@@ -4102,8 +4102,8 @@
           },
           {
             "name": "version",
-            "in": "query",
-            "required": false,
+            "in": "path",
+            "required": true,
             "schema": {
               "allOf": [
                 {
@@ -4115,7 +4115,7 @@
           },
           {
             "name": "service",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/WmsService"
@@ -4123,7 +4123,7 @@
           },
           {
             "name": "request",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/GetCapabilitiesRequest"
@@ -4131,8 +4131,8 @@
           },
           {
             "name": "format",
-            "in": "query",
-            "required": false,
+            "in": "path",
+            "required": true,
             "schema": {
               "allOf": [
                 {
@@ -4182,7 +4182,7 @@
           },
           {
             "name": "version",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/WmsVersion"
@@ -4190,7 +4190,7 @@
           },
           {
             "name": "service",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/WmsService"
@@ -4198,7 +4198,7 @@
           },
           {
             "name": "request",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/GetLegendGraphicRequest"
@@ -4206,7 +4206,7 @@
           },
           {
             "name": "layer",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "string"

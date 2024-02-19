@@ -17,10 +17,14 @@ wget http://localhost:3030/api/api-docs/openapi.json -O - | python3 -m json.tool
 
 git add .
 
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
 # Check if -a is passed as an argument
 if [[ "$*" == *"-a"* ]]; then
     # Use git commit --amend
     git commit --amend --no-edit
+
+    git push -f origin ${current_branch}
 else
     # Get all arguments as a single string
     args_as_string="$*"
@@ -29,12 +33,9 @@ else
     message=${args_as_string:-"update openapi-client"}
 
     git commit -m "$message"
+
+    git push -u origin ${current_branch}
 fi
-
-# Push the current branch and set the remote as upstream
-git push -u origin $(git rev-parse --abbrev-ref HEAD)
-
-current_branch=$(git rev-parse --abbrev-ref HEAD)
 
 cd ../geoengine-ui
 

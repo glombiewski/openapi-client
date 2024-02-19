@@ -102,6 +102,7 @@ Class | Method | HTTP request | Description
 *DatasetsApi* | [**list_datasets_handler**](docs/DatasetsApi.md#list_datasets_handler) | **GET** /datasets | Lists available datasets.
 *DatasetsApi* | [**list_volumes_handler**](docs/DatasetsApi.md#list_volumes_handler) | **GET** /dataset/volumes | Lists available volumes.
 *DatasetsApi* | [**suggest_meta_data_handler**](docs/DatasetsApi.md#suggest_meta_data_handler) | **GET** /dataset/suggest | Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.
+*DatasetsApi* | [**update_dataset_handler**](docs/DatasetsApi.md#update_dataset_handler) | **POST** /dataset/{dataset} | Update details about a dataset using the internal name.
 *DatasetsApi* | [**update_dataset_symbology_handler**](docs/DatasetsApi.md#update_dataset_symbology_handler) | **POST** /dataset/{dataset}/symbology | Updates the dataset&#39;s symbology
 *GeneralApi* | [**available_handler**](docs/GeneralApi.md#available_handler) | **GET** /available | Server availablity check.
 *GeneralApi* | [**server_info_handler**](docs/GeneralApi.md#server_info_handler) | **GET** /info | Shows information about the server software version.
@@ -377,6 +378,7 @@ Class | Method | HTTP request | Description
  - [UnitlessMeasurement](docs/UnitlessMeasurement.md)
  - [UnixTimeStampOgrSourceTimeFormat](docs/UnixTimeStampOgrSourceTimeFormat.md)
  - [UnixTimeStampType](docs/UnixTimeStampType.md)
+ - [UpdateDataset](docs/UpdateDataset.md)
  - [UpdateProject](docs/UpdateProject.md)
  - [UpdateQuota](docs/UpdateQuota.md)
  - [UploadFileLayersResponse](docs/UploadFileLayersResponse.md)

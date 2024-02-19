@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AutoCreateDataset, CreateDataset, CreateDatasetHandler200Response, Dataset, DatasetListing, MetaDataDefinition, MetaDataSuggestion, OrderBy, Symbology, Volume } from '../models/index';
+import type { AutoCreateDataset, CreateDataset, CreateDatasetHandler200Response, Dataset, DatasetListing, MetaDataDefinition, MetaDataSuggestion, OrderBy, Symbology, UpdateDataset, Volume } from '../models/index';
 export interface AutoCreateDatasetHandlerRequest {
     autoCreateDataset: AutoCreateDataset;
 }
@@ -37,6 +37,10 @@ export interface SuggestMetaDataHandlerRequest {
     upload: string;
     mainFile?: string | null;
     layerName?: string | null;
+}
+export interface UpdateDatasetHandlerRequest {
+    dataset: string;
+    updateDataset: UpdateDataset;
 }
 export interface UpdateDatasetSymbologyHandlerRequest {
     dataset: string;
@@ -126,6 +130,16 @@ export declare class DatasetsApi extends runtime.BaseAPI {
      * Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.
      */
     suggestMetaDataHandler(requestParameters: SuggestMetaDataHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetaDataSuggestion>;
+    /**
+     * Update details about a dataset using the internal name.
+     * Update details about a dataset using the internal name.
+     */
+    updateDatasetHandlerRaw(requestParameters: UpdateDatasetHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * Update details about a dataset using the internal name.
+     * Update details about a dataset using the internal name.
+     */
+    updateDatasetHandler(requestParameters: UpdateDatasetHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
      * Updates the dataset\'s symbology
      * Updates the dataset\'s symbology

@@ -31,7 +31,8 @@ else
     git commit -m "$message"
 fi
 
-git push
+# Push the current branch and set the remote as upstream
+git push -u origin $(git rev-parse --abbrev-ref HEAD)
 
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 

@@ -634,6 +634,67 @@
           }
         ]
       },
+      "post": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "Update details about a dataset using the internal name.",
+        "description": "Update details about a dataset using the internal name.",
+        "operationId": "update_dataset_handler",
+        "parameters": [
+          {
+            "name": "dataset",
+            "in": "path",
+            "description": "Dataset Name",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/DatasetName"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDataset"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "Referenced an unknown dataset": {
+                    "value": {
+                      "error": "CannotLoadDataset",
+                      "message": "CannotLoadDataset: UnknownDatasetName"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedUserResponse"
+          }
+        },
+        "security": [
+          {
+            "session_token": []
+          }
+        ]
+      },
       "delete": {
         "tags": [
           "Datasets"
@@ -9029,6 +9090,29 @@
           "epochSeconds",
           "epochMilliseconds"
         ]
+      },
+      "UpdateDataset": {
+        "type": "object",
+        "required": [
+          "display_name",
+          "description"
+        ],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "name": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DatasetName"
+              }
+            ],
+            "nullable": true
+          }
+        }
       },
       "UpdateProject": {
         "type": "object",

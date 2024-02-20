@@ -1381,7 +1381,7 @@ class DatasetsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/dataset/{dataset}/symbology', 'POST',
+            '/dataset/{dataset}/symbology', 'PUT',
             _path_params,
             _query_params,
             _header_params,

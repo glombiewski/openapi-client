@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.0.5"
+__version__ = "0.0.6"
 
 # import apis into sdk package
 from geoengine_openapi_client.api.datasets_api import DatasetsApi

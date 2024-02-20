@@ -38,6 +38,9 @@ class OGCWFSApi extends runtime.BaseAPI {
             if (requestParameters.workflow === null || requestParameters.workflow === undefined) {
                 throw new runtime.RequiredError('workflow', 'Required parameter requestParameters.workflow was null or undefined when calling wfsCapabilitiesHandler.');
             }
+            if (requestParameters.version === null || requestParameters.version === undefined) {
+                throw new runtime.RequiredError('version', 'Required parameter requestParameters.version was null or undefined when calling wfsCapabilitiesHandler.');
+            }
             if (requestParameters.service === null || requestParameters.service === undefined) {
                 throw new runtime.RequiredError('service', 'Required parameter requestParameters.service was null or undefined when calling wfsCapabilitiesHandler.');
             }
@@ -45,15 +48,6 @@ class OGCWFSApi extends runtime.BaseAPI {
                 throw new runtime.RequiredError('request', 'Required parameter requestParameters.request was null or undefined when calling wfsCapabilitiesHandler.');
             }
             const queryParameters = {};
-            if (requestParameters.version !== undefined) {
-                queryParameters['version'] = requestParameters.version;
-            }
-            if (requestParameters.service !== undefined) {
-                queryParameters['service'] = requestParameters.service;
-            }
-            if (requestParameters.request !== undefined) {
-                queryParameters['request'] = requestParameters.request;
-            }
             const headerParameters = {};
             if (this.configuration && this.configuration.accessToken) {
                 const token = this.configuration.accessToken;
@@ -63,7 +57,7 @@ class OGCWFSApi extends runtime.BaseAPI {
                 }
             }
             const response = yield this.request({
-                path: `/wfs/{workflow}?request=GetCapabilities`.replace(`{${"workflow"}}`, encodeURIComponent(String(requestParameters.workflow))),
+                path: `/wfs/{workflow}?request=GetCapabilities`.replace(`{${"workflow"}}`, encodeURIComponent(String(requestParameters.workflow))).replace(`{${"version"}}`, encodeURIComponent(String(requestParameters.version))).replace(`{${"service"}}`, encodeURIComponent(String(requestParameters.service))).replace(`{${"request"}}`, encodeURIComponent(String(requestParameters.request))),
                 method: 'GET',
                 headers: headerParameters,
                 query: queryParameters,

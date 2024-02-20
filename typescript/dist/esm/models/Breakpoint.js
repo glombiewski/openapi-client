@@ -11,12 +11,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { exists } from '../runtime';
 /**
  * Check if a given object implements the Breakpoint interface.
  */
 export function instanceOfBreakpoint(value) {
     let isInstance = true;
+    isInstance = isInstance && "color" in value;
+    isInstance = isInstance && "value" in value;
     return isInstance;
 }
 export function BreakpointFromJSON(json) {
@@ -27,8 +28,8 @@ export function BreakpointFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'color': !exists(json, 'color') ? undefined : json['color'],
-        'value': !exists(json, 'value') ? undefined : json['value'],
+        'color': json['color'],
+        'value': json['value'],
     };
 }
 export function BreakpointToJSON(value) {

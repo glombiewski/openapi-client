@@ -36,9 +36,9 @@ import {
 
 export interface WfsCapabilitiesHandlerRequest {
     workflow: string;
+    version: WfsVersion | null;
     service: WfsService;
     request: GetCapabilitiesRequest;
-    version?: WfsVersion | null;
 }
 
 export interface WfsFeatureHandlerRequest {
@@ -73,6 +73,10 @@ export class OGCWFSApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('workflow','Required parameter requestParameters.workflow was null or undefined when calling wfsCapabilitiesHandler.');
         }
 
+        if (requestParameters.version === null || requestParameters.version === undefined) {
+            throw new runtime.RequiredError('version','Required parameter requestParameters.version was null or undefined when calling wfsCapabilitiesHandler.');
+        }
+
         if (requestParameters.service === null || requestParameters.service === undefined) {
             throw new runtime.RequiredError('service','Required parameter requestParameters.service was null or undefined when calling wfsCapabilitiesHandler.');
         }
@@ -82,18 +86,6 @@ export class OGCWFSApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.version !== undefined) {
-            queryParameters['version'] = requestParameters.version;
-        }
-
-        if (requestParameters.service !== undefined) {
-            queryParameters['service'] = requestParameters.service;
-        }
-
-        if (requestParameters.request !== undefined) {
-            queryParameters['request'] = requestParameters.request;
-        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -106,7 +98,7 @@ export class OGCWFSApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/wfs/{workflow}?request=GetCapabilities`.replace(`{${"workflow"}}`, encodeURIComponent(String(requestParameters.workflow))),
+            path: `/wfs/{workflow}?request=GetCapabilities`.replace(`{${"workflow"}}`, encodeURIComponent(String(requestParameters.workflow))).replace(`{${"version"}}`, encodeURIComponent(String(requestParameters.version))).replace(`{${"service"}}`, encodeURIComponent(String(requestParameters.service))).replace(`{${"request"}}`, encodeURIComponent(String(requestParameters.request))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

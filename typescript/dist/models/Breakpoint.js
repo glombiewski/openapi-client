@@ -14,12 +14,13 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BreakpointToJSON = exports.BreakpointFromJSONTyped = exports.BreakpointFromJSON = exports.instanceOfBreakpoint = void 0;
-const runtime_1 = require("../runtime");
 /**
  * Check if a given object implements the Breakpoint interface.
  */
 function instanceOfBreakpoint(value) {
     let isInstance = true;
+    isInstance = isInstance && "color" in value;
+    isInstance = isInstance && "value" in value;
     return isInstance;
 }
 exports.instanceOfBreakpoint = instanceOfBreakpoint;
@@ -32,8 +33,8 @@ function BreakpointFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'color': !(0, runtime_1.exists)(json, 'color') ? undefined : json['color'],
-        'value': !(0, runtime_1.exists)(json, 'value') ? undefined : json['value'],
+        'color': json['color'],
+        'value': json['value'],
     };
 }
 exports.BreakpointFromJSONTyped = BreakpointFromJSONTyped;

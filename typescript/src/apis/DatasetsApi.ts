@@ -24,6 +24,7 @@ import type {
   MetaDataDefinition,
   MetaDataSuggestion,
   OrderBy,
+  Symbology,
   Volume,
 } from '../models/index';
 import {
@@ -45,6 +46,8 @@ import {
     MetaDataSuggestionToJSON,
     OrderByFromJSON,
     OrderByToJSON,
+    SymbologyFromJSON,
+    SymbologyToJSON,
     VolumeFromJSON,
     VolumeToJSON,
 } from '../models/index';
@@ -81,6 +84,11 @@ export interface SuggestMetaDataHandlerRequest {
     upload: string;
     mainFile?: string | null;
     layerName?: string | null;
+}
+
+export interface UpdateDatasetSymbologyHandlerRequest {
+    dataset: string;
+    symbology: Symbology;
 }
 
 /**
@@ -447,6 +455,52 @@ export class DatasetsApi extends runtime.BaseAPI {
     async suggestMetaDataHandler(requestParameters: SuggestMetaDataHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetaDataSuggestion> {
         const response = await this.suggestMetaDataHandlerRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     * Updates the dataset\'s symbology
+     * Updates the dataset\'s symbology
+     */
+    async updateDatasetSymbologyHandlerRaw(requestParameters: UpdateDatasetSymbologyHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+            throw new runtime.RequiredError('dataset','Required parameter requestParameters.dataset was null or undefined when calling updateDatasetSymbologyHandler.');
+        }
+
+        if (requestParameters.symbology === null || requestParameters.symbology === undefined) {
+            throw new runtime.RequiredError('symbology','Required parameter requestParameters.symbology was null or undefined when calling updateDatasetSymbologyHandler.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("session_token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/dataset/{dataset}/symbology`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SymbologyToJSON(requestParameters.symbology),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Updates the dataset\'s symbology
+     * Updates the dataset\'s symbology
+     */
+    async updateDatasetSymbologyHandler(requestParameters: UpdateDatasetSymbologyHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.updateDatasetSymbologyHandlerRaw(requestParameters, initOverrides);
     }
 
 }

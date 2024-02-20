@@ -19,15 +19,15 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional, Union
-from pydantic import BaseModel, StrictFloat, StrictInt, conlist
+from typing import List, Union
+from pydantic import BaseModel, Field, StrictFloat, StrictInt, conlist
 
 class Breakpoint(BaseModel):
     """
     Breakpoint
     """
-    color: Optional[conlist(StrictInt, max_items=4, min_items=4)] = None
-    value: Optional[Union[StrictFloat, StrictInt]] = None
+    color: conlist(StrictInt, max_items=4, min_items=4) = Field(...)
+    value: Union[StrictFloat, StrictInt] = Field(...)
     __properties = ["color", "value"]
 
     class Config:

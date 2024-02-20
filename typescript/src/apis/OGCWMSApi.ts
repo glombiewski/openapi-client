@@ -45,10 +45,10 @@ import {
 
 export interface WmsCapabilitiesHandlerRequest {
     workflow: string;
+    version: WmsVersion | null;
     service: WmsService;
     request: GetCapabilitiesRequest;
-    version?: WmsVersion | null;
-    format?: GetCapabilitiesFormat | null;
+    format: GetCapabilitiesFormat | null;
 }
 
 export interface WmsLegendGraphicHandlerRequest {
@@ -94,6 +94,10 @@ export class OGCWMSApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('workflow','Required parameter requestParameters.workflow was null or undefined when calling wmsCapabilitiesHandler.');
         }
 
+        if (requestParameters.version === null || requestParameters.version === undefined) {
+            throw new runtime.RequiredError('version','Required parameter requestParameters.version was null or undefined when calling wmsCapabilitiesHandler.');
+        }
+
         if (requestParameters.service === null || requestParameters.service === undefined) {
             throw new runtime.RequiredError('service','Required parameter requestParameters.service was null or undefined when calling wmsCapabilitiesHandler.');
         }
@@ -102,23 +106,11 @@ export class OGCWMSApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('request','Required parameter requestParameters.request was null or undefined when calling wmsCapabilitiesHandler.');
         }
 
+        if (requestParameters.format === null || requestParameters.format === undefined) {
+            throw new runtime.RequiredError('format','Required parameter requestParameters.format was null or undefined when calling wmsCapabilitiesHandler.');
+        }
+
         const queryParameters: any = {};
-
-        if (requestParameters.version !== undefined) {
-            queryParameters['version'] = requestParameters.version;
-        }
-
-        if (requestParameters.service !== undefined) {
-            queryParameters['service'] = requestParameters.service;
-        }
-
-        if (requestParameters.request !== undefined) {
-            queryParameters['request'] = requestParameters.request;
-        }
-
-        if (requestParameters.format !== undefined) {
-            queryParameters['format'] = requestParameters.format;
-        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -131,7 +123,7 @@ export class OGCWMSApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/wms/{workflow}?request=GetCapabilities`.replace(`{${"workflow"}}`, encodeURIComponent(String(requestParameters.workflow))),
+            path: `/wms/{workflow}?request=GetCapabilities`.replace(`{${"workflow"}}`, encodeURIComponent(String(requestParameters.workflow))).replace(`{${"version"}}`, encodeURIComponent(String(requestParameters.version))).replace(`{${"service"}}`, encodeURIComponent(String(requestParameters.service))).replace(`{${"request"}}`, encodeURIComponent(String(requestParameters.request))).replace(`{${"format"}}`, encodeURIComponent(String(requestParameters.format))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -180,22 +172,6 @@ export class OGCWMSApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
-        if (requestParameters.version !== undefined) {
-            queryParameters['version'] = requestParameters.version;
-        }
-
-        if (requestParameters.service !== undefined) {
-            queryParameters['service'] = requestParameters.service;
-        }
-
-        if (requestParameters.request !== undefined) {
-            queryParameters['request'] = requestParameters.request;
-        }
-
-        if (requestParameters.layer !== undefined) {
-            queryParameters['layer'] = requestParameters.layer;
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -207,7 +183,7 @@ export class OGCWMSApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/wms/{workflow}?request=GetLegendGraphic`.replace(`{${"workflow"}}`, encodeURIComponent(String(requestParameters.workflow))),
+            path: `/wms/{workflow}?request=GetLegendGraphic`.replace(`{${"workflow"}}`, encodeURIComponent(String(requestParameters.workflow))).replace(`{${"version"}}`, encodeURIComponent(String(requestParameters.version))).replace(`{${"service"}}`, encodeURIComponent(String(requestParameters.service))).replace(`{${"request"}}`, encodeURIComponent(String(requestParameters.request))).replace(`{${"layer"}}`, encodeURIComponent(String(requestParameters.layer))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

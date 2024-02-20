@@ -52,25 +52,25 @@ class OGCWMSApi:
         self.api_client = api_client
 
     @validate_arguments
-    def wms_capabilities_handler(self, workflow : Annotated[StrictStr, Field(..., description="Workflow id")], service : WmsService, request : GetCapabilitiesRequest, version : Optional[Any] = None, format : Optional[Any] = None, **kwargs) -> str:  # noqa: E501
+    def wms_capabilities_handler(self, workflow : Annotated[StrictStr, Field(..., description="Workflow id")], version : Optional[Any], service : WmsService, request : GetCapabilitiesRequest, format : Optional[Any], **kwargs) -> str:  # noqa: E501
         """Get WMS Capabilities  # noqa: E501
 
         Get WMS Capabilities  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.wms_capabilities_handler(workflow, service, request, version, format, async_req=True)
+        >>> thread = api.wms_capabilities_handler(workflow, version, service, request, format, async_req=True)
         >>> result = thread.get()
 
         :param workflow: Workflow id (required)
         :type workflow: str
+        :param version: (required)
+        :type version: WmsVersion
         :param service: (required)
         :type service: WmsService
         :param request: (required)
         :type request: GetCapabilitiesRequest
-        :param version:
-        :type version: WmsVersion
-        :param format:
+        :param format: (required)
         :type format: GetCapabilitiesFormat
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -87,28 +87,28 @@ class OGCWMSApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the wms_capabilities_handler_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.wms_capabilities_handler_with_http_info(workflow, service, request, version, format, **kwargs)  # noqa: E501
+        return self.wms_capabilities_handler_with_http_info(workflow, version, service, request, format, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def wms_capabilities_handler_with_http_info(self, workflow : Annotated[StrictStr, Field(..., description="Workflow id")], service : WmsService, request : GetCapabilitiesRequest, version : Optional[Any] = None, format : Optional[Any] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def wms_capabilities_handler_with_http_info(self, workflow : Annotated[StrictStr, Field(..., description="Workflow id")], version : Optional[Any], service : WmsService, request : GetCapabilitiesRequest, format : Optional[Any], **kwargs) -> ApiResponse:  # noqa: E501
         """Get WMS Capabilities  # noqa: E501
 
         Get WMS Capabilities  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.wms_capabilities_handler_with_http_info(workflow, service, request, version, format, async_req=True)
+        >>> thread = api.wms_capabilities_handler_with_http_info(workflow, version, service, request, format, async_req=True)
         >>> result = thread.get()
 
         :param workflow: Workflow id (required)
         :type workflow: str
+        :param version: (required)
+        :type version: WmsVersion
         :param service: (required)
         :type service: WmsService
         :param request: (required)
         :type request: GetCapabilitiesRequest
-        :param version:
-        :type version: WmsVersion
-        :param format:
+        :param format: (required)
         :type format: GetCapabilitiesFormat
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -139,9 +139,9 @@ class OGCWMSApi:
 
         _all_params = [
             'workflow',
+            'version',
             'service',
             'request',
-            'version',
             'format'
         ]
         _all_params.extend(
@@ -173,21 +173,21 @@ class OGCWMSApi:
         if _params['workflow']:
             _path_params['workflow'] = _params['workflow']
 
+        if _params['version']:
+            _path_params['version'] = _params['version']
+
+        if _params['service']:
+            _path_params['service'] = _params['service']
+
+        if _params['request']:
+            _path_params['request'] = _params['request']
+
+        if _params['format']:
+            _path_params['format'] = _params['format']
+
 
         # process the query parameters
         _query_params = []
-        if _params.get('version') is not None:  # noqa: E501
-            _query_params.append(('version', _params['version'].value))
-
-        if _params.get('service') is not None:  # noqa: E501
-            _query_params.append(('service', _params['service'].value))
-
-        if _params.get('request') is not None:  # noqa: E501
-            _query_params.append(('request', _params['request'].value))
-
-        if _params.get('format') is not None:  # noqa: E501
-            _query_params.append(('format', _params['format'].value))
-
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
@@ -345,21 +345,21 @@ class OGCWMSApi:
         if _params['workflow']:
             _path_params['workflow'] = _params['workflow']
 
+        if _params['version']:
+            _path_params['version'] = _params['version']
+
+        if _params['service']:
+            _path_params['service'] = _params['service']
+
+        if _params['request']:
+            _path_params['request'] = _params['request']
+
+        if _params['layer']:
+            _path_params['layer'] = _params['layer']
+
 
         # process the query parameters
         _query_params = []
-        if _params.get('version') is not None:  # noqa: E501
-            _query_params.append(('version', _params['version'].value))
-
-        if _params.get('service') is not None:  # noqa: E501
-            _query_params.append(('service', _params['service'].value))
-
-        if _params.get('request') is not None:  # noqa: E501
-            _query_params.append(('request', _params['request'].value))
-
-        if _params.get('layer') is not None:  # noqa: E501
-            _query_params.append(('layer', _params['layer']))
-
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters

@@ -791,7 +791,7 @@
       }
     },
     "/dataset/{dataset}/symbology": {
-      "post": {
+      "put": {
         "tags": [
           "Datasets"
         ],

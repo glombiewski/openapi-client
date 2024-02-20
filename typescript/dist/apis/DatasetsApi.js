@@ -420,7 +420,7 @@ class DatasetsApi extends runtime.BaseAPI {
             }
             const response = yield this.request({
                 path: `/dataset/{dataset}/symbology`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
-                method: 'POST',
+                method: 'PUT',
                 headers: headerParameters,
                 query: queryParameters,
                 body: (0, index_1.SymbologyToJSON)(requestParameters.symbology),

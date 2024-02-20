@@ -103,7 +103,7 @@ Class | Method | HTTP request | Description
 *DatasetsApi* | [**list_volumes_handler**](docs/DatasetsApi.md#list_volumes_handler) | **GET** /dataset/volumes | Lists available volumes.
 *DatasetsApi* | [**suggest_meta_data_handler**](docs/DatasetsApi.md#suggest_meta_data_handler) | **GET** /dataset/suggest | Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.
 *DatasetsApi* | [**update_dataset_handler**](docs/DatasetsApi.md#update_dataset_handler) | **POST** /dataset/{dataset} | Update details about a dataset using the internal name.
-*DatasetsApi* | [**update_dataset_symbology_handler**](docs/DatasetsApi.md#update_dataset_symbology_handler) | **POST** /dataset/{dataset}/symbology | Updates the dataset&#39;s symbology
+*DatasetsApi* | [**update_dataset_symbology_handler**](docs/DatasetsApi.md#update_dataset_symbology_handler) | **PUT** /dataset/{dataset}/symbology | Updates the dataset&#39;s symbology
 *GeneralApi* | [**available_handler**](docs/GeneralApi.md#available_handler) | **GET** /available | Server availablity check.
 *GeneralApi* | [**server_info_handler**](docs/GeneralApi.md#server_info_handler) | **GET** /info | Shows information about the server software version.
 *LayersApi* | [**add_collection**](docs/LayersApi.md#add_collection) | **POST** /layerDb/collections/{collection}/collections | Add a new collection to an existing collection

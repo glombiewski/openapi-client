@@ -729,6 +729,61 @@
         ]
       }
     },
+    "/dataset/{dataset}/symbology": {
+      "put": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "Updates the dataset's symbology",
+        "description": "Updates the dataset's symbology",
+        "operationId": "update_dataset_symbology_handler",
+        "parameters": [
+          {
+            "name": "dataset",
+            "in": "path",
+            "description": "Dataset Name",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/DatasetName"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Symbology"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedUserResponse"
+          }
+        },
+        "security": [
+          {
+            "session_token": []
+          }
+        ]
+      }
+    },
     "/datasetFromWorkflow/{id}": {
       "post": {
         "tags": [
@@ -3711,8 +3766,8 @@
           },
           {
             "name": "version",
-            "in": "query",
-            "required": false,
+            "in": "path",
+            "required": true,
             "schema": {
               "allOf": [
                 {
@@ -3724,7 +3779,7 @@
           },
           {
             "name": "service",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/WfsService"
@@ -3732,7 +3787,7 @@
           },
           {
             "name": "request",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/GetCapabilitiesRequest"
@@ -4047,8 +4102,8 @@
           },
           {
             "name": "version",
-            "in": "query",
-            "required": false,
+            "in": "path",
+            "required": true,
             "schema": {
               "allOf": [
                 {
@@ -4060,7 +4115,7 @@
           },
           {
             "name": "service",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/WmsService"
@@ -4068,7 +4123,7 @@
           },
           {
             "name": "request",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/GetCapabilitiesRequest"
@@ -4076,8 +4131,8 @@
           },
           {
             "name": "format",
-            "in": "query",
-            "required": false,
+            "in": "path",
+            "required": true,
             "schema": {
               "allOf": [
                 {
@@ -4127,7 +4182,7 @@
           },
           {
             "name": "version",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/WmsVersion"
@@ -4135,7 +4190,7 @@
           },
           {
             "name": "service",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/WmsService"
@@ -4143,7 +4198,7 @@
           },
           {
             "name": "request",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/GetLegendGraphicRequest"
@@ -4151,7 +4206,7 @@
           },
           {
             "name": "layer",
-            "in": "query",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "string"

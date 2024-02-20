@@ -21,7 +21,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as runtime from '../runtime';
-import { AutoCreateDatasetToJSON, CreateDatasetToJSON, CreateDatasetHandler200ResponseFromJSON, DatasetFromJSON, DatasetListingFromJSON, MetaDataDefinitionFromJSON, MetaDataSuggestionFromJSON, VolumeFromJSON, } from '../models/index';
+import { AutoCreateDatasetToJSON, CreateDatasetToJSON, CreateDatasetHandler200ResponseFromJSON, DatasetFromJSON, DatasetListingFromJSON, MetaDataDefinitionFromJSON, MetaDataSuggestionFromJSON, SymbologyToJSON, VolumeFromJSON, } from '../models/index';
 /**
  *
  */
@@ -350,6 +350,47 @@ export class DatasetsApi extends runtime.BaseAPI {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield this.suggestMetaDataHandlerRaw(requestParameters, initOverrides);
             return yield response.value();
+        });
+    }
+    /**
+     * Updates the dataset\'s symbology
+     * Updates the dataset\'s symbology
+     */
+    updateDatasetSymbologyHandlerRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+                throw new runtime.RequiredError('dataset', 'Required parameter requestParameters.dataset was null or undefined when calling updateDatasetSymbologyHandler.');
+            }
+            if (requestParameters.symbology === null || requestParameters.symbology === undefined) {
+                throw new runtime.RequiredError('symbology', 'Required parameter requestParameters.symbology was null or undefined when calling updateDatasetSymbologyHandler.');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.accessToken) {
+                const token = this.configuration.accessToken;
+                const tokenString = yield token("session_token", []);
+                if (tokenString) {
+                    headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                }
+            }
+            const response = yield this.request({
+                path: `/dataset/{dataset}/symbology`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+                method: 'PUT',
+                headers: headerParameters,
+                query: queryParameters,
+                body: SymbologyToJSON(requestParameters.symbology),
+            }, initOverrides);
+            return new runtime.VoidApiResponse(response);
+        });
+    }
+    /**
+     * Updates the dataset\'s symbology
+     * Updates the dataset\'s symbology
+     */
+    updateDatasetSymbologyHandler(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.updateDatasetSymbologyHandlerRaw(requestParameters, initOverrides);
         });
     }
 }

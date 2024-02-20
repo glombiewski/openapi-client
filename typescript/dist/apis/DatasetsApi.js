@@ -355,5 +355,46 @@ class DatasetsApi extends runtime.BaseAPI {
             return yield response.value();
         });
     }
+    /**
+     * Updates the dataset\'s symbology
+     * Updates the dataset\'s symbology
+     */
+    updateDatasetSymbologyHandlerRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+                throw new runtime.RequiredError('dataset', 'Required parameter requestParameters.dataset was null or undefined when calling updateDatasetSymbologyHandler.');
+            }
+            if (requestParameters.symbology === null || requestParameters.symbology === undefined) {
+                throw new runtime.RequiredError('symbology', 'Required parameter requestParameters.symbology was null or undefined when calling updateDatasetSymbologyHandler.');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.accessToken) {
+                const token = this.configuration.accessToken;
+                const tokenString = yield token("session_token", []);
+                if (tokenString) {
+                    headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                }
+            }
+            const response = yield this.request({
+                path: `/dataset/{dataset}/symbology`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+                method: 'PUT',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.SymbologyToJSON)(requestParameters.symbology),
+            }, initOverrides);
+            return new runtime.VoidApiResponse(response);
+        });
+    }
+    /**
+     * Updates the dataset\'s symbology
+     * Updates the dataset\'s symbology
+     */
+    updateDatasetSymbologyHandler(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.updateDatasetSymbologyHandlerRaw(requestParameters, initOverrides);
+        });
+    }
 }
 exports.DatasetsApi = DatasetsApi;

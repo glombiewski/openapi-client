@@ -50,24 +50,24 @@ class OGCWFSApi:
         self.api_client = api_client
 
     @validate_arguments
-    def wfs_capabilities_handler(self, workflow : Annotated[StrictStr, Field(..., description="Workflow id")], service : WfsService, request : GetCapabilitiesRequest, version : Optional[Any] = None, **kwargs) -> str:  # noqa: E501
+    def wfs_capabilities_handler(self, workflow : Annotated[StrictStr, Field(..., description="Workflow id")], version : Optional[Any], service : WfsService, request : GetCapabilitiesRequest, **kwargs) -> str:  # noqa: E501
         """Get WFS Capabilities  # noqa: E501
 
         Get WFS Capabilities  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.wfs_capabilities_handler(workflow, service, request, version, async_req=True)
+        >>> thread = api.wfs_capabilities_handler(workflow, version, service, request, async_req=True)
         >>> result = thread.get()
 
         :param workflow: Workflow id (required)
         :type workflow: str
+        :param version: (required)
+        :type version: WfsVersion
         :param service: (required)
         :type service: WfsService
         :param request: (required)
         :type request: GetCapabilitiesRequest
-        :param version:
-        :type version: WfsVersion
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -83,27 +83,27 @@ class OGCWFSApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the wfs_capabilities_handler_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.wfs_capabilities_handler_with_http_info(workflow, service, request, version, **kwargs)  # noqa: E501
+        return self.wfs_capabilities_handler_with_http_info(workflow, version, service, request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def wfs_capabilities_handler_with_http_info(self, workflow : Annotated[StrictStr, Field(..., description="Workflow id")], service : WfsService, request : GetCapabilitiesRequest, version : Optional[Any] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def wfs_capabilities_handler_with_http_info(self, workflow : Annotated[StrictStr, Field(..., description="Workflow id")], version : Optional[Any], service : WfsService, request : GetCapabilitiesRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Get WFS Capabilities  # noqa: E501
 
         Get WFS Capabilities  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.wfs_capabilities_handler_with_http_info(workflow, service, request, version, async_req=True)
+        >>> thread = api.wfs_capabilities_handler_with_http_info(workflow, version, service, request, async_req=True)
         >>> result = thread.get()
 
         :param workflow: Workflow id (required)
         :type workflow: str
+        :param version: (required)
+        :type version: WfsVersion
         :param service: (required)
         :type service: WfsService
         :param request: (required)
         :type request: GetCapabilitiesRequest
-        :param version:
-        :type version: WfsVersion
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -133,9 +133,9 @@ class OGCWFSApi:
 
         _all_params = [
             'workflow',
+            'version',
             'service',
-            'request',
-            'version'
+            'request'
         ]
         _all_params.extend(
             [
@@ -166,18 +166,18 @@ class OGCWFSApi:
         if _params['workflow']:
             _path_params['workflow'] = _params['workflow']
 
+        if _params['version']:
+            _path_params['version'] = _params['version']
+
+        if _params['service']:
+            _path_params['service'] = _params['service']
+
+        if _params['request']:
+            _path_params['request'] = _params['request']
+
 
         # process the query parameters
         _query_params = []
-        if _params.get('version') is not None:  # noqa: E501
-            _query_params.append(('version', _params['version'].value))
-
-        if _params.get('service') is not None:  # noqa: E501
-            _query_params.append(('service', _params['service'].value))
-
-        if _params.get('request') is not None:  # noqa: E501
-            _query_params.append(('request', _params['request'].value))
-
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters

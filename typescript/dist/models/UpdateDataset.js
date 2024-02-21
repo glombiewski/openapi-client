@@ -14,7 +14,6 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateDatasetToJSON = exports.UpdateDatasetFromJSONTyped = exports.UpdateDatasetFromJSON = exports.instanceOfUpdateDataset = void 0;
-const runtime_1 = require("../runtime");
 /**
  * Check if a given object implements the UpdateDataset interface.
  */
@@ -22,6 +21,7 @@ function instanceOfUpdateDataset(value) {
     let isInstance = true;
     isInstance = isInstance && "description" in value;
     isInstance = isInstance && "displayName" in value;
+    isInstance = isInstance && "name" in value;
     return isInstance;
 }
 exports.instanceOfUpdateDataset = instanceOfUpdateDataset;
@@ -36,7 +36,7 @@ function UpdateDatasetFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'description': json['description'],
         'displayName': json['display_name'],
-        'name': !(0, runtime_1.exists)(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
     };
 }
 exports.UpdateDatasetFromJSONTyped = UpdateDatasetFromJSONTyped;

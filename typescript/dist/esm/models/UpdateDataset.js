@@ -11,7 +11,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { exists } from '../runtime';
 /**
  * Check if a given object implements the UpdateDataset interface.
  */
@@ -19,6 +18,7 @@ export function instanceOfUpdateDataset(value) {
     let isInstance = true;
     isInstance = isInstance && "description" in value;
     isInstance = isInstance && "displayName" in value;
+    isInstance = isInstance && "name" in value;
     return isInstance;
 }
 export function UpdateDatasetFromJSON(json) {
@@ -31,7 +31,7 @@ export function UpdateDatasetFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'description': json['description'],
         'displayName': json['display_name'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
     };
 }
 export function UpdateDatasetToJSON(value) {

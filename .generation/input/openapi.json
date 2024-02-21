@@ -9094,6 +9094,7 @@
       "UpdateDataset": {
         "type": "object",
         "required": [
+          "name",
           "display_name",
           "description"
         ],
@@ -9105,12 +9106,7 @@
             "type": "string"
           },
           "name": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DatasetName"
-              }
-            ],
-            "nullable": true
+            "$ref": "#/components/schemas/DatasetName"
           }
         }
       },

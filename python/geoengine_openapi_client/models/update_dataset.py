@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
+
 from pydantic import BaseModel, Field, StrictStr
 
 class UpdateDataset(BaseModel):
@@ -28,7 +28,7 @@ class UpdateDataset(BaseModel):
     """
     description: StrictStr = Field(...)
     display_name: StrictStr = Field(...)
-    name: Optional[StrictStr] = None
+    name: StrictStr = Field(...)
     __properties = ["description", "display_name", "name"]
 
     class Config:
@@ -55,11 +55,6 @@ class UpdateDataset(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # set to None if name (nullable) is None
-        # and __fields_set__ contains the field
-        if self.name is None and "name" in self.__fields_set__:
-            _dict['name'] = None
-
         return _dict
 
     @classmethod

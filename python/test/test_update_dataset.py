@@ -45,6 +45,7 @@ class TestUpdateDataset(unittest.TestCase):
             return UpdateDataset(
                 description = '',
                 display_name = '',
+                name = '',
         )
         """
 

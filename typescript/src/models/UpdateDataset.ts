@@ -36,7 +36,7 @@ export interface UpdateDataset {
      * @type {string}
      * @memberof UpdateDataset
      */
-    name?: string | null;
+    name: string;
 }
 
 /**
@@ -46,6 +46,7 @@ export function instanceOfUpdateDataset(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "description" in value;
     isInstance = isInstance && "displayName" in value;
+    isInstance = isInstance && "name" in value;
 
     return isInstance;
 }
@@ -62,7 +63,7 @@ export function UpdateDatasetFromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'description': json['description'],
         'displayName': json['display_name'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
     };
 }
 

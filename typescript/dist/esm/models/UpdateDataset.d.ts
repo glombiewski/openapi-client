@@ -32,7 +32,7 @@ export interface UpdateDataset {
      * @type {string}
      * @memberof UpdateDataset
      */
-    name?: string | null;
+    name: string;
 }
 /**
  * Check if a given object implements the UpdateDataset interface.

@@ -10,13 +10,16 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AddRole, Quota, RoleDescription, UpdateQuota } from '../models/index';
+import type { AddCollection200Response, AddRole, Quota, RoleDescription, UpdateQuota } from '../models/index';
 export interface AddRoleHandlerRequest {
     addRole: AddRole;
 }
 export interface AssignRoleHandlerRequest {
     user: string;
     role: string;
+}
+export interface GetRoleByNameHandlerRequest {
+    name: string;
 }
 export interface GetUserQuotaHandlerRequest {
     user: string;
@@ -56,6 +59,16 @@ export declare class UserApi extends runtime.BaseAPI {
      * Assign a role to a user. Requires admin privilige.
      */
     assignRoleHandler(requestParameters: AssignRoleHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * Get role by name
+     * Get role by name
+     */
+    getRoleByNameHandlerRaw(requestParameters: GetRoleByNameHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AddCollection200Response>>;
+    /**
+     * Get role by name
+     * Get role by name
+     */
+    getRoleByNameHandler(requestParameters: GetRoleByNameHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AddCollection200Response>;
     /**
      * Query roles for the current user.
      * Query roles for the current user.

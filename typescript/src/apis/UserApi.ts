@@ -15,12 +15,15 @@
 
 import * as runtime from '../runtime';
 import type {
+  AddCollection200Response,
   AddRole,
   Quota,
   RoleDescription,
   UpdateQuota,
 } from '../models/index';
 import {
+    AddCollection200ResponseFromJSON,
+    AddCollection200ResponseToJSON,
     AddRoleFromJSON,
     AddRoleToJSON,
     QuotaFromJSON,
@@ -38,6 +41,10 @@ export interface AddRoleHandlerRequest {
 export interface AssignRoleHandlerRequest {
     user: string;
     role: string;
+}
+
+export interface GetRoleByNameHandlerRequest {
+    name: string;
 }
 
 export interface GetUserQuotaHandlerRequest {
@@ -151,6 +158,46 @@ export class UserApi extends runtime.BaseAPI {
      */
     async assignRoleHandler(requestParameters: AssignRoleHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.assignRoleHandlerRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Get role by name
+     * Get role by name
+     */
+    async getRoleByNameHandlerRaw(requestParameters: GetRoleByNameHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AddCollection200Response>> {
+        if (requestParameters.name === null || requestParameters.name === undefined) {
+            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling getRoleByNameHandler.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("session_token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/roles/byName/{name}`.replace(`{${"name"}}`, encodeURIComponent(String(requestParameters.name))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AddCollection200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get role by name
+     * Get role by name
+     */
+    async getRoleByNameHandler(requestParameters: GetRoleByNameHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AddCollection200Response> {
+        const response = await this.getRoleByNameHandlerRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**

@@ -2931,6 +2931,37 @@
         ]
       }
     },
+    "/roles/byName/{name}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get role by name",
+        "description": "Get role by name",
+        "operationId": "get_role_by_name_handler",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Role Name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/IdResponse"
+          }
+        },
+        "security": [
+          {
+            "session_token": []
+          }
+        ]
+      }
+    },
     "/roles/{role}": {
       "delete": {
         "tags": [
@@ -5584,7 +5615,7 @@
         ],
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/DatasetName"
+            "$ref": "#/components/schemas/DatasetId"
           },
           "type": {
             "type": "string",

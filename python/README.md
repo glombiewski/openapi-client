@@ -156,6 +156,7 @@ Class | Method | HTTP request | Description
 *UploadsApi* | [**upload_handler**](docs/UploadsApi.md#upload_handler) | **POST** /upload | Uploads files.
 *UserApi* | [**add_role_handler**](docs/UserApi.md#add_role_handler) | **PUT** /roles | Add a new role. Requires admin privilige.
 *UserApi* | [**assign_role_handler**](docs/UserApi.md#assign_role_handler) | **POST** /users/{user}/roles/{role} | Assign a role to a user. Requires admin privilige.
+*UserApi* | [**get_role_by_name_handler**](docs/UserApi.md#get_role_by_name_handler) | **GET** /roles/byName/{name} | Get role by name
 *UserApi* | [**get_role_descriptions**](docs/UserApi.md#get_role_descriptions) | **GET** /user/roles/descriptions | Query roles for the current user.
 *UserApi* | [**get_user_quota_handler**](docs/UserApi.md#get_user_quota_handler) | **GET** /quotas/{user} | Retrieves the available and used quota of a specific user.
 *UserApi* | [**quota_handler**](docs/UserApi.md#quota_handler) | **GET** /quota | Retrieves the available and used quota of the current user.

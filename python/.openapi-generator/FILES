@@ -226,6 +226,7 @@ geoengine_openapi_client/models/typed_result_descriptor.py
 geoengine_openapi_client/models/unitless_measurement.py
 geoengine_openapi_client/models/unix_time_stamp_ogr_source_time_format.py
 geoengine_openapi_client/models/unix_time_stamp_type.py
+geoengine_openapi_client/models/update_dataset.py
 geoengine_openapi_client/models/update_project.py
 geoengine_openapi_client/models/update_quota.py
 geoengine_openapi_client/models/upload_file_layers_response.py
@@ -475,6 +476,7 @@ test/test_typed_result_descriptor.py
 test/test_unitless_measurement.py
 test/test_unix_time_stamp_ogr_source_time_format.py
 test/test_unix_time_stamp_type.py
+test/test_update_dataset.py
 test/test_update_project.py
 test/test_update_quota.py
 test/test_upload_file_layers_response.py

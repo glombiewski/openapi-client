@@ -356,6 +356,47 @@ class DatasetsApi extends runtime.BaseAPI {
         });
     }
     /**
+     * Update details about a dataset using the internal name.
+     * Update details about a dataset using the internal name.
+     */
+    updateDatasetHandlerRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+                throw new runtime.RequiredError('dataset', 'Required parameter requestParameters.dataset was null or undefined when calling updateDatasetHandler.');
+            }
+            if (requestParameters.updateDataset === null || requestParameters.updateDataset === undefined) {
+                throw new runtime.RequiredError('updateDataset', 'Required parameter requestParameters.updateDataset was null or undefined when calling updateDatasetHandler.');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.accessToken) {
+                const token = this.configuration.accessToken;
+                const tokenString = yield token("session_token", []);
+                if (tokenString) {
+                    headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                }
+            }
+            const response = yield this.request({
+                path: `/dataset/{dataset}`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.UpdateDatasetToJSON)(requestParameters.updateDataset),
+            }, initOverrides);
+            return new runtime.VoidApiResponse(response);
+        });
+    }
+    /**
+     * Update details about a dataset using the internal name.
+     * Update details about a dataset using the internal name.
+     */
+    updateDatasetHandler(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.updateDatasetHandlerRaw(requestParameters, initOverrides);
+        });
+    }
+    /**
      * Updates the dataset\'s symbology
      * Updates the dataset\'s symbology
      */

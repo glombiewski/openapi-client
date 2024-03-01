@@ -223,6 +223,7 @@ src/models/TypedResultDescriptor.ts
 src/models/UnitlessMeasurement.ts
 src/models/UnixTimeStampOgrSourceTimeFormat.ts
 src/models/UnixTimeStampType.ts
+src/models/UpdateDataset.ts
 src/models/UpdateProject.ts
 src/models/UpdateQuota.ts
 src/models/UploadFileLayersResponse.ts

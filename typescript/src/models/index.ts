@@ -205,6 +205,7 @@ export * from './TypedResultDescriptor';
 export * from './UnitlessMeasurement';
 export * from './UnixTimeStampOgrSourceTimeFormat';
 export * from './UnixTimeStampType';
+export * from './UpdateDataset';
 export * from './UpdateProject';
 export * from './UpdateQuota';
 export * from './UploadFileLayersResponse';

@@ -83,6 +83,13 @@ class TestDatasetsApi(unittest.TestCase):
         """
         pass
 
+    def test_update_dataset_handler(self) -> None:
+        """Test case for update_dataset_handler
+
+        Update details about a dataset using the internal name.  # noqa: E501
+        """
+        pass
+
     def test_update_dataset_symbology_handler(self) -> None:
         """Test case for update_dataset_symbology_handler
 

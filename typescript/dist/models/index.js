@@ -221,6 +221,7 @@ __exportStar(require("./TypedResultDescriptor"), exports);
 __exportStar(require("./UnitlessMeasurement"), exports);
 __exportStar(require("./UnixTimeStampOgrSourceTimeFormat"), exports);
 __exportStar(require("./UnixTimeStampType"), exports);
+__exportStar(require("./UpdateDataset"), exports);
 __exportStar(require("./UpdateProject"), exports);
 __exportStar(require("./UpdateQuota"), exports);
 __exportStar(require("./UploadFileLayersResponse"), exports);

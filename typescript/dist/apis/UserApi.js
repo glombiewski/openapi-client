@@ -113,6 +113,43 @@ class UserApi extends runtime.BaseAPI {
         });
     }
     /**
+     * Get role by name
+     * Get role by name
+     */
+    getRoleByNameHandlerRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters.name === null || requestParameters.name === undefined) {
+                throw new runtime.RequiredError('name', 'Required parameter requestParameters.name was null or undefined when calling getRoleByNameHandler.');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            if (this.configuration && this.configuration.accessToken) {
+                const token = this.configuration.accessToken;
+                const tokenString = yield token("session_token", []);
+                if (tokenString) {
+                    headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                }
+            }
+            const response = yield this.request({
+                path: `/roles/byName/{name}`.replace(`{${"name"}}`, encodeURIComponent(String(requestParameters.name))),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AddCollection200ResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * Get role by name
+     * Get role by name
+     */
+    getRoleByNameHandler(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.getRoleByNameHandlerRaw(requestParameters, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
      * Query roles for the current user.
      * Query roles for the current user.
      */

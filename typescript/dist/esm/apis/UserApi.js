@@ -21,7 +21,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as runtime from '../runtime';
-import { AddRoleToJSON, QuotaFromJSON, RoleDescriptionFromJSON, UpdateQuotaToJSON, } from '../models/index';
+import { AddCollection200ResponseFromJSON, AddRoleToJSON, QuotaFromJSON, RoleDescriptionFromJSON, UpdateQuotaToJSON, } from '../models/index';
 /**
  *
  */
@@ -107,6 +107,43 @@ export class UserApi extends runtime.BaseAPI {
     assignRoleHandler(requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.assignRoleHandlerRaw(requestParameters, initOverrides);
+        });
+    }
+    /**
+     * Get role by name
+     * Get role by name
+     */
+    getRoleByNameHandlerRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters.name === null || requestParameters.name === undefined) {
+                throw new runtime.RequiredError('name', 'Required parameter requestParameters.name was null or undefined when calling getRoleByNameHandler.');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            if (this.configuration && this.configuration.accessToken) {
+                const token = this.configuration.accessToken;
+                const tokenString = yield token("session_token", []);
+                if (tokenString) {
+                    headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                }
+            }
+            const response = yield this.request({
+                path: `/roles/byName/{name}`.replace(`{${"name"}}`, encodeURIComponent(String(requestParameters.name))),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => AddCollection200ResponseFromJSON(jsonValue));
+        });
+    }
+    /**
+     * Get role by name
+     * Get role by name
+     */
+    getRoleByNameHandler(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.getRoleByNameHandlerRaw(requestParameters, initOverrides);
+            return yield response.value();
         });
     }
     /**

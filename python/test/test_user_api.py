@@ -41,6 +41,13 @@ class TestUserApi(unittest.TestCase):
         """
         pass
 
+    def test_get_role_by_name_handler(self) -> None:
+        """Test case for get_role_by_name_handler
+
+        Get role by name  # noqa: E501
+        """
+        pass
+
     def test_get_role_descriptions(self) -> None:
         """Test case for get_role_descriptions
 

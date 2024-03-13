@@ -90,6 +90,12 @@ class TestDatasetsApi(unittest.TestCase):
         """
         pass
 
+    def test_update_dataset_provenance_handler(self) -> None:
+        """Test case for update_dataset_provenance_handler
+
+        """
+        pass
+
     def test_update_dataset_symbology_handler(self) -> None:
         """Test case for update_dataset_symbology_handler
 

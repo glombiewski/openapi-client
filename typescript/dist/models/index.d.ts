@@ -140,6 +140,7 @@ export * from './ProjectVersion';
 export * from './Provenance';
 export * from './ProvenanceEntry';
 export * from './ProvenanceOutput';
+export * from './Provenances';
 export * from './ProviderCapabilities';
 export * from './ProviderLayerCollectionId';
 export * from './ProviderLayerId';

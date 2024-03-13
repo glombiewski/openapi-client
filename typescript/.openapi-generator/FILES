@@ -160,6 +160,7 @@ src/models/ProjectVersion.ts
 src/models/Provenance.ts
 src/models/ProvenanceEntry.ts
 src/models/ProvenanceOutput.ts
+src/models/Provenances.ts
 src/models/ProviderCapabilities.ts
 src/models/ProviderLayerCollectionId.ts
 src/models/ProviderLayerId.ts

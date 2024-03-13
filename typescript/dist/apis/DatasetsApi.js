@@ -397,6 +397,43 @@ class DatasetsApi extends runtime.BaseAPI {
         });
     }
     /**
+     */
+    updateDatasetProvenanceHandlerRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+                throw new runtime.RequiredError('dataset', 'Required parameter requestParameters.dataset was null or undefined when calling updateDatasetProvenanceHandler.');
+            }
+            if (requestParameters.provenances === null || requestParameters.provenances === undefined) {
+                throw new runtime.RequiredError('provenances', 'Required parameter requestParameters.provenances was null or undefined when calling updateDatasetProvenanceHandler.');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.accessToken) {
+                const token = this.configuration.accessToken;
+                const tokenString = yield token("session_token", []);
+                if (tokenString) {
+                    headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                }
+            }
+            const response = yield this.request({
+                path: `/dataset/{dataset}/provenance`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+                method: 'PUT',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.ProvenancesToJSON)(requestParameters.provenances),
+            }, initOverrides);
+            return new runtime.VoidApiResponse(response);
+        });
+    }
+    /**
+     */
+    updateDatasetProvenanceHandler(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.updateDatasetProvenanceHandlerRaw(requestParameters, initOverrides);
+        });
+    }
+    /**
      * Updates the dataset\'s symbology
      * Updates the dataset\'s symbology
      */

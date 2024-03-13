@@ -16,10 +16,10 @@
 import unittest
 import datetime
 
-from geoengine_openapi_client.models.update_dataset import UpdateDataset  # noqa: E501
+from geoengine_openapi_client.models.provenances import Provenances  # noqa: E501
 
-class TestUpdateDataset(unittest.TestCase):
-    """UpdateDataset unit test stubs"""
+class TestProvenances(unittest.TestCase):
+    """Provenances unit test stubs"""
 
     def setUp(self):
         pass
@@ -27,36 +27,36 @@ class TestUpdateDataset(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> UpdateDataset:
-        """Test UpdateDataset
+    def make_instance(self, include_optional) -> Provenances:
+        """Test Provenances
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `UpdateDataset`
+        # uncomment below to create an instance of `Provenances`
         """
-        model = UpdateDataset()  # noqa: E501
+        model = Provenances()  # noqa: E501
         if include_optional:
-            return UpdateDataset(
-                description = '',
-                display_name = '',
-                name = '',
-                tags = [
-                    ''
+            return Provenances(
+                provenances = [
+                    geoengine_openapi_client.models.provenance.Provenance(
+                        citation = '', 
+                        license = '', 
+                        uri = '', )
                     ]
             )
         else:
-            return UpdateDataset(
-                description = '',
-                display_name = '',
-                name = '',
-                tags = [
-                    ''
+            return Provenances(
+                provenances = [
+                    geoengine_openapi_client.models.provenance.Provenance(
+                        citation = '', 
+                        license = '', 
+                        uri = '', )
                     ],
         )
         """
 
-    def testUpdateDataset(self):
-        """Test UpdateDataset"""
+    def testProvenances(self):
+        """Test Provenances"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

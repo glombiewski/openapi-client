@@ -33,6 +33,12 @@ export interface UpdateDataset {
      * @memberof UpdateDataset
      */
     name: string;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof UpdateDataset
+     */
+    tags: Array<string>;
 }
 /**
  * Check if a given object implements the UpdateDataset interface.

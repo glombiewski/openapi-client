@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AutoCreateDataset, CreateDataset, CreateDatasetHandler200Response, Dataset, DatasetListing, MetaDataDefinition, MetaDataSuggestion, OrderBy, Symbology, UpdateDataset, Volume } from '../models/index';
+import type { AutoCreateDataset, CreateDataset, CreateDatasetHandler200Response, Dataset, DatasetListing, MetaDataDefinition, MetaDataSuggestion, OrderBy, Provenances, Symbology, UpdateDataset, Volume } from '../models/index';
 export interface AutoCreateDatasetHandlerRequest {
     autoCreateDataset: AutoCreateDataset;
 }
@@ -41,6 +41,10 @@ export interface SuggestMetaDataHandlerRequest {
 export interface UpdateDatasetHandlerRequest {
     dataset: string;
     updateDataset: UpdateDataset;
+}
+export interface UpdateDatasetProvenanceHandlerRequest {
+    dataset: string;
+    provenances: Provenances;
 }
 export interface UpdateDatasetSymbologyHandlerRequest {
     dataset: string;
@@ -140,6 +144,12 @@ export declare class DatasetsApi extends runtime.BaseAPI {
      * Update details about a dataset using the internal name.
      */
     updateDatasetHandler(requestParameters: UpdateDatasetHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     */
+    updateDatasetProvenanceHandlerRaw(requestParameters: UpdateDatasetProvenanceHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     */
+    updateDatasetProvenanceHandler(requestParameters: UpdateDatasetProvenanceHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
      * Updates the dataset\'s symbology
      * Updates the dataset\'s symbology

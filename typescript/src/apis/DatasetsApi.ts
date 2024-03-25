@@ -24,6 +24,7 @@ import type {
   MetaDataDefinition,
   MetaDataSuggestion,
   OrderBy,
+  Provenances,
   Symbology,
   UpdateDataset,
   Volume,
@@ -47,6 +48,8 @@ import {
     MetaDataSuggestionToJSON,
     OrderByFromJSON,
     OrderByToJSON,
+    ProvenancesFromJSON,
+    ProvenancesToJSON,
     SymbologyFromJSON,
     SymbologyToJSON,
     UpdateDatasetFromJSON,
@@ -92,6 +95,11 @@ export interface SuggestMetaDataHandlerRequest {
 export interface UpdateDatasetHandlerRequest {
     dataset: string;
     updateDataset: UpdateDataset;
+}
+
+export interface UpdateDatasetProvenanceHandlerRequest {
+    dataset: string;
+    provenances: Provenances;
 }
 
 export interface UpdateDatasetSymbologyHandlerRequest {
@@ -509,6 +517,48 @@ export class DatasetsApi extends runtime.BaseAPI {
      */
     async updateDatasetHandler(requestParameters: UpdateDatasetHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.updateDatasetHandlerRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async updateDatasetProvenanceHandlerRaw(requestParameters: UpdateDatasetProvenanceHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+            throw new runtime.RequiredError('dataset','Required parameter requestParameters.dataset was null or undefined when calling updateDatasetProvenanceHandler.');
+        }
+
+        if (requestParameters.provenances === null || requestParameters.provenances === undefined) {
+            throw new runtime.RequiredError('provenances','Required parameter requestParameters.provenances was null or undefined when calling updateDatasetProvenanceHandler.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("session_token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/dataset/{dataset}/provenance`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ProvenancesToJSON(requestParameters.provenances),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async updateDatasetProvenanceHandler(requestParameters: UpdateDatasetProvenanceHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.updateDatasetProvenanceHandlerRaw(requestParameters, initOverrides);
     }
 
     /**

@@ -37,6 +37,12 @@ export interface UpdateDataset {
      * @memberof UpdateDataset
      */
     name: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof UpdateDataset
+     */
+    tags: Array<string>;
 }
 
 /**
@@ -47,6 +53,7 @@ export function instanceOfUpdateDataset(value: object): boolean {
     isInstance = isInstance && "description" in value;
     isInstance = isInstance && "displayName" in value;
     isInstance = isInstance && "name" in value;
+    isInstance = isInstance && "tags" in value;
 
     return isInstance;
 }
@@ -64,6 +71,7 @@ export function UpdateDatasetFromJSONTyped(json: any, ignoreDiscriminator: boole
         'description': json['description'],
         'displayName': json['display_name'],
         'name': json['name'],
+        'tags': json['tags'],
     };
 }
 
@@ -79,6 +87,7 @@ export function UpdateDatasetToJSON(value?: UpdateDataset | null): any {
         'description': value.description,
         'display_name': value.displayName,
         'name': value.name,
+        'tags': value.tags,
     };
 }
 

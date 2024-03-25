@@ -20,17 +20,15 @@ import json
 
 
 from typing import List
-from pydantic import BaseModel, Field, StrictStr, conlist
+from pydantic import BaseModel, Field, conlist
+from geoengine_openapi_client.models.provenance import Provenance
 
-class UpdateDataset(BaseModel):
+class Provenances(BaseModel):
     """
-    UpdateDataset
+    Provenances
     """
-    description: StrictStr = Field(...)
-    display_name: StrictStr = Field(...)
-    name: StrictStr = Field(...)
-    tags: conlist(StrictStr) = Field(...)
-    __properties = ["description", "display_name", "name", "tags"]
+    provenances: conlist(Provenance) = Field(...)
+    __properties = ["provenances"]
 
     class Config:
         """Pydantic configuration"""
@@ -46,8 +44,8 @@ class UpdateDataset(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> UpdateDataset:
-        """Create an instance of UpdateDataset from a JSON string"""
+    def from_json(cls, json_str: str) -> Provenances:
+        """Create an instance of Provenances from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -56,22 +54,26 @@ class UpdateDataset(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of each item in provenances (list)
+        _items = []
+        if self.provenances:
+            for _item in self.provenances:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['provenances'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> UpdateDataset:
-        """Create an instance of UpdateDataset from a dict"""
+    def from_dict(cls, obj: dict) -> Provenances:
+        """Create an instance of Provenances from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return UpdateDataset.parse_obj(obj)
+            return Provenances.parse_obj(obj)
 
-        _obj = UpdateDataset.parse_obj({
-            "description": obj.get("description"),
-            "display_name": obj.get("display_name"),
-            "name": obj.get("name"),
-            "tags": obj.get("tags")
+        _obj = Provenances.parse_obj({
+            "provenances": [Provenance.from_dict(_item) for _item in obj.get("provenances")] if obj.get("provenances") is not None else None
         })
         return _obj
 

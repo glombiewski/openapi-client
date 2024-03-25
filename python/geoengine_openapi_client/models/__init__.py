@@ -157,6 +157,7 @@ from geoengine_openapi_client.models.project_version import ProjectVersion
 from geoengine_openapi_client.models.provenance import Provenance
 from geoengine_openapi_client.models.provenance_entry import ProvenanceEntry
 from geoengine_openapi_client.models.provenance_output import ProvenanceOutput
+from geoengine_openapi_client.models.provenances import Provenances
 from geoengine_openapi_client.models.provider_capabilities import ProviderCapabilities
 from geoengine_openapi_client.models.provider_layer_collection_id import ProviderLayerCollectionId
 from geoengine_openapi_client.models.provider_layer_id import ProviderLayerId

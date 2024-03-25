@@ -163,6 +163,7 @@ geoengine_openapi_client/models/project_version.py
 geoengine_openapi_client/models/provenance.py
 geoengine_openapi_client/models/provenance_entry.py
 geoengine_openapi_client/models/provenance_output.py
+geoengine_openapi_client/models/provenances.py
 geoengine_openapi_client/models/provider_capabilities.py
 geoengine_openapi_client/models/provider_layer_collection_id.py
 geoengine_openapi_client/models/provider_layer_id.py
@@ -410,6 +411,7 @@ test/test_projects_api.py
 test/test_provenance.py
 test/test_provenance_entry.py
 test/test_provenance_output.py
+test/test_provenances.py
 test/test_provider_capabilities.py
 test/test_provider_layer_collection_id.py
 test/test_provider_layer_id.py

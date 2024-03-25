@@ -11,6 +11,6 @@ version=$(awk -F " = " '/version/ {print $2; exit}' .generation/config.ini)
 cd ../geoengine-ui
 
 npm uninstall @geoengine/openapi-client
-npm install @geoengine/openapi-client@${version}
+npm install --save-exact @geoengine/openapi-client@${version}
 
 cd -

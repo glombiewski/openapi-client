@@ -203,6 +203,7 @@ geoengine_openapi_client/models/start_ogr_source_dataset_time_type.py
 geoengine_openapi_client/models/static_color_param.py
 geoengine_openapi_client/models/static_number_param.py
 geoengine_openapi_client/models/stroke_param.py
+geoengine_openapi_client/models/suggest_meta_data.py
 geoengine_openapi_client/models/symbology.py
 geoengine_openapi_client/models/task_abort_options.py
 geoengine_openapi_client/models/task_filter.py
@@ -453,6 +454,7 @@ test/test_start_ogr_source_dataset_time_type.py
 test/test_static_color_param.py
 test/test_static_number_param.py
 test/test_stroke_param.py
+test/test_suggest_meta_data.py
 test/test_symbology.py
 test/test_task_abort_options.py
 test/test_task_filter.py

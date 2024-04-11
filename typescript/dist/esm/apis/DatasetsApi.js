@@ -21,7 +21,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as runtime from '../runtime';
-import { AutoCreateDatasetToJSON, CreateDatasetToJSON, CreateDatasetHandler200ResponseFromJSON, DatasetFromJSON, DatasetListingFromJSON, MetaDataDefinitionFromJSON, MetaDataSuggestionFromJSON, ProvenancesToJSON, SymbologyToJSON, UpdateDatasetToJSON, VolumeFromJSON, } from '../models/index';
+import { AutoCreateDatasetToJSON, CreateDatasetToJSON, CreateDatasetHandler200ResponseFromJSON, DatasetFromJSON, DatasetListingFromJSON, MetaDataDefinitionFromJSON, MetaDataSuggestionFromJSON, ProvenancesToJSON, SuggestMetaDataToJSON, SymbologyToJSON, UpdateDatasetToJSON, VolumeFromJSON, } from '../models/index';
 /**
  *
  */
@@ -312,20 +312,12 @@ export class DatasetsApi extends runtime.BaseAPI {
      */
     suggestMetaDataHandlerRaw(requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (requestParameters.upload === null || requestParameters.upload === undefined) {
-                throw new runtime.RequiredError('upload', 'Required parameter requestParameters.upload was null or undefined when calling suggestMetaDataHandler.');
+            if (requestParameters.suggestMetaData === null || requestParameters.suggestMetaData === undefined) {
+                throw new runtime.RequiredError('suggestMetaData', 'Required parameter requestParameters.suggestMetaData was null or undefined when calling suggestMetaDataHandler.');
             }
             const queryParameters = {};
-            if (requestParameters.upload !== undefined) {
-                queryParameters['upload'] = requestParameters.upload;
-            }
-            if (requestParameters.mainFile !== undefined) {
-                queryParameters['mainFile'] = requestParameters.mainFile;
-            }
-            if (requestParameters.layerName !== undefined) {
-                queryParameters['layerName'] = requestParameters.layerName;
-            }
             const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
             if (this.configuration && this.configuration.accessToken) {
                 const token = this.configuration.accessToken;
                 const tokenString = yield token("session_token", []);
@@ -335,9 +327,10 @@ export class DatasetsApi extends runtime.BaseAPI {
             }
             const response = yield this.request({
                 path: `/dataset/suggest`,
-                method: 'GET',
+                method: 'POST',
                 headers: headerParameters,
                 query: queryParameters,
+                body: SuggestMetaDataToJSON(requestParameters.suggestMetaData),
             }, initOverrides);
             return new runtime.JSONApiResponse(response, (jsonValue) => MetaDataSuggestionFromJSON(jsonValue));
         });

@@ -180,6 +180,7 @@ export * from './StartOgrSourceDatasetTimeType';
 export * from './StaticColorParam';
 export * from './StaticNumberParam';
 export * from './StrokeParam';
+export * from './SuggestMetaData';
 export * from './Symbology';
 export * from './TaskAbortOptions';
 export * from './TaskFilter';

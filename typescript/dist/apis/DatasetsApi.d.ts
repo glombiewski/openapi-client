@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AutoCreateDataset, CreateDataset, CreateDatasetHandler200Response, Dataset, DatasetListing, MetaDataDefinition, MetaDataSuggestion, OrderBy, Provenances, Symbology, UpdateDataset, Volume } from '../models/index';
+import type { AutoCreateDataset, CreateDataset, CreateDatasetHandler200Response, Dataset, DatasetListing, MetaDataDefinition, MetaDataSuggestion, OrderBy, Provenances, SuggestMetaData, Symbology, UpdateDataset, Volume } from '../models/index';
 export interface AutoCreateDatasetHandlerRequest {
     autoCreateDataset: AutoCreateDataset;
 }
@@ -34,9 +34,7 @@ export interface ListDatasetsHandlerRequest {
     tags?: Array<string> | null;
 }
 export interface SuggestMetaDataHandlerRequest {
-    upload: string;
-    mainFile?: string | null;
-    layerName?: string | null;
+    suggestMetaData: SuggestMetaData;
 }
 export interface UpdateDatasetHandlerRequest {
     dataset: string;

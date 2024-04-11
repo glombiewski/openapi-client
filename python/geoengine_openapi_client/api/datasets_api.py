@@ -33,6 +33,7 @@ from geoengine_openapi_client.models.meta_data_definition import MetaDataDefinit
 from geoengine_openapi_client.models.meta_data_suggestion import MetaDataSuggestion
 from geoengine_openapi_client.models.order_by import OrderBy
 from geoengine_openapi_client.models.provenances import Provenances
+from geoengine_openapi_client.models.suggest_meta_data import SuggestMetaData
 from geoengine_openapi_client.models.symbology import Symbology
 from geoengine_openapi_client.models.update_dataset import UpdateDataset
 from geoengine_openapi_client.models.volume import Volume
@@ -1089,22 +1090,18 @@ class DatasetsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def suggest_meta_data_handler(self, upload : StrictStr, main_file : Optional[StrictStr] = None, layer_name : Optional[StrictStr] = None, **kwargs) -> MetaDataSuggestion:  # noqa: E501
+    def suggest_meta_data_handler(self, suggest_meta_data : SuggestMetaData, **kwargs) -> MetaDataSuggestion:  # noqa: E501
         """Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.  # noqa: E501
 
         Inspects an upload and suggests metadata that can be used when creating a new dataset based on it. Tries to automatically detect the main file and layer name if not specified.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.suggest_meta_data_handler(upload, main_file, layer_name, async_req=True)
+        >>> thread = api.suggest_meta_data_handler(suggest_meta_data, async_req=True)
         >>> result = thread.get()
 
-        :param upload: (required)
-        :type upload: str
-        :param main_file:
-        :type main_file: str
-        :param layer_name:
-        :type layer_name: str
+        :param suggest_meta_data: (required)
+        :type suggest_meta_data: SuggestMetaData
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -1120,25 +1117,21 @@ class DatasetsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the suggest_meta_data_handler_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.suggest_meta_data_handler_with_http_info(upload, main_file, layer_name, **kwargs)  # noqa: E501
+        return self.suggest_meta_data_handler_with_http_info(suggest_meta_data, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def suggest_meta_data_handler_with_http_info(self, upload : StrictStr, main_file : Optional[StrictStr] = None, layer_name : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def suggest_meta_data_handler_with_http_info(self, suggest_meta_data : SuggestMetaData, **kwargs) -> ApiResponse:  # noqa: E501
         """Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.  # noqa: E501
 
         Inspects an upload and suggests metadata that can be used when creating a new dataset based on it. Tries to automatically detect the main file and layer name if not specified.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.suggest_meta_data_handler_with_http_info(upload, main_file, layer_name, async_req=True)
+        >>> thread = api.suggest_meta_data_handler_with_http_info(suggest_meta_data, async_req=True)
         >>> result = thread.get()
 
-        :param upload: (required)
-        :type upload: str
-        :param main_file:
-        :type main_file: str
-        :param layer_name:
-        :type layer_name: str
+        :param suggest_meta_data: (required)
+        :type suggest_meta_data: SuggestMetaData
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1167,9 +1160,7 @@ class DatasetsApi:
         _params = locals()
 
         _all_params = [
-            'upload',
-            'main_file',
-            'layer_name'
+            'suggest_meta_data'
         ]
         _all_params.extend(
             [
@@ -1200,15 +1191,6 @@ class DatasetsApi:
 
         # process the query parameters
         _query_params = []
-        if _params.get('upload') is not None:  # noqa: E501
-            _query_params.append(('upload', _params['upload']))
-
-        if _params.get('main_file') is not None:  # noqa: E501
-            _query_params.append(('mainFile', _params['main_file']))
-
-        if _params.get('layer_name') is not None:  # noqa: E501
-            _query_params.append(('layerName', _params['layer_name']))
-
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
@@ -1216,9 +1198,19 @@ class DatasetsApi:
         _files = {}
         # process the body parameter
         _body_params = None
+        if _params['suggest_meta_data'] is not None:
+            _body_params = _params['suggest_meta_data']
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['session_token']  # noqa: E501
@@ -1230,7 +1222,7 @@ class DatasetsApi:
         }
 
         return self.api_client.call_api(
-            '/dataset/suggest', 'GET',
+            '/dataset/suggest', 'POST',
             _path_params,
             _query_params,
             _header_params,

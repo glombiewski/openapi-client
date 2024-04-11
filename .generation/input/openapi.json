@@ -376,44 +376,23 @@
       }
     },
     "/dataset/suggest": {
-      "get": {
+      "post": {
         "tags": [
           "Datasets"
         ],
         "summary": "Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.",
         "description": "Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.\nTries to automatically detect the main file and layer name if not specified.",
         "operationId": "suggest_meta_data_handler",
-        "parameters": [
-          {
-            "name": "upload",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/UploadId"
-            },
-            "example": "420b06de-0a7e-45cb-9c1c-ea901b46ab69"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuggestMetaData"
+              }
+            }
           },
-          {
-            "name": "mainFile",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            },
-            "example": "germany_polygon.gpkg"
-          },
-          {
-            "name": "layerName",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            },
-            "example": "test_polygon"
-          }
-        ],
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -8799,6 +8778,25 @@
           },
           "width": {
             "$ref": "#/components/schemas/NumberParam"
+          }
+        }
+      },
+      "SuggestMetaData": {
+        "type": "object",
+        "required": [
+          "dataPath"
+        ],
+        "properties": {
+          "dataPath": {
+            "$ref": "#/components/schemas/DataPath"
+          },
+          "layerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "mainFile": {
+            "type": "string",
+            "nullable": true
           }
         }
       },

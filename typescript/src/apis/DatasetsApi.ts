@@ -108,6 +108,11 @@ export interface UpdateDatasetSymbologyHandlerRequest {
     symbology: Symbology;
 }
 
+export interface UpdateLoadingInfoHandlerRequest {
+    dataset: string;
+    metaDataDefinition: MetaDataDefinition;
+}
+
 /**
  * 
  */
@@ -597,6 +602,52 @@ export class DatasetsApi extends runtime.BaseAPI {
      */
     async updateDatasetSymbologyHandler(requestParameters: UpdateDatasetSymbologyHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.updateDatasetSymbologyHandlerRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Updates the dataset\'s loading info
+     * Updates the dataset\'s loading info
+     */
+    async updateLoadingInfoHandlerRaw(requestParameters: UpdateLoadingInfoHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+            throw new runtime.RequiredError('dataset','Required parameter requestParameters.dataset was null or undefined when calling updateLoadingInfoHandler.');
+        }
+
+        if (requestParameters.metaDataDefinition === null || requestParameters.metaDataDefinition === undefined) {
+            throw new runtime.RequiredError('metaDataDefinition','Required parameter requestParameters.metaDataDefinition was null or undefined when calling updateLoadingInfoHandler.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("session_token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/dataset/{dataset}/loadingInfo`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: MetaDataDefinitionToJSON(requestParameters.metaDataDefinition),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Updates the dataset\'s loading info
+     * Updates the dataset\'s loading info
+     */
+    async updateLoadingInfoHandler(requestParameters: UpdateLoadingInfoHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.updateLoadingInfoHandlerRaw(requestParameters, initOverrides);
     }
 
 }

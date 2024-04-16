@@ -21,7 +21,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as runtime from '../runtime';
-import { AutoCreateDatasetToJSON, CreateDatasetToJSON, CreateDatasetHandler200ResponseFromJSON, DatasetFromJSON, DatasetListingFromJSON, MetaDataDefinitionFromJSON, MetaDataSuggestionFromJSON, ProvenancesToJSON, SuggestMetaDataToJSON, SymbologyToJSON, UpdateDatasetToJSON, VolumeFromJSON, } from '../models/index';
+import { AutoCreateDatasetToJSON, CreateDatasetToJSON, CreateDatasetHandler200ResponseFromJSON, DatasetFromJSON, DatasetListingFromJSON, MetaDataDefinitionFromJSON, MetaDataDefinitionToJSON, MetaDataSuggestionFromJSON, ProvenancesToJSON, SuggestMetaDataToJSON, SymbologyToJSON, UpdateDatasetToJSON, VolumeFromJSON, } from '../models/index';
 /**
  *
  */
@@ -462,6 +462,47 @@ export class DatasetsApi extends runtime.BaseAPI {
     updateDatasetSymbologyHandler(requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.updateDatasetSymbologyHandlerRaw(requestParameters, initOverrides);
+        });
+    }
+    /**
+     * Updates the dataset\'s loading info
+     * Updates the dataset\'s loading info
+     */
+    updateLoadingInfoHandlerRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+                throw new runtime.RequiredError('dataset', 'Required parameter requestParameters.dataset was null or undefined when calling updateLoadingInfoHandler.');
+            }
+            if (requestParameters.metaDataDefinition === null || requestParameters.metaDataDefinition === undefined) {
+                throw new runtime.RequiredError('metaDataDefinition', 'Required parameter requestParameters.metaDataDefinition was null or undefined when calling updateLoadingInfoHandler.');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.accessToken) {
+                const token = this.configuration.accessToken;
+                const tokenString = yield token("session_token", []);
+                if (tokenString) {
+                    headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                }
+            }
+            const response = yield this.request({
+                path: `/dataset/{dataset}/loadingInfo`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+                method: 'PUT',
+                headers: headerParameters,
+                query: queryParameters,
+                body: MetaDataDefinitionToJSON(requestParameters.metaDataDefinition),
+            }, initOverrides);
+            return new runtime.VoidApiResponse(response);
+        });
+    }
+    /**
+     * Updates the dataset\'s loading info
+     * Updates the dataset\'s loading info
+     */
+    updateLoadingInfoHandler(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.updateLoadingInfoHandlerRaw(requestParameters, initOverrides);
         });
     }
 }

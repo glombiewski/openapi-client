@@ -105,6 +105,7 @@ Class | Method | HTTP request | Description
 *DatasetsApi* | [**update_dataset_handler**](docs/DatasetsApi.md#update_dataset_handler) | **POST** /dataset/{dataset} | Update details about a dataset using the internal name.
 *DatasetsApi* | [**update_dataset_provenance_handler**](docs/DatasetsApi.md#update_dataset_provenance_handler) | **PUT** /dataset/{dataset}/provenance | 
 *DatasetsApi* | [**update_dataset_symbology_handler**](docs/DatasetsApi.md#update_dataset_symbology_handler) | **PUT** /dataset/{dataset}/symbology | Updates the dataset&#39;s symbology
+*DatasetsApi* | [**update_loading_info_handler**](docs/DatasetsApi.md#update_loading_info_handler) | **PUT** /dataset/{dataset}/loadingInfo | Updates the dataset&#39;s loading info
 *GeneralApi* | [**available_handler**](docs/GeneralApi.md#available_handler) | **GET** /available | Server availablity check.
 *GeneralApi* | [**server_info_handler**](docs/GeneralApi.md#server_info_handler) | **GET** /info | Shows information about the server software version.
 *LayersApi* | [**add_collection**](docs/LayersApi.md#add_collection) | **POST** /layerDb/collections/{collection}/collections | Add a new collection to an existing collection

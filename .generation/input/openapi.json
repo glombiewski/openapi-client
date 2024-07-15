@@ -522,7 +522,7 @@
                 },
                 "example": [
                   {
-                    "id": "f6aa9f3d-a211-43e8-9b91-b23ab9632791",
+                    "name": "test_data",
                     "path": "./test_data/"
                   }
                 ]
@@ -9621,15 +9621,15 @@
       "Volume": {
         "type": "object",
         "required": [
-          "name",
-          "path"
+          "name"
         ],
         "properties": {
           "name": {
-            "$ref": "#/components/schemas/VolumeName"
+            "type": "string"
           },
           "path": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
         }
       },

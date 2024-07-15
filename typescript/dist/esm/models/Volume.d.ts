@@ -26,7 +26,7 @@ export interface Volume {
      * @type {string}
      * @memberof Volume
      */
-    path: string;
+    path?: string | null;
 }
 /**
  * Check if a given object implements the Volume interface.

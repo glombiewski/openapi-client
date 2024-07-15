@@ -43,7 +43,6 @@ class TestVolume(unittest.TestCase):
         else:
             return Volume(
                 name = '',
-                path = '',
         )
         """
 

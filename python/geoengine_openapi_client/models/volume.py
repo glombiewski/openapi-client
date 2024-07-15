@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-
+from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 
 class Volume(BaseModel):
@@ -27,7 +27,7 @@ class Volume(BaseModel):
     Volume
     """
     name: StrictStr = Field(...)
-    path: StrictStr = Field(...)
+    path: Optional[StrictStr] = None
     __properties = ["name", "path"]
 
     class Config:
@@ -54,6 +54,11 @@ class Volume(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # set to None if path (nullable) is None
+        # and __fields_set__ contains the field
+        if self.path is None and "path" in self.__fields_set__:
+            _dict['path'] = None
+
         return _dict
 
     @classmethod

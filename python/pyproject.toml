@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "geoengine_openapi_client"
-version = "0.0.9"
+version = "0.0.10"
 description = "Geo Engine Pro API"
 authors = ["Geo Engine Developers <dev@geoengine.de>"]
 license = "Apache-2.0"

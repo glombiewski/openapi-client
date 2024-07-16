@@ -21,14 +21,16 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+from geoengine_openapi_client.models.data_path import DataPath
 
-class Volume(BaseModel):
+class SuggestMetaData(BaseModel):
     """
-    Volume
+    SuggestMetaData
     """
-    name: StrictStr = Field(...)
-    path: Optional[StrictStr] = None
-    __properties = ["name", "path"]
+    data_path: DataPath = Field(..., alias="dataPath")
+    layer_name: Optional[StrictStr] = Field(None, alias="layerName")
+    main_file: Optional[StrictStr] = Field(None, alias="mainFile")
+    __properties = ["dataPath", "layerName", "mainFile"]
 
     class Config:
         """Pydantic configuration"""
@@ -44,8 +46,8 @@ class Volume(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Volume:
-        """Create an instance of Volume from a JSON string"""
+    def from_json(cls, json_str: str) -> SuggestMetaData:
+        """Create an instance of SuggestMetaData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -54,25 +56,34 @@ class Volume(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # set to None if path (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of data_path
+        if self.data_path:
+            _dict['dataPath'] = self.data_path.to_dict()
+        # set to None if layer_name (nullable) is None
         # and __fields_set__ contains the field
-        if self.path is None and "path" in self.__fields_set__:
-            _dict['path'] = None
+        if self.layer_name is None and "layer_name" in self.__fields_set__:
+            _dict['layerName'] = None
+
+        # set to None if main_file (nullable) is None
+        # and __fields_set__ contains the field
+        if self.main_file is None and "main_file" in self.__fields_set__:
+            _dict['mainFile'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Volume:
-        """Create an instance of Volume from a dict"""
+    def from_dict(cls, obj: dict) -> SuggestMetaData:
+        """Create an instance of SuggestMetaData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return Volume.parse_obj(obj)
+            return SuggestMetaData.parse_obj(obj)
 
-        _obj = Volume.parse_obj({
-            "name": obj.get("name"),
-            "path": obj.get("path")
+        _obj = SuggestMetaData.parse_obj({
+            "data_path": DataPath.from_dict(obj.get("dataPath")) if obj.get("dataPath") is not None else None,
+            "layer_name": obj.get("layerName"),
+            "main_file": obj.get("mainFile")
         })
         return _obj
 

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AutoCreateDataset, CreateDataset, CreateDatasetHandler200Response, Dataset, DatasetListing, MetaDataDefinition, MetaDataSuggestion, OrderBy, Provenances, Symbology, UpdateDataset, Volume } from '../models/index';
+import type { AutoCreateDataset, CreateDataset, CreateDatasetHandler200Response, Dataset, DatasetListing, MetaDataDefinition, MetaDataSuggestion, OrderBy, Provenances, SuggestMetaData, Symbology, UpdateDataset, Volume } from '../models/index';
 export interface AutoCreateDatasetHandlerRequest {
     autoCreateDataset: AutoCreateDataset;
 }
@@ -34,9 +34,7 @@ export interface ListDatasetsHandlerRequest {
     tags?: Array<string> | null;
 }
 export interface SuggestMetaDataHandlerRequest {
-    upload: string;
-    mainFile?: string | null;
-    layerName?: string | null;
+    suggestMetaData: SuggestMetaData;
 }
 export interface UpdateDatasetHandlerRequest {
     dataset: string;
@@ -49,6 +47,10 @@ export interface UpdateDatasetProvenanceHandlerRequest {
 export interface UpdateDatasetSymbologyHandlerRequest {
     dataset: string;
     symbology: Symbology;
+}
+export interface UpdateLoadingInfoHandlerRequest {
+    dataset: string;
+    metaDataDefinition: MetaDataDefinition;
 }
 /**
  *
@@ -160,4 +162,14 @@ export declare class DatasetsApi extends runtime.BaseAPI {
      * Updates the dataset\'s symbology
      */
     updateDatasetSymbologyHandler(requestParameters: UpdateDatasetSymbologyHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * Updates the dataset\'s loading info
+     * Updates the dataset\'s loading info
+     */
+    updateLoadingInfoHandlerRaw(requestParameters: UpdateLoadingInfoHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * Updates the dataset\'s loading info
+     * Updates the dataset\'s loading info
+     */
+    updateLoadingInfoHandler(requestParameters: UpdateLoadingInfoHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 }

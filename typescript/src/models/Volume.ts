@@ -30,7 +30,7 @@ export interface Volume {
      * @type {string}
      * @memberof Volume
      */
-    path: string;
+    path?: string | null;
 }
 
 /**
@@ -39,7 +39,6 @@ export interface Volume {
 export function instanceOfVolume(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "name" in value;
-    isInstance = isInstance && "path" in value;
 
     return isInstance;
 }
@@ -55,7 +54,7 @@ export function VolumeFromJSONTyped(json: any, ignoreDiscriminator: boolean): Vo
     return {
         
         'name': json['name'],
-        'path': json['path'],
+        'path': !exists(json, 'path') ? undefined : json['path'],
     };
 }
 

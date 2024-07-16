@@ -103,6 +103,13 @@ class TestDatasetsApi(unittest.TestCase):
         """
         pass
 
+    def test_update_loading_info_handler(self) -> None:
+        """Test case for update_loading_info_handler
+
+        Updates the dataset's loading info  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -25,6 +25,7 @@ import type {
   MetaDataSuggestion,
   OrderBy,
   Provenances,
+  SuggestMetaData,
   Symbology,
   UpdateDataset,
   Volume,
@@ -50,6 +51,8 @@ import {
     OrderByToJSON,
     ProvenancesFromJSON,
     ProvenancesToJSON,
+    SuggestMetaDataFromJSON,
+    SuggestMetaDataToJSON,
     SymbologyFromJSON,
     SymbologyToJSON,
     UpdateDatasetFromJSON,
@@ -87,9 +90,7 @@ export interface ListDatasetsHandlerRequest {
 }
 
 export interface SuggestMetaDataHandlerRequest {
-    upload: string;
-    mainFile?: string | null;
-    layerName?: string | null;
+    suggestMetaData: SuggestMetaData;
 }
 
 export interface UpdateDatasetHandlerRequest {
@@ -105,6 +106,11 @@ export interface UpdateDatasetProvenanceHandlerRequest {
 export interface UpdateDatasetSymbologyHandlerRequest {
     dataset: string;
     symbology: Symbology;
+}
+
+export interface UpdateLoadingInfoHandlerRequest {
+    dataset: string;
+    metaDataDefinition: MetaDataDefinition;
 }
 
 /**
@@ -426,25 +432,15 @@ export class DatasetsApi extends runtime.BaseAPI {
      * Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.
      */
     async suggestMetaDataHandlerRaw(requestParameters: SuggestMetaDataHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetaDataSuggestion>> {
-        if (requestParameters.upload === null || requestParameters.upload === undefined) {
-            throw new runtime.RequiredError('upload','Required parameter requestParameters.upload was null or undefined when calling suggestMetaDataHandler.');
+        if (requestParameters.suggestMetaData === null || requestParameters.suggestMetaData === undefined) {
+            throw new runtime.RequiredError('suggestMetaData','Required parameter requestParameters.suggestMetaData was null or undefined when calling suggestMetaDataHandler.');
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.upload !== undefined) {
-            queryParameters['upload'] = requestParameters.upload;
-        }
-
-        if (requestParameters.mainFile !== undefined) {
-            queryParameters['mainFile'] = requestParameters.mainFile;
-        }
-
-        if (requestParameters.layerName !== undefined) {
-            queryParameters['layerName'] = requestParameters.layerName;
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -456,9 +452,10 @@ export class DatasetsApi extends runtime.BaseAPI {
         }
         const response = await this.request({
             path: `/dataset/suggest`,
-            method: 'GET',
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: SuggestMetaDataToJSON(requestParameters.suggestMetaData),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => MetaDataSuggestionFromJSON(jsonValue));
@@ -605,6 +602,52 @@ export class DatasetsApi extends runtime.BaseAPI {
      */
     async updateDatasetSymbologyHandler(requestParameters: UpdateDatasetSymbologyHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.updateDatasetSymbologyHandlerRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Updates the dataset\'s loading info
+     * Updates the dataset\'s loading info
+     */
+    async updateLoadingInfoHandlerRaw(requestParameters: UpdateLoadingInfoHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+            throw new runtime.RequiredError('dataset','Required parameter requestParameters.dataset was null or undefined when calling updateLoadingInfoHandler.');
+        }
+
+        if (requestParameters.metaDataDefinition === null || requestParameters.metaDataDefinition === undefined) {
+            throw new runtime.RequiredError('metaDataDefinition','Required parameter requestParameters.metaDataDefinition was null or undefined when calling updateLoadingInfoHandler.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("session_token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/dataset/{dataset}/loadingInfo`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: MetaDataDefinitionToJSON(requestParameters.metaDataDefinition),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Updates the dataset\'s loading info
+     * Updates the dataset\'s loading info
+     */
+    async updateLoadingInfoHandler(requestParameters: UpdateLoadingInfoHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.updateLoadingInfoHandlerRaw(requestParameters, initOverrides);
     }
 
 }

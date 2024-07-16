@@ -16,10 +16,10 @@
 import unittest
 import datetime
 
-from geoengine_openapi_client.models.volume import Volume  # noqa: E501
+from geoengine_openapi_client.models.suggest_meta_data import SuggestMetaData  # noqa: E501
 
-class TestVolume(unittest.TestCase):
-    """Volume unit test stubs"""
+class TestSuggestMetaData(unittest.TestCase):
+    """SuggestMetaData unit test stubs"""
 
     def setUp(self):
         pass
@@ -27,27 +27,28 @@ class TestVolume(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Volume:
-        """Test Volume
+    def make_instance(self, include_optional) -> SuggestMetaData:
+        """Test SuggestMetaData
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Volume`
+        # uncomment below to create an instance of `SuggestMetaData`
         """
-        model = Volume()  # noqa: E501
+        model = SuggestMetaData()  # noqa: E501
         if include_optional:
-            return Volume(
-                name = '',
-                path = ''
+            return SuggestMetaData(
+                data_path = None,
+                layer_name = '',
+                main_file = ''
             )
         else:
-            return Volume(
-                name = '',
+            return SuggestMetaData(
+                data_path = None,
         )
         """
 
-    def testVolume(self):
-        """Test Volume"""
+    def testSuggestMetaData(self):
+        """Test SuggestMetaData"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

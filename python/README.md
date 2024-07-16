@@ -101,10 +101,11 @@ Class | Method | HTTP request | Description
 *DatasetsApi* | [**get_loading_info_handler**](docs/DatasetsApi.md#get_loading_info_handler) | **GET** /dataset/{dataset}/loadingInfo | Retrieves the loading information of a dataset
 *DatasetsApi* | [**list_datasets_handler**](docs/DatasetsApi.md#list_datasets_handler) | **GET** /datasets | Lists available datasets.
 *DatasetsApi* | [**list_volumes_handler**](docs/DatasetsApi.md#list_volumes_handler) | **GET** /dataset/volumes | Lists available volumes.
-*DatasetsApi* | [**suggest_meta_data_handler**](docs/DatasetsApi.md#suggest_meta_data_handler) | **GET** /dataset/suggest | Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.
+*DatasetsApi* | [**suggest_meta_data_handler**](docs/DatasetsApi.md#suggest_meta_data_handler) | **POST** /dataset/suggest | Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.
 *DatasetsApi* | [**update_dataset_handler**](docs/DatasetsApi.md#update_dataset_handler) | **POST** /dataset/{dataset} | Update details about a dataset using the internal name.
 *DatasetsApi* | [**update_dataset_provenance_handler**](docs/DatasetsApi.md#update_dataset_provenance_handler) | **PUT** /dataset/{dataset}/provenance | 
 *DatasetsApi* | [**update_dataset_symbology_handler**](docs/DatasetsApi.md#update_dataset_symbology_handler) | **PUT** /dataset/{dataset}/symbology | Updates the dataset&#39;s symbology
+*DatasetsApi* | [**update_loading_info_handler**](docs/DatasetsApi.md#update_loading_info_handler) | **PUT** /dataset/{dataset}/loadingInfo | Updates the dataset&#39;s loading info
 *GeneralApi* | [**available_handler**](docs/GeneralApi.md#available_handler) | **GET** /available | Server availablity check.
 *GeneralApi* | [**server_info_handler**](docs/GeneralApi.md#server_info_handler) | **GET** /info | Shows information about the server software version.
 *LayersApi* | [**add_collection**](docs/LayersApi.md#add_collection) | **POST** /layerDb/collections/{collection}/collections | Add a new collection to an existing collection
@@ -357,6 +358,7 @@ Class | Method | HTTP request | Description
  - [StaticColorParam](docs/StaticColorParam.md)
  - [StaticNumberParam](docs/StaticNumberParam.md)
  - [StrokeParam](docs/StrokeParam.md)
+ - [SuggestMetaData](docs/SuggestMetaData.md)
  - [Symbology](docs/Symbology.md)
  - [TaskAbortOptions](docs/TaskAbortOptions.md)
  - [TaskFilter](docs/TaskFilter.md)

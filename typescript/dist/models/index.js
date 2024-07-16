@@ -198,6 +198,7 @@ __exportStar(require("./StartOgrSourceDatasetTimeType"), exports);
 __exportStar(require("./StaticColorParam"), exports);
 __exportStar(require("./StaticNumberParam"), exports);
 __exportStar(require("./StrokeParam"), exports);
+__exportStar(require("./SuggestMetaData"), exports);
 __exportStar(require("./Symbology"), exports);
 __exportStar(require("./TaskAbortOptions"), exports);
 __exportStar(require("./TaskFilter"), exports);

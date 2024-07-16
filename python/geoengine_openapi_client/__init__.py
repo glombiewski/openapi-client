@@ -228,6 +228,7 @@ from geoengine_openapi_client.models.start_ogr_source_dataset_time_type import S
 from geoengine_openapi_client.models.static_color_param import StaticColorParam
 from geoengine_openapi_client.models.static_number_param import StaticNumberParam
 from geoengine_openapi_client.models.stroke_param import StrokeParam
+from geoengine_openapi_client.models.suggest_meta_data import SuggestMetaData
 from geoengine_openapi_client.models.symbology import Symbology
 from geoengine_openapi_client.models.task_abort_options import TaskAbortOptions
 from geoengine_openapi_client.models.task_filter import TaskFilter

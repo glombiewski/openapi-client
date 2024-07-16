@@ -200,6 +200,7 @@ src/models/StartOgrSourceDatasetTimeType.ts
 src/models/StaticColorParam.ts
 src/models/StaticNumberParam.ts
 src/models/StrokeParam.ts
+src/models/SuggestMetaData.ts
 src/models/Symbology.ts
 src/models/TaskAbortOptions.ts
 src/models/TaskFilter.ts

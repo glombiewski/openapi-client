@@ -51,7 +51,9 @@ src/models/DataPath.ts
 src/models/DataPathOneOf.ts
 src/models/DataPathOneOf1.ts
 src/models/Dataset.ts
+src/models/DatasetAccessStatusResponse.ts
 src/models/DatasetDefinition.ts
+src/models/DatasetDeletionType.ts
 src/models/DatasetIdResourceId.ts
 src/models/DatasetListing.ts
 src/models/DatasetResource.ts
@@ -63,6 +65,9 @@ src/models/DerivedNumber.ts
 src/models/DerivedNumberWithType.ts
 src/models/DescribeCoverageRequest.ts
 src/models/ErrorResponse.ts
+src/models/Expiration.ts
+src/models/ExpirationChange.ts
+src/models/ExpirationWithType.ts
 src/models/ExternalDataId.ts
 src/models/ExternalDataIdWithType.ts
 src/models/FailedTaskStatus.ts
@@ -225,6 +230,7 @@ src/models/TypedResultDescriptor.ts
 src/models/UnitlessMeasurement.ts
 src/models/UnixTimeStampOgrSourceTimeFormat.ts
 src/models/UnixTimeStampType.ts
+src/models/UnsetExpireExpirationChange.ts
 src/models/UpdateDataset.ts
 src/models/UpdateProject.ts
 src/models/UpdateQuota.ts

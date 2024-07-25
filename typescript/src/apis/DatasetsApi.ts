@@ -19,8 +19,10 @@ import type {
   CreateDataset,
   CreateDatasetHandler200Response,
   Dataset,
+  DatasetAccessStatusResponse,
   DatasetListing,
   ErrorResponse,
+  ExpirationChange,
   MetaDataDefinition,
   MetaDataSuggestion,
   OrderBy,
@@ -39,10 +41,14 @@ import {
     CreateDatasetHandler200ResponseToJSON,
     DatasetFromJSON,
     DatasetToJSON,
+    DatasetAccessStatusResponseFromJSON,
+    DatasetAccessStatusResponseToJSON,
     DatasetListingFromJSON,
     DatasetListingToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    ExpirationChangeFromJSON,
+    ExpirationChangeToJSON,
     MetaDataDefinitionFromJSON,
     MetaDataDefinitionToJSON,
     MetaDataSuggestionFromJSON,
@@ -77,6 +83,10 @@ export interface GetDatasetHandlerRequest {
     dataset: string;
 }
 
+export interface GetDatasetStatusRequest {
+    dataset: string;
+}
+
 export interface GetLoadingInfoHandlerRequest {
     dataset: string;
 }
@@ -87,6 +97,11 @@ export interface ListDatasetsHandlerRequest {
     limit: number;
     filter?: string | null;
     tags?: Array<string> | null;
+}
+
+export interface SetDatasetExpirationRequest {
+    dataset: string;
+    expirationChange: ExpirationChange;
 }
 
 export interface SuggestMetaDataHandlerRequest {
@@ -244,6 +259,41 @@ export class DatasetsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Clears expired datasets. Requires an admin session.
+     * Clears expired datasets.
+     */
+    async gcExpiredDatasetsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("session_token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/dataset/gc`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Clears expired datasets. Requires an admin session.
+     * Clears expired datasets.
+     */
+    async gcExpiredDatasets(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.gcExpiredDatasetsRaw(initOverrides);
+    }
+
+    /**
      * Retrieves details about a dataset using the internal name.
      * Retrieves details about a dataset using the internal name.
      */
@@ -280,6 +330,46 @@ export class DatasetsApi extends runtime.BaseAPI {
      */
     async getDatasetHandler(requestParameters: GetDatasetHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Dataset> {
         const response = await this.getDatasetHandlerRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Returns the access status of the current user for the dataset with the given name.
+     * Returns the access status of the current user for the dataset with the given name.
+     */
+    async getDatasetStatusRaw(requestParameters: GetDatasetStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DatasetAccessStatusResponse>> {
+        if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+            throw new runtime.RequiredError('dataset','Required parameter requestParameters.dataset was null or undefined when calling getDatasetStatus.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("session_token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/dataset/{dataset}/status`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DatasetAccessStatusResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Returns the access status of the current user for the dataset with the given name.
+     * Returns the access status of the current user for the dataset with the given name.
+     */
+    async getDatasetStatus(requestParameters: GetDatasetStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DatasetAccessStatusResponse> {
+        const response = await this.getDatasetStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -425,6 +515,52 @@ export class DatasetsApi extends runtime.BaseAPI {
     async listVolumesHandler(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Volume>> {
         const response = await this.listVolumesHandlerRaw(initOverrides);
         return await response.value();
+    }
+
+    /**
+     * Sets an expiration date for the dataset with the given name. Will expire immediately if no timestamp is provided.
+     * Sets an expiration date for the dataset with the given name.
+     */
+    async setDatasetExpirationRaw(requestParameters: SetDatasetExpirationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+            throw new runtime.RequiredError('dataset','Required parameter requestParameters.dataset was null or undefined when calling setDatasetExpiration.');
+        }
+
+        if (requestParameters.expirationChange === null || requestParameters.expirationChange === undefined) {
+            throw new runtime.RequiredError('expirationChange','Required parameter requestParameters.expirationChange was null or undefined when calling setDatasetExpiration.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("session_token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/dataset/{dataset}/expiration`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ExpirationChangeToJSON(requestParameters.expirationChange),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Sets an expiration date for the dataset with the given name. Will expire immediately if no timestamp is provided.
+     * Sets an expiration date for the dataset with the given name.
+     */
+    async setDatasetExpiration(requestParameters: SetDatasetExpirationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.setDatasetExpirationRaw(requestParameters, initOverrides);
     }
 
     /**

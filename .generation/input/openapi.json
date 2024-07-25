@@ -375,6 +375,39 @@
         ]
       }
     },
+    "/dataset/gc": {
+      "post": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "Clears expired datasets.",
+        "description": "Clears expired datasets.\nRequires an admin session.",
+        "operationId": "gc_expired_datasets",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedUserResponse"
+          }
+        },
+        "security": [
+          {
+            "session_token": []
+          }
+        ]
+      }
+    },
     "/dataset/suggest": {
       "post": {
         "tags": [
@@ -730,6 +763,80 @@
         ]
       }
     },
+    "/dataset/{dataset}/expiration": {
+      "put": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "Sets an expiration date for the dataset with the given name.",
+        "description": "Sets an expiration date for the dataset with the given name.\nWill expire immediately if no timestamp is provided.",
+        "operationId": "set_dataset_expiration",
+        "parameters": [
+          {
+            "name": "dataset",
+            "in": "path",
+            "description": "Dataset Name",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/DatasetName"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExpirationChange"
+              },
+              "examples": {
+                "Delete": {
+                  "value": {
+                    "deletionType": "DeleteData",
+                    "type": "setExpire"
+                  }
+                },
+                "Expire": {
+                  "value": {
+                    "deletionTimestamp": "2024-06-28T14:52:39.655Z",
+                    "deletionType": "DeleteRecordAndData",
+                    "type": "setExpire"
+                  }
+                },
+                "Undo Expire": {
+                  "value": {
+                    "type": "unsetExpire"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedUserResponse"
+          }
+        },
+        "security": [
+          {
+            "session_token": []
+          }
+        ]
+      }
+    },
     "/dataset/{dataset}/loadingInfo": {
       "get": {
         "tags": [
@@ -850,6 +957,57 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedUserResponse"
+          }
+        },
+        "security": [
+          {
+            "session_token": []
+          }
+        ]
+      }
+    },
+    "/dataset/{dataset}/status": {
+      "get": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "Returns the access status of the current user for the dataset with the given name.",
+        "description": "Returns the access status of the current user for the dataset with the given name.",
+        "operationId": "get_dataset_status",
+        "parameters": [
+          {
+            "name": "dataset",
+            "in": "path",
+            "description": "Dataset Name",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/DatasetName"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetAccessStatusResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request",
@@ -5602,6 +5760,40 @@
           }
         }
       },
+      "DatasetAccessStatusResponse": {
+        "type": "object",
+        "required": [
+          "id",
+          "isUserUpload",
+          "isAvailable",
+          "permissions"
+        ],
+        "properties": {
+          "expiration": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Expiration"
+              }
+            ],
+            "nullable": true
+          },
+          "id": {
+            "$ref": "#/components/schemas/DatasetId"
+          },
+          "isAvailable": {
+            "type": "boolean"
+          },
+          "isUserUpload": {
+            "type": "boolean"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Permission"
+            }
+          }
+        }
+      },
       "DatasetDefinition": {
         "type": "object",
         "required": [
@@ -5616,6 +5808,13 @@
             "$ref": "#/components/schemas/AddDataset"
           }
         }
+      },
+      "DatasetDeletionType": {
+        "type": "string",
+        "enum": [
+          "DeleteRecordAndData",
+          "DeleteData"
+        ]
       },
       "DatasetId": {
         "type": "string",
@@ -5842,6 +6041,62 @@
           },
           "message": {
             "type": "string"
+          }
+        }
+      },
+      "Expiration": {
+        "type": "object",
+        "required": [
+          "deletionType"
+        ],
+        "properties": {
+          "deletionTimestamp": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "deletionType": {
+            "$ref": "#/components/schemas/DatasetDeletionType"
+          }
+        }
+      },
+      "ExpirationChange": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ExpirationWithType"
+          },
+          {
+            "$ref": "#/components/schemas/UnsetExpireExpirationChange"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "setExpire": "#/components/schemas/ExpirationWithType",
+            "unsetExpire": "#/components/schemas/UnsetExpireExpirationChange"
+          }
+        }
+      },
+      "ExpirationWithType": {
+        "type": "object",
+        "required": [
+          "deletionType",
+          "type"
+        ],
+        "properties": {
+          "deletionTimestamp": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "deletionType": {
+            "$ref": "#/components/schemas/DatasetDeletionType"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "setExpire"
+            ]
           }
         }
       },
@@ -9235,6 +9490,20 @@
           "epochSeconds",
           "epochMilliseconds"
         ]
+      },
+      "UnsetExpireExpirationChange": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "unsetExpire"
+            ]
+          }
+        }
       },
       "UpdateDataset": {
         "type": "object",

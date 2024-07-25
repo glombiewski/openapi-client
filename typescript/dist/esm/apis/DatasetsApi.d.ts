@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AutoCreateDataset, CreateDataset, CreateDatasetHandler200Response, Dataset, DatasetListing, MetaDataDefinition, MetaDataSuggestion, OrderBy, Provenances, SuggestMetaData, Symbology, UpdateDataset, Volume } from '../models/index';
+import type { AutoCreateDataset, CreateDataset, CreateDatasetHandler200Response, Dataset, DatasetAccessStatusResponse, DatasetListing, ExpirationChange, MetaDataDefinition, MetaDataSuggestion, OrderBy, Provenances, SuggestMetaData, Symbology, UpdateDataset, Volume } from '../models/index';
 export interface AutoCreateDatasetHandlerRequest {
     autoCreateDataset: AutoCreateDataset;
 }
@@ -23,6 +23,9 @@ export interface DeleteDatasetHandlerRequest {
 export interface GetDatasetHandlerRequest {
     dataset: string;
 }
+export interface GetDatasetStatusRequest {
+    dataset: string;
+}
 export interface GetLoadingInfoHandlerRequest {
     dataset: string;
 }
@@ -32,6 +35,10 @@ export interface ListDatasetsHandlerRequest {
     limit: number;
     filter?: string | null;
     tags?: Array<string> | null;
+}
+export interface SetDatasetExpirationRequest {
+    dataset: string;
+    expirationChange: ExpirationChange;
 }
 export interface SuggestMetaDataHandlerRequest {
     suggestMetaData: SuggestMetaData;
@@ -87,6 +94,16 @@ export declare class DatasetsApi extends runtime.BaseAPI {
      */
     deleteDatasetHandler(requestParameters: DeleteDatasetHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
+     * Clears expired datasets. Requires an admin session.
+     * Clears expired datasets.
+     */
+    gcExpiredDatasetsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * Clears expired datasets. Requires an admin session.
+     * Clears expired datasets.
+     */
+    gcExpiredDatasets(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
      * Retrieves details about a dataset using the internal name.
      * Retrieves details about a dataset using the internal name.
      */
@@ -96,6 +113,16 @@ export declare class DatasetsApi extends runtime.BaseAPI {
      * Retrieves details about a dataset using the internal name.
      */
     getDatasetHandler(requestParameters: GetDatasetHandlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Dataset>;
+    /**
+     * Returns the access status of the current user for the dataset with the given name.
+     * Returns the access status of the current user for the dataset with the given name.
+     */
+    getDatasetStatusRaw(requestParameters: GetDatasetStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DatasetAccessStatusResponse>>;
+    /**
+     * Returns the access status of the current user for the dataset with the given name.
+     * Returns the access status of the current user for the dataset with the given name.
+     */
+    getDatasetStatus(requestParameters: GetDatasetStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DatasetAccessStatusResponse>;
     /**
      * Retrieves the loading information of a dataset
      * Retrieves the loading information of a dataset
@@ -126,6 +153,16 @@ export declare class DatasetsApi extends runtime.BaseAPI {
      * Lists available volumes.
      */
     listVolumesHandler(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Volume>>;
+    /**
+     * Sets an expiration date for the dataset with the given name. Will expire immediately if no timestamp is provided.
+     * Sets an expiration date for the dataset with the given name.
+     */
+    setDatasetExpirationRaw(requestParameters: SetDatasetExpirationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * Sets an expiration date for the dataset with the given name. Will expire immediately if no timestamp is provided.
+     * Sets an expiration date for the dataset with the given name.
+     */
+    setDatasetExpiration(requestParameters: SetDatasetExpirationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
      * Inspects an upload and suggests metadata that can be used when creating a new dataset based on it. Tries to automatically detect the main file and layer name if not specified.
      * Inspects an upload and suggests metadata that can be used when creating a new dataset based on it.

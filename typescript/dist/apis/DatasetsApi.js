@@ -144,6 +144,39 @@ class DatasetsApi extends runtime.BaseAPI {
         });
     }
     /**
+     * Clears expired datasets. Requires an admin session.
+     * Clears expired datasets.
+     */
+    gcExpiredDatasetsRaw(initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const queryParameters = {};
+            const headerParameters = {};
+            if (this.configuration && this.configuration.accessToken) {
+                const token = this.configuration.accessToken;
+                const tokenString = yield token("session_token", []);
+                if (tokenString) {
+                    headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                }
+            }
+            const response = yield this.request({
+                path: `/dataset/gc`,
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+            }, initOverrides);
+            return new runtime.VoidApiResponse(response);
+        });
+    }
+    /**
+     * Clears expired datasets. Requires an admin session.
+     * Clears expired datasets.
+     */
+    gcExpiredDatasets(initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.gcExpiredDatasetsRaw(initOverrides);
+        });
+    }
+    /**
      * Retrieves details about a dataset using the internal name.
      * Retrieves details about a dataset using the internal name.
      */
@@ -177,6 +210,43 @@ class DatasetsApi extends runtime.BaseAPI {
     getDatasetHandler(requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield this.getDatasetHandlerRaw(requestParameters, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * Returns the access status of the current user for the dataset with the given name.
+     * Returns the access status of the current user for the dataset with the given name.
+     */
+    getDatasetStatusRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+                throw new runtime.RequiredError('dataset', 'Required parameter requestParameters.dataset was null or undefined when calling getDatasetStatus.');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            if (this.configuration && this.configuration.accessToken) {
+                const token = this.configuration.accessToken;
+                const tokenString = yield token("session_token", []);
+                if (tokenString) {
+                    headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                }
+            }
+            const response = yield this.request({
+                path: `/dataset/{dataset}/status`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DatasetAccessStatusResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * Returns the access status of the current user for the dataset with the given name.
+     * Returns the access status of the current user for the dataset with the given name.
+     */
+    getDatasetStatus(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.getDatasetStatusRaw(requestParameters, initOverrides);
             return yield response.value();
         });
     }
@@ -307,6 +377,47 @@ class DatasetsApi extends runtime.BaseAPI {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield this.listVolumesHandlerRaw(initOverrides);
             return yield response.value();
+        });
+    }
+    /**
+     * Sets an expiration date for the dataset with the given name. Will expire immediately if no timestamp is provided.
+     * Sets an expiration date for the dataset with the given name.
+     */
+    setDatasetExpirationRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters.dataset === null || requestParameters.dataset === undefined) {
+                throw new runtime.RequiredError('dataset', 'Required parameter requestParameters.dataset was null or undefined when calling setDatasetExpiration.');
+            }
+            if (requestParameters.expirationChange === null || requestParameters.expirationChange === undefined) {
+                throw new runtime.RequiredError('expirationChange', 'Required parameter requestParameters.expirationChange was null or undefined when calling setDatasetExpiration.');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.accessToken) {
+                const token = this.configuration.accessToken;
+                const tokenString = yield token("session_token", []);
+                if (tokenString) {
+                    headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                }
+            }
+            const response = yield this.request({
+                path: `/dataset/{dataset}/expiration`.replace(`{${"dataset"}}`, encodeURIComponent(String(requestParameters.dataset))),
+                method: 'PUT',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.ExpirationChangeToJSON)(requestParameters.expirationChange),
+            }, initOverrides);
+            return new runtime.VoidApiResponse(response);
+        });
+    }
+    /**
+     * Sets an expiration date for the dataset with the given name. Will expire immediately if no timestamp is provided.
+     * Sets an expiration date for the dataset with the given name.
+     */
+    setDatasetExpiration(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.setDatasetExpirationRaw(requestParameters, initOverrides);
         });
     }
     /**
